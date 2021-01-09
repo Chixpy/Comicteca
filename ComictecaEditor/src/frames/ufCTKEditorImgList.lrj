@@ -1,0 +1,8 @@
+{"version":1,"strings":[
+{"hash":94653556,"name":"tfmctkeditorimglist.gbximagefilelist.caption","sourcebytes":[73,109,97,103,101,32,70,105,108,101,32,76,105,115,116],"value":"Image File List"},
+{"hash":2901221,"name":"tfmctkeditorimglist.lvfilelist.columns[0].caption","sourcebytes":[70,105,108,101,110,97,109,101],"value":"Filename"},
+{"hash":74216848,"name":"tfmctkeditorimglist.bsubir.caption","sourcebytes":[77,111,118,101,32,85,112],"value":"Move Up"},
+{"hash":212204371,"name":"tfmctkeditorimglist.baddallfiles.caption","sourcebytes":[65,100,100,32,97,108,108,32,105,109,97,103,101,115],"value":"Add all images"},
+{"hash":208995006,"name":"tfmctkeditorimglist.bmovedown.caption","sourcebytes":[77,111,118,101,32,68,111,119,110],"value":"Move Down"},
+{"hash":204213317,"name":"tfmctkeditorimglist.bremovefile.caption","sourcebytes":[82,101,109,111,118,101,32,70,105,108,101],"value":"Remove File"}
+]}

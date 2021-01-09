@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="11"/>
+    <BuildModes Active="Debug"/>
+    <Units Count="75">
+      <Unit0>
+        <Filename Value="ComictecaEditor.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="24"/>
+        <UsageCount Value="131"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="..\..\CHX\Forms\ufrCHXForm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCHXForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5"/>
+        <CursorPos X="7" Y="27"/>
+        <UsageCount Value="131"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="src\forms\ufrComictecaEditorMain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmComictecaEditorMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="154"/>
+        <CursorPos X="10" Y="179"/>
+        <UsageCount Value="131"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="..\..\CHX\Units\uCHXImageUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="57" Y="27"/>
+        <UsageCount Value="131"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\..\CHX\Units\uCHXStrUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="131"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\..\CHX\Frames\ufCHXFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos X="10" Y="39"/>
+        <UsageCount Value="131"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\..\CHX\Misc\uVersionSupport.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="191"/>
+        <UsageCount Value="130"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="..\ComictecaCore\Units\uCTKConst.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="21"/>
+        <CursorPos X="15" Y="51"/>
+        <UsageCount Value="130"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="src\classes\uCTKEditorConfig.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="31" Y="28"/>
+        <UsageCount Value="129"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\..\CHX\Abstract\uaCHXConfig.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="129"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="src\units\uCTKEditorConst.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uCTKGUIConst"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="16"/>
+        <UsageCount Value="129"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaPage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="23"/>
+        <CursorPos X="40" Y="23"/>
+        <UsageCount Value="127"/>
+        <Loaded Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaPageList.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="47"/>
+        <CursorPos X="24" Y="51"/>
+        <UsageCount Value="127"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaFrameList.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="12"/>
+        <CursorPos X="13" Y="31"/>
+        <UsageCount Value="127"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolume.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="78"/>
+        <CursorPos X="46" Y="94"/>
+        <UsageCount Value="127"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaPage.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="104"/>
+        <CursorPos Y="3"/>
+        <UsageCount Value="125"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaSection.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="125"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaVolume.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="87"/>
+        <CursorPos Y="119"/>
+        <UsageCount Value="125"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="src\abstracts\uafCTKEditorFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="afmCTKEditorFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="23"/>
+        <CursorPos X="20" Y="32"/>
+        <UsageCount Value="123"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="src\frames\ufCTKEditorMain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="165"/>
+        <CursorPos X="53" Y="171"/>
+        <UsageCount Value="123"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\..\CHX\Units\uCHXConst.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="122"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\..\CHX\Units\uCHXRscStr.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="122"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="src\frames\ufCTKEditorImgList.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorImgList"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <TopLine Value="194"/>
+        <CursorPos Y="223"/>
+        <UsageCount Value="121"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="src\frames\ufCTKEditorPageEdit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorPageEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="122"/>
+        <CursorPos X="35" Y="64"/>
+        <UsageCount Value="115"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="src\frames\ufCTKEditorVolumeEdit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorVolumeEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="190"/>
+        <CursorPos X="40" Y="230"/>
+        <UsageCount Value="110"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\..\CHX\Units\uCHX7zWrapper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="178"/>
+        <UsageCount Value="100"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="..\..\CHX\Units\uCHXFileUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="28"/>
+        <UsageCount Value="100"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="src\frames\ufCTKEditorPageVisor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorPageVisor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="36" Y="154"/>
+        <UsageCount Value="99"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="..\..\CHX\Frames\ufCHXBGRAImgViewer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXBGRAImgViewer"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="190"/>
+        <CursorPos X="12" Y="213"/>
+        <UsageCount Value="99"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="..\ComictecaCore\Units\uCTKRstStr.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="20" Y="22"/>
+        <UsageCount Value="85"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="..\ComictecaCore\Units\uCTKCommon.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="66"/>
+        <CursorPos X="56" Y="41"/>
+        <UsageCount Value="74"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="28"/>
+        <CursorPos Y="43"/>
+        <UsageCount Value="69"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="src\frames\ufCTKEditorFrameEdit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorFrameEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="40"/>
+        <CursorPos X="3" Y="58"/>
+        <UsageCount Value="55"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaTextMap.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="94"/>
+        <CursorPos Y="158"/>
+        <UsageCount Value="48"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="src\frames\ufCTKEditorFrameList.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorFrameList"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="83"/>
+        <CursorPos X="41" Y="99"/>
+        <UsageCount Value="34"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="21"/>
+        <CursorPos X="19" Y="48"/>
+        <UsageCount Value="30"/>
+        <Loaded Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="src\abstracts\uafCTKEditorPageFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="afmCTKEditorPageFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="18" Y="10"/>
+        <UsageCount Value="26"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="src\abstracts\uafCTKEditorFrameFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="afmCTKEditorFrameFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="26" Y="16"/>
+        <UsageCount Value="24"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVignette.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="19"/>
+        <CursorPos X="53" Y="37"/>
+        <UsageCount Value="118"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="src\forms\ufrMain.pas"/>
+        <ComponentName Value="frmComictecaMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="40" Y="18"/>
+        <UsageCount Value="11"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="50"/>
+        <CursorPos X="19" Y="69"/>
+        <UsageCount Value="1"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\defaulttranslator.pas"/>
+        <UnitName Value="DefaultTranslator"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="1"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\lcltranslator.pas"/>
+        <UnitName Value="LCLTranslator"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="154"/>
+        <CursorPos X="10" Y="95"/>
+        <UsageCount Value="1"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1470"/>
+        <CursorPos X="14" Y="1489"/>
+        <UsageCount Value="9"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1564"/>
+        <CursorPos X="3" Y="1577"/>
+        <UsageCount Value="2"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\lmessages.pp"/>
+        <UnitName Value="LMessages"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="702"/>
+        <CursorPos X="3" Y="723"/>
+        <UsageCount Value="2"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="795"/>
+        <CursorPos X="3" Y="816"/>
+        <UsageCount Value="13"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\packages\fcl-base\src\inifiles.pp"/>
+        <UnitName Value="IniFiles"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="225"/>
+        <CursorPos X="15" Y="243"/>
+        <UsageCount Value="5"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\lazfileutils.pas"/>
+        <UnitName Value="LazFileUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="898"/>
+        <CursorPos X="3" Y="908"/>
+        <UsageCount Value="3"/>
+      </Unit48>
+      <Unit49>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\comctrls.pp"/>
+        <UnitName Value="ComCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1426"/>
+        <CursorPos X="14" Y="1444"/>
+        <UsageCount Value="3"/>
+      </Unit49>
+      <Unit50>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\include\customlistview.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1244"/>
+        <CursorPos X="3" Y="1246"/>
+        <UsageCount Value="3"/>
+      </Unit50>
+      <Unit51>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\packages\hash\src\sha1.pp"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="5"/>
+      </Unit51>
+      <Unit52>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\rtl\objpas\typinfo.pp"/>
+        <UnitName Value="TypInfo"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1487"/>
+        <UsageCount Value="3"/>
+      </Unit52>
+      <Unit53>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\rtl\objpas\sysutils\finah.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="20"/>
+        <UsageCount Value="4"/>
+      </Unit53>
+      <Unit54>
+        <Filename Value="..\..\CHX\Units\uCHXExecute.pas"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="5"/>
+      </Unit54>
+      <Unit55>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\unibitmap.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="219"/>
+        <CursorPos X="15" Y="236"/>
+        <UsageCount Value="5"/>
+      </Unit55>
+      <Unit56>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\bgrabitmaptypes.pas"/>
+        <UnitName Value="BGRABitmapTypes"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="452"/>
+        <CursorPos X="5" Y="458"/>
+        <UsageCount Value="5"/>
+      </Unit56>
+      <Unit57>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\include\customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="921"/>
+        <CursorPos Y="940"/>
+        <UsageCount Value="5"/>
+      </Unit57>
+      <Unit58>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\bgrapixel.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="169"/>
+        <CursorPos X="24" Y="171"/>
+        <UsageCount Value="5"/>
+      </Unit58>
+      <Unit59>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\lazutf8.pas"/>
+        <UnitName Value="LazUTF8"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3380"/>
+        <CursorPos X="4" Y="3391"/>
+        <UsageCount Value="11"/>
+      </Unit59>
+      <Unit60>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\packages\rtl-objpas\src\inc\strutils.pp"/>
+        <UnitName Value="StrUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1076"/>
+        <CursorPos X="3" Y="1078"/>
+        <UsageCount Value="6"/>
+      </Unit60>
+      <Unit61>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\rtl\objpas\classes\stringl.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="89"/>
+        <CursorPos X="3" Y="92"/>
+        <UsageCount Value="13"/>
+      </Unit61>
+      <Unit62>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\laz2_xmlread.pas"/>
+        <UnitName Value="laz2_XMLRead"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1069"/>
+        <CursorPos X="31" Y="4133"/>
+        <UsageCount Value="6"/>
+      </Unit62>
+      <Unit63>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\laz_xmlread.pas"/>
+        <UnitName Value="Laz_XMLRead"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="22" Y="27"/>
+        <UsageCount Value="6"/>
+      </Unit63>
+      <Unit64>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\laz_dom.pas"/>
+        <UnitName Value="Laz_DOM"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="9"/>
+        <UsageCount Value="7"/>
+      </Unit64>
+      <Unit65>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\laz2_dom.pas"/>
+        <UnitName Value="Laz2_DOM"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3424"/>
+        <CursorPos X="3" Y="3426"/>
+        <UsageCount Value="18"/>
+      </Unit65>
+      <Unit66>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\laz2_xmlwrite.pas"/>
+        <UnitName Value="laz2_XMLWrite"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="864"/>
+        <CursorPos X="11" Y="864"/>
+        <UsageCount Value="7"/>
+      </Unit66>
+      <Unit67>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\rtl\objpas\sysutils\sysstrh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="107"/>
+        <CursorPos X="21" Y="133"/>
+        <UsageCount Value="6"/>
+      </Unit67>
+      <Unit68>
+        <Filename Value="D:\Programas\Inst\Lazarus\components\lazutils\lazstringutils.pas"/>
+        <UnitName Value="LazStringUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="29"/>
+        <UsageCount Value="6"/>
+      </Unit68>
+      <Unit69>
+        <Filename Value="D:\Programas\Inst\Lazarus\fpc\3.2.0\source\rtl\objpas\fgl.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1845"/>
+        <CursorPos X="3" Y="1850"/>
+        <UsageCount Value="14"/>
+      </Unit69>
+      <Unit70>
+        <Filename Value="D:\Programas\Inst\Lazarus\lcl\stdctrls.pp"/>
+        <UnitName Value="StdCtrls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="361"/>
+        <CursorPos X="3" Y="269"/>
+        <UsageCount Value="9"/>
+      </Unit70>
+      <Unit71>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\bgrabitmap.pas"/>
+        <UnitName Value="BGRABitmap"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="60"/>
+        <UsageCount Value="7"/>
+      </Unit71>
+      <Unit72>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\bgrawinbitmap.pas"/>
+        <UnitName Value="BGRAWinBitmap"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="8"/>
+        <CursorPos X="3" Y="23"/>
+        <UsageCount Value="7"/>
+      </Unit72>
+      <Unit73>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\bgralclbitmap.pas"/>
+        <UnitName Value="BGRALCLBitmap"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="14"/>
+        <UsageCount Value="7"/>
+      </Unit73>
+      <Unit74>
+        <Filename Value="C:\Users\Usuario\AppData\Local\lazarus\onlinepackagemanager\packages\bgrabitmap-master\bgrabitmap\bgradefaultbitmap.pas"/>
+        <UnitName Value="BGRADefaultBitmap"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="653"/>
+        <CursorPos X="3" Y="37"/>
+        <UsageCount Value="7"/>
+      </Unit74>
+    </Units>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="src\frames\ufCTKEditorImgList.pas"/>
+        <Caret Line="68" TopLine="37"/>
+      </Position1>
+      <Position2>
+        <Filename Value="src\frames\ufCTKEditorFrameList.pas"/>
+        <Caret Line="11" Column="19"/>
+      </Position2>
+      <Position3>
+        <Filename Value="src\frames\ufCTKEditorFrameList.pas"/>
+        <Caret Line="41" Column="23" TopLine="11"/>
+      </Position3>
+      <Position4>
+        <Filename Value="src\frames\ufCTKEditorFrameList.pas"/>
+        <Caret Line="67" Column="3" TopLine="48"/>
+      </Position4>
+      <Position5>
+        <Filename Value="src\frames\ufCTKEditorFrameList.pas"/>
+        <Caret Line="116" Column="17" TopLine="86"/>
+      </Position5>
+      <Position6>
+        <Filename Value="src\frames\ufCTKEditorFrameList.pas"/>
+        <Caret Line="43" Column="25" TopLine="7"/>
+      </Position6>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+</CONFIG>

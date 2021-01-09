@@ -1,0 +1,5 @@
+<!ELEMENT CTKInfo (Volume?, Pages?, Vignettes?, Metadata?)>
+  <!ELEMENT Volume (Cover)>
+  <!ELEMENT Pages>
+  <!ELEMENT Frames>
+  <!ELEMENT Metadata>

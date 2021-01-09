@@ -1,0 +1,110 @@
+inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
+  Height = 446
+  ClientHeight = 446
+  DesignLeft = 683
+  DesignTop = 358
+  object gbxPage: TGroupBox[0]
+    Left = 0
+    Height = 446
+    Top = 0
+    Width = 400
+    Align = alClient
+    Caption = 'Page'
+    ClientHeight = 421
+    ClientWidth = 396
+    TabOrder = 0
+    object lFilename: TLabel
+      Left = 0
+      Height = 20
+      Top = 0
+      Width = 396
+      Align = alTop
+      Caption = 'Filename'
+      ParentColor = False
+    end
+    object eFilename: TEdit
+      Left = 0
+      Height = 28
+      Top = 20
+      Width = 396
+      Align = alTop
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object pValues: TPanel
+      Left = 0
+      Height = 28
+      Top = 96
+      Width = 396
+      Align = alTop
+      AutoSize = True
+      BevelOuter = bvNone
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
+      ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+      ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 28
+      ClientWidth = 396
+      TabOrder = 1
+      object lMultipage: TLabel
+        Left = 0
+        Height = 28
+        Top = 0
+        Width = 217
+        Caption = 'Pages in Image'
+        ParentColor = False
+      end
+      object eMultipage: TSpinEdit
+        Left = 217
+        Height = 28
+        Top = 0
+        Width = 179
+        MaxValue = 10000
+        OnEditingDone = eMultipageEditingDone
+        TabOrder = 0
+        Value = 1
+      end
+    end
+    object lSHA1: TLabel
+      Left = 0
+      Height = 20
+      Top = 48
+      Width = 396
+      Align = alTop
+      Caption = 'SHA1'
+      ParentColor = False
+    end
+    object eSHA1: TEdit
+      Left = 0
+      Height = 28
+      Top = 68
+      Width = 396
+      Align = alTop
+      TabOrder = 2
+    end
+    object cgrPageContent: TCheckGroup
+      Left = 0
+      Height = 24
+      Top = 124
+      Width = 396
+      Align = alTop
+      AutoFill = True
+      AutoSize = True
+      Caption = 'Content'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.TopBottomSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 2
+      Columns = 2
+      OnClick = cgrPageContentClick
+      OnItemClick = cgrPageContentItemClick
+      TabOrder = 3
+    end
+  end
+end

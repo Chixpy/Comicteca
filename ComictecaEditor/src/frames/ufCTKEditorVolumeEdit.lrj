@@ -1,0 +1,11 @@
+{"version":1,"strings":[
+{"hash":154711081,"name":"tfmctkeditorvolumeedit.chkright2left.caption","sourcebytes":[82,105,103,104,116,32,116,111,32,76,101,102,116,32,40,74,97,112,97,110,101,115,101,41],"value":"Right to Left (Japanese)"},
+{"hash":154192242,"name":"tfmctkeditorvolumeedit.lpublisher.caption","sourcebytes":[80,117,98,108,105,115,104,101,114],"value":"Publisher"},
+{"hash":5884149,"name":"tfmctkeditorvolumeedit.lserie.caption","sourcebytes":[83,101,114,105,101],"value":"Serie"},
+{"hash":120537650,"name":"tfmctkeditorvolumeedit.lserieorder.caption","sourcebytes":[83,101,114,105,101,32,79,114,100,101,114],"value":"Serie Order"},
+{"hash":5966629,"name":"tfmctkeditorvolumeedit.ltitle.caption","sourcebytes":[84,105,116,108,101],"value":"Title"},
+{"hash":120422882,"name":"tfmctkeditorvolumeedit.ltitleorder.caption","sourcebytes":[84,105,116,108,101,32,79,114,100,101,114],"value":"Title Order"},
+{"hash":79367010,"name":"tfmctkeditorvolumeedit.leditor.caption","sourcebytes":[69,100,105,116,111,114],"value":"Editor"},
+{"hash":139375349,"name":"tfmctkeditorvolumeedit.llanguage.caption","sourcebytes":[76,97,110,103,117,97,103,101],"value":"Language"},
+{"hash":180631753,"name":"tfmctkeditorvolumeedit.lsummary.caption","sourcebytes":[83,117,109,109,97,114,121],"value":"Summary"}
+]}

@@ -1,0 +1,90 @@
+inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
+  Height = 456
+  ClientHeight = 456
+  DesignLeft = 641
+  DesignTop = 336
+  object gbxFrameList: TGroupBox[0]
+    Left = 0
+    Height = 456
+    Top = 0
+    Width = 400
+    Align = alClient
+    Caption = 'Frame List'
+    ClientHeight = 431
+    ClientWidth = 396
+    TabOrder = 0
+    object lvFrameList: TListView
+      Left = 0
+      Height = 358
+      Top = 0
+      Width = 396
+      Align = alClient
+      AutoSort = False
+      AutoWidthLastColumn = True
+      Columns = <      
+        item
+          Caption = 'Frame'
+          Width = 392
+        end>
+      GridLines = True
+      HideSelection = False
+      RowSelect = True
+      ScrollBars = ssAutoBoth
+      TabOrder = 0
+      ViewStyle = vsReport
+      OnSelectItem = lvFrameListSelectItem
+    end
+    object pFrameListButtons: TPanel
+      Left = 0
+      Height = 73
+      Top = 358
+      Width = 396
+      Align = alBottom
+      AutoSize = True
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.VerticalSpacing = 4
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 73
+      ClientWidth = 396
+      TabOrder = 1
+      object bSubir: TButton
+        Left = 4
+        Height = 30
+        Top = 4
+        Width = 106
+        Caption = 'Move Up'
+        OnClick = bSubirClick
+        TabOrder = 0
+      end
+      object bAddframe: TButton
+        Left = 114
+        Height = 30
+        Top = 4
+        Width = 125
+        Caption = 'Add Frame'
+        TabOrder = 1
+      end
+      object bMoveDown: TButton
+        Left = 4
+        Height = 30
+        Top = 38
+        Width = 106
+        Caption = 'Move Down'
+        OnClick = bMoveDownClick
+        TabOrder = 3
+      end
+      object bRemoveFrame: TButton
+        Left = 114
+        Height = 30
+        Top = 38
+        Width = 125
+        Caption = 'Remove Frame'
+        OnClick = bRemoveFrameClick
+        TabOrder = 2
+      end
+    end
+  end
+end

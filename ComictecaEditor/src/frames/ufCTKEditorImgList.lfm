@@ -1,0 +1,93 @@
+inherited fmCTKEditorImgList: TfmCTKEditorImgList
+  Height = 590
+  Width = 458
+  ClientHeight = 590
+  ClientWidth = 458
+  DesignLeft = 459
+  DesignTop = 179
+  object gbxImageFileList: TGroupBox[0]
+    Left = 0
+    Height = 590
+    Top = 0
+    Width = 458
+    Align = alClient
+    Caption = 'Image File List'
+    ClientHeight = 565
+    ClientWidth = 454
+    TabOrder = 0
+    object lvFileList: TListView
+      Left = 0
+      Height = 492
+      Top = 0
+      Width = 454
+      Align = alClient
+      AutoSort = False
+      AutoWidthLastColumn = True
+      Columns = <      
+        item
+          Caption = 'Filename'
+          Width = 450
+        end>
+      GridLines = True
+      HideSelection = False
+      RowSelect = True
+      ScrollBars = ssAutoBoth
+      TabOrder = 0
+      ViewStyle = vsReport
+      OnSelectItem = lvFileListSelectItem
+    end
+    object pImgListButtons: TPanel
+      Left = 0
+      Height = 73
+      Top = 492
+      Width = 454
+      Align = alBottom
+      AutoSize = True
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.VerticalSpacing = 4
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 73
+      ClientWidth = 454
+      TabOrder = 1
+      object bSubir: TButton
+        Left = 4
+        Height = 30
+        Top = 4
+        Width = 106
+        Caption = 'Move Up'
+        OnClick = bSubirClick
+        TabOrder = 0
+      end
+      object BAddAllFiles: TButton
+        Left = 114
+        Height = 30
+        Top = 4
+        Width = 126
+        Caption = 'Add all images'
+        OnClick = BAddAllFilesClick
+        TabOrder = 1
+      end
+      object bMoveDown: TButton
+        Left = 4
+        Height = 30
+        Top = 38
+        Width = 106
+        Caption = 'Move Down'
+        OnClick = bMoveDownClick
+        TabOrder = 3
+      end
+      object bRemoveFile: TButton
+        Left = 114
+        Height = 30
+        Top = 38
+        Width = 126
+        Caption = 'Remove File'
+        OnClick = bRemoveFileClick
+        TabOrder = 2
+      end
+    end
+  end
+end

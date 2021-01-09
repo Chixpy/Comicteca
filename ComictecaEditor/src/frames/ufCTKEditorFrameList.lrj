@@ -1,0 +1,8 @@
+{"version":1,"strings":[
+{"hash":57804836,"name":"tfmctkeditorframelist.gbxframelist.caption","sourcebytes":[70,114,97,109,101,32,76,105,115,116],"value":"Frame List"},
+{"hash":5081141,"name":"tfmctkeditorframelist.lvframelist.columns[0].caption","sourcebytes":[70,114,97,109,101],"value":"Frame"},
+{"hash":74216848,"name":"tfmctkeditorframelist.bsubir.caption","sourcebytes":[77,111,118,101,32,85,112],"value":"Move Up"},
+{"hash":105759125,"name":"tfmctkeditorframelist.baddframe.caption","sourcebytes":[65,100,100,32,70,114,97,109,101],"value":"Add Frame"},
+{"hash":208995006,"name":"tfmctkeditorframelist.bmovedown.caption","sourcebytes":[77,111,118,101,32,68,111,119,110],"value":"Move Down"},
+{"hash":46252789,"name":"tfmctkeditorframelist.bremoveframe.caption","sourcebytes":[82,101,109,111,118,101,32,70,114,97,109,101],"value":"Remove Frame"}
+]}

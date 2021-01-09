@@ -1,0 +1,9 @@
+{"version":1,"strings":[
+{"hash":256928277,"name":"tfmctkguimain.pgcomicfile.caption","sourcebytes":[67,111,109,105,99,32,70,105,108,101],"value":"Comic File"},
+{"hash":257016293,"name":"tfmctkguimain.pgcomicpage.caption","sourcebytes":[67,111,109,105,99,32,80,97,103,101],"value":"Comic Page"},
+{"hash":315429,"name":"tfmctkguimain.gbxfile.caption","sourcebytes":[70,105,108,101],"value":"File"},
+{"hash":53408277,"name":"tfmctkguimain.chkcompressedfile.caption","sourcebytes":[79,112,101,110,32,102,114,111,109,32,99,111,109,112,114,101,115,115,101,100,32,97,114,99,104,105,118,101],"value":"Open from compressed archive"},
+{"hash":188483657,"name":"tfmctkguimain.lcompresedfile.caption","sourcebytes":[67,111,109,112,114,101,115,115,101,100,32,65,114,99,104,105,118,101,32,40,99,98,42,44,32,122,105,112,44,32,55,122,44,32,114,97,114,44,32,101,116,99,46,41],"value":"Compressed Archive (cb*, zip, 7z, rar, etc.)"},
+{"hash":7607698,"name":"tfmctkguimain.lcomicfolder.caption","sourcebytes":[67,111,109,105,99,32,70,111,108,100,101,114],"value":"Comic Folder"},
+{"hash":119330067,"name":"tfmctkguimain.gbximagefiles.caption","sourcebytes":[73,109,97,103,101,32,70,105,108,101,115],"value":"Image Files"}
+]}

@@ -1,0 +1,98 @@
+inherited frmComictecaEditorMain: TfrmComictecaEditorMain
+  Left = 337
+  Top = 126
+  Caption = 'Comicteca Editor'
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  object pEditorFrame: TPanel[0]
+    Left = 4
+    Height = 695
+    Top = 69
+    Width = 1016
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+  end
+  object pArchive: TPanel[1]
+    Left = 4
+    Height = 61
+    Top = 4
+    Width = 1016
+    Align = alTop
+    AutoSize = True
+    BevelOuter = bvNone
+    ClientHeight = 61
+    ClientWidth = 1016
+    TabOrder = 1
+    object pcComicFileType: TPageControl
+      Left = 0
+      Height = 61
+      Top = 0
+      Width = 914
+      ActivePage = pagFolder
+      Align = alClient
+      TabIndex = 0
+      TabOrder = 0
+      object pagFolder: TTabSheet
+        Caption = 'Folder'
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
+        ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+        ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 28
+        ClientWidth = 906
+        object eComicFolder: TDirectoryEdit
+          Left = 0
+          Height = 28
+          Top = 0
+          Width = 906
+          OnAcceptDirectory = eComicFolderAcceptDirectory
+          DialogOptions = [ofNoChangeDir, ofEnableSizing, ofViewDetail]
+          ShowHidden = False
+          ButtonWidth = 29
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 0
+        end
+      end
+      object pagCompressedArchive: TTabSheet
+        Caption = 'Archive'
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
+        ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+        ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 28
+        ClientWidth = 914
+        object eCompressedFile: TFileNameEdit
+          Left = 0
+          Height = 28
+          Top = 0
+          Width = 914
+          DialogTitle = 'Select a compressed archive'
+          DialogOptions = [ofNoChangeDir, ofEnableSizing, ofViewDetail]
+          FilterIndex = 0
+          HideDirectories = False
+          ButtonWidth = 29
+          NumGlyphs = 1
+          MaxLength = 0
+          TabOrder = 0
+        end
+      end
+    end
+    object bSaveArchive: TButton
+      Left = 918
+      Height = 53
+      Top = 4
+      Width = 94
+      Align = alRight
+      BorderSpacing.Around = 4
+      Caption = 'Save'
+      OnClick = bSaveArchiveClick
+      TabOrder = 1
+    end
+  end
+end

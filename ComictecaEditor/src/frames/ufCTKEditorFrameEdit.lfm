@@ -1,0 +1,109 @@
+inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
+  object gbxFrameEdit: TGroupBox[0]
+    Left = 0
+    Height = 85
+    Top = 32
+    Width = 400
+    Align = alTop
+    AutoSize = True
+    Caption = 'Frame properties'
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 4
+    ChildSizing.VerticalSpacing = 4
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 4
+    ClientHeight = 60
+    ClientWidth = 396
+    TabOrder = 0
+    object lX: TLabel
+      Left = 4
+      Height = 20
+      Top = 4
+      Width = 94
+      Alignment = taCenter
+      Caption = 'X'
+      ParentColor = False
+    end
+    object lY: TLabel
+      Left = 102
+      Height = 20
+      Top = 4
+      Width = 94
+      Alignment = taCenter
+      Caption = 'Y'
+      ParentColor = False
+    end
+    object lWidth: TLabel
+      Left = 200
+      Height = 20
+      Top = 4
+      Width = 94
+      Alignment = taCenter
+      Caption = 'Width'
+      ParentColor = False
+    end
+    object lHeight: TLabel
+      Left = 298
+      Height = 20
+      Top = 4
+      Width = 94
+      Alignment = taCenter
+      Caption = 'Height'
+      ParentColor = False
+    end
+    object eX: TSpinEdit
+      Left = 4
+      Height = 28
+      Top = 28
+      Width = 94
+      MaxValue = 8096
+      TabOrder = 0
+    end
+    object eY: TSpinEdit
+      Left = 102
+      Height = 28
+      Top = 28
+      Width = 94
+      MaxValue = 8096
+      TabOrder = 1
+    end
+    object eWidth: TSpinEdit
+      Left = 200
+      Height = 28
+      Top = 28
+      Width = 94
+      MaxValue = 8096
+      TabOrder = 2
+    end
+    object eHeight: TSpinEdit
+      Left = 298
+      Height = 28
+      Top = 28
+      Width = 94
+      MaxValue = 8096
+      TabOrder = 3
+    end
+  end
+  object cbxFramePage: TComboBox[1]
+    Left = 0
+    Height = 28
+    Top = 0
+    Width = 400
+    Align = alTop
+    ItemHeight = 20
+    TabOrder = 1
+  end
+  object Label1: TLabel[2]
+    Left = 0
+    Height = 20
+    Top = 0
+    Width = 44
+    Caption = 'Label1'
+    ParentColor = False
+  end
+end

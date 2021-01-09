@@ -1,0 +1,248 @@
+inherited fmCTKEditorVolumeEdit: TfmCTKEditorVolumeEdit
+  Height = 625
+  Width = 382
+  ChildSizing.LeftRightSpacing = 4
+  ChildSizing.TopBottomSpacing = 4
+  ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+  ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
+  ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+  ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+  ChildSizing.ControlsPerLine = 1
+  ClientHeight = 625
+  ClientWidth = 382
+  DesignLeft = 480
+  DesignTop = 184
+  object chkRight2Left: TCheckBox[0]
+    Left = 4
+    Height = 24
+    Top = 396
+    Width = 374
+    Align = alTop
+    Caption = 'Right to Left (Japanese)'
+    OnEditingDone = chkRight2LeftEditingDone
+    TabOrder = 0
+  end
+  object lPublisher: TLabel[1]
+    Left = 4
+    Height = 20
+    Top = 284
+    Width = 374
+    Align = alTop
+    Caption = 'Publisher'
+    ParentColor = False
+  end
+  object lSerie: TLabel[2]
+    Left = 4
+    Height = 20
+    Top = 36
+    Width = 374
+    Align = alTop
+    Caption = 'Serie'
+    ParentColor = False
+  end
+  object lSerieOrder: TLabel[3]
+    Left = 4
+    Height = 20
+    Top = 60
+    Width = 374
+    Align = alTop
+    Caption = 'Serie Order'
+    ParentColor = False
+  end
+  object seSerieOrder: TSpinEdit[4]
+    Left = 4
+    Height = 28
+    Top = 84
+    Width = 374
+    Align = alTop
+    MaxValue = 10000
+    MinValue = -1
+    OnEditingDone = seSerieOrderEditingDone
+    TabOrder = 1
+    Value = -1
+  end
+  object lTitle: TLabel[5]
+    Left = 4
+    Height = 20
+    Top = 116
+    Width = 374
+    Align = alTop
+    Caption = 'Title'
+    ParentColor = False
+  end
+  object lTitleOrder: TLabel[6]
+    Left = 4
+    Height = 20
+    Top = 172
+    Width = 374
+    Align = alTop
+    Caption = 'Title Order'
+    ParentColor = False
+  end
+  object seTitleOrder: TSpinEdit[7]
+    Left = 4
+    Height = 28
+    Top = 196
+    Width = 374
+    Align = alTop
+    MaxValue = 10000
+    MinValue = -1
+    OnEditingDone = seTitleOrderEditingDone
+    TabOrder = 2
+    Value = -1
+  end
+  object lEditor: TLabel[8]
+    Left = 4
+    Height = 20
+    Top = 340
+    Width = 374
+    Align = alTop
+    Caption = 'Editor'
+    ParentColor = False
+  end
+  object lLanguage: TLabel[9]
+    Left = 4
+    Height = 20
+    Top = 228
+    Width = 374
+    Align = alTop
+    Caption = 'Language'
+    ParentColor = False
+  end
+  object cbxPublisher: TComboBox[10]
+    Left = 4
+    Height = 28
+    Top = 308
+    Width = 374
+    Align = alTop
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    ItemHeight = 20
+    OnEditingDone = cbxPublisherEditingDone
+    Sorted = True
+    TabOrder = 3
+  end
+  object cbxEditor: TComboBox[11]
+    Left = 4
+    Height = 28
+    Top = 364
+    Width = 374
+    Align = alTop
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    ItemHeight = 20
+    OnEditingDone = cbxEditorEditingDone
+    Sorted = True
+    TabOrder = 4
+  end
+  object cbxLanguage: TComboBox[12]
+    Left = 4
+    Height = 28
+    Top = 252
+    Width = 374
+    Align = alTop
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled, cbactEndOfLineComplete, cbactSearchAscending]
+    AutoDropDown = True
+    ItemHeight = 20
+    OnEditingDone = cbxLanguageEditingDone
+    Sorted = True
+    TabOrder = 5
+  end
+  object pTitle: TPanel[13]
+    Left = 4
+    Height = 28
+    Top = 140
+    Width = 374
+    Align = alTop
+    AutoSize = True
+    BevelOuter = bvNone
+    ChildSizing.HorizontalSpacing = 4
+    ChildSizing.VerticalSpacing = 4
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 28
+    ClientWidth = 374
+    TabOrder = 6
+    object cbxLangTitle: TComboBox
+      Left = 0
+      Height = 28
+      Top = 0
+      Width = 125
+      Align = alLeft
+      ItemHeight = 20
+      OnEditingDone = UpdateLangCBX
+      Sorted = True
+      TabOrder = 0
+    end
+    object eTitle: TEdit
+      Left = 129
+      Height = 28
+      Top = 0
+      Width = 245
+      Align = alClient
+      OnEditingDone = eTitleEditingDone
+      TabOrder = 1
+    end
+  end
+  object cbxSerieTitle: TComboBox[14]
+    Left = 4
+    Height = 28
+    Top = 4
+    Width = 374
+    Align = alTop
+    ItemHeight = 20
+    OnEditingDone = cbxSerieTitleEditingDone
+    TabOrder = 7
+  end
+  object mSummary: TMemo[15]
+    Left = 4
+    Height = 165
+    Top = 456
+    Width = 374
+    Align = alClient
+    OnEditingDone = mSummaryEditingDone
+    ScrollBars = ssAutoVertical
+    TabOrder = 8
+  end
+  object pSummary: TPanel[16]
+    Left = 4
+    Height = 28
+    Top = 424
+    Width = 374
+    Align = alTop
+    AutoSize = True
+    BevelOuter = bvNone
+    ChildSizing.HorizontalSpacing = 4
+    ChildSizing.VerticalSpacing = 4
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 28
+    ClientWidth = 374
+    TabOrder = 9
+    object lSummary: TLabel
+      Left = 0
+      Height = 28
+      Top = 0
+      Width = 62
+      Align = alLeft
+      Caption = 'Summary'
+      ParentColor = False
+    end
+    object cbxLangSummary: TComboBox
+      Left = 66
+      Height = 28
+      Top = 0
+      Width = 308
+      Align = alClient
+      ItemHeight = 20
+      OnEditingDone = UpdateLangCBX
+      Sorted = True
+      TabOrder = 0
+    end
+  end
+end

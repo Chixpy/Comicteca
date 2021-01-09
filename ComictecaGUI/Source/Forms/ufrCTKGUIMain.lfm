@@ -1,0 +1,7 @@
+inherited frmCTKGUIMain: TfrmCTKGUIMain
+  Left = 476
+  Top = 289
+  Caption = 'Main'
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+end

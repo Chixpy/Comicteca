@@ -1,0 +1,65 @@
+inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
+  Height = 494
+  ClientHeight = 494
+  DesignLeft = 628
+  DesignTop = 311
+  object pImageVisor: TPanel[0]
+    Left = 0
+    Height = 435
+    Top = 59
+    Width = 400
+    Align = alClient
+    TabOrder = 0
+  end
+  object gbxZoom: TGroupBox[1]
+    Left = 0
+    Height = 55
+    Top = 0
+    Width = 400
+    Align = alTop
+    AutoSize = True
+    Caption = 'Zoom'
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ClientHeight = 30
+    ClientWidth = 396
+    TabOrder = 1
+    object bZoomIn: TButton
+      Left = 0
+      Height = 30
+      Top = 0
+      Width = 45
+      Caption = 'x 2'
+      OnClick = bZoomInClick
+      TabOrder = 0
+    end
+    object bOrigZoom: TButton
+      Left = 45
+      Height = 30
+      Top = 0
+      Width = 41
+      Caption = '1x'
+      OnClick = bOrigZoomClick
+      TabOrder = 2
+    end
+    object bZoomOut: TButton
+      Left = 86
+      Height = 30
+      Top = 0
+      Width = 44
+      Caption = '/ 2'
+      OnClick = bZoomOutClick
+      TabOrder = 1
+    end
+    object tbxAutoZoom: TToggleBox
+      Left = 130
+      Height = 30
+      Top = 0
+      Width = 100
+      Caption = 'Auto Zoom'
+      Checked = True
+      OnChange = tbxAutoZoomChange
+      State = cbChecked
+      TabOrder = 3
+    end
+  end
+end

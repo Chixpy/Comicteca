@@ -1,0 +1,7 @@
+{"version":1,"strings":[
+{"hash":398941,"name":"tfmctkeditorpagevisor.gbxzoom.caption","sourcebytes":[90,111,111,109],"value":"Zoom"},
+{"hash":31282,"name":"tfmctkeditorpagevisor.bzoomin.caption","sourcebytes":[120,32,50],"value":"x 2"},
+{"hash":904,"name":"tfmctkeditorpagevisor.borigzoom.caption","sourcebytes":[49,120],"value":"1x"},
+{"hash":12594,"name":"tfmctkeditorpagevisor.bzoomout.caption","sourcebytes":[47,32,50],"value":"/ 2"},
+{"hash":186015389,"name":"tfmctkeditorpagevisor.tbxautozoom.caption","sourcebytes":[65,117,116,111,32,90,111,111,109],"value":"Auto Zoom"}
+]}

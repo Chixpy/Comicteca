@@ -1,0 +1,163 @@
+inherited fmCTKGUIMain: TfmCTKGUIMain
+  Height = 700
+  Width = 1028
+  ClientHeight = 700
+  ClientWidth = 1028
+  DesignLeft = 323
+  DesignTop = 112
+  object pcMain: TPageControl[0]
+    Left = 334
+    Height = 700
+    Top = 0
+    Width = 694
+    ActivePage = pgComicFile
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object pgComicFile: TTabSheet
+      Caption = 'Comic File'
+      ClientHeight = 667
+      ClientWidth = 686
+      object Splitter1: TSplitter
+        Left = 362
+        Height = 667
+        Top = 0
+        Width = 6
+        Align = alRight
+        ResizeAnchor = akRight
+      end
+      object pFilePreview: TPanel
+        Left = 0
+        Height = 667
+        Top = 0
+        Width = 362
+        Align = alClient
+        TabOrder = 1
+      end
+      object sbxFileEditor: TScrollBox
+        Left = 368
+        Height = 667
+        Top = 0
+        Width = 318
+        HorzScrollBar.Page = 1
+        VertScrollBar.Page = 1
+        Align = alRight
+        TabOrder = 2
+      end
+    end
+    object pgComicPage: TTabSheet
+      Caption = 'Comic Page'
+    end
+  end
+  object pFileEditor: TPanel[1]
+    Left = 0
+    Height = 700
+    Top = 0
+    Width = 320
+    Align = alLeft
+    ClientHeight = 700
+    ClientWidth = 320
+    TabOrder = 1
+    object gbxFile: TGroupBox
+      Left = 1
+      Height = 145
+      Top = 1
+      Width = 318
+      Align = alTop
+      AutoSize = True
+      Caption = 'File'
+      ClientHeight = 120
+      ClientWidth = 314
+      TabOrder = 0
+      object chkCompressedFile: TCheckBox
+        Left = 0
+        Height = 24
+        Top = 0
+        Width = 314
+        Align = alTop
+        Caption = 'Open from compressed archive'
+        OnChange = chkCompressedFileChange
+        TabOrder = 0
+      end
+      object lCompresedFile: TLabel
+        Left = 0
+        Height = 20
+        Top = 24
+        Width = 314
+        Align = alTop
+        Caption = 'Compressed Archive (cb*, zip, 7z, rar, etc.)'
+        Enabled = False
+        ParentColor = False
+      end
+      object eComicFile: TFileNameEdit
+        Left = 0
+        Height = 28
+        Top = 44
+        Width = 314
+        OnAcceptFileName = eComicFileAcceptFileName
+        DialogOptions = [ofNoChangeDir, ofFileMustExist, ofEnableSizing, ofViewDetail]
+        FilterIndex = 0
+        HideDirectories = False
+        ButtonWidth = 29
+        NumGlyphs = 1
+        Align = alTop
+        Enabled = False
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object lComicFolder: TLabel
+        Left = 0
+        Height = 20
+        Top = 72
+        Width = 314
+        Align = alTop
+        Caption = 'Comic Folder'
+        ParentColor = False
+      end
+      object eComicFolder: TDirectoryEdit
+        Left = 0
+        Height = 28
+        Top = 92
+        Width = 314
+        OnAcceptDirectory = eComicFolderAcceptDirectory
+        DialogTitle = 'Select a comic folder'
+        DialogOptions = [ofNoChangeDir, ofPathMustExist, ofEnableSizing, ofViewDetail]
+        ShowHidden = False
+        ButtonWidth = 29
+        NumGlyphs = 1
+        Align = alTop
+        MaxLength = 0
+        TabOrder = 2
+      end
+    end
+    object gbxImageFiles: TGroupBox
+      Left = 1
+      Height = 553
+      Top = 146
+      Width = 318
+      Align = alClient
+      Caption = 'Image Files'
+      ClientHeight = 528
+      ClientWidth = 314
+      TabOrder = 1
+      object slvImageFiles: TShellListView
+        Left = 0
+        Height = 528
+        Top = 0
+        Width = 314
+        Align = alClient
+        Color = clDefault
+        RowSelect = True
+        ScrollBars = ssAutoBoth
+        TabOrder = 0
+        ObjectTypes = [otNonFolders, otHidden]
+      end
+    end
+  end
+  object Splitter2: TSplitter[2]
+    Left = 324
+    Height = 700
+    Top = 0
+    Width = 6
+  end
+end

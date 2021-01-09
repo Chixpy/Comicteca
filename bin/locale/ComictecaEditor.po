@@ -1,0 +1,255 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfmctkeditorframeedit.gbxframeedit.caption
+msgid "Frame properties"
+msgstr ""
+
+#: tfmctkeditorframeedit.label1.caption
+msgid "Label1"
+msgstr ""
+
+#: tfmctkeditorframeedit.lheight.caption
+msgid "Height"
+msgstr ""
+
+#: tfmctkeditorframeedit.lwidth.caption
+msgid "Width"
+msgstr ""
+
+#: tfmctkeditorframeedit.lx.caption
+msgid "X"
+msgstr ""
+
+#: tfmctkeditorframeedit.ly.caption
+msgid "Y"
+msgstr ""
+
+#: tfmctkeditorframelist.baddframe.caption
+msgid "Add Frame"
+msgstr ""
+
+#: tfmctkeditorframelist.bmovedown.caption
+msgctxt "tfmctkeditorframelist.bmovedown.caption"
+msgid "Move Down"
+msgstr ""
+
+#: tfmctkeditorframelist.bremoveframe.caption
+msgid "Remove Frame"
+msgstr ""
+
+#: tfmctkeditorframelist.bsubir.caption
+msgctxt "tfmctkeditorframelist.bsubir.caption"
+msgid "Move Up"
+msgstr ""
+
+#: tfmctkeditorframelist.gbxframelist.caption
+msgid "Frame List"
+msgstr ""
+
+#: tfmctkeditorframelist.lvframelist.columns[0].caption
+msgid "Frame"
+msgstr ""
+
+#: tfmctkeditorimglist.baddallfiles.caption
+msgid "Add all images"
+msgstr ""
+
+#: tfmctkeditorimglist.bmovedown.caption
+msgctxt "tfmctkeditorimglist.bmovedown.caption"
+msgid "Move Down"
+msgstr ""
+
+#: tfmctkeditorimglist.bremovefile.caption
+msgid "Remove File"
+msgstr ""
+
+#: tfmctkeditorimglist.bsubir.caption
+msgctxt "tfmctkeditorimglist.bsubir.caption"
+msgid "Move Up"
+msgstr ""
+
+#: tfmctkeditorimglist.gbximagefilelist.caption
+msgid "Image File List"
+msgstr ""
+
+#: tfmctkeditorimglist.lvfilelist.columns[0].caption
+msgctxt "tfmctkeditorimglist.lvfilelist.columns[0].caption"
+msgid "Filename"
+msgstr ""
+
+#: tfmctkeditormain.hcmain.sections[0].text
+msgid "Volume"
+msgstr ""
+
+#: tfmctkeditormain.hcmain.sections[1].text
+msgid "Pages"
+msgstr ""
+
+#: tfmctkeditormain.hcmain.sections[2].text
+msgctxt "tfmctkeditormain.hcmain.sections[2].text"
+msgid "Vignettes"
+msgstr ""
+
+#: tfmctkeditormain.hcmain.sections[3].text
+msgid "Texts"
+msgstr ""
+
+#: tfmctkeditormain.hcmain.sections[4].text
+msgid "Metadada"
+msgstr ""
+
+#: tfmctkeditorpageedit.cgrpagecontent.caption
+msgid "Content"
+msgstr ""
+
+#: tfmctkeditorpageedit.gbxpage.caption
+msgid "Page"
+msgstr ""
+
+#: tfmctkeditorpageedit.lfilename.caption
+msgctxt "tfmctkeditorpageedit.lfilename.caption"
+msgid "Filename"
+msgstr ""
+
+#: tfmctkeditorpageedit.lmultipage.caption
+msgid "Pages in Image"
+msgstr ""
+
+#: tfmctkeditorpageedit.lsha1.caption
+msgid "SHA1"
+msgstr ""
+
+#: tfmctkeditorpagevisor.borigzoom.caption
+msgid "1x"
+msgstr ""
+
+#: tfmctkeditorpagevisor.bzoomin.caption
+msgid "x 2"
+msgstr ""
+
+#: tfmctkeditorpagevisor.bzoomout.caption
+msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditorpagevisor.gbxzoom.caption
+msgid "Zoom"
+msgstr ""
+
+#: tfmctkeditorpagevisor.tbxautozoom.caption
+msgctxt "tfmctkeditorpagevisor.tbxautozoom.caption"
+msgid "Auto Zoom"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.chkright2left.caption
+msgid "Right to Left (Japanese)"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.leditor.caption
+msgid "Editor"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.llanguage.caption
+msgid "Language"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lpublisher.caption
+msgid "Publisher"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lserie.caption
+msgid "Serie"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lserieorder.caption
+msgid "Serie Order"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lsummary.caption
+msgid "Summary"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.ltitle.caption
+msgid "Title"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.ltitleorder.caption
+msgid "Title Order"
+msgstr ""
+
+#: tfrmchxform.caption
+msgid "frmCHXForm"
+msgstr ""
+
+#: tfrmcomictecaeditormain.bsavearchive.caption
+msgid "Save"
+msgstr ""
+
+#: tfrmcomictecaeditormain.caption
+msgid "Comicteca Editor"
+msgstr ""
+
+#: tfrmcomictecaeditormain.pagcompressedarchive.caption
+msgid "Archive"
+msgstr ""
+
+#: tfrmcomictecaeditormain.pagfolder.caption
+msgid "Folder"
+msgstr ""
+
+#: uchxrscstr.rscuexcalreadyexists
+msgid "\"%0:s\" already exists."
+msgstr ""
+
+#: uchxrscstr.rscuexccardrange
+msgid "\"%0:d\" is not in cardinal range."
+msgstr ""
+
+#: uchxrscstr.rscuexcnilparameter
+msgid "%0:s: %1:s parameter (%2:s) = nil"
+msgstr ""
+
+#: uchxrscstr.rsenotfilename
+msgid "%0:s: Not defined filename"
+msgstr ""
+
+#: uctkrststr.rspcads
+msgctxt "uctkrststr.rspcads"
+msgid "Advertising"
+msgstr ""
+
+#: uctkrststr.rspcauthortext
+msgctxt "uctkrststr.rspcauthortext"
+msgid "Author Text"
+msgstr ""
+
+#: uctkrststr.rspcbackcover
+msgctxt "uctkrststr.rspcbackcover"
+msgid "Back Cover"
+msgstr ""
+
+#: uctkrststr.rspcchaptertitle
+msgctxt "uctkrststr.rspcchaptertitle"
+msgid "Chapter Title"
+msgstr ""
+
+#: uctkrststr.rspceditorialinfo
+msgctxt "uctkrststr.rspceditorialinfo"
+msgid "Editorial Info"
+msgstr ""
+
+#: uctkrststr.rspcfrontcover
+msgctxt "uctkrststr.rspcfrontcover"
+msgid "Front Cover"
+msgstr ""
+
+#: uctkrststr.rspcother
+msgctxt "uctkrststr.rspcother"
+msgid "Other"
+msgstr ""
+
+#: uctkrststr.rspcvignettes
+msgctxt "uctkrststr.rspcvignettes"
+msgid "Vignettes"
+msgstr ""
+

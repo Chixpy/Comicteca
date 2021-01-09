@@ -1,0 +1,70 @@
+inherited fmCTKGUIFileEditor: TfmCTKGUIFileEditor
+  Height = 596
+  Width = 348
+  ClientHeight = 596
+  ClientWidth = 348
+  DesignLeft = 593
+  DesignTop = 234
+  inherited pButtons: TPanel
+    Top = 566
+    Width = 348
+    ClientWidth = 348
+    inherited chkCloseOnSave: TCheckBox
+      Left = 33
+    end
+    inherited bSave: TBitBtn
+      Left = 126
+    end
+    inherited bCancel: TBitBtn
+      Left = 225
+    end
+  end
+  object lSeries: TLabel[1]
+    Left = 0
+    Height = 20
+    Top = 0
+    Width = 348
+    Align = alTop
+    Caption = 'Series'
+    ParentColor = False
+  end
+  object cbxseries: TComboBox[2]
+    Left = 0
+    Height = 28
+    Top = 24
+    Width = 348
+    Align = alTop
+    ItemHeight = 20
+    TabOrder = 1
+  end
+  object lTitle: TLabel[3]
+    Left = 0
+    Height = 20
+    Top = 56
+    Width = 348
+    Align = alTop
+    Caption = 'Title'
+    ParentColor = False
+  end
+  object eTitle: TEdit[4]
+    Left = 0
+    Height = 28
+    Top = 80
+    Width = 348
+    Align = alTop
+    TabOrder = 2
+  end
+  object lOrder: TLabel[5]
+    Left = 0
+    Height = 20
+    Top = 112
+    Width = 348
+    Align = alTop
+    Caption = 'Order'
+    ParentColor = False
+  end
+  inherited alPropEditor: TActionList[6]
+  end
+  inherited ilPropEditor: TImageList[7]
+  end
+end

@@ -1,0 +1,5 @@
+{"version":1,"strings":[
+{"hash":94146499,"name":"tfmctkguifileeditor.lseries.caption","sourcebytes":[83,101,114,105,101,115],"value":"Series"},
+{"hash":5966629,"name":"tfmctkguifileeditor.ltitle.caption","sourcebytes":[84,105,116,108,101],"value":"Title"},
+{"hash":5671618,"name":"tfmctkguifileeditor.lorder.caption","sourcebytes":[79,114,100,101,114],"value":"Order"}
+]}

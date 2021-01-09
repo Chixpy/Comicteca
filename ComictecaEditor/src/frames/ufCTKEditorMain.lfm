@@ -1,0 +1,64 @@
+inherited fmCTKEditorMain: TfmCTKEditorMain
+  Height = 700
+  Width = 1000
+  ClientHeight = 700
+  ClientWidth = 1000
+  DesignLeft = 367
+  DesignTop = 233
+  object tbcMainFrame: TTabControl[0]
+    Left = 0
+    Height = 700
+    Top = 0
+    Width = 1000
+    OnChange = tbcMainFrameChange
+    TabIndex = 0
+    Tabs.Strings = (
+      'Volume'
+      'Pages'
+      'Vignettes'
+      'Texts'
+      'Metadata'
+    )
+    Align = alClient
+    Options = [nboDoChangeOnSetIndex]
+    TabOrder = 0
+    object pLeft: TPanel
+      Left = 2
+      Height = 670
+      Top = 28
+      Width = 300
+      Align = alLeft
+      TabOrder = 1
+    end
+    object Splitter1: TSplitter
+      Left = 302
+      Height = 670
+      Top = 28
+      Width = 6
+    end
+    object pRight: TPanel
+      Left = 698
+      Height = 670
+      Top = 28
+      Width = 300
+      Align = alRight
+      TabOrder = 3
+    end
+    object Splitter2: TSplitter
+      Left = 692
+      Height = 670
+      Top = 28
+      Width = 6
+      Align = alRight
+      ResizeAnchor = akRight
+    end
+    object pCenter: TPanel
+      Left = 308
+      Height = 670
+      Top = 28
+      Width = 384
+      Align = alClient
+      TabOrder = 5
+    end
+  end
+end
