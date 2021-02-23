@@ -6,8 +6,10 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs,
-  uafCTKEditorFrame,
-  ucComictecaPage;
+  // Comicteca Core classes
+  ucComictecaPage,
+  // Comicteca Editor abstract frames
+  uafCTKEditorFrame;
 
 type
 

@@ -1,28 +1,42 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: tfmctkeditorframeedit.bresetframe.caption
+msgctxt "tfmctkeditorframeedit.bresetframe.caption"
+msgid "Reset Frame"
+msgstr ""
+
 #: tfmctkeditorframeedit.gbxframeedit.caption
 msgid "Frame properties"
 msgstr ""
 
-#: tfmctkeditorframeedit.label1.caption
-msgid "Label1"
+#: tfmctkeditorframeedit.lbottom.caption
+msgctxt "tfmctkeditorframeedit.lbottom.caption"
+msgid "Bottom"
 msgstr ""
 
-#: tfmctkeditorframeedit.lheight.caption
-msgid "Height"
+#: tfmctkeditorframeedit.lframetype.caption
+msgid "Frame Type"
 msgstr ""
 
-#: tfmctkeditorframeedit.lwidth.caption
-msgid "Width"
+#: tfmctkeditorframeedit.lleft.caption
+msgctxt "tfmctkeditorframeedit.lleft.caption"
+msgid "Left"
 msgstr ""
 
-#: tfmctkeditorframeedit.lx.caption
-msgid "X"
+#: tfmctkeditorframeedit.lpage.caption
+msgctxt "tfmctkeditorframeedit.lpage.caption"
+msgid "Page"
 msgstr ""
 
-#: tfmctkeditorframeedit.ly.caption
-msgid "Y"
+#: tfmctkeditorframeedit.lright.caption
+msgctxt "tfmctkeditorframeedit.lright.caption"
+msgid "Right"
+msgstr ""
+
+#: tfmctkeditorframeedit.ltop.caption
+msgctxt "tfmctkeditorframeedit.ltop.caption"
+msgid "Top"
 msgstr ""
 
 #: tfmctkeditorframelist.baddframe.caption
@@ -49,6 +63,31 @@ msgstr ""
 
 #: tfmctkeditorframelist.lvframelist.columns[0].caption
 msgid "Frame"
+msgstr ""
+
+#: tfmctkeditorframevisor.borigzoom.caption
+msgctxt "tfmctkeditorframevisor.borigzoom.caption"
+msgid "1x"
+msgstr ""
+
+#: tfmctkeditorframevisor.bzoomin.caption
+msgctxt "tfmctkeditorframevisor.bzoomin.caption"
+msgid "x 2"
+msgstr ""
+
+#: tfmctkeditorframevisor.bzoomout.caption
+msgctxt "tfmctkeditorframevisor.bzoomout.caption"
+msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditorframevisor.gbxzoom.caption
+msgctxt "tfmctkeditorframevisor.gbxzoom.caption"
+msgid "Zoom"
+msgstr ""
+
+#: tfmctkeditorframevisor.tbxautozoom.caption
+msgctxt "tfmctkeditorframevisor.tbxautozoom.caption"
+msgid "Auto Zoom"
 msgstr ""
 
 #: tfmctkeditorimglist.baddallfiles.caption
@@ -92,6 +131,7 @@ msgid "Vignettes"
 msgstr ""
 
 #: tfmctkeditormain.hcmain.sections[3].text
+msgctxt "tfmctkeditormain.hcmain.sections[3].text"
 msgid "Texts"
 msgstr ""
 
@@ -100,10 +140,12 @@ msgid "Metadada"
 msgstr ""
 
 #: tfmctkeditorpageedit.cgrpagecontent.caption
+msgctxt "tfmctkeditorpageedit.cgrpagecontent.caption"
 msgid "Content"
 msgstr ""
 
 #: tfmctkeditorpageedit.gbxpage.caption
+msgctxt "tfmctkeditorpageedit.gbxpage.caption"
 msgid "Page"
 msgstr ""
 
@@ -121,23 +163,114 @@ msgid "SHA1"
 msgstr ""
 
 #: tfmctkeditorpagevisor.borigzoom.caption
+msgctxt "tfmctkeditorpagevisor.borigzoom.caption"
 msgid "1x"
 msgstr ""
 
 #: tfmctkeditorpagevisor.bzoomin.caption
+msgctxt "tfmctkeditorpagevisor.bzoomin.caption"
 msgid "x 2"
 msgstr ""
 
 #: tfmctkeditorpagevisor.bzoomout.caption
+msgctxt "tfmctkeditorpagevisor.bzoomout.caption"
 msgid "/ 2"
 msgstr ""
 
 #: tfmctkeditorpagevisor.gbxzoom.caption
+msgctxt "tfmctkeditorpagevisor.gbxzoom.caption"
 msgid "Zoom"
 msgstr ""
 
 #: tfmctkeditorpagevisor.tbxautozoom.caption
 msgctxt "tfmctkeditorpagevisor.tbxautozoom.caption"
+msgid "Auto Zoom"
+msgstr ""
+
+#: tfmctkeditortextedit.bresetframe.caption
+msgctxt "tfmctkeditortextedit.bresetframe.caption"
+msgid "Reset Frame"
+msgstr ""
+
+#: tfmctkeditortextedit.gbxtextedit.caption
+msgid "Text Frame Properties"
+msgstr ""
+
+#: tfmctkeditortextedit.lbottom.caption
+msgctxt "tfmctkeditortextedit.lbottom.caption"
+msgid "Bottom"
+msgstr ""
+
+#: tfmctkeditortextedit.lcontent.caption
+msgctxt "tfmctkeditortextedit.lcontent.caption"
+msgid "Content"
+msgstr ""
+
+#: tfmctkeditortextedit.lleft.caption
+msgctxt "tfmctkeditortextedit.lleft.caption"
+msgid "Left"
+msgstr ""
+
+#: tfmctkeditortextedit.lright.caption
+msgctxt "tfmctkeditortextedit.lright.caption"
+msgid "Right"
+msgstr ""
+
+#: tfmctkeditortextedit.ltop.caption
+msgctxt "tfmctkeditortextedit.ltop.caption"
+msgid "Top"
+msgstr ""
+
+#: tfmctkeditortextlist.baddtext.caption
+msgid "Add Text"
+msgstr ""
+
+#: tfmctkeditortextlist.bmovedown.caption
+msgctxt "tfmctkeditortextlist.bmovedown.caption"
+msgid "Move Down"
+msgstr ""
+
+#: tfmctkeditortextlist.bmoveup.caption
+msgctxt "tfmctkeditortextlist.bmoveup.caption"
+msgid "Move Up"
+msgstr ""
+
+#: tfmctkeditortextlist.bremovetext.caption
+msgid "Remove Text"
+msgstr ""
+
+#: tfmctkeditortextlist.gbxpage.caption
+msgctxt "tfmctkeditortextlist.gbxpage.caption"
+msgid "Page"
+msgstr ""
+
+#: tfmctkeditortextlist.gbxtexts.caption
+msgctxt "tfmctkeditortextlist.gbxtexts.caption"
+msgid "Texts"
+msgstr ""
+
+#: tfmctkeditortextvisor.borigzoom.caption
+msgctxt "tfmctkeditortextvisor.borigzoom.caption"
+msgid "1x"
+msgstr ""
+
+#: tfmctkeditortextvisor.bzoomin.caption
+msgctxt "tfmctkeditortextvisor.bzoomin.caption"
+msgid "x 2"
+msgstr ""
+
+#: tfmctkeditortextvisor.bzoomout.caption
+msgctxt "tfmctkeditortextvisor.bzoomout.caption"
+msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditortextvisor.gbxzoom.caption
+msgctxt "tfmctkeditortextvisor.gbxzoom.caption"
+msgid "Zoom"
+msgstr ""
+
+#: tfmctkeditortextvisor.tbxautozoom.caption
+msgctxt "tfmctkeditortextvisor.tbxautozoom.caption"
 msgid "Auto Zoom"
 msgstr ""
 
@@ -147,6 +280,10 @@ msgstr ""
 
 #: tfmctkeditorvolumeedit.leditor.caption
 msgid "Editor"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lfansub.caption
+msgid "FanSub Translator"
 msgstr ""
 
 #: tfmctkeditorvolumeedit.llanguage.caption
@@ -181,8 +318,17 @@ msgstr ""
 msgid "frmCHXForm"
 msgstr ""
 
+#: tfrmcomictecaeditormain.bopenarchivefolder.caption
+msgctxt "tfrmcomictecaeditormain.bopenarchivefolder.caption"
+msgid "Explore Folder"
+msgstr ""
+
 #: tfrmcomictecaeditormain.bsavearchive.caption
-msgid "Save"
+msgid "Save Archive"
+msgstr ""
+
+#: tfrmcomictecaeditormain.bsavefolder.caption
+msgid "Save Folder"
 msgstr ""
 
 #: tfrmcomictecaeditormain.caption
@@ -195,6 +341,35 @@ msgstr ""
 
 #: tfrmcomictecaeditormain.pagfolder.caption
 msgid "Folder"
+msgstr ""
+
+#: tfrmcomictecaeditormain.topenfolder.caption
+msgctxt "tfrmcomictecaeditormain.topenfolder.caption"
+msgid "Explore Folder"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zerrorline
+msgid "%0:s - %1:s: %2:s"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zexeerror
+msgid ""
+"7z.exe/7zG.exe error %1:d exit code.\n"
+"File: \"%0:s\"\n"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zexewarning
+msgid ""
+"7z.exe/7zG.exe warning %1:d exit code.\n"
+"File: \"%0:s\"\n"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zfilenotfound
+msgid "\"%0:s\" file not found."
+msgstr ""
+
+#: uchx7zwrapper.rsw7znocrc32
+msgid "Error extracting CRC32: \"%0:s\""
 msgstr ""
 
 #: uchxrscstr.rscuexcalreadyexists
@@ -228,6 +403,14 @@ msgctxt "uctkrststr.rspcbackcover"
 msgid "Back Cover"
 msgstr ""
 
+#: uctkrststr.rspcbackdustjacket
+msgid "Back Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcbastardtitle
+msgid "Bastard Title"
+msgstr ""
+
 #: uctkrststr.rspcchaptertitle
 msgctxt "uctkrststr.rspcchaptertitle"
 msgid "Chapter Title"
@@ -238,9 +421,30 @@ msgctxt "uctkrststr.rspceditorialinfo"
 msgid "Editorial Info"
 msgstr ""
 
+#: uctkrststr.rspcendpaper
+msgid "End Paper"
+msgstr ""
+
+#: uctkrststr.rspcflyleaf
+msgctxt "uctkrststr.rspcflyleaf"
+msgid "Fly Leaf"
+msgstr ""
+
 #: uctkrststr.rspcfrontcover
 msgctxt "uctkrststr.rspcfrontcover"
 msgid "Front Cover"
+msgstr ""
+
+#: uctkrststr.rspcfrontdustjacket
+msgid "Front Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcindex
+msgid "Index"
+msgstr ""
+
+#: uctkrststr.rspclicense
+msgid "License"
 msgstr ""
 
 #: uctkrststr.rspcother
@@ -248,8 +452,15 @@ msgctxt "uctkrststr.rspcother"
 msgid "Other"
 msgstr ""
 
-#: uctkrststr.rspcvignettes
-msgctxt "uctkrststr.rspcvignettes"
-msgid "Vignettes"
+#: uctkrststr.rspcspinecover
+msgid "Spine (Cover)"
+msgstr ""
+
+#: uctkrststr.rspcspinedustjacket
+msgid "Spine Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcvignette
+msgid "Vignette"
 msgstr ""
 

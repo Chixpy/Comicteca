@@ -37,27 +37,25 @@ inherited fmCTKEditorMain: TfmCTKEditorMain
       Width = 6
     end
     object pRight: TPanel
-      Left = 698
+      Left = 714
       Height = 670
       Top = 28
-      Width = 300
-      Align = alRight
+      Width = 284
+      Align = alClient
       TabOrder = 3
     end
     object Splitter2: TSplitter
-      Left = 692
+      Left = 708
       Height = 670
       Top = 28
       Width = 6
-      Align = alRight
-      ResizeAnchor = akRight
     end
     object pCenter: TPanel
       Left = 308
       Height = 670
       Top = 28
-      Width = 384
-      Align = alClient
+      Width = 400
+      Align = alLeft
       TabOrder = 5
     end
   end

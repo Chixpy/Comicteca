@@ -1,0 +1,139 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfcomictecavisormain.actexit.caption
+msgid "Exit"
+msgstr ""
+
+#: tfcomictecavisormain.actexit.hint
+msgid "Salir"
+msgstr ""
+
+#: tfcomictecavisormain.actfileopen.caption
+msgid "Open..."
+msgstr ""
+
+#: tfcomictecavisormain.actfileopen.hint
+msgid "Abrir"
+msgstr ""
+
+#: tfcomictecavisormain.actfirst.caption
+msgid "First"
+msgstr ""
+
+#: tfcomictecavisormain.actflipr2l.caption
+msgid "Flip R2L Comics"
+msgstr ""
+
+#: tfcomictecavisormain.actlast.caption
+msgid "Last"
+msgstr ""
+
+#: tfcomictecavisormain.actnext.caption
+msgid "Next"
+msgstr ""
+
+#: tfcomictecavisormain.actprevious.caption
+msgid "Previous"
+msgstr ""
+
+#: tfcomictecavisormain.caption
+msgid "Comicteca Visor"
+msgstr ""
+
+#: tfcomictecavisormain.mimmgo.caption
+msgid "Go"
+msgstr ""
+
+#: tfcomictecavisormain.mimmoptions.caption
+msgid "Options"
+msgstr ""
+
+#: tfrmchxform.caption
+msgid "frmCHXForm"
+msgstr ""
+
+#: uchxrscstr.rscuexcalreadyexists
+msgid "\"%0:s\" already exists."
+msgstr ""
+
+#: uchxrscstr.rscuexccardrange
+msgid "\"%0:d\" is not in cardinal range."
+msgstr ""
+
+#: uchxrscstr.rscuexcnilparameter
+msgid "%0:s: %1:s parameter (%2:s) = nil"
+msgstr ""
+
+#: uchxrscstr.rsenotfilename
+msgid "%0:s: Not defined filename"
+msgstr ""
+
+#: uctkrststr.rspcads
+msgid "Advertising"
+msgstr ""
+
+#: uctkrststr.rspcauthortext
+msgid "Author Text"
+msgstr ""
+
+#: uctkrststr.rspcbackcover
+msgid "Back Cover"
+msgstr ""
+
+#: uctkrststr.rspcbackdustjacket
+msgid "Back Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcbastardtitle
+msgid "Bastard Title"
+msgstr ""
+
+#: uctkrststr.rspcchaptertitle
+msgid "Chapter Title"
+msgstr ""
+
+#: uctkrststr.rspceditorialinfo
+msgid "Editorial Info"
+msgstr ""
+
+#: uctkrststr.rspcendpaper
+msgid "End Paper"
+msgstr ""
+
+#: uctkrststr.rspcflyleaf
+msgid "Fly Leaf"
+msgstr ""
+
+#: uctkrststr.rspcfrontcover
+msgid "Front Cover"
+msgstr ""
+
+#: uctkrststr.rspcfrontdustjacket
+msgid "Front Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcindex
+msgid "Index"
+msgstr ""
+
+#: uctkrststr.rspclicense
+msgid "License"
+msgstr ""
+
+#: uctkrststr.rspcother
+msgid "Other"
+msgstr ""
+
+#: uctkrststr.rspcspinecover
+msgid "Spine (Cover)"
+msgstr ""
+
+#: uctkrststr.rspcspinedustjacket
+msgid "Spine Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcvignette
+msgid "Vignette"
+msgstr ""
+

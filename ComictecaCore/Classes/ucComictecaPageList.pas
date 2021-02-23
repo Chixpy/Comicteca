@@ -2,9 +2,9 @@ unit ucComictecaPageList;
 
 {< cComictecaPageList class unit.
 
-  Copyright (C) 2006-2019 Chixpy
+  Copyright (C) 2020-2021 Chixpy
 
-  This file is part of Emuteca
+  This file is part of Comicteca Core.
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -27,7 +27,9 @@ interface
 
 uses
   Classes, SysUtils, fgl, Laz2_DOM, laz2_XMLRead, Laz2_XMLWrite,
+  // Comiteca Core units
   uCTKConst,
+  // Comiteca Core classes
   ucComictecaPage;
 
 type
@@ -38,6 +40,9 @@ type
 
   cComictecaPageList = class(cComictecaGenPageList)
   public
+  public
+    function PageBySHA1(aSHA1: string): cComictecaPage;
+
     procedure LoadFromXML(Parent: TDOMElement); virtual;
     procedure SaveToXML(aXMLDoc: TXMLDocument; Parent: TDOMElement); virtual;
   end;
@@ -46,14 +51,32 @@ implementation
 
 { cComictecaPageList }
 
+function cComictecaPageList.PageBySHA1(aSHA1: string): cComictecaPage;
+var
+  i: integer;
+  aPage: cComictecaPage;
+begin
+  Result := nil;
+
+  i := 0;
+  while (i < Count) and (not assigned(Result)) do
+  begin
+    aPage := Items[i];
+    if aPage.MatchSHA1(aSHA1) then
+      Result := aPage;
+    Inc(i);
+  end;
+end;
+
 procedure cComictecaPageList.LoadFromXML(Parent: TDOMElement);
 var
   PageNode: TDOMElement;
   PageList: TDOMNodeList;
   aPage: cComictecaPage;
-  i: Integer;
+  i: integer;
 begin
-  if not Assigned(Parent) then Exit;
+  if not Assigned(Parent) then
+    Exit;
 
   PageList := Parent.GetElementsByTagName(krsCTKXMLPage);
 
@@ -70,11 +93,12 @@ end;
 procedure cComictecaPageList.SaveToXML(aXMLDoc: TXMLDocument;
   Parent: TDOMElement);
 var
-  i: Integer;
+  i: integer;
   XMLPage: TDOMElement;
   aPage: cComictecaPage;
 begin
-  if (not Assigned(Parent)) or (not Assigned(aXMLDoc)) then Exit;
+  if (not Assigned(Parent)) or (not Assigned(aXMLDoc)) then
+    Exit;
 
   i := 0;
   while i < Count do
@@ -90,7 +114,7 @@ end;
 
 //initialization
 //  RegisterClass(cComictecaPageList);
-//
+
 //finalization
 //  UnRegisterClass(cComictecaPageList);
 

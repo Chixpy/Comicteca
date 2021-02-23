@@ -4,7 +4,7 @@ unit ufrComictecaEditorMain;
 
   This file is part of Comicteca Editor.
 
-  Copyright (C) 2020 Chixpy
+  Copyright (C) 2020-2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -27,12 +27,12 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, FileUtil,
-  LazFileUtils,
+  LazFileUtils, lclintf,
   LCLTranslator, ExtCtrls, StdCtrls, EditBtn, ComCtrls,
   // Miscelaneous unit
   uVersionSupport,
   // CHX units
-  uCHXStrUtils,
+  uCHXStrUtils, uCHX7zWrapper,
   // CHX forms
   ufrCHXForm,
   // Comicteca Core units
@@ -51,7 +51,9 @@ type
   { TfrmComictecaEditorMain }
 
   TfrmComictecaEditorMain = class(TfrmCHXForm)
+    bOpenArchiveFolder: TButton;
     bSaveArchive: TButton;
+    bSaveFolder: TButton;
     eComicFolder: TDirectoryEdit;
     eCompressedFile: TFileNameEdit;
     pArchive: TPanel;
@@ -59,10 +61,15 @@ type
     pagFolder: TTabSheet;
     pagCompressedArchive: TTabSheet;
     pEditorFrame: TPanel;
+    tOpenFolder: TButton;
+    procedure bOpenArchiveFolderClick(Sender: TObject);
     procedure bSaveArchiveClick(Sender: TObject);
+    procedure bSaveFolderClick(Sender: TObject);
     procedure eComicFolderAcceptDirectory(Sender: TObject; var Value: string);
+    procedure eCompressedFileAcceptFileName(Sender: TObject; var Value: String);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+    procedure tOpenFolderClick(Sender: TObject);
 
   private
     FBaseFolder: string;
@@ -99,6 +106,8 @@ procedure TfrmComictecaEditorMain.FormCloseQuery(Sender: TObject;
 begin
   CanClose := True;
 
+  Comic.Free;
+
   FEditorConfig.Free;
 end;
 
@@ -120,12 +129,59 @@ begin
   fmMain.Comic := Self.Comic;
 end;
 
-procedure TfrmComictecaEditorMain.bSaveArchiveClick(Sender: TObject);
+procedure TfrmComictecaEditorMain.eCompressedFileAcceptFileName(
+  Sender: TObject; var Value: String);
+begin
+  if not FileExistsUTF8(Value) then
+  begin
+    Value := '';
+    Exit;
+  end;
+
+  FreeAndNil(FComic);
+
+  FComic := cComictecaVolume.Create(nil);
+
+  Comic.LoadFromArchive(Value);
+
+  if Comic.Folder = '' then
+  begin
+    eComicFolder.Text := '';
+    FreeAndNil(FComic);
+  end
+  else
+  begin
+    eComicFolder.Text := SysPath(Comic.Folder);
+  end;
+
+  fmMain.Comic := Self.Comic;
+end;
+
+procedure TfrmComictecaEditorMain.bSaveFolderClick(Sender: TObject);
 begin
   if not Assigned(Comic) then
     Exit;
 
   Comic.SaveToFolder;
+end;
+
+procedure TfrmComictecaEditorMain.bOpenArchiveFolderClick(Sender: TObject);
+begin
+  if not Assigned(Comic) then
+    Exit;
+
+  OpenDocument(Comic.Folder);
+end;
+
+procedure TfrmComictecaEditorMain.bSaveArchiveClick(Sender: TObject);
+begin
+  if not Assigned(Comic) then
+    Exit;
+
+  Comic.SaveToArchive;
+
+  // if not a zip or 7z, file extension will be change to cbz
+  eCompressedFile.Text := Comic.Archive;
 end;
 
 procedure TfrmComictecaEditorMain.FormCreate(Sender: TObject);
@@ -166,6 +222,25 @@ begin
   EditorConfig.LoadFromFile('');
 
   CreateFrames;
+
+  w7zSetPathTo7zexe('Tools\7zip\7z.exe');
+  w7zSetPathTo7zGexe('Tools\7zip\7zG.exe');
+
+  pagCompressedArchive.Enabled := w7zPathsOK;
+
+  if pagCompressedArchive.Enabled then
+  begin
+    pcComicFileType.ActivePage := pagCompressedArchive;
+    eCompressedFile.Filter := 'Comic Files|' + FileMaskFromCommaText(kw7zFileExts);
+  end;
+end;
+
+procedure TfrmComictecaEditorMain.tOpenFolderClick(Sender: TObject);
+begin
+  if not Assigned(Comic) then
+    Exit;
+
+  OpenDocument(Comic.Folder);
 end;
 
 procedure TfrmComictecaEditorMain.SetBaseFolder(AValue: string);
@@ -183,15 +258,11 @@ end;
 constructor TfrmComictecaEditorMain.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  FComic := nil;
 end;
 
 destructor TfrmComictecaEditorMain.Destroy;
 begin
   inherited Destroy;
-
-  Comic.Free;
 end;
 
 end.

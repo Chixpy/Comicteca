@@ -59,12 +59,10 @@ type
     procedure SetOnPageSelect(AValue: TCTKPageObjProc);
 
   protected
-
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
 
   public
-
     property OnPageSelect: TCTKPageObjProc
       read FOnPageSelect write SetOnPageSelect;
 
@@ -143,7 +141,8 @@ begin
   if not assigned(Comic) then
     Exit;
 
-  if not lvFileList.ItemIndex in [0..lvFileList.Items.Count - 1] then
+  if (lvFileList.ItemIndex < 0) or
+    (lvFileList.ItemIndex > (lvFileList.Items.Count - 2)) then
     Exit;
 
   Comic.Pages.Exchange(lvFileList.ItemIndex, lvFileList.ItemIndex + 1);

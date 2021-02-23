@@ -26,9 +26,11 @@ unit ucComictecaPage;
 interface
 
 uses
-  Classes, SysUtils,
+  Classes, SysUtils, Laz2_DOM, laz2_XMLRead, Laz2_XMLWrite,
   // Comicteca Core abstracts
-  uaComictecaPage;
+  uaComictecaPage,
+  // Comicteca Core class
+  ucComictecaTextList;
 
 type
 
@@ -40,10 +42,15 @@ type
 
   cComictecaPage = class(caComictecaPage)
   private
+    FTexts: cComictecaTextList;
 
   protected
 
   public
+    property Texts: cComictecaTextList read FTexts;
+
+    procedure LoadFromXML(aXMLNode: TDOMElement); override;
+    procedure SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement); override;
 
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
@@ -55,13 +62,42 @@ implementation
 
 { cComictecaPage }
 
+procedure cComictecaPage.LoadFromXML(aXMLNode: TDOMElement);
+var
+  i: Integer;
+begin
+  inherited LoadFromXML(aXMLNode);
+
+  Texts.LoadFromXML(aXMLNode);
+
+  // Assigning current page to texts.
+  i := 0;
+  while i < Texts.Count do
+begin
+  Texts[i].Page := Self;
+  Inc(i);
+end;
+end;
+
+procedure cComictecaPage.SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement
+  );
+begin
+  inherited SaveToXML(aXMLDoc, aXMLNode);
+
+  Texts.SaveToXML(aXMLDoc, aXMLNode);
+end;
+
 constructor cComictecaPage.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
+
+  FTexts := cComictecaTextList.Create(True);
 end;
 
 destructor cComictecaPage.Destroy;
 begin
+  FTexts.Free;
+
   inherited Destroy;
 end;
 

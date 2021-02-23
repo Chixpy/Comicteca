@@ -47,6 +47,8 @@ type
     FFrames: cComictecaFrameList;
 
   public
+    procedure Clear; override;
+
     procedure LoadFromXML(aXMLDoc: TXMLDocument); override;
     procedure SaveToXML(aXMLDoc: TXMLDocument); override;
 
@@ -156,9 +158,17 @@ implementation
 //  // Metadata
 //end;
 
+procedure cComictecaVolume.Clear;
+begin
+  inherited Clear;
+
+  Frames.Clear;
+  Pages.Clear;
+end;
+
 procedure cComictecaVolume.LoadFromXML(aXMLDoc: TXMLDocument);
 var
-  Root, Pagelist: TDOMElement;
+  Root, XMLNode: TDOMElement;
   aPage: cComictecaPage;
   i: Integer;
 begin
@@ -172,9 +182,10 @@ begin
   if not assigned(Root) then
     Exit;
 
-  Pagelist := TDOMElement(Root.FindNode(krsCTKXMLPageList));
-  if Assigned(Pagelist) then
-    Pages.LoadFromXML(Pagelist);
+  // Page list
+  XMLNode := TDOMElement(Root.FindNode(krsCTKXMLPageList));
+  if Assigned(XMLNode) then
+    Pages.LoadFromXML(XMLNode);
 
   // Searching SHA1 if empty or wrong size
   i := 0;
@@ -188,13 +199,16 @@ begin
 
     Inc(i);
   end;
+
+  // Frame list
+  XMLNode := TDOMElement(Root.FindNode(krsCTKXMLFrameList));
+  if Assigned(XMLNode) then
+    Frames.LoadFromXML(XMLNode);
 end;
 
 procedure cComictecaVolume.SaveToXML(aXMLDoc: TXMLDocument);
 var
-  Root, XMLPageList, XMLPage: TDOMElement;
-  i, Count: integer;
-  aPage: cComictecaPage;
+  Root, XMLNode: TDOMElement;
 begin
   if not Assigned(aXMLDoc) then
     Exit;
@@ -206,9 +220,15 @@ begin
     Exit;
 
   // Page list node
-  XMLPageList := aXMLDoc.CreateElement(krsCTKXMLPageList);
-  Root.AppendChild(XMLPageList);
-  Pages.SaveToXML(aXMLDoc, XMLPageList);
+  XMLNode := aXMLDoc.CreateElement(krsCTKXMLPageList);
+  Root.AppendChild(XMLNode);
+  Pages.SaveToXML(aXMLDoc, XMLNode);
+
+
+  // Frame list node
+  XMLNode := aXMLDoc.CreateElement(krsCTKXMLFrameList);
+  Root.AppendChild(XMLNode);
+  Frames.SaveToXML(aXMLDoc, XMLNode);
 
 end;
 
@@ -218,6 +238,7 @@ begin
 
   FPages := cComictecaPageList.Create(True);
   FFrames := cComictecaFrameList.Create(True);
+  Frames.PageList := Pages;
 end;
 
 destructor cComictecaVolume.Destroy;

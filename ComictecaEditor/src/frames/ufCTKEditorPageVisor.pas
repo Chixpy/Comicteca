@@ -29,17 +29,17 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
   BGRABitmapTypes, BGRABitmap,
   // CHX frames
-  ufCHXBGRAImgViewer,
+  ufCHXBGRAImgViewerEx,
   // Comicteca Core classes
   ucComictecaPage,
   // Comicteca Editor abstract frames
-  uafCTKEditorFrame;
+  uafCTKEditorPageFrame;
 
 type
 
   { TfmCTKEditorPageVisor }
 
-  TfmCTKEditorPageVisor = class(TafmCTKEditorFrame)
+  TfmCTKEditorPageVisor = class(TafmCTKEditorPageFrame)
     bOrigZoom: TButton;
     bZoomIn: TButton;
     bZoomOut: TButton;
@@ -52,15 +52,13 @@ type
     procedure tbxAutoZoomChange(Sender: TObject);
 
   private
-    FfmVisor: TfmCHXBGRAImgViewer;
+    FfmVisor: TfmCHXBGRAImgViewerEx;
     FImage: TBGRABitmap;
-    FPage: cComictecaPage;
     procedure SetImage(AValue: TBGRABitmap);
-    procedure SetPage(AValue: cComictecaPage);
 
   protected
 
-    property fmVisor: TfmCHXBGRAImgViewer read FfmVisor;
+    property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
     property Image: TBGRABitmap read FImage write SetImage;
 
     procedure DoLoadFrameData;
@@ -70,10 +68,6 @@ type
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
-
-  published
-
-    property Page: cComictecaPage read FPage write SetPage;
   end;
 
 implementation
@@ -81,28 +75,24 @@ implementation
 {$R *.lfm}
 
 { TfmCTKEditorPageVisor }
-
-procedure TfmCTKEditorPageVisor.SetPage(AValue: cComictecaPage);
-begin
-  if FPage = AValue then
-    Exit;
-  FPage := AValue;
-
-  LoadFrameData;
-end;
-
 procedure TfmCTKEditorPageVisor.bZoomInClick(Sender: TObject);
 begin
+  tbxAutoZoom.Checked := False;
+
   fmVisor.ZoomIn;
 end;
 
 procedure TfmCTKEditorPageVisor.bOrigZoomClick(Sender: TObject);
 begin
+  tbxAutoZoom.Checked := False;
+
   fmVisor.Zoom := 100;
 end;
 
 procedure TfmCTKEditorPageVisor.bZoomOutClick(Sender: TObject);
 begin
+  tbxAutoZoom.Checked := False;
+
   fmVisor.ZoomOut;
 end;
 
@@ -149,7 +139,7 @@ constructor TfmCTKEditorPageVisor.Create(TheOwner: TComponent);
 
   procedure CreateFrames;
   begin
-    FfmVisor := TfmCHXBGRAImgViewer.Create(pImageVisor);
+    FfmVisor := TfmCHXBGRAImgViewerEx.Create(pImageVisor);
     fmVisor.Align := alClient;
     fmVisor.AutoZoomOnLoad := True;
     fmVisor.Parent := pImageVisor;

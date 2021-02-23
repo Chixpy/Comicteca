@@ -4,7 +4,7 @@ unit ucComictecaTextMap;
 
   This file is part of Comicteca Core.
 
-  Copyright (C) 2019 Chixpy
+  Copyright (C) 2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -107,6 +107,7 @@ procedure cComictecaTextMap.SaveToXML(aXMLDoc: TXMLDocument;
 var
   i: integer;
   XMLText: TDOMElement;
+  aText: string;
 begin
   if (not Assigned(Parent)) or (not Assigned(aXMLDoc)) then
     Exit;
@@ -114,10 +115,16 @@ begin
   i := 0;
   while i < Self.Count do
   begin
-    XMLText := aXMLDoc.CreateElement(Self.Keys[i]);
     Self.Data[i].SkipLastLineBreak := True;
-    XMLText.TextContent := Self.Data[i].Text;
-    Parent.AppendChild(XMLText);
+    aText:=Self.Data[i].Text;
+
+    if aText <> '' then
+    begin
+      XMLText := aXMLDoc.CreateElement(Self.Keys[i]);
+      XMLText.TextContent := aText;
+      Parent.AppendChild(XMLText);
+    end;
+
     Inc(i);
   end;
 end;
@@ -132,6 +139,7 @@ begin
   if not TryGetData(aKey, aText) then
   begin
     aText := TStringList.Create;
+    aText.SkipLastLineBreak := True;
     Self.Add(aKey, aText);
   end;
 
@@ -161,6 +169,7 @@ begin
   if not TryGetData(aKey, aText) then
   begin
     aText := TStringList.Create;
+    aText.SkipLastLineBreak := True;
     Self.Add(aKey, aText);
   end;
 

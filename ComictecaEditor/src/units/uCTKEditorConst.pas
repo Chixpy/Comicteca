@@ -31,6 +31,13 @@ const
   krsCTKEditorIni = 'CTKEditor.ini';
   //< File for Comicteca Editor configuration.
 
+  // Files
+  kSeriesCBFile = 'Series.txt';
+  kTitlesCBFile = 'Titles.txt';
+  kPublishersCBFile = 'Publishers.txt';
+  kEditorsCBFile = 'Editors.txt';
+  kLanguageCBFile = 'Languages.txt';
+
 implementation
 
 end.

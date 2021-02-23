@@ -30,16 +30,22 @@ uses
   // Comicteca Core units
   uCTKConst,
   // Comicteca Core abstracts
-  uaComictecaFrame;
+  ucComictecaPageList, ucComictecaFrame;
 
 type
 
-  cComictecaGenFrameList = specialize TFPGObjectList<caComictecaFrame>;
+  cComictecaGenFrameList = specialize TFPGObjectList<cComictecaFrame>;
 
   { cComictecaFrameList }
 
   cComictecaFrameList = class(cComictecaGenFrameList)
+  private
+    FPageList: cComictecaPageList;
+    procedure SetPageList(AValue: cComictecaPageList);
+
   public
+    property PageList: cComictecaPageList read FPageList write SetPageList;
+
     procedure LoadFromXML(Parent: TDOMElement); virtual;
     procedure SaveToXML(aXMLDoc: TXMLDocument; Parent: TDOMElement); virtual;
   end;
@@ -48,11 +54,18 @@ implementation
 
 { cComictecaFrameList }
 
+procedure cComictecaFrameList.SetPageList(AValue: cComictecaPageList);
+begin
+  if FPageList = AValue then
+    Exit;
+  FPageList := AValue;
+end;
+
 procedure cComictecaFrameList.LoadFromXML(Parent: TDOMElement);
 var
   FrameNode: TDOMElement;
   FrameList: TDOMNodeEnumerator;
-  aFrame: caComictecaFrame;
+  aFrame: cComictecaFrame;
   i: integer;
 begin
   if not Assigned(Parent) then
@@ -68,8 +81,22 @@ begin
 
         if AnsiCompareText(FrameNode.TagName, krsCTKXMLFrame) = 0 then
         begin
-          aFrame := caComictecaFrame.Create(nil);
+          aFrame := cComictecaFrame.Create(nil);
           aFrame.LoadFromXML(FrameNode);
+
+          // Assigning Page to Frame
+          if Assigned(PageList) then
+          begin
+            i := 0;
+            while (i < PageList.Count) and (not assigned(aFrame.Page)) do
+            begin
+              if PageList[i].MatchSHA1(aFrame.PageSHA1) then
+                aFrame.Page := PageList[i];
+              Inc(i);
+            end;
+          end;
+
+          Self.Add(aFrame);
         end;
       end;
     end;
@@ -83,7 +110,7 @@ procedure cComictecaFrameList.SaveToXML(aXMLDoc: TXMLDocument;
 var
   i: integer;
   XMLFrame: TDOMElement;
-  aFrame: caComictecaFrame;
+  aFrame: cComictecaFrame;
 begin
   i := 0;
   while i < Count do

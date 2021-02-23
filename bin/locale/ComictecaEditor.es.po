@@ -1,0 +1,477 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfmctkeditorframeedit.bresetframe.caption
+msgctxt "tfmctkeditorframeedit.bresetframe.caption"
+msgid "Reset Frame"
+msgstr "Reiniciar"
+
+#: tfmctkeditorframeedit.gbxframeedit.caption
+msgid "Frame properties"
+msgstr "Propiedades del marco"
+
+#: tfmctkeditorframeedit.lbottom.caption
+msgctxt "tfmctkeditorframeedit.lbottom.caption"
+msgid "Bottom"
+msgstr "Abajo"
+
+#: tfmctkeditorframeedit.lframetype.caption
+msgid "Frame Type"
+msgstr "Tipo de frame"
+
+#: tfmctkeditorframeedit.lleft.caption
+msgctxt "tfmctkeditorframeedit.lleft.caption"
+msgid "Left"
+msgstr "Izquierda"
+
+#: tfmctkeditorframeedit.lpage.caption
+msgctxt "tfmctkeditorframeedit.lpage.caption"
+msgid "Page"
+msgstr "Página"
+
+#: tfmctkeditorframeedit.lright.caption
+msgctxt "tfmctkeditorframeedit.lright.caption"
+msgid "Right"
+msgstr "Derecha"
+
+#: tfmctkeditorframeedit.ltop.caption
+msgctxt "tfmctkeditorframeedit.ltop.caption"
+msgid "Top"
+msgstr "Arriba"
+
+#: tfmctkeditorframelist.baddframe.caption
+msgid "Add Frame"
+msgstr "Añadir marco"
+
+#: tfmctkeditorframelist.bmovedown.caption
+msgctxt "tfmctkeditorframelist.bmovedown.caption"
+msgid "Move Down"
+msgstr "Bajar"
+
+#: tfmctkeditorframelist.bremoveframe.caption
+msgid "Remove Frame"
+msgstr "Quitar marco"
+
+#: tfmctkeditorframelist.bsubir.caption
+msgctxt "tfmctkeditorframelist.bsubir.caption"
+msgid "Move Up"
+msgstr "Subir"
+
+#: tfmctkeditorframelist.gbxframelist.caption
+msgid "Frame List"
+msgstr ""
+
+#: tfmctkeditorframelist.lvframelist.columns[0].caption
+msgid "Frame"
+msgstr "Marco"
+
+#: tfmctkeditorframevisor.borigzoom.caption
+msgctxt "tfmctkeditorframevisor.borigzoom.caption"
+msgid "1x"
+msgstr ""
+
+#: tfmctkeditorframevisor.bzoomin.caption
+msgctxt "tfmctkeditorframevisor.bzoomin.caption"
+msgid "x 2"
+msgstr ""
+
+#: tfmctkeditorframevisor.bzoomout.caption
+msgctxt "tfmctkeditorframevisor.bzoomout.caption"
+msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditorframevisor.gbxzoom.caption
+msgctxt "tfmctkeditorframevisor.gbxzoom.caption"
+msgid "Zoom"
+msgstr ""
+
+#: tfmctkeditorframevisor.tbxautozoom.caption
+msgctxt "tfmctkeditorframevisor.tbxautozoom.caption"
+msgid "Auto Zoom"
+msgstr ""
+
+#: tfmctkeditorimglist.baddallfiles.caption
+msgid "Add all images"
+msgstr "Añadir todas las imágenes"
+
+#: tfmctkeditorimglist.bmovedown.caption
+msgctxt "tfmctkeditorimglist.bmovedown.caption"
+msgid "Move Down"
+msgstr "Bajar"
+
+#: tfmctkeditorimglist.bremovefile.caption
+msgid "Remove File"
+msgstr "Quitar fichero"
+
+#: tfmctkeditorimglist.bsubir.caption
+msgctxt "tfmctkeditorimglist.bsubir.caption"
+msgid "Move Up"
+msgstr "Subir"
+
+#: tfmctkeditorimglist.gbximagefilelist.caption
+msgid "Image File List"
+msgstr "Lista de ficheros de imagen"
+
+#: tfmctkeditorimglist.lvfilelist.columns[0].caption
+msgctxt "tfmctkeditorimglist.lvfilelist.columns[0].caption"
+msgid "Filename"
+msgstr "Fichero"
+
+#: tfmctkeditormain.hcmain.sections[0].text
+msgid "Volume"
+msgstr "Tomo"
+
+#: tfmctkeditormain.hcmain.sections[1].text
+msgid "Pages"
+msgstr "Páginas"
+
+#: tfmctkeditormain.hcmain.sections[2].text
+msgctxt "tfmctkeditormain.hcmain.sections[2].text"
+msgid "Vignettes"
+msgstr "Marcos"
+
+#: tfmctkeditormain.hcmain.sections[3].text
+msgctxt "tfmctkeditormain.hcmain.sections[3].text"
+msgid "Texts"
+msgstr "Textos"
+
+#: tfmctkeditormain.hcmain.sections[4].text
+msgid "Metadada"
+msgstr ""
+
+#: tfmctkeditorpageedit.cgrpagecontent.caption
+msgctxt "tfmctkeditorpageedit.cgrpagecontent.caption"
+msgid "Content"
+msgstr "Contenido"
+
+#: tfmctkeditorpageedit.gbxpage.caption
+msgctxt "tfmctkeditorpageedit.gbxpage.caption"
+msgid "Page"
+msgstr "Página"
+
+#: tfmctkeditorpageedit.lfilename.caption
+msgctxt "tfmctkeditorpageedit.lfilename.caption"
+msgid "Filename"
+msgstr "Fichero"
+
+#: tfmctkeditorpageedit.lmultipage.caption
+msgid "Pages in Image"
+msgstr "Páginas en imagen"
+
+#: tfmctkeditorpageedit.lsha1.caption
+msgid "SHA1"
+msgstr ""
+
+#: tfmctkeditorpagevisor.borigzoom.caption
+msgctxt "tfmctkeditorpagevisor.borigzoom.caption"
+msgid "1x"
+msgstr ""
+
+#: tfmctkeditorpagevisor.bzoomin.caption
+msgctxt "tfmctkeditorpagevisor.bzoomin.caption"
+msgid "x 2"
+msgstr ""
+
+#: tfmctkeditorpagevisor.bzoomout.caption
+msgctxt "tfmctkeditorpagevisor.bzoomout.caption"
+msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditorpagevisor.gbxzoom.caption
+msgctxt "tfmctkeditorpagevisor.gbxzoom.caption"
+msgid "Zoom"
+msgstr ""
+
+#: tfmctkeditorpagevisor.tbxautozoom.caption
+msgctxt "tfmctkeditorpagevisor.tbxautozoom.caption"
+msgid "Auto Zoom"
+msgstr ""
+
+#: tfmctkeditortextedit.bresetframe.caption
+#, fuzzy
+msgctxt "tfmctkeditortextedit.bresetframe.caption"
+msgid "Reset Frame"
+msgstr "Reiniciar"
+
+#: tfmctkeditortextedit.gbxtextedit.caption
+msgid "Text Frame Properties"
+msgstr ""
+
+#: tfmctkeditortextedit.lbottom.caption
+#, fuzzy
+msgctxt "tfmctkeditortextedit.lbottom.caption"
+msgid "Bottom"
+msgstr "Abajo"
+
+#: tfmctkeditortextedit.lcontent.caption
+#, fuzzy
+msgctxt "tfmctkeditortextedit.lcontent.caption"
+msgid "Content"
+msgstr "Contenido"
+
+#: tfmctkeditortextedit.lleft.caption
+#, fuzzy
+msgctxt "tfmctkeditortextedit.lleft.caption"
+msgid "Left"
+msgstr "Izquierda"
+
+#: tfmctkeditortextedit.lright.caption
+#, fuzzy
+msgctxt "tfmctkeditortextedit.lright.caption"
+msgid "Right"
+msgstr "Derecha"
+
+#: tfmctkeditortextedit.ltop.caption
+#, fuzzy
+msgctxt "tfmctkeditortextedit.ltop.caption"
+msgid "Top"
+msgstr "Arriba"
+
+#: tfmctkeditortextlist.baddtext.caption
+msgid "Add Text"
+msgstr ""
+
+#: tfmctkeditortextlist.bmovedown.caption
+#, fuzzy
+msgctxt "tfmctkeditortextlist.bmovedown.caption"
+msgid "Move Down"
+msgstr "Bajar"
+
+#: tfmctkeditortextlist.bmoveup.caption
+#, fuzzy
+msgctxt "tfmctkeditortextlist.bmoveup.caption"
+msgid "Move Up"
+msgstr "Subir"
+
+#: tfmctkeditortextlist.bremovetext.caption
+msgid "Remove Text"
+msgstr ""
+
+#: tfmctkeditortextlist.gbxpage.caption
+#, fuzzy
+msgctxt "tfmctkeditortextlist.gbxpage.caption"
+msgid "Page"
+msgstr "Página"
+
+#: tfmctkeditortextlist.gbxtexts.caption
+#, fuzzy
+msgctxt "tfmctkeditortextlist.gbxtexts.caption"
+msgid "Texts"
+msgstr "Textos"
+
+#: tfmctkeditortextvisor.borigzoom.caption
+msgctxt "tfmctkeditortextvisor.borigzoom.caption"
+msgid "1x"
+msgstr ""
+
+#: tfmctkeditortextvisor.bzoomin.caption
+msgctxt "tfmctkeditortextvisor.bzoomin.caption"
+msgid "x 2"
+msgstr ""
+
+#: tfmctkeditortextvisor.bzoomout.caption
+msgctxt "tfmctkeditortextvisor.bzoomout.caption"
+msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditortextvisor.gbxzoom.caption
+msgctxt "tfmctkeditortextvisor.gbxzoom.caption"
+msgid "Zoom"
+msgstr ""
+
+#: tfmctkeditortextvisor.tbxautozoom.caption
+msgctxt "tfmctkeditortextvisor.tbxautozoom.caption"
+msgid "Auto Zoom"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.chkright2left.caption
+msgid "Right to Left (Japanese)"
+msgstr "Derecha a izquierda (Manga)"
+
+#: tfmctkeditorvolumeedit.leditor.caption
+msgid "Editor"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lfansub.caption
+msgid "FanSub Translator"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.llanguage.caption
+msgid "Language"
+msgstr "Lenguaje"
+
+#: tfmctkeditorvolumeedit.lpublisher.caption
+msgid "Publisher"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lserie.caption
+msgid "Serie"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lserieorder.caption
+msgid "Serie Order"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lsummary.caption
+msgid "Summary"
+msgstr "Sumario"
+
+#: tfmctkeditorvolumeedit.ltitle.caption
+msgid "Title"
+msgstr "Título"
+
+#: tfmctkeditorvolumeedit.ltitleorder.caption
+msgid "Title Order"
+msgstr ""
+
+#: tfrmchxform.caption
+msgid "frmCHXForm"
+msgstr ""
+
+#: tfrmcomictecaeditormain.bopenarchivefolder.caption
+msgctxt "tfrmcomictecaeditormain.bopenarchivefolder.caption"
+msgid "Explore Folder"
+msgstr ""
+
+#: tfrmcomictecaeditormain.bsavearchive.caption
+msgid "Save Archive"
+msgstr ""
+
+#: tfrmcomictecaeditormain.bsavefolder.caption
+msgid "Save Folder"
+msgstr ""
+
+#: tfrmcomictecaeditormain.caption
+msgid "Comicteca Editor"
+msgstr ""
+
+#: tfrmcomictecaeditormain.pagcompressedarchive.caption
+msgid "Archive"
+msgstr ""
+
+#: tfrmcomictecaeditormain.pagfolder.caption
+msgid "Folder"
+msgstr ""
+
+#: tfrmcomictecaeditormain.topenfolder.caption
+msgctxt "tfrmcomictecaeditormain.topenfolder.caption"
+msgid "Explore Folder"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zerrorline
+msgid "%0:s - %1:s: %2:s"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zexeerror
+msgid ""
+"7z.exe/7zG.exe error %1:d exit code.\n"
+"File: \"%0:s\"\n"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zexewarning
+msgid ""
+"7z.exe/7zG.exe warning %1:d exit code.\n"
+"File: \"%0:s\"\n"
+msgstr ""
+
+#: uchx7zwrapper.rsw7zfilenotfound
+msgid "\"%0:s\" file not found."
+msgstr ""
+
+#: uchx7zwrapper.rsw7znocrc32
+msgid "Error extracting CRC32: \"%0:s\""
+msgstr ""
+
+#: uchxrscstr.rscuexcalreadyexists
+msgid "\"%0:s\" already exists."
+msgstr ""
+
+#: uchxrscstr.rscuexccardrange
+msgid "\"%0:d\" is not in cardinal range."
+msgstr ""
+
+#: uchxrscstr.rscuexcnilparameter
+msgid "%0:s: %1:s parameter (%2:s) = nil"
+msgstr ""
+
+#: uchxrscstr.rsenotfilename
+msgid "%0:s: Not defined filename"
+msgstr ""
+
+#: uctkrststr.rspcads
+msgctxt "uctkrststr.rspcads"
+msgid "Advertising"
+msgstr "Publicidad"
+
+#: uctkrststr.rspcauthortext
+msgctxt "uctkrststr.rspcauthortext"
+msgid "Author Text"
+msgstr "Texto del autor"
+
+#: uctkrststr.rspcbackcover
+msgctxt "uctkrststr.rspcbackcover"
+msgid "Back Cover"
+msgstr "Contraportada"
+
+#: uctkrststr.rspcbackdustjacket
+msgid "Back Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcbastardtitle
+msgid "Bastard Title"
+msgstr "Antetítulo"
+
+#: uctkrststr.rspcchaptertitle
+msgctxt "uctkrststr.rspcchaptertitle"
+msgid "Chapter Title"
+msgstr "Título del capítulo"
+
+#: uctkrststr.rspceditorialinfo
+msgctxt "uctkrststr.rspceditorialinfo"
+msgid "Editorial Info"
+msgstr "Información de la editorial"
+
+#: uctkrststr.rspcendpaper
+msgid "End Paper"
+msgstr "Guarda"
+
+#: uctkrststr.rspcflyleaf
+#, fuzzy
+msgctxt "uctkrststr.rspcflyleaf"
+msgid "Fly Leaf"
+msgstr "Página de cortesía"
+
+#: uctkrststr.rspcfrontcover
+msgctxt "uctkrststr.rspcfrontcover"
+msgid "Front Cover"
+msgstr "Frontal de la cubierta"
+
+#: uctkrststr.rspcfrontdustjacket
+msgid "Front Dust Jacket"
+msgstr "Frontal de la sobrecubierta"
+
+#: uctkrststr.rspcindex
+msgid "Index"
+msgstr ""
+
+#: uctkrststr.rspclicense
+msgid "License"
+msgstr "Licencia"
+
+#: uctkrststr.rspcother
+msgctxt "uctkrststr.rspcother"
+msgid "Other"
+msgstr "Otros"
+
+#: uctkrststr.rspcspinecover
+msgid "Spine (Cover)"
+msgstr "Lomo de la cubierta"
+
+#: uctkrststr.rspcspinedustjacket
+msgid "Spine Dust Jacket"
+msgstr "Lomo de la sobrecubierta"
+
+#: uctkrststr.rspcvignette
+msgid "Vignette"
+msgstr "Viñeta"
+

@@ -11,7 +11,10 @@ uses
   uCTKEditorConfig, uafCTKEditorFrame, ufCTKEditorMain, ufCTKEditorImgList,
   ufCTKEditorPageEdit, ufCTKEditorVolumeEdit, ufCTKEditorPageVisor, uCTKRstStr,
   uCTKCommon, uaComictecaFrame, ufCTKEditorFrameEdit, ucComictecaTextMap,
-  ufCTKEditorFrameList, ucComictecaFrame, uafCTKEditorPageFrame, uafCTKEditorFrameFrame;
+  ufCTKEditorFrameList, ucComictecaFrame, uafCTKEditorPageFrame,
+  uafCTKEditorFrameFrame, ufCTKEditorFrameVisor, ufCHXBGRAImgViewerEx,
+  uaComictecaText, ucComictecaTextList, ucComictecaText, ufCTKEditorTextList,
+  uafCTKEditorTextFrame, ufCTKEditorTextEdit, ufCTKEditorTextVisor, ucComictecaVolumeRenderizer;
 
 {$R *.res}
 

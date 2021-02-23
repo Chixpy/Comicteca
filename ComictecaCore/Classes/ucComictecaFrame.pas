@@ -25,9 +25,12 @@ unit ucComictecaFrame;
 interface
 
 uses
-  Classes, SysUtils,
+  Classes, SysUtils, Laz2_DOM, laz2_XMLRead, Laz2_XMLWrite,
+    // Comicteca Core units
+  uCTKConst, uCTKCommon,
   // Comicteca Core abstracts
-  uaComictecaFrame;
+  uaComictecaFrame, uaComictecaPage;
+
 
 type
 
@@ -35,13 +38,23 @@ type
 
   cComictecaFrame = class(caComictecaFrame)
   private
+    FPage: caComictecaPage;
+    FPageSHA1: String;
+    procedure SetPage(AValue: caComictecaPage);
+    procedure SetPageSHA1(AValue: String);
 
   public
+    property PageSHA1: String read FPageSHA1 write SetPageSHA1;
+
+    procedure LoadFromXML(aXMLNode: TDOMElement); override;
+    procedure SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement); override;
+
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
 
 
   published
+    property Page: caComictecaPage read FPage write SetPage;
 
   end;
 
@@ -50,6 +63,38 @@ type
 implementation
 
 { cComictecaFrame }
+
+procedure cComictecaFrame.SetPage(AValue: caComictecaPage);
+begin
+  if FPage = AValue then Exit;
+  FPage := AValue;
+
+  PageSHA1 := Page.SHA1;
+
+  FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure cComictecaFrame.SetPageSHA1(AValue: String);
+begin
+  if FPageSHA1 = AValue then Exit;
+  FPageSHA1 := AValue;
+end;
+
+procedure cComictecaFrame.LoadFromXML(aXMLNode: TDOMElement);
+begin
+  inherited LoadFromXML(aXMLNode);
+
+  PageSHA1 := aXMLNode[krsCTKXMLPage];
+end;
+
+procedure cComictecaFrame.SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement
+  );
+begin
+      if Assigned(Page) then
+    aXMLNode[krsCTKXMLPage] := Page.SHA1;
+
+  inherited SaveToXML(aXMLDoc, aXMLNode);
+end;
 
 constructor cComictecaFrame.Create(aOwner: TComponent);
 begin

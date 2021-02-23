@@ -65,6 +65,7 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         Top = 4
         Width = 125
         Caption = 'Add Frame'
+        OnClick = bAddframeClick
         TabOrder = 1
       end
       object bMoveDown: TButton

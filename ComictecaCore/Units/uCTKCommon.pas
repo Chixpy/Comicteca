@@ -30,39 +30,56 @@ uses
   // Comicteca Core
   uCTKConst;
 
-function Str2PageTypeKey(aString: string): tCTKPageContent;
+function Str2FrameType(aString: string): tCTKFrameType;
 
-function Str2PageTypeKeySet(aString: string): tCTKPageContents;
-function StrLst2PageTypeKeySet(aStringList: TStringList): tCTKPageContents;
+function Str2FrameTypeSet(aString: string): tCTKPageContents;
+function StrLst2FrameTypeSet(aStringList: TStringList): tCTKPageContents;
 
-function PageTypeKeySet2Str(aPageTypes: tCTKPageContents): string;
+function FrameTypeSet2Str(aPageTypes: tCTKPageContents): string;
 
 implementation
 
-function Str2PageTypeKey(aString: string): tCTKPageContent;
+function Str2FrameType(aString: string): tCTKFrameType;
 begin
-  Result := CTKPTOther;
+  Result := CTKFTOther;
 
-  if UTF8CompareText(aString, krsPCVignettesKey) = 0 then
-    Result := CTKPTVignettes
-  else if UTF8CompareText(aString, krsPCFrontCoverKey) = 0 then
-    Result := CTKPTFrontCover
-  else if UTF8CompareText(aString, krsPCBackCoverKey) = 0 then
-    Result := CTKPTBackCover
-  else if UTF8CompareText(aString, krsPCChapterTitleKey) = 0 then
-    Result := CTKPTChapterTitle
-  else if UTF8CompareText(aString, krsPCEditorialInfoKey) = 0 then
-    Result := CTKPTEditorialInfo
-  else if UTF8CompareText(aString, krsPCAutorTextKey) = 0 then
-    Result := CTKPTAuthorText
-  else if UTF8CompareText(aString, krsPCAdsKey) = 0 then
-    Result := CTKPTAds
-  else if UTF8CompareText(aString, krsPCOtherKey) = 0 then
-    Result := CTKPTOther;
-
+  if UTF8CompareText(aString, krsFTVignetteKey) = 0 then
+    Result := CTKFTVignette
+  else if UTF8CompareText(aString, krsFTSpineDustJacketKey) = 0 then
+    Result := CTKFTSpineDustJacket
+  else if UTF8CompareText(aString, krsFTFrontDustJacketKey) = 0 then
+    Result := CTKFTFrontDustJacket
+  else if UTF8CompareText(aString, krsFTSpineCoverKey) = 0 then
+    Result := CTKFTSpineCover
+  else if UTF8CompareText(aString, krsFTFrontCoverKey) = 0 then
+    Result := CTKFTFrontCover
+  else if UTF8CompareText(aString, krsFTEndPaperKey) = 0 then
+    Result := CTKFTEndPaper
+  else if UTF8CompareText(aString, krsFTFlyLeafKey) = 0 then
+    Result := CTKFTFlyLeaf
+  else if UTF8CompareText(aString, krsFTIndexKey) = 0 then
+    Result := CTKFTFlyLeaf
+  else if UTF8CompareText(aString, krsFTBastardTitleKey) = 0 then
+    Result := CTKFTBastardTitle
+  else if UTF8CompareText(aString, krsFTChapterTitleKey) = 0 then
+    Result := CTKFTChapterTitle
+  else if UTF8CompareText(aString, krsFTEditorialInfoKey) = 0 then
+    Result := CTKFTEditorialInfo
+  else if UTF8CompareText(aString, krsFTAuthorTextKey) = 0 then
+    Result := CTKFTAuthorText
+  else if UTF8CompareText(aString, krsFTAdsKey) = 0 then
+    Result := CTKFTAds
+  else if UTF8CompareText(aString, krsFTLicenseKey) = 0 then
+    Result := CTKFTLicense
+  else if UTF8CompareText(aString, krsFTBackCoverKey) = 0 then
+    Result := CTKFTBackCover
+  else if UTF8CompareText(aString, krsFTBackDustJacketKey) = 0 then
+    Result := CTKFTBackDustJacket
+  else if UTF8CompareText(aString, krsFTOtherKey) = 0 then
+    Result := CTKFTOther;
 end;
 
-function Str2PageTypeKeySet(aString: string): tCTKPageContents;
+function Str2FrameTypeSet(aString: string): tCTKPageContents;
 var
   aSL: TStringList;
 begin
@@ -71,42 +88,43 @@ begin
   aSL := TStringList.Create;
   try
     aSL.CommaText := aString;
-    Result := StrLst2PageTypeKeySet(aSL);
+    Result := StrLst2FrameTypeSet(aSL);
   finally
     aSL.Free;
   end;
 end;
 
-function StrLst2PageTypeKeySet(aStringList: TStringList): tCTKPageContents;
+function StrLst2FrameTypeSet(aStringList: TStringList): tCTKPageContents;
 var
   i: integer;
 begin
   Result := [];
 
-  if not Assigned(aStringList) then Exit;
+  if not Assigned(aStringList) then
+    Exit;
 
   i := 0;
   while i < aStringList.Count do
   begin
     if aStringList[i] <> '' then
-      Include(Result, Str2PageTypeKey(aStringList[i]));
+      Include(Result, Str2FrameType(aStringList[i]));
     Inc(i);
   end;
 end;
 
-function PageTypeKeySet2Str(aPageTypes: tCTKPageContents): string;
+function FrameTypeSet2Str(aPageTypes: tCTKPageContents): string;
 var
   aSL: TStringList;
-  iProp: tCTKPageContent;
+  iProp: tCTKFrameType;
 begin
   Result := '';
 
   try
     aSL := TStringList.Create;
-    for  iProp := Low(tCTKPageContent) to High(tCTKPageContent) do
+    for  iProp := Low(tCTKFrameType) to High(tCTKFrameType) do
     begin
       if iProp in aPageTypes then
-        aSL.Add(ComictecaPageContentKey[iProp]);
+        aSL.Add(ComictecaFrameTypeKey[iProp]);
     end;
 
     Result := aSL.CommaText;

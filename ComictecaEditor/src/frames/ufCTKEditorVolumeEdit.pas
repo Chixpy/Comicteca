@@ -7,15 +7,12 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   Spin, LazFileUtils,
+  // CHX units
   uCHXStrUtils,
+  // Comicteca Editor units
+  uCTKEditorConst,
+  //
   uafCTKEditorFrame;
-
-const
-  kSeriesCBFile = 'Series.txt';
-  kTitlesCBFile = 'Titles.txt';
-  kPublishersCBFile = 'Publishers.txt';
-  kEditorsCBFile = 'Editors.txt';
-  kLanguageCBFile = 'Languages.txt';
 
 type
 
@@ -26,11 +23,14 @@ type
     cbxLangSummary: TComboBox;
     cbxSerieTitle: TComboBox;
     chkRight2Left: TCheckBox;
+    eFanSuber: TEdit;
     eTitle: TEdit;
     cbxEditor: TComboBox;
     cbxLanguage: TComboBox;
+    lFanSub: TLabel;
     lSummary: TLabel;
     mSummary: TMemo;
+    pLanguaje: TPanel;
     pSummary: TPanel;
     seSerieOrder: TSpinEdit;
     cbxPublisher: TComboBox;
@@ -44,6 +44,7 @@ type
     lTitleOrder: TLabel;
     pTitle: TPanel;
     procedure chkRight2LeftEditingDone(Sender: TObject);
+    procedure eFanSuberEditingDone(Sender: TObject);
     procedure eTitleEditingDone(Sender: TObject);
     procedure cbxEditorEditingDone(Sender: TObject);
     procedure cbxPublisherEditingDone(Sender: TObject);
@@ -98,6 +99,14 @@ begin
     Exit;
 
   Comic.Right2Left := chkRight2Left.Checked;
+end;
+
+procedure TfmCTKEditorVolumeEdit.eFanSuberEditingDone(Sender: TObject);
+begin
+  if not Assigned(Comic) then
+    Exit;
+
+  Comic.FanSuber := eFanSuber.Text;
 end;
 
 
@@ -234,6 +243,8 @@ begin
 end;
 
 procedure TfmCTKEditorVolumeEdit.DoLoadFrameData;
+var
+  StrLst: TStringList;
 begin
   Enabled := Assigned(Comic);
 
@@ -250,8 +261,15 @@ begin
   cbxPublisher.Text := Comic.Publisher;
   cbxEditor.Text := Comic.Editor;
   cbxLanguage.Text := Comic.Language;
+  eFanSuber.Text := Comic.FanSuber;
   chkRight2Left.Checked := Comic.Right2Left;
-  mSummary.Lines.Assign(Comic.Summary.CTMGetSL(cbxLangSummary.Text));
+
+  // Nil can't be assigned to TStringList...
+  StrLst := Comic.Summary.CTMGetSL(cbxLangSummary.Text);
+  if assigned(StrLst) then
+    mSummary.Lines.Assign(StrLst)
+  else
+    mSummary.Clear;
 end;
 
 procedure TfmCTKEditorVolumeEdit.DoClearFrameData;
@@ -264,6 +282,7 @@ begin
   cbxPublisher.Text := '';
   cbxEditor.Text := '';
   cbxLanguage.Text := '';
+  eFanSuber.Text := '';
   chkRight2Left.Checked := False;
   cbxLangSummary.Text := '';
   mSummary.Clear;

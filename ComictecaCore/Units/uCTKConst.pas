@@ -1,10 +1,10 @@
 unit uCTKConst;
 
-{< Comicteca Editor constants unit.
+{< Comicteca Core constants unit.
 
-  This file is part of Comicteca Editor.
+  This file is part of Comicteca Core.
 
-  Copyright (C) 2020 Chixpy
+  Copyright (C) 2020-2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -41,8 +41,6 @@ const
   krsLocaleFolder = 'locale/';
   //< Subfolder for localization files.
 
-
-
   // XML file, sections and keys.
   krsCTKXMLComicFile = 'CTKInfo.xml';
   krsCTKXMLComicRoot = 'CTKInfo';
@@ -50,51 +48,79 @@ const
   // Common
   krsCTKXMLRAW = 'RAW';
   krsCTKXMLOrderProp = 'Order';
+  krsCTKXMLRect = 'Rect';
 
 
   // Volume
   krsCTKXMLVolume = 'Volume';
+  krsCTKXMLLanguage = 'Language';
+  krsCTKXMLFanSuber = 'FanSuber';
   krsCTKXMLSerie = 'Serie';
   krsCTKXMLTitle = 'Title';
   krsCTKXMLEditor = 'Editor';
   krsCTKXMLPublisher = 'Publisher';
-  krsCTKXMLLanguage = 'Language';
   krsCTKXMLR2L = 'Right2Left';
-    krsCTKXMLSummary = 'Summary';
+  krsCTKXMLSummary = 'Summary';
 
   // Pages
   krsCTKXMLPageList = 'PageList';
   krsCTKXMLPage = 'Page';
 
+
+  krsCTKXMLFileProp = 'File';
   krsCTKXMLSHA1Prop = 'SHA1';
   krsCTKXMLMultipageProp = 'Multipage';
   krsCTKXMLContentProp = 'Content';
-
-  krsPCVignettesKey = 'Vignettes';
-  krsPCFrontCoverKey = 'FrontCover';
-  krsPCBackCoverKey = 'BackCover';
-  krsPCChapterTitleKey = 'ChapterTitle';
-  krsPCEditorialInfoKey = 'EditorialInfo';
-  krsPCAutorTextKey = 'AuthorText';
-  krsPCAdsKey = 'Advertising';
-  krsPCOtherKey = 'Other';
 
   // Frames
   krsCTKXMLFrameList = 'FrameList';
   krsCTKXMLFrame = 'Frame';
 
-  // Metadata
+  krsCTKXMLFrameType = 'FrameType';
+
+  krsFTVignetteKey = 'Vignette'; //< Viñeta
+  krsFTSpineDustJacketKey = 'SpineDustJacket';
+  //< Lomo de la sobrecubierta
+  krsFTFrontDustJacketKey = 'FrontDustJacket';
+  //< Frontal de la sobrecubierta
+  krsFTSpineCoverKey = 'SpineCover'; //< Lomo de la cubierta
+  krsFTFrontCoverKey = 'FrontCover'; //< Frontal de la cubierta (Portada)
+  krsFTEndPaperKey = 'EndPaper';
+  //< Guarda (Páginas al inicio o final que unen la cubierta con el resto.)
+  krsFTFlyLeafKey = 'FlyLeaf'; //< Página de cortesía (en blanco)
+  krsFTIndexKey = 'Index';
+  krsFTBastardTitleKey = 'BastardTitle';
+  //< Antetítulo (Págína con título, casi vacía)
+  krsFTChapterTitleKey = 'ChapterTitle';
+  krsFTEditorialInfoKey = 'EditorialInfo';
+  krsFTAuthorTextKey = 'AuthorText';
+  krsFTAdsKey = 'Advertising';
+  krsFTLicenseKey = 'License';
+  krsFTBackCoverKey = 'BackCover'; //< Trasera de la cubierta (Contraportada)
+  krsFTBackDustJacketKey = 'BackDustJacket';
+  //< Trasera de la sobrecubierta
+  krsFTOtherKey = 'Other';
+
+  // Texts
+  krsCTKXMLText = 'Text';
+
+// Metadata
 
 type
-  tCTKPageContent = (CTKPTVignettes, CTKPTFrontCover, CTKPTBackCover,
-    CTKPTChapterTitle, CTKPTEditorialInfo, CTKPTAuthorText, CTKPTAds, CTKPTOther);
-  tCTKPageContents = set of tCTKPageContent;
+  tCTKFrameType = (CTKFTVignette, CTKFTSpineDustJacket, CTKFTFrontDustJacket,
+    CTKFTSpineCover, CTKFTFrontCover, CTKFTEndPaper,
+    CTKFTFlyLeaf, CTKFTIndex, CTKFTBastardTitle, CTKFTChapterTitle,
+    CTKFTEditorialInfo, CTKFTAuthorText, CTKFTAds, CTKFTLicense,
+    CTKFTBackCover, CTKFTBackDustJacket, CTKFTOther);
+  tCTKPageContents = set of tCTKFrameType;
 
 const
-  ComictecaPageContentKey: array [tCTKPageContent] of string =
-    (krsPCVignettesKey, krsPCFrontCoverKey, krsPCBackCoverKey,
-    krsPCChapterTitleKey, krsPCEditorialInfoKey, krsPCAutorTextKey,
-    krsPCAdsKey, krsPCOtherKey);
+  ComictecaFrameTypeKey: array [tCTKFrameType] of string =
+    (krsFTVignetteKey, krsFTSpineDustJacketKey, krsFTFrontDustJacketKey,
+    krsFTSpineCoverKey, krsFTFrontCoverKey, krsFTEndPaperKey,
+    krsFTFlyLeafKey, krsFTIndexKey, krsFTBastardTitleKey, krsFTChapterTitleKey,
+    krsFTEditorialInfoKey, krsFTAuthorTextKey, krsFTAdsKey, krsFTLicenseKey,
+    krsFTBackCoverKey, krsFTBackDustJacketKey, krsFTOtherKey);
 
 implementation
 

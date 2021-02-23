@@ -4,7 +4,7 @@ unit ufCTKEditorMain;
 
   This file is part of Comicteca Editor.
 
-  Copyright (C) 2020 Chixpy
+  Copyright (C) 2020-2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -31,12 +31,15 @@ uses
   // CHx units
   uCHXStrUtils,
   // Comicteca Core classes
-  ucComictecaPage, ucComictecaFrame,
+  ucComictecaPage, ucComictecaFrame, ucComictecaText,
   // Comicteca Editor abstract frames
   uafCTKEditorFrame, uafCTKEditorPageFrame, uafCTKEditorFrameFrame,
+  uafCTKEditorTextFrame,
   // Comicteca Editor frames
-  ufCTKEditorVolumeEdit, ufCTKEditorImgList, ufCTKEditorPageEdit,
-  ufCTKEditorPageVisor, ufCTKEditorFrameList;
+  ufCTKEditorImgList, ufCTKEditorFrameList, ufCTKEditorTextList,
+  ufCTKEditorVolumeEdit, ufCTKEditorPageEdit, ufCTKEditorFrameEdit,
+  ufCTKEditorTextEdit,
+  ufCTKEditorPageVisor, ufCTKEditorFrameVisor, ufCTKEditorTextVisor;
 
 const
   kDataFolder = 'Data';
@@ -67,6 +70,7 @@ type
 
     procedure DoSelectPage(aCTKPage: cComictecaPage);
     procedure DoSelectFrame(aCTKFrame: cComictecaFrame);
+    procedure DoSelectText(aCTKText: cComictecaText);
 
     procedure UpdateFrames;
 
@@ -110,17 +114,36 @@ begin
       fmRight.Align := alClient;
       fmRight.Parent := pRight;
     end;
-    2: // Vignettes
+    2: // Frames
     begin
       FfmLeft := TfmCTKEditorFrameList.Create(pLeft);
+      TfmCTKEditorFrameList(fmLeft).OnFrameSelect := @DoSelectFrame;
       fmLeft.Align := alClient;
       fmLeft.Parent := pLeft;
+
+      FfmCenter := TfmCTKEditorFrameEdit.Create(pCenter);
+      fmCenter.Align := alClient;
+      fmCenter.Parent := pCenter;
+
+      FfmRight := TfmCTKEditorFrameVisor.Create(pRight);
+      fmRight.Align := alClient;
+      fmRight.Parent := pRight;
     end;
     3: // Texts
     begin
-      FfmLeft := TfmCTKEditorFrameList.Create(pLeft);
+      FfmLeft := TfmCTKEditorTextList.Create(pLeft);
+      TfmCTKEditorTextList(fmLeft).OnTextSelect := @DoSelectText;
       fmLeft.Align := alClient;
       fmLeft.Parent := pLeft;
+
+      FfmCenter := TfmCTKEditorTextEdit.Create(pCenter);
+      TfmCTKEditorTextEdit(fmCenter).DataFolder := kDataFolder;
+      fmCenter.Align := alClient;
+      fmCenter.Parent := pCenter;
+
+      FfmRight := TfmCTKEditorTextVisor.Create(pRight);
+      fmRight.Align := alClient;
+      fmRight.Parent := pRight;
     end;
     4: // Metadata
     begin
@@ -168,7 +191,7 @@ begin
     TafmCTKEditorPageFrame(fmCenter).Page := aCTKPage;
 
   if assigned(fmRight) and (fmRight is TafmCTKEditorPageFrame) then
-    TafmCTKEditorPageFrame(fmRight).Page := aCTKPage
+    TafmCTKEditorPageFrame(fmRight).Page := aCTKPage;
 end;
 
 procedure TfmCTKEditorMain.DoSelectFrame(aCTKFrame: cComictecaFrame);
@@ -181,6 +204,18 @@ begin
 
   if assigned(fmRight) and (fmRight is TafmCTKEditorFrameFrame) then
     TafmCTKEditorFrameFrame(fmRight).Frame := aCTKFrame;
+end;
+
+procedure TfmCTKEditorMain.DoSelectText(aCTKText: cComictecaText);
+begin
+  if assigned(fmLeft) and (fmLeft is TafmCTKEditorTextFrame) then
+    TafmCTKEditorTextFrame(fmLeft).CTKText := aCTKText;
+
+  if assigned(fmCenter) and (fmCenter is TafmCTKEditorTextFrame) then
+    TafmCTKEditorTextFrame(fmCenter).CTKText := aCTKText;
+
+  if assigned(fmRight) and (fmRight is TafmCTKEditorTextFrame) then
+    TafmCTKEditorTextFrame(fmRight).CTKText := aCTKText;
 end;
 
 procedure TfmCTKEditorMain.UpdateFrames;

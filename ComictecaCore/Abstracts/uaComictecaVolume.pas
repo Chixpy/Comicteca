@@ -4,7 +4,7 @@ unit uaComictecaVolume;
 
   This file is part of Comiceca Core.
 
-  Copyright (C) 2019-2020 Chixpy
+  Copyright (C) 2019-2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -29,7 +29,7 @@ uses
   Classes, SysUtils, FileUtil, LazFileUtils, Laz2_DOM, laz2_XMLRead,
   Laz2_XMLWrite,
   // CHX units
-  uCHXStrUtils,
+  uCHXStrUtils, uCHX7zWrapper,
   // Comicteca Core units
   uCTKConst,
   // Comicteca Core class
@@ -46,6 +46,7 @@ type
   caComictecaVolume = class(TComponent)
   private
     FArchive: string;
+    FFanSuber: string;
     FLanguage: string;
     FPublisher: string;
     FSingleComic: boolean;
@@ -59,6 +60,7 @@ type
     FSerieOrder: integer;
     FTitleOrder: integer;
     procedure SetArchive(AValue: string);
+    procedure SetFanSuber(AValue: string);
     procedure SetLanguage(AValue: string);
     procedure SetPublisher(AValue: string);
     procedure SetSingleComic(AValue: boolean);
@@ -71,6 +73,8 @@ type
     procedure SetTitleOrder(AValue: integer);
 
   public
+    procedure Clear; virtual;
+
     procedure LoadFromArchive(aArchive: string);
     procedure LoadFromFolder(aFolder: string);
     procedure LoadFromFile(aFile: string);
@@ -96,6 +100,9 @@ type
 
     // Volume properties
     property Language: string read FLanguage write SetLanguage;
+    //< Language of the Volume
+    property FanSuber: string read FFanSuber write SetFanSuber;
+    {< If it's already fansubbed who did it. If it's original, empty.}
 
     property Serie: string read FSerie write SetSerie;
 
@@ -109,6 +116,7 @@ type
     property Publisher: string read FPublisher write SetPublisher;
 
     property Right2Left: boolean read FRight2Left write SetRight2Left;
+    {< Is it inverted? Usually original manga. }
 
     property Summary: cComictecaTextMap read FSummary;
   end;
@@ -148,6 +156,13 @@ begin
   if FArchive = AValue then
     Exit;
   FArchive := AValue;
+end;
+
+procedure caComictecaVolume.SetFanSuber(AValue: string);
+begin
+  if FFanSuber = AValue then
+    Exit;
+  FFanSuber := AValue;
 end;
 
 procedure caComictecaVolume.SetLanguage(AValue: string);
@@ -192,13 +207,51 @@ begin
   FTitleOrder := AValue;
 end;
 
+procedure caComictecaVolume.Clear;
+begin
+  // Archive is set and exists, Folder is a temp folder
+  if (Archive <> '') and FileExistsUTF8(Archive) and
+    DirectoryExistsUTF8(Folder) then
+    DeleteDirectory(Folder, False);
+
+  Archive := '';
+  Folder := '';
+  Language := '';
+  FanSuber := '';
+  Serie := '';
+  SerieOrder := kSerieOrder;
+  Title.Clear;
+  TitleOrder := kTitleOrder;
+  Editor := '';
+  Publisher := '';
+  Right2Left := False;
+  Summary.Clear;
+end;
+
 procedure caComictecaVolume.LoadFromArchive(aArchive: string);
 begin
+  if not w7zPathsOK then
+    Exit;
 
+  if not FileExistsUTF8(aArchive) then
+    Exit;
+
+  Folder := SetAsFolder(GetTempDir(False)) + 'Comicteca';
+
+  if w7zExtractFile(aArchive, '*', Folder, True, '') <> 0 then
+  begin
+    Folder := '';
+    Exit;
+  end;
+
+  LoadFromFolder(Folder);
+  // Comic is cleared on LoadFromFolder
+  Archive := aArchive;
 end;
 
 procedure caComictecaVolume.LoadFromFolder(aFolder: string);
 begin
+  Self.Clear;
   Folder := aFolder;
   LoadFromFile(Folder + krsCTKXMLComicFile);
 end;
@@ -266,10 +319,15 @@ begin
   if assigned(Element) then
     Publisher := Element.TextContent;
 
-  // Languaje
+  // Language
   Element := TDOMElement(Volume.FindNode(krsCTKXMLLanguage));
   if assigned(Element) then
     Language := Element.TextContent;
+
+  // FanSuber
+  Element := TDOMElement(Volume.FindNode(krsCTKXMLFanSuber));
+  if assigned(Element) then
+    FanSuber := Element.TextContent;
 
   // Right 2 Left
   Element := TDOMElement(Volume.FindNode(krsCTKXMLR2L));
@@ -283,7 +341,33 @@ end;
 
 procedure caComictecaVolume.SaveToArchive;
 begin
+  // Checking decompressed
+  if Folder = '' then
+    Exit;
 
+  if not DirectoryExistsUTF8(Folder) then
+    Exit;
+
+  // Saving to Temp folder
+  SaveToFolder;
+
+  if not w7zPathsOK then
+    Exit;
+
+  Archive := SysPath(Archive);
+  if SupportedExtCT(Archive, 'zip,cbz') then
+  begin
+    w7zCompressFolder(Archive, Folder, False, True, 'zip');
+  end
+  else if SupportedExtCT(Archive, '7z,cb7') then
+  begin
+    w7zCompressFolder(Archive, Folder, False, True, '7z');
+  end
+  else
+  begin
+    Archive := ChangeFileExt(Archive, '.cbz');
+    w7zCompressFolder(Archive, Folder, False, True, 'zip');
+  end;
 end;
 
 procedure caComictecaVolume.SaveToFolder;
@@ -326,35 +410,58 @@ begin
   Root.AppendChild(Volume);
 
   // Language
-  Element := aXMLDoc.CreateElement(krsCTKXMLLanguage);
-  Volume.AppendChild(Element);
-  Element.AppendChild(aXMLDoc.CreateTextNode(Language));
+  if Language <> '' then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLLanguage);
+    Volume.AppendChild(Element);
+    Element.AppendChild(aXMLDoc.CreateTextNode(Language));
+  end;
+
+  // Fan subber
+  if FanSuber <> '' then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLFanSuber);
+    Volume.AppendChild(Element);
+    Element.AppendChild(aXMLDoc.CreateTextNode(FanSuber));
+  end;
 
   // Serie
-  Element := aXMLDoc.CreateElement(krsCTKXMLSerie);
-  Volume.AppendChild(Element);
-  Element.AppendChild(aXMLDoc.CreateTextNode(Serie));
-  // Serie Order
-  if SerieOrder <> -1 then
-    Element[krsCTKXMLOrderProp] := IntToStr(SerieOrder);
+  if Serie <> '' then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLSerie);
+    Volume.AppendChild(Element);
+    Element.AppendChild(aXMLDoc.CreateTextNode(Serie));
+    // Serie Order
+    if SerieOrder <> -1 then
+      Element[krsCTKXMLOrderProp] := IntToStr(SerieOrder);
+  end;
 
   // Title
-  Element := aXMLDoc.CreateElement(krsCTKXMLTitle);
-  Volume.AppendChild(Element);
-  Title.SaveToXML(aXMLDoc, Element);
-  // Title Order
-  if TitleOrder <> -1 then
-    Element[krsCTKXMLOrderProp] := IntToStr(TitleOrder);
+  if Title.Count > 0 then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLTitle);
+    Volume.AppendChild(Element);
+    Title.SaveToXML(aXMLDoc, Element);
+    // Title Order
+    if TitleOrder <> -1 then
+      Element[krsCTKXMLOrderProp] := IntToStr(TitleOrder);
+  end;
 
   // Editor
-  Element := aXMLDoc.CreateElement(krsCTKXMLEditor);
-  Volume.AppendChild(Element);
-  Element.AppendChild(aXMLDoc.CreateTextNode(Editor));
+  if Editor <> '' then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLEditor);
+    Volume.AppendChild(Element);
+    Element.AppendChild(aXMLDoc.CreateTextNode(Editor));
+  end;
 
   // Publisher
-  Element := aXMLDoc.CreateElement(krsCTKXMLPublisher);
-  Volume.AppendChild(Element);
-  Element.AppendChild(aXMLDoc.CreateTextNode(Publisher));
+  if Publisher <> '' then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLPublisher);
+    Volume.AppendChild(Element);
+    Element.AppendChild(aXMLDoc.CreateTextNode(Publisher));
+  end;
 
   // Right 2 Left
   if Right2Left then
@@ -364,9 +471,12 @@ begin
   end;
 
   // Summary
-  Element := aXMLDoc.CreateElement(krsCTKXMLSummary);
-  Volume.AppendChild(Element);
-  Summary.SaveToXML(aXMLDoc, Element);
+  if Summary.Count > 0 then
+  begin
+    Element := aXMLDoc.CreateElement(krsCTKXMLSummary);
+    Volume.AppendChild(Element);
+    Summary.SaveToXML(aXMLDoc, Element);
+  end;
 end;
 
 constructor caComictecaVolume.Create(aOwner: TComponent);
@@ -382,6 +492,11 @@ end;
 
 destructor caComictecaVolume.Destroy;
 begin
+  // Archive is set and exists, Folder is a temp folder
+  if (Archive <> '') and FileExistsUTF8(Archive) and
+    DirectoryExistsUTF8(Folder) then
+    DeleteDirectory(Folder, False);
+
   FSummary.Free;
   FTitle.Free;
 

@@ -1,0 +1,152 @@
+inherited fmCTKEditorTextEdit: TfmCTKEditorTextEdit
+  object gbxTextEdit: TGroupBox[0]
+    Left = 0
+    Height = 95
+    Top = 0
+    Width = 400
+    Align = alTop
+    AutoSize = True
+    Caption = 'Text Frame Properties'
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 4
+    ChildSizing.VerticalSpacing = 4
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 70
+    ClientWidth = 396
+    TabOrder = 0
+    object lLeft: TLabel
+      Left = 4
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Left'
+      ParentColor = False
+    end
+    object eLeft: TSpinEdit
+      Left = 4
+      Height = 28
+      Top = 38
+      Width = 66
+      MaxValue = 8096
+      OnChange = eLeftChange
+      TabOrder = 0
+    end
+    object lTop: TLabel
+      Left = 74
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Top'
+      ParentColor = False
+    end
+    object eTop: TSpinEdit
+      Left = 74
+      Height = 28
+      Top = 38
+      Width = 66
+      MaxValue = 8096
+      OnChange = eTopChange
+      TabOrder = 1
+    end
+    object lRight: TLabel
+      Left = 144
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Right'
+      ParentColor = False
+    end
+    object eRight: TSpinEdit
+      Left = 144
+      Height = 28
+      Top = 38
+      Width = 66
+      MaxValue = 8096
+      OnChange = eRightChange
+      TabOrder = 2
+    end
+    object lBottom: TLabel
+      Left = 214
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Bottom'
+      ParentColor = False
+    end
+    object eBottom: TSpinEdit
+      Left = 214
+      Height = 28
+      Top = 38
+      Width = 66
+      MaxValue = 8096
+      OnChange = eBottomChange
+      TabOrder = 3
+    end
+    object bResetFrame: TButton
+      Left = 284
+      Height = 30
+      Top = 4
+      Width = 108
+      Caption = 'Reset Frame'
+      OnClick = bResetFrameClick
+      TabOrder = 4
+    end
+  end
+  object pContent: TPanel[1]
+    Left = 0
+    Height = 28
+    Top = 99
+    Width = 400
+    Align = alTop
+    AutoSize = True
+    BevelOuter = bvNone
+    ChildSizing.HorizontalSpacing = 4
+    ChildSizing.VerticalSpacing = 4
+    ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 28
+    ClientWidth = 400
+    TabOrder = 1
+    object lContent: TLabel
+      Left = 0
+      Height = 28
+      Top = 0
+      Width = 52
+      Align = alLeft
+      Caption = 'Content'
+      ParentColor = False
+    end
+    object cbxLangContent: TComboBox
+      Left = 56
+      Height = 28
+      Top = 0
+      Width = 344
+      Align = alClient
+      ItemHeight = 20
+      Sorted = True
+      TabOrder = 0
+    end
+  end
+  object mContent: TMemo[2]
+    Left = 0
+    Height = 169
+    Top = 131
+    Width = 400
+    Align = alClient
+    OnEditingDone = mContentEditingDone
+    ScrollBars = ssAutoVertical
+    TabOrder = 2
+    WordWrap = False
+  end
+end

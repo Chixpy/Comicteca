@@ -1,0 +1,106 @@
+inherited fmCTKEditorTextList: TfmCTKEditorTextList
+  Height = 490
+  Width = 358
+  ClientHeight = 490
+  ClientWidth = 358
+  DesignLeft = 455
+  DesignTop = 177
+  object gbxPage: TGroupBox[0]
+    Left = 0
+    Height = 53
+    Top = 0
+    Width = 358
+    Align = alTop
+    AutoSize = True
+    Caption = 'Page'
+    ClientHeight = 28
+    ClientWidth = 354
+    TabOrder = 0
+    object cbxPage: TComboBox
+      Left = 0
+      Height = 28
+      Top = 0
+      Width = 354
+      Align = alTop
+      AutoDropDown = True
+      ItemHeight = 20
+      OnChange = cbxPageChange
+      Style = csDropDownList
+      TabOrder = 0
+    end
+  end
+  object gbxTexts: TGroupBox[1]
+    Left = 0
+    Height = 433
+    Top = 57
+    Width = 358
+    Align = alClient
+    Caption = 'Texts'
+    ClientHeight = 408
+    ClientWidth = 354
+    TabOrder = 1
+    object lbxTexts: TListBox
+      Left = 0
+      Height = 335
+      Top = 0
+      Width = 354
+      Align = alClient
+      ItemHeight = 0
+      OnSelectionChange = lbxTextsSelectionChange
+      TabOrder = 0
+    end
+    object pFrameListButtons: TPanel
+      Left = 0
+      Height = 73
+      Top = 335
+      Width = 354
+      Align = alBottom
+      AutoSize = True
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.VerticalSpacing = 4
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 2
+      ClientHeight = 73
+      ClientWidth = 354
+      TabOrder = 1
+      object bMoveUp: TButton
+        Left = 4
+        Height = 30
+        Top = 4
+        Width = 106
+        Caption = 'Move Up'
+        OnClick = bMoveUpClick
+        TabOrder = 0
+      end
+      object bAddText: TButton
+        Left = 114
+        Height = 30
+        Top = 4
+        Width = 112
+        Caption = 'Add Text'
+        OnClick = bAddTextClick
+        TabOrder = 1
+      end
+      object bMoveDown: TButton
+        Left = 4
+        Height = 30
+        Top = 38
+        Width = 106
+        Caption = 'Move Down'
+        OnClick = bMoveDownClick
+        TabOrder = 3
+      end
+      object bRemoveText: TButton
+        Left = 114
+        Height = 30
+        Top = 38
+        Width = 112
+        Caption = 'Remove Text'
+        OnClick = bRemoveTextClick
+        TabOrder = 2
+      end
+    end
+  end
+end

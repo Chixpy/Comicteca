@@ -1,8 +1,10 @@
 {"version":1,"strings":[
 {"hash":96079395,"name":"tfmctkeditorframeedit.gbxframeedit.caption","sourcebytes":[70,114,97,109,101,32,112,114,111,112,101,114,116,105,101,115],"value":"Frame properties"},
-{"hash":88,"name":"tfmctkeditorframeedit.lx.caption","sourcebytes":[88],"value":"X"},
-{"hash":89,"name":"tfmctkeditorframeedit.ly.caption","sourcebytes":[89],"value":"Y"},
-{"hash":6159272,"name":"tfmctkeditorframeedit.lwidth.caption","sourcebytes":[87,105,100,116,104],"value":"Width"},
-{"hash":82574836,"name":"tfmctkeditorframeedit.lheight.caption","sourcebytes":[72,101,105,103,104,116],"value":"Height"},
-{"hash":86477809,"name":"tfmctkeditorframeedit.label1.caption","sourcebytes":[76,97,98,101,108,49],"value":"Label1"}
+{"hash":338900,"name":"tfmctkeditorframeedit.lleft.caption","sourcebytes":[76,101,102,116],"value":"Left"},
+{"hash":23392,"name":"tfmctkeditorframeedit.ltop.caption","sourcebytes":[84,111,112],"value":"Top"},
+{"hash":5832180,"name":"tfmctkeditorframeedit.lright.caption","sourcebytes":[82,105,103,104,116],"value":"Right"},
+{"hash":76987229,"name":"tfmctkeditorframeedit.lbottom.caption","sourcebytes":[66,111,116,116,111,109],"value":"Bottom"},
+{"hash":102060021,"name":"tfmctkeditorframeedit.bresetframe.caption","sourcebytes":[82,101,115,101,116,32,70,114,97,109,101],"value":"Reset Frame"},
+{"hash":354261,"name":"tfmctkeditorframeedit.lpage.caption","sourcebytes":[80,97,103,101],"value":"Page"},
+{"hash":57768165,"name":"tfmctkeditorframeedit.lframetype.caption","sourcebytes":[70,114,97,109,101,32,84,121,112,101],"value":"Frame Type"}
 ]}

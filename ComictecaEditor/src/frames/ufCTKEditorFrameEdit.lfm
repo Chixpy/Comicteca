@@ -1,8 +1,8 @@
 inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
   object gbxFrameEdit: TGroupBox[0]
     Left = 0
-    Height = 85
-    Top = 32
+    Height = 95
+    Top = 56
     Width = 400
     Align = alTop
     AutoSize = True
@@ -15,95 +15,132 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
     ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
     ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
-    ChildSizing.Layout = cclLeftToRightThenTopToBottom
-    ChildSizing.ControlsPerLine = 4
-    ClientHeight = 60
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 2
+    ClientHeight = 70
     ClientWidth = 396
     TabOrder = 0
-    object lX: TLabel
+    object lLeft: TLabel
       Left = 4
-      Height = 20
+      Height = 30
       Top = 4
-      Width = 94
+      Width = 66
       Alignment = taCenter
-      Caption = 'X'
+      Caption = 'Left'
       ParentColor = False
     end
-    object lY: TLabel
-      Left = 102
-      Height = 20
-      Top = 4
-      Width = 94
-      Alignment = taCenter
-      Caption = 'Y'
-      ParentColor = False
-    end
-    object lWidth: TLabel
-      Left = 200
-      Height = 20
-      Top = 4
-      Width = 94
-      Alignment = taCenter
-      Caption = 'Width'
-      ParentColor = False
-    end
-    object lHeight: TLabel
-      Left = 298
-      Height = 20
-      Top = 4
-      Width = 94
-      Alignment = taCenter
-      Caption = 'Height'
-      ParentColor = False
-    end
-    object eX: TSpinEdit
+    object eLeft: TSpinEdit
       Left = 4
       Height = 28
-      Top = 28
-      Width = 94
+      Top = 38
+      Width = 66
       MaxValue = 8096
+      OnChange = eLeftChange
       TabOrder = 0
     end
-    object eY: TSpinEdit
-      Left = 102
+    object lTop: TLabel
+      Left = 74
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Top'
+      ParentColor = False
+    end
+    object eTop: TSpinEdit
+      Left = 74
       Height = 28
-      Top = 28
-      Width = 94
+      Top = 38
+      Width = 66
       MaxValue = 8096
+      OnChange = eTopChange
       TabOrder = 1
     end
-    object eWidth: TSpinEdit
-      Left = 200
+    object lRight: TLabel
+      Left = 144
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Right'
+      ParentColor = False
+    end
+    object eRight: TSpinEdit
+      Left = 144
       Height = 28
-      Top = 28
-      Width = 94
+      Top = 38
+      Width = 66
       MaxValue = 8096
+      OnChange = eRightChange
       TabOrder = 2
     end
-    object eHeight: TSpinEdit
-      Left = 298
+    object lBottom: TLabel
+      Left = 214
+      Height = 30
+      Top = 4
+      Width = 66
+      Alignment = taCenter
+      Caption = 'Bottom'
+      ParentColor = False
+    end
+    object eBottom: TSpinEdit
+      Left = 214
       Height = 28
-      Top = 28
-      Width = 94
+      Top = 38
+      Width = 66
       MaxValue = 8096
+      OnChange = eBottomChange
       TabOrder = 3
+    end
+    object bResetFrame: TButton
+      Left = 284
+      Height = 30
+      Top = 4
+      Width = 108
+      Caption = 'Reset Frame'
+      OnClick = bResetFrameClick
+      TabOrder = 4
     end
   end
   object cbxFramePage: TComboBox[1]
     Left = 0
     Height = 28
-    Top = 0
+    Top = 24
     Width = 400
     Align = alTop
     ItemHeight = 20
+    OnChange = cbxFramePageChange
+    Style = csDropDownList
     TabOrder = 1
   end
-  object Label1: TLabel[2]
+  object lPage: TLabel[2]
     Left = 0
     Height = 20
     Top = 0
-    Width = 44
-    Caption = 'Label1'
+    Width = 400
+    Align = alTop
+    Caption = 'Page'
     ParentColor = False
+  end
+  object lFrameType: TLabel[3]
+    Left = 0
+    Height = 20
+    Top = 155
+    Width = 400
+    Align = alTop
+    Caption = 'Frame Type'
+    ParentColor = False
+  end
+  object cbxFrameType: TComboBox[4]
+    Left = 0
+    Height = 28
+    Top = 179
+    Width = 400
+    Align = alTop
+    ItemHeight = 20
+    OnChange = cbxFrameTypeChange
+    OnEditingDone = cbxFrameTypeEditingDone
+    Style = csDropDownList
+    TabOrder = 2
   end
 end

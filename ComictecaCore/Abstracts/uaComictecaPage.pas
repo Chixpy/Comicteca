@@ -4,7 +4,7 @@ unit uaComictecaPage;
 
   This file is part of Comicteca Core.
 
-  Copyright (C) 2019 Chixpy
+  Copyright (C) 2019-2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -34,7 +34,7 @@ uses
 
 const
   kDefMultiplePages = 1;
-  kDefPageContent = [CTKPTVignettes];
+  kDefPageContent = [CTKFTVignette];
 
 
 type
@@ -60,8 +60,10 @@ type
 
   public
 
-    procedure LoadFromXML(Node: TDOMElement); virtual;
-    procedure SaveToXML(aXMLDoc: TXMLDocument; Node: TDOMElement); virtual;
+    function MatchSHA1(aSHA1: string): boolean;
+
+    procedure LoadFromXML(aXMLNode: TDOMElement); virtual;
+    procedure SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement); virtual;
 
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
@@ -110,44 +112,52 @@ begin
   FSHA1 := AValue;
 end;
 
-procedure caComictecaPage.LoadFromXML(Node: TDOMElement);
+function caComictecaPage.MatchSHA1(aSHA1: string): boolean;
 begin
-  if not Assigned(Node) then
+  Result := UTF8CompareText(Self.SHA1, aSHA1) = 0;
+end;
+
+procedure caComictecaPage.LoadFromXML(aXMLNode: TDOMElement);
+begin
+  if not Assigned(aXMLNode) then
     Exit;
 
-  FileName := Node.TextContent;
+  FileName := aXMLNode[krsCTKXMLFileProp];
+  // TODO: Delete fallback
+  if FileName= '' then
+    FileName := aXMLNode.TextContent;
 
-  SHA1 := Node[krsCTKXMLSHA1Prop];
+  SHA1 := aXMLNode[krsCTKXMLSHA1Prop];
 
-  MultiplePages := StrToIntDef(Node[krsCTKXMLMultipageProp], kDefMultiplePages);
+  MultiplePages := StrToIntDef(aXMLNode[krsCTKXMLMultipageProp], kDefMultiplePages);
 
-  PageContent := Str2PageTypeKeySet(Node[krsCTKXMLContentProp]);
+  PageContent := Str2FrameTypeSet(aXMLNode[krsCTKXMLContentProp]);
   if PageContent = [] then
     PageContent := kDefPageContent;
 end;
 
-procedure caComictecaPage.SaveToXML(aXMLDoc: TXMLDocument; Node: TDOMElement);
+procedure caComictecaPage.SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement);
 var
   aSL: TStringList;
-  iProp: tCTKPageContent;
+  iProp: tCTKFrameType;
 begin
-  if not Assigned(Node) then
+  if (not Assigned(aXMLNode)) or (not Assigned(aXMLDoc)) then
     Exit;
 
   if SHA1 = '' then
     Exit;
 
-  Node.AppendChild(aXMLDoc.CreateTextNode(FileName));
+  aXMLNode[krsCTKXMLFileProp] := FileName;
 
-  Node[krsCTKXMLSHA1Prop] := SHA1;
+  aXMLNode[krsCTKXMLSHA1Prop] := SHA1;
 
   // MultiplePages
   if MultiplePages <> kDefMultiplePages then
-    Node[krsCTKXMLMultipageProp] := IntToStr(MultiplePages);
+    aXMLNode[krsCTKXMLMultipageProp] := IntToStr(MultiplePages);
 
   // PageContent
   if PageContent <> kDefPageContent then
-    Node[krsCTKXMLContentProp] := PageTypeKeySet2Str(PageContent);
+    aXMLNode[krsCTKXMLContentProp] := FrameTypeSet2Str(PageContent);
 end;
 
 constructor caComictecaPage.Create(aOwner: TComponent);

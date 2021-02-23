@@ -4,7 +4,7 @@ unit uaComictecaFrame;
 
   This file is part of Comicteca Core.
 
-  Copyright (C) 2019 Chixpy
+  Copyright (C) 2021 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -26,51 +26,89 @@ unit uaComictecaFrame;
 interface
 
 uses
-  Classes, SysUtils, Laz2_DOM, laz2_XMLRead, Laz2_XMLWrite;
+  Classes, SysUtils, Laz2_DOM, laz2_XMLRead, Laz2_XMLWrite,
+  // CHX units
+  uCHXRecordHelpers,
+  // Comicteca Core units
+  uCTKConst, uCTKCommon;
+
+const
+    kCTKFdefType = CTKFTVignette;
 
 type
-
-  { cComictecaVignette }
 
   { caComictecaFrame }
 
   caComictecaFrame = class(TComponent)
   private
-    FRawText: TStringList;
+    FFrameType: tCTKFrameType;
+    procedure SetFrameType(AValue: tCTKFrameType);
 
   public
+    Rect: TRect;
 
-    procedure LoadFromXML(Parent: TDOMElement); virtual;
-    procedure SaveToXML(aXMLDoc: TXMLDocument; Parent: TDOMElement); virtual;
+    procedure LoadFromXML(aXMLNode: TDOMElement); virtual;
+    procedure SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement); virtual;
 
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
 
   published
+    property FrameType: tCTKFrameType read FFrameType write SetFrameType;
 
   end;
 
 implementation
 
-{ caComictecaFrame }
-procedure caComictecaFrame.LoadFromXML(Parent: TDOMElement);
+procedure caComictecaFrame.SetFrameType(AValue: tCTKFrameType);
 begin
+  if FFrameType = AValue then Exit;
+  FFrameType := AValue;
 
+  FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure caComictecaFrame.LoadFromXML(aXMLNode: TDOMElement);
+var
+  aSrt: string;
+begin
+   if not Assigned(aXMLNode) then
+    Exit;
+
+   Rect.FromString(aXMLNode[krsCTKXMLRect]);
+
+   aSrt := aXMLNode[krsCTKXMLFrameType];
+   if aSrt <> '' then
+     FrameType := Str2FrameType(aSrt)
+   else
+     FrameType := kCTKFdefType;
 end;
 
 procedure caComictecaFrame.SaveToXML(aXMLDoc: TXMLDocument;
-  Parent: TDOMElement);
+  aXMLNode: TDOMElement);
 begin
+   if (not Assigned(aXMLNode)) or (not Assigned(aXMLDoc)) then
+     Exit;
 
+   aXMLNode[krsCTKXMLRect] := Rect.ToString;
+
+   if FrameType <> kCTKFdefType then
+     aXMLNode[krsCTKXMLFrameType] := ComictecaFrameTypeKey[FrameType]
 end;
 
 constructor caComictecaFrame.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
+
+  FrameType := kCTKFdefType;
+
+  FPONotifyObservers(Self, ooChange, nil);
 end;
 
 destructor caComictecaFrame.Destroy;
 begin
+  FPONotifyObservers(Self, ooFree, nil);
+
   inherited Destroy;
 end;
 

@@ -4,6 +4,9 @@
     <Version Value="11"/>
     <PathDelim Value="\"/>
     <General>
+      <Flags>
+        <SaveOnlyProjectUnits Value="True"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
       <AutoCreateForms Value="False"/>
@@ -25,8 +28,8 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <MinorVersionNr Value="1"/>
-      <BuildNr Value="3"/>
+      <MinorVersionNr Value="4"/>
+      <BuildNr Value="7"/>
     </VersionInfo>
     <BuildModes Count="2">
       <Item1 Name="Debug" Default="True"/>
@@ -78,7 +81,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="38">
+    <Units Count="49">
       <Unit0>
         <Filename Value="ComictecaEditor.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -131,7 +134,6 @@
       <Unit10>
         <Filename Value="src\units\uCTKEditorConst.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uCTKGUIConst"/>
       </Unit10>
       <Unit11>
         <Filename Value="..\ComictecaCore\Classes\ucComictecaPage.pas"/>
@@ -274,6 +276,68 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
       </Unit37>
+      <Unit38>
+        <Filename Value="src\frames\ufCTKEditorFrameVisor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorFrameVisor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="..\..\CHX\Units\uCHXRecordHelpers.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="..\..\CHX\Frames\ufCHXBGRAImgViewerEx.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXBGRAImgViewerEx"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaText.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaTextList.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaText.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="src\frames\ufCTKEditorTextList.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorTextList"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="src\abstracts\uafCTKEditorTextFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="afmCTKEditorTextFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="src\frames\ufCTKEditorTextEdit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorTextEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="src\frames\ufCTKEditorTextVisor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCTKEditorTextVisor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Unit47>
+      <Unit48>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolumeRenderizer.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit48>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

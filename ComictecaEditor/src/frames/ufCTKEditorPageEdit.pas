@@ -53,6 +53,7 @@ type
     pValues: TPanel;
     procedure cgrPageContentClick(Sender: TObject);
     procedure cgrPageContentItemClick(Sender: TObject; Index: integer);
+    procedure eMultipageChange(Sender: TObject);
     procedure eMultipageEditingDone(Sender: TObject);
 
   protected
@@ -82,7 +83,7 @@ end;
 procedure TfmCTKEditorPageEdit.cgrPageContentClick(Sender: TObject);
 var
   aProps: tCTKPageContents;
-  i: tCTKPageContent;
+  i: tCTKFrameType;
 begin
   if not assigned(Page) then
     Exit;
@@ -108,16 +109,24 @@ begin
   aProps := Page.PageContent;
 
   if cgrPageContent.Checked[Index] then
-    Include(aProps, tCTKPageContent(Index))
+    Include(aProps, tCTKFrameType(Index))
   else
-    Exclude(aProps, tCTKPageContent(Index));
+    Exclude(aProps, tCTKFrameType(Index));
 
   Page.PageContent := aProps;
 end;
 
+procedure TfmCTKEditorPageEdit.eMultipageChange(Sender: TObject);
+begin
+    if not assigned(Page) then
+    Exit;
+
+  Page.MultiplePages := eMultipage.Value;
+end;
+
 procedure TfmCTKEditorPageEdit.DoLoadFrameData;
 var
-  i: tCTKPageContent;
+  i: tCTKFrameType;
 begin
   ClearFrameData;
 
@@ -162,7 +171,7 @@ constructor TfmCTKEditorPageEdit.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
 
-  cgrPageContent.Items.AddStrings(ComictecaPageContentStr);
+  cgrPageContent.Items.AddStrings(ComictecaFrameTypeStr);
 
   OnLoadFrameData := @DoLoadFrameData;
   OnClearFrameData := @DoClearFrameData;
