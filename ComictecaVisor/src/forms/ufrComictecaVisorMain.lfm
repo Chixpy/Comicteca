@@ -9,7 +9,6 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PopupMenu = pmMainMenu
-  WindowState = wsFullScreen
   object alCTKVisor: TActionList[0]
     Left = 64
     Top = 352
@@ -52,11 +51,18 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
       ShortCut = 35
     end
     object actFlipR2L: TAction
-      Category = 'Options'
+      Category = 'View'
       AutoCheck = True
       Caption = 'Flip R2L Comics'
       Checked = True
       OnExecute = actFlipR2LExecute
+    end
+    object actToggleFullScreen: TAction
+      Category = 'View'
+      AutoCheck = True
+      Caption = 'Full Screen'
+      OnExecute = actToggleFullScreenExecute
+      ShortCut = 122
     end
   end
   object pmMainMenu: TPopupMenu[1]
@@ -64,6 +70,17 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
     Top = 352
     object mimmFileOpen: TMenuItem
       Action = actFileOpen
+    end
+    object mimmView: TMenuItem
+      Caption = 'View'
+      object mimmFullScreen: TMenuItem
+        Action = actToggleFullScreen
+        AutoCheck = True
+      end
+      object mimmFlipR2L: TMenuItem
+        Action = actFlipR2L
+        AutoCheck = True
+      end
     end
     object mimmGo: TMenuItem
       Caption = 'Go'
@@ -80,12 +97,11 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
         Action = actLast
       end
     end
-    object mimmOptions: TMenuItem
-      Caption = 'Options'
-      object mimmFlipR2L: TMenuItem
-        Action = actFlipR2L
-        AutoCheck = True
-      end
+    object MenuItem1: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem2: TMenuItem
+      Action = actExit
     end
   end
 end

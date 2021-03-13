@@ -90,7 +90,7 @@ end;
 procedure cComictecaFrame.SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement
   );
 begin
-      if Assigned(Page) then
+  if Assigned(Page) then
     aXMLNode[krsCTKXMLPage] := Page.SHA1;
 
   inherited SaveToXML(aXMLDoc, aXMLNode);

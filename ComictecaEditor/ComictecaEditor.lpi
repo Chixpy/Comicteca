@@ -73,13 +73,16 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="BGRABitmapPack"/>
+        <PackageName Value="LazControls"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCL"/>
+        <PackageName Value="BGRABitmapPack"/>
       </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
     </RequiredPackages>
     <Units Count="49">
       <Unit0>
@@ -335,7 +338,7 @@
         <ResourceBaseClass Value="Frame"/>
       </Unit47>
       <Unit48>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolumeRenderizer.pas"/>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolumeRenderer.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit48>
     </Units>

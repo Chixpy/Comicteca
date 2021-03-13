@@ -37,6 +37,10 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
+#: tfcomictecavisormain.acttogglefullscreen.caption
+msgid "Full Screen"
+msgstr ""
+
 #: tfcomictecavisormain.caption
 msgid "Comicteca Visor"
 msgstr ""
@@ -45,8 +49,8 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: tfcomictecavisormain.mimmoptions.caption
-msgid "Options"
+#: tfcomictecavisormain.mimmview.caption
+msgid "View"
 msgstr ""
 
 #: tfrmchxform.caption

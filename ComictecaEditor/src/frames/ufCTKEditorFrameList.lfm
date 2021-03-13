@@ -13,27 +13,6 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
     ClientHeight = 431
     ClientWidth = 396
     TabOrder = 0
-    object lvFrameList: TListView
-      Left = 0
-      Height = 358
-      Top = 0
-      Width = 396
-      Align = alClient
-      AutoSort = False
-      AutoWidthLastColumn = True
-      Columns = <      
-        item
-          Caption = 'Frame'
-          Width = 392
-        end>
-      GridLines = True
-      HideSelection = False
-      RowSelect = True
-      ScrollBars = ssAutoBoth
-      TabOrder = 0
-      ViewStyle = vsReport
-      OnSelectItem = lvFrameListSelectItem
-    end
     object pFrameListButtons: TPanel
       Left = 0
       Height = 73
@@ -49,7 +28,7 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
       ChildSizing.ControlsPerLine = 2
       ClientHeight = 73
       ClientWidth = 396
-      TabOrder = 1
+      TabOrder = 0
       object bSubir: TButton
         Left = 4
         Height = 30
@@ -59,13 +38,13 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         OnClick = bSubirClick
         TabOrder = 0
       end
-      object bAddframe: TButton
+      object bAddFrame: TButton
         Left = 114
         Height = 30
         Top = 4
         Width = 125
         Caption = 'Add Frame'
-        OnClick = bAddframeClick
+        OnClick = bAddFrameClick
         TabOrder = 1
       end
       object bMoveDown: TButton
@@ -86,6 +65,17 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         OnClick = bRemoveFrameClick
         TabOrder = 2
       end
+    end
+    object lbxFrameList: TListBox
+      Left = 0
+      Height = 358
+      Top = 0
+      Width = 396
+      Align = alClient
+      ExtendedSelect = False
+      ItemHeight = 0
+      OnSelectionChange = lbxFrameListSelectionChange
+      TabOrder = 1
     end
   end
 end

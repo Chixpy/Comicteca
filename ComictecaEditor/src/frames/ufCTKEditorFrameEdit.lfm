@@ -1,11 +1,13 @@
 inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
+  Height = 355
+  ClientHeight = 355
+  DesignTop = 191
   object gbxFrameEdit: TGroupBox[0]
     Left = 0
-    Height = 95
+    Height = 159
     Top = 56
     Width = 400
     Align = alTop
-    AutoSize = True
     Caption = 'Frame properties'
     ChildSizing.LeftRightSpacing = 4
     ChildSizing.TopBottomSpacing = 4
@@ -14,17 +16,25 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
     ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
     ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
-    ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
+    ChildSizing.ShrinkVertical = crsHomogenousChildResize
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
-    ChildSizing.ControlsPerLine = 2
-    ClientHeight = 70
+    ChildSizing.ControlsPerLine = 4
+    ClientHeight = 134
     ClientWidth = 396
     TabOrder = 0
-    object lLeft: TLabel
+    object pEmpty1: TPanel
       Left = 4
       Height = 30
       Top = 4
-      Width = 66
+      Width = 83
+      BevelOuter = bvNone
+      TabOrder = 4
+    end
+    object lLeft: TLabel
+      Left = 4
+      Height = 28
+      Top = 38
+      Width = 83
       Alignment = taCenter
       Caption = 'Left'
       ParentColor = False
@@ -32,74 +42,112 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     object eLeft: TSpinEdit
       Left = 4
       Height = 28
-      Top = 38
-      Width = 66
+      Top = 70
+      Width = 83
+      Alignment = taRightJustify
       MaxValue = 8096
       OnChange = eLeftChange
-      TabOrder = 0
+      TabOrder = 8
+    end
+    object pEmpty2: TPanel
+      Left = 4
+      Height = 28
+      Top = 102
+      Width = 83
+      BevelOuter = bvNone
+      TabOrder = 5
     end
     object lTop: TLabel
-      Left = 74
+      Left = 91
       Height = 30
       Top = 4
-      Width = 66
+      Width = 83
       Alignment = taCenter
       Caption = 'Top'
       ParentColor = False
     end
     object eTop: TSpinEdit
-      Left = 74
+      Left = 91
       Height = 28
       Top = 38
-      Width = 66
+      Width = 83
+      Alignment = taRightJustify
+      Increment = -1
       MaxValue = 8096
       OnChange = eTopChange
-      TabOrder = 1
-    end
-    object lRight: TLabel
-      Left = 144
-      Height = 30
-      Top = 4
-      Width = 66
-      Alignment = taCenter
-      Caption = 'Right'
-      ParentColor = False
-    end
-    object eRight: TSpinEdit
-      Left = 144
-      Height = 28
-      Top = 38
-      Width = 66
-      MaxValue = 8096
-      OnChange = eRightChange
-      TabOrder = 2
+      TabOrder = 0
     end
     object lBottom: TLabel
-      Left = 214
-      Height = 30
-      Top = 4
-      Width = 66
+      Left = 91
+      Height = 28
+      Top = 70
+      Width = 83
       Alignment = taCenter
       Caption = 'Bottom'
       ParentColor = False
     end
     object eBottom: TSpinEdit
-      Left = 214
+      Left = 91
       Height = 28
-      Top = 38
-      Width = 66
+      Top = 102
+      Width = 83
+      Alignment = taRightJustify
+      Increment = -1
       MaxValue = 8096
       OnChange = eBottomChange
-      TabOrder = 3
+      TabOrder = 2
     end
-    object bResetFrame: TButton
-      Left = 284
+    object pEmpty3: TPanel
+      Left = 178
       Height = 30
       Top = 4
-      Width = 108
+      Width = 83
+      BevelOuter = bvNone
+      TabOrder = 6
+    end
+    object lRight: TLabel
+      Left = 178
+      Height = 28
+      Top = 38
+      Width = 83
+      Alignment = taCenter
+      Caption = 'Right'
+      ParentColor = False
+    end
+    object eRight: TSpinEdit
+      Left = 178
+      Height = 28
+      Top = 70
+      Width = 83
+      Alignment = taRightJustify
+      MaxValue = 8096
+      OnChange = eRightChange
+      TabOrder = 1
+    end
+    object pEmpty4: TPanel
+      Left = 178
+      Height = 28
+      Top = 102
+      Width = 83
+      BevelOuter = bvNone
+      TabOrder = 7
+    end
+    object bResetFrame: TButton
+      Left = 265
+      Height = 30
+      Top = 4
+      Width = 127
       Caption = 'Reset Frame'
       OnClick = bResetFrameClick
-      TabOrder = 4
+      TabOrder = 3
+    end
+    object chkEllipseFrame: TCheckBox
+      Left = 265
+      Height = 28
+      Top = 38
+      Width = 127
+      Caption = 'Ellipse'
+      TabOrder = 9
     end
   end
   object cbxFramePage: TComboBox[1]
@@ -125,7 +173,7 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
   object lFrameType: TLabel[3]
     Left = 0
     Height = 20
-    Top = 155
+    Top = 219
     Width = 400
     Align = alTop
     Caption = 'Frame Type'
@@ -134,7 +182,7 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
   object cbxFrameType: TComboBox[4]
     Left = 0
     Height = 28
-    Top = 179
+    Top = 243
     Width = 400
     Align = alTop
     ItemHeight = 20

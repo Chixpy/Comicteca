@@ -53,14 +53,18 @@ type
   TfComictecaVisorMain = class(TfrmCHXForm)
     actFirst: TAction;
     actFlipR2L: TAction;
+    actToggleFullScreen: TAction;
     actLast: TAction;
     actNext: TAction;
     actPrevious: TAction;
     alCTKVisor: TActionList;
     actFileOpen: TFileOpen;
     actExit: TFileExit;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    mimmFullScreen: TMenuItem;
     mimmFlipR2L: TMenuItem;
-    mimmOptions: TMenuItem;
+    mimmView: TMenuItem;
     mimmLast: TMenuItem;
     mimmNext: TMenuItem;
     mimmPrevious: TMenuItem;
@@ -74,13 +78,16 @@ type
     procedure actLastExecute(Sender: TObject);
     procedure actNextExecute(Sender: TObject);
     procedure actPreviousExecute(Sender: TObject);
+    procedure actToggleFullScreenExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
+
   private
     FBaseFolder: string;
     FComic: cComictecaVolume;
     FCurrentImage: TBGRABitmap;
     FCurrentPos: integer;
+    FFullScreen: boolean;
     FImgViewer: TfmCHXBGRAImgViewerEx;
     FMode: TCTKMode;
     FRenderer: cComictecaVolumeRenderer;
@@ -88,6 +95,7 @@ type
     procedure SetComic(AValue: cComictecaVolume);
     procedure SetCurrentImage(AValue: TBGRABitmap);
     procedure SetCurrentPos(AValue: integer);
+    procedure SetFullScreen(AValue: boolean);
     procedure SetImgViewer(AValue: TfmCHXBGRAImgViewerEx);
     procedure SetMode(AValue: TCTKMode);
 
@@ -105,9 +113,10 @@ type
 
     property BaseFolder: string read FBaseFolder write SetBaseFolder;
 
+    property FullScreen: boolean read FFullScreen write SetFullScreen;
+
     property Mode: TCTKMode read FMode write SetMode;
     property CurrentPos: integer read FCurrentPos write SetCurrentPos;
-
     property CurrentImage: TBGRABitmap
       read FCurrentImage write SetCurrentImage;
 
@@ -128,9 +137,9 @@ implementation
 procedure TfComictecaVisorMain.FormCloseQuery(Sender: TObject;
   var CanClose: boolean);
 begin
-  FreeAndNil(FComic);
-  FreeAndNil(FCurrentImage);
   FreeAndNil(FRenderer);
+  FreeAndNil(FCurrentImage);
+  FreeAndNil(FComic);
 
   CanClose := True;
 end;
@@ -155,6 +164,8 @@ end;
 procedure TfComictecaVisorMain.actFlipR2LExecute(Sender: TObject);
 begin
   Renderer.FlipL2R := actFlipR2L.Checked;
+
+  ShowCurrentImage;
 end;
 
 procedure TfComictecaVisorMain.actLastExecute(Sender: TObject);
@@ -180,6 +191,11 @@ end;
 procedure TfComictecaVisorMain.actPreviousExecute(Sender: TObject);
 begin
   CurrentPos := CurrentPos - 1;
+end;
+
+procedure TfComictecaVisorMain.actToggleFullScreenExecute(Sender: TObject);
+begin
+  FullScreen := not FullScreen;
 end;
 
 procedure TfComictecaVisorMain.FormCreate(Sender: TObject);
@@ -277,6 +293,18 @@ begin
   ShowCurrentImage;
 end;
 
+procedure TfComictecaVisorMain.SetFullScreen(AValue: boolean);
+begin
+  if FFullScreen = AValue then
+    Exit;
+  FFullScreen := AValue;
+
+  if FullScreen then
+    ShowWindow(Handle, SW_SHOWFULLSCREEN)
+  else
+    ShowWindow(Handle, SW_RESTORE);
+end;
+
 procedure TfComictecaVisorMain.SetBaseFolder(AValue: string);
 begin
   if FBaseFolder = AValue then
@@ -300,12 +328,12 @@ end;
 
 procedure TfComictecaVisorMain.LoadCurrFrame;
 begin
-  CurrentImage := Renderer.RenderFrame(CurrentPos);
+  CurrentImage := Renderer.RenderFrameByIdx(CurrentPos);
 end;
 
 procedure TfComictecaVisorMain.LoadCurrPage;
 begin
-  CurrentImage := Renderer.RenderPage(CurrentPos);
+  CurrentImage := Renderer.RenderPageByIdx(CurrentPos);
 end;
 
 procedure TfComictecaVisorMain.ShowCurrentImage;

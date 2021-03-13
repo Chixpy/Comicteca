@@ -46,11 +46,13 @@ type
     procedure SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement);
       override;
 
+    procedure CopyFrom(aCTKText: cComictecaText);
+
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
   end;
 
-  TCTKTextObjProc = procedure(aCTKPage: cComictecaText) of object;
+  TCTKTextObjProc = procedure(aCTKText: cComictecaText) of object;
 
 implementation
 
@@ -72,6 +74,14 @@ procedure cComictecaText.SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement
   );
 begin
   inherited SaveToXML(aXMLDoc, aXMLNode);
+end;
+
+procedure cComictecaText.CopyFrom(aCTKText: cComictecaText);
+begin
+  if not Assigned(aCTKText) then Exit;
+
+  Self.Rect := aCTKText.Rect;
+  Self.Page := aCTKText.Page;
 end;
 
 constructor cComictecaText.Create(aOwner: TComponent);

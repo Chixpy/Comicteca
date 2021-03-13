@@ -2,7 +2,8 @@
 {"hash":354261,"name":"tfmctkeditortextlist.gbxpage.caption","sourcebytes":[80,97,103,101],"value":"Page"},
 {"hash":5951411,"name":"tfmctkeditortextlist.gbxtexts.caption","sourcebytes":[84,101,120,116,115],"value":"Texts"},
 {"hash":74216848,"name":"tfmctkeditortextlist.bmoveup.caption","sourcebytes":[77,111,118,101,32,85,112],"value":"Move Up"},
-{"hash":174434436,"name":"tfmctkeditortextlist.baddtext.caption","sourcebytes":[65,100,100,32,84,101,120,116],"value":"Add Text"},
 {"hash":208995006,"name":"tfmctkeditortextlist.bmovedown.caption","sourcebytes":[77,111,118,101,32,68,111,119,110],"value":"Move Down"},
+{"hash":174434436,"name":"tfmctkeditortextlist.baddtext.caption","sourcebytes":[65,100,100,32,84,101,120,116],"value":"Add Text"},
+{"hash":174367241,"name":"tfmctkeditortextlist.baddtextcopy.caption","sourcebytes":[65,100,100,32,67,111,112,121],"value":"Add Copy"},
 {"hash":204302484,"name":"tfmctkeditortextlist.bremovetext.caption","sourcebytes":[82,101,109,111,118,101,32,84,101,120,116],"value":"Remove Text"}
 ]}

@@ -3,5 +3,10 @@
 {"hash":2901221,"name":"tfmctkeditorpageedit.lfilename.caption","sourcebytes":[70,105,108,101,110,97,109,101],"value":"Filename"},
 {"hash":127165557,"name":"tfmctkeditorpageedit.lmultipage.caption","sourcebytes":[80,97,103,101,115,32,105,110,32,73,109,97,103,101],"value":"Pages in Image"},
 {"hash":359489,"name":"tfmctkeditorpageedit.lsha1.caption","sourcebytes":[83,72,65,49],"value":"SHA1"},
-{"hash":174435348,"name":"tfmctkeditorpageedit.cgrpagecontent.caption","sourcebytes":[67,111,110,116,101,110,116],"value":"Content"}
+{"hash":174435348,"name":"tfmctkeditorpageedit.cgrpagecontent.caption","sourcebytes":[67,111,110,116,101,110,116],"value":"Content"},
+{"hash":216806501,"name":"tfmctkeditorpageedit.gbxfixperspective.caption","sourcebytes":[70,105,120,32,80,101,114,115,112,101,99,116,105,118,101],"value":"Fix Perspective"},
+{"hash":103100004,"name":"tfmctkeditorpageedit.ltopleft.caption","sourcebytes":[84,111,112,32,76,101,102,116],"value":"Top Left"},
+{"hash":39364244,"name":"tfmctkeditorpageedit.ltopright.caption","sourcebytes":[84,111,112,32,82,105,103,104,116],"value":"Top Right"},
+{"hash":96354404,"name":"tfmctkeditorpageedit.lbottomleft.caption","sourcebytes":[66,111,116,116,111,109,32,76,101,102,116],"value":"Bottom Left"},
+{"hash":198067876,"name":"tfmctkeditorpageedit.lbottomright.caption","sourcebytes":[66,111,116,116,111,109,32,82,105,103,104,116],"value":"Bottom Right"}
 ]}

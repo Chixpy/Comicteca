@@ -15,27 +15,6 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
     ClientHeight = 565
     ClientWidth = 454
     TabOrder = 0
-    object lvFileList: TListView
-      Left = 0
-      Height = 492
-      Top = 0
-      Width = 454
-      Align = alClient
-      AutoSort = False
-      AutoWidthLastColumn = True
-      Columns = <      
-        item
-          Caption = 'Filename'
-          Width = 450
-        end>
-      GridLines = True
-      HideSelection = False
-      RowSelect = True
-      ScrollBars = ssAutoBoth
-      TabOrder = 0
-      ViewStyle = vsReport
-      OnSelectItem = lvFileListSelectItem
-    end
     object pImgListButtons: TPanel
       Left = 0
       Height = 73
@@ -51,7 +30,7 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
       ChildSizing.ControlsPerLine = 2
       ClientHeight = 73
       ClientWidth = 454
-      TabOrder = 1
+      TabOrder = 0
       object bSubir: TButton
         Left = 4
         Height = 30
@@ -88,6 +67,17 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
         OnClick = bRemoveFileClick
         TabOrder = 2
       end
+    end
+    object lbxImageList: TListBox
+      Left = 0
+      Height = 492
+      Top = 0
+      Width = 454
+      Align = alClient
+      ExtendedSelect = False
+      ItemHeight = 0
+      OnSelectionChange = lbxImageListSelectionChange
+      TabOrder = 1
     end
   end
 end

@@ -1,4 +1,5 @@
 unit ufCTKEditorTextVisor;
+
 {< TfmCTKEditorTextVisor frame unit.
 
   This file is part of Comicteca Core.
@@ -30,7 +31,8 @@ uses
   // CHX frames
   ufCHXBGRAImgViewerEx,
   // Comicteca Core classes
-  ucComictecaText,
+  ucComictecaVolume, ucComictecaPage, ucComictecaText,
+  ucComictecaVolumeRenderer,
   // Comicteca Editor abstract frames
   uafCTKEditorTextFrame;
 
@@ -52,20 +54,17 @@ type
 
   private
     FfmVisor: TfmCHXBGRAImgViewerEx;
-    FPageFile: string;
-    FPageImage: TBGRABitmap;
+    FRenderer: cComictecaVolumeRenderer;
     FTextImage: TBGRABitmap;
-    procedure SetPageFile(AValue: string);
-    procedure SetPageImage(AValue: TBGRABitmap);
     procedure SetTextImage(AValue: TBGRABitmap);
 
   protected
     property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
-
-    property PageFile: string read FPageFile write SetPageFile;
-    property PageImage: TBGRABitmap read FPageImage write SetPageImage;
-
     property TextImage: TBGRABitmap read FTextImage write SetTextImage;
+
+    property Renderer: cComictecaVolumeRenderer read FRenderer;
+
+    procedure SetComic(AValue: cComictecaVolume); override;
 
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
@@ -77,6 +76,8 @@ type
       Shift: TShiftState; aRect: TRect);
 
   public
+    procedure ShowPage(aPage: cComictecaPage);
+
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
   end;
@@ -116,35 +117,33 @@ begin
     fmVisor.AutoZoom;
 end;
 
-procedure TfmCTKEditorTextVisor.SetPageFile(AValue: string);
-begin
-  if FPageFile = AValue then
-    Exit;
-  FPageFile := AValue;
-
-  FreeAndNil(FPageImage);
-
-  if not FileExists(PageFile) then
-    Exit;
-
-  FPageImage := TBGRABitmap.Create;
-  PageImage.LoadFromFile(PageFile);
-
-  DoLoadTextFrame;
-end;
-
-procedure TfmCTKEditorTextVisor.SetPageImage(AValue: TBGRABitmap);
-begin
-  if FPageImage = AValue then
-    Exit;
-  FPageImage := AValue;
-end;
-
 procedure TfmCTKEditorTextVisor.SetTextImage(AValue: TBGRABitmap);
 begin
   if FTextImage = AValue then
     Exit;
   FTextImage := AValue;
+end;
+
+procedure TfmCTKEditorTextVisor.SetComic(AValue: cComictecaVolume);
+begin
+  inherited SetComic(AValue);
+
+  Renderer.Comic := AValue;
+end;
+
+procedure TfmCTKEditorTextVisor.ShowPage(aPage: cComictecaPage);
+begin
+  ClearFrameData;
+
+  Enabled := Assigned(aPage) and Assigned(Comic);
+
+  if not Enabled then
+    Exit;
+
+  Renderer.ShowTextBorders := True;
+  FTextImage := Renderer.RenderPage(aPage);
+
+  fmVisor.ActualImage := FTextImage;
 end;
 
 procedure TfmCTKEditorTextVisor.DoLoadFrameData;
@@ -156,7 +155,11 @@ begin
   if not Enabled then
     Exit;
 
-  PageFile := Comic.Folder + CTKText.Page.FileName;
+  Renderer.ShowTextBorders := CTKText.Rect.IsEmpty;
+  FTextImage := Renderer.RenderPageRect(cComictecaPage(CTKText.Page),
+    CTKText.Rect);
+
+  fmVisor.ActualImage := FTextImage;
 end;
 
 procedure TfmCTKEditorTextVisor.DoClearFrameData;
@@ -167,39 +170,12 @@ end;
 
 procedure TfmCTKEditorTextVisor.DoLoadTextFrame;
 begin
-  DoClearTextFrame;
-
-  Enabled := Assigned(CTKText) and Assigned(Comic);
-
-  if not Enabled then
-    Exit;
-
-  if not Assigned(CTKText.Page) then
-    Exit;
-
-  PageFile := Comic.Folder + CTKText.Page.FileName;
-
-  if (not Assigned(PageImage)) then
-    Exit;
-
-  CTKText.Rect.NormalizeRect;
-
-  if CTKText.Rect.IsEmpty then
-  begin
-    fmVisor.ActualImage := PageImage;
-  end
-  else
-  begin
-    FreeAndNil(FTextImage);
-    FTextImage := PageImage.GetPart(CTKText.Rect);
-    fmVisor.ActualImage := TextImage;
-  end;
+  DoLoadFrameData;
 end;
 
 procedure TfmCTKEditorTextVisor.DoClearTextFrame;
 begin
-  fmVisor.ActualImage := nil;
-  FreeAndNil(FTextImage);
+  DoClearFrameData;
 end;
 
 procedure TfmCTKEditorTextVisor.DoImgMouseDrag(Sender: TObject;
@@ -207,6 +183,9 @@ procedure TfmCTKEditorTextVisor.DoImgMouseDrag(Sender: TObject;
 var
   CurrRect: TRect;
 begin
+  if not assigned(CTKText) then
+    Exit;
+
   case Button of
     mbLeft:
     begin
@@ -251,12 +230,17 @@ begin
   OnClearFrameData := @DoClearFrameData;
 
   CreateFrames;
+
+  FRenderer := cComictecaVolumeRenderer.Create(nil);
+  Renderer.ShowFrameBorders := True;
+  Renderer.ShowTextBorders := True;
+  Renderer.ShowPerspectiveQuad := False;
 end;
 
 destructor TfmCTKEditorTextVisor.Destroy;
 begin
   FreeAndNil(FTextImage);
-  FreeAndNil(FPageImage);
+  FreeAndNil(FRenderer);
 
   inherited Destroy;
 end;

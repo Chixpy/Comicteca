@@ -46,16 +46,36 @@ type
     eFilename: TEdit;
     eMultipage: TSpinEdit;
     eSHA1: TEdit;
+    eTopLeftX: TSpinEdit;
+    eTopRightX: TSpinEdit;
+    eBottomLeftX: TSpinEdit;
+    eBottomRightX: TSpinEdit;
+    eTopLeftY: TSpinEdit;
+    eTopRightY: TSpinEdit;
+    eBottomLeftY: TSpinEdit;
+    eBottomRightY: TSpinEdit;
+    gbxFixPerspective: TGroupBox;
     gbxPage: TGroupBox;
     lFilename: TLabel;
     lMultipage: TLabel;
     lSHA1: TLabel;
+    lTopLeft: TLabel;
+    lTopRight: TLabel;
+    lBottomLeft: TLabel;
+    lBottomRight: TLabel;
     pValues: TPanel;
     procedure cgrPageContentClick(Sender: TObject);
     procedure cgrPageContentItemClick(Sender: TObject; Index: integer);
+    procedure eBottomLeftXEditingDone(Sender: TObject);
+    procedure eBottomLeftYEditingDone(Sender: TObject);
+    procedure eBottomRightXEditingDone(Sender: TObject);
+    procedure eBottomRightYEditingDone(Sender: TObject);
     procedure eMultipageChange(Sender: TObject);
     procedure eMultipageEditingDone(Sender: TObject);
-
+    procedure eTopLeftXEditingDone(Sender: TObject);
+    procedure eTopLeftYEditingDone(Sender: TObject);
+    procedure eTopRightXEditingDone(Sender: TObject);
+    procedure eTopRightYEditingDone(Sender: TObject);
   protected
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
@@ -78,6 +98,50 @@ begin
     Exit;
 
   Page.MultiplePages := eMultipage.Value;
+end;
+
+procedure TfmCTKEditorPageEdit.eTopLeftXEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersTL.X := eTopLeftX.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eTopLeftYEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersTL.Y := eTopLeftY.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eTopRightXEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersTR.X := eTopRightX.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eTopRightYEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersTR.Y := eTopRightY.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.cgrPageContentClick(Sender: TObject);
@@ -116,9 +180,53 @@ begin
   Page.PageContent := aProps;
 end;
 
+procedure TfmCTKEditorPageEdit.eBottomLeftXEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersBL.X := eBottomLeftX.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eBottomLeftYEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersBL.Y := eBottomLeftY.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eBottomRightXEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersBR.X := eBottomRightX.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eBottomRightYEditingDone(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PersBR.Y := eBottomRightY.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
 procedure TfmCTKEditorPageEdit.eMultipageChange(Sender: TObject);
 begin
-    if not assigned(Page) then
+  if not assigned(Page) then
     Exit;
 
   Page.MultiplePages := eMultipage.Value;
@@ -151,7 +259,7 @@ end;
 
 procedure TfmCTKEditorPageEdit.DoClearFrameData;
 var
-  i: Integer;
+  i: integer;
 begin
   eFilename.Clear;
 

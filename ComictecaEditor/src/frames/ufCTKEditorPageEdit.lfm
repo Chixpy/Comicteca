@@ -89,7 +89,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
     object cgrPageContent: TCheckGroup
       Left = 0
       Height = 24
-      Top = 124
+      Top = 225
       Width = 396
       Align = alTop
       AutoFill = True
@@ -107,6 +107,124 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
       OnClick = cgrPageContentClick
       OnItemClick = cgrPageContentItemClick
       TabOrder = 3
+    end
+    object gbxFixPerspective: TGroupBox
+      Left = 0
+      Height = 101
+      Top = 124
+      Width = 396
+      Align = alTop
+      AutoSize = True
+      Caption = 'Fix Perspective'
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 3
+      ClientHeight = 76
+      ClientWidth = 392
+      TabOrder = 4
+      object lTopLeft: TLabel
+        Left = 0
+        Height = 20
+        Top = 0
+        Width = 63
+        Caption = 'Top Left'
+        ParentColor = False
+      end
+      object eTopLeftX: TSpinEdit
+        Left = 0
+        Height = 28
+        Top = 20
+        Width = 63
+        MaxValue = 8192
+        OnEditingDone = eTopLeftXEditingDone
+        TabOrder = 0
+      end
+      object eTopLeftY: TSpinEdit
+        Left = 0
+        Height = 28
+        Top = 48
+        Width = 63
+        MaxValue = 8192
+        OnEditingDone = eTopLeftYEditingDone
+        TabOrder = 1
+      end
+      object lTopRight: TLabel
+        Left = 63
+        Height = 20
+        Top = 0
+        Width = 64
+        Caption = 'Top Right'
+        ParentColor = False
+      end
+      object eTopRightX: TSpinEdit
+        Left = 63
+        Height = 28
+        Top = 20
+        Width = 64
+        MaxValue = 8192
+        OnEditingDone = eTopRightXEditingDone
+        TabOrder = 2
+      end
+      object eTopRightY: TSpinEdit
+        Left = 63
+        Height = 28
+        Top = 48
+        Width = 64
+        MaxValue = 8192
+        OnEditingDone = eTopRightYEditingDone
+        TabOrder = 3
+      end
+      object lBottomLeft: TLabel
+        Left = 127
+        Height = 20
+        Top = 0
+        Width = 79
+        Caption = 'Bottom Left'
+        ParentColor = False
+      end
+      object eBottomLeftX: TSpinEdit
+        Left = 127
+        Height = 28
+        Top = 20
+        Width = 79
+        MaxValue = 8192
+        OnEditingDone = eBottomLeftXEditingDone
+        TabOrder = 4
+      end
+      object eBottomLeftY: TSpinEdit
+        Left = 127
+        Height = 28
+        Top = 48
+        Width = 79
+        MaxValue = 8192
+        OnEditingDone = eBottomLeftYEditingDone
+        TabOrder = 5
+      end
+      object lBottomRight: TLabel
+        Left = 206
+        Height = 20
+        Top = 0
+        Width = 89
+        Caption = 'Bottom Right'
+        ParentColor = False
+      end
+      object eBottomRightX: TSpinEdit
+        Left = 206
+        Height = 28
+        Top = 20
+        Width = 89
+        MaxValue = 8192
+        OnEditingDone = eBottomRightXEditingDone
+        TabOrder = 6
+      end
+      object eBottomRightY: TSpinEdit
+        Left = 206
+        Height = 28
+        Top = 48
+        Width = 89
+        MaxValue = 8192
+        OnEditingDone = eBottomRightYEditingDone
+        TabOrder = 7
+      end
     end
   end
 end

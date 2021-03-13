@@ -45,6 +45,7 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
       Top = 0
       Width = 354
       Align = alClient
+      ExtendedSelect = False
       ItemHeight = 0
       OnSelectionChange = lbxTextsSelectionChange
       TabOrder = 0
@@ -60,7 +61,7 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
       ChildSizing.TopBottomSpacing = 4
       ChildSizing.HorizontalSpacing = 4
       ChildSizing.VerticalSpacing = 4
-      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
       ChildSizing.ControlsPerLine = 2
       ClientHeight = 73
       ClientWidth = 354
@@ -74,15 +75,6 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         OnClick = bMoveUpClick
         TabOrder = 0
       end
-      object bAddText: TButton
-        Left = 114
-        Height = 30
-        Top = 4
-        Width = 112
-        Caption = 'Add Text'
-        OnClick = bAddTextClick
-        TabOrder = 1
-      end
       object bMoveDown: TButton
         Left = 4
         Height = 30
@@ -92,10 +84,28 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         OnClick = bMoveDownClick
         TabOrder = 3
       end
-      object bRemoveText: TButton
+      object bAddText: TButton
+        Left = 114
+        Height = 30
+        Top = 4
+        Width = 92
+        Caption = 'Add Text'
+        OnClick = bAddTextClick
+        TabOrder = 1
+      end
+      object bAddTextCopy: TButton
         Left = 114
         Height = 30
         Top = 38
+        Width = 92
+        Caption = 'Add Copy'
+        OnClick = bAddTextCopyClick
+        TabOrder = 4
+      end
+      object bRemoveText: TButton
+        Left = 210
+        Height = 30
+        Top = 4
         Width = 112
         Caption = 'Remove Text'
         OnClick = bRemoveTextClick

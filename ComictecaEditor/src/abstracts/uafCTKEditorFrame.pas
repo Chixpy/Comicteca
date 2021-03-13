@@ -38,7 +38,9 @@ type
   TafmCTKEditorFrame = class(TfmCHXFrame)
   private
     FComic: cComictecaVolume;
-    procedure SetComic(AValue: cComictecaVolume);
+
+  protected
+    procedure SetComic(AValue: cComictecaVolume); virtual;
 
   public
     constructor Create(TheOwner: TComponent); override;

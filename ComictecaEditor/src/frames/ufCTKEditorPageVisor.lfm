@@ -1,27 +1,29 @@
 inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
-  Height = 494
-  ClientHeight = 494
-  DesignLeft = 628
-  DesignTop = 311
+  Height = 618
+  Width = 500
+  ClientHeight = 618
+  ClientWidth = 500
   object pImageVisor: TPanel[0]
     Left = 0
-    Height = 435
+    Height = 559
     Top = 59
-    Width = 400
+    Width = 500
     Align = alClient
+    ParentFont = False
     TabOrder = 0
   end
   object gbxZoom: TGroupBox[1]
     Left = 0
     Height = 55
     Top = 0
-    Width = 400
+    Width = 500
     Align = alTop
     AutoSize = True
     Caption = 'Zoom'
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
     ClientHeight = 30
-    ClientWidth = 396
+    ClientWidth = 496
+    ParentFont = False
     TabOrder = 1
     object bZoomIn: TButton
       Left = 0
@@ -30,6 +32,7 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
       Width = 45
       Caption = 'x 2'
       OnClick = bZoomInClick
+      ParentFont = False
       TabOrder = 0
     end
     object bOrigZoom: TButton
@@ -39,6 +42,7 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
       Width = 41
       Caption = '1x'
       OnClick = bOrigZoomClick
+      ParentFont = False
       TabOrder = 2
     end
     object bZoomOut: TButton
@@ -48,6 +52,7 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
       Width = 44
       Caption = '/ 2'
       OnClick = bZoomOutClick
+      ParentFont = False
       TabOrder = 1
     end
     object tbxAutoZoom: TToggleBox
@@ -58,6 +63,7 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
       Caption = 'Auto Zoom'
       Checked = True
       OnChange = tbxAutoZoomChange
+      ParentFont = False
       State = cbChecked
       TabOrder = 3
     end

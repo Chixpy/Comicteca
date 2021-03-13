@@ -6,6 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  // CHX units
+  uCHXRecordHelpers,
   // Comiteca Core classes
   ucComictecaPage, ucComictecaText,
   // Comicteca Editor abstract frames
@@ -17,6 +19,7 @@ type
 
   TfmCTKEditorTextList = class(TafmCTKEditorFrame)
     bAddText: TButton;
+    bAddTextCopy: TButton;
     bMoveDown: TButton;
     bRemoveText: TButton;
     bMoveUp: TButton;
@@ -26,6 +29,7 @@ type
     lbxTexts: TListBox;
     pFrameListButtons: TPanel;
     procedure bAddTextClick(Sender: TObject);
+    procedure bAddTextCopyClick(Sender: TObject);
     procedure bMoveDownClick(Sender: TObject);
     procedure bRemoveTextClick(Sender: TObject);
     procedure bMoveUpClick(Sender: TObject);
@@ -34,8 +38,10 @@ type
 
   private
     FCurrentPage: cComictecaPage;
+    FOnPageSelect: TCTKPageObjProc;
     FOnTextSelect: TCTKTextObjProc;
     procedure SetCurrentPage(AValue: cComictecaPage);
+    procedure SetOnPageSelect(AValue: TCTKPageObjProc);
     procedure SetOnTextSelect(AValue: TCTKTextObjProc);
 
   protected
@@ -49,6 +55,7 @@ type
       read FCurrentPage write SetCurrentPage;
     property OnTextSelect: TCTKTextObjProc
       read FOnTextSelect write SetOnTextSelect;
+    property OnPageSelect: TCTKPageObjProc read FOnPageSelect write SetOnPageSelect;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -67,9 +74,12 @@ begin
 
   if (lbxTexts.ItemIndex < 0) or (lbxTexts.ItemIndex >
     (lbxTexts.Items.Count - 2)) then
+    Exit;
 
-    CurrentPage.Texts.Exchange(lbxTexts.ItemIndex, lbxTexts.ItemIndex + 1);
+  CurrentPage.Texts.Exchange(lbxTexts.ItemIndex, lbxTexts.ItemIndex + 1);
   lbxTexts.Items.Exchange(lbxTexts.ItemIndex, lbxTexts.ItemIndex + 1);
+
+  lbxTexts.ItemIndex := lbxTexts.ItemIndex + 1;
 end;
 
 procedure TfmCTKEditorTextList.bAddTextClick(Sender: TObject);
@@ -80,14 +90,65 @@ begin
   if not assigned(CurrentPage) then
     Exit;
 
+  aPos := lbxTexts.ItemIndex + 1;
+
   aText := cComictecaText.Create(nil);
   aText.Page := CurrentPage;
-  aPos := CurrentPage.Texts.Add(aText);
-  lbxTexts.AddItem(IntToStr(aPos), aText);
-  lbxTexts.ItemIndex := lbxTexts.ItemIndex + 1;
+
+
+  if (aPos < 1) or (aPos >= lbxTexts.Count) then
+  begin
+    aPos := CurrentPage.Texts.Add(aText);
+    lbxTexts.AddItem(IntToStr(aPos), aText);
+  end
+  else
+  begin
+    CurrentPage.Texts.Insert(aPos, aText);
+    lbxTexts.Items.Insert(aPos, IntToStr(aPos));
+    lbxTexts.Items.Objects[aPos] := aText;
+  end;
+
+  lbxTexts.ItemIndex := aPos;
+end;
+
+procedure TfmCTKEditorTextList.bAddTextCopyClick(Sender: TObject);
+
+  var
+    aText: cComictecaText;
+    aPos: integer;
+  begin
+    if not assigned(CurrentPage) then
+      Exit;
+
+    if lbxTexts.ItemIndex < 0 then
+    begin
+      bAddText.Click;
+      Exit;
+    end;
+
+    aText := cComictecaText.Create(nil);
+    aText.CopyFrom(cComictecaText(lbxTexts.Items.Objects[lbxTexts.ItemIndex]));
+
+    aPos := lbxTexts.ItemIndex + 1;
+
+    if (aPos < 1) or (aPos >= lbxTexts.Count) then
+    begin
+      aPos := CurrentPage.Texts.Add(aText);
+      lbxTexts.AddItem(aText.Rect.ToString, aText);
+    end
+    else
+    begin
+      CurrentPage.Texts.Insert(aPos, aText);
+      lbxTexts.Items.Insert(aPos, aText.Rect.ToString);
+      lbxTexts.Items.Objects[aPos] := aText;
+    end;
+
+    lbxTexts.ItemIndex := aPos;
 end;
 
 procedure TfmCTKEditorTextList.bRemoveTextClick(Sender: TObject);
+var
+  aPos: integer;
 begin
   if not assigned(CurrentPage) then
     Exit;
@@ -95,8 +156,20 @@ begin
   if lbxTexts.ItemIndex < 0 then
     Exit;
 
-  CurrentPage.Texts.Delete(lbxTexts.ItemIndex);
-  lbxTexts.Items.Delete(lbxTexts.ItemIndex);
+  aPos := lbxTexts.ItemIndex;
+
+  CurrentPage.Texts.Delete(aPos);
+  lbxTexts.Items.Delete(aPos);
+
+  if lbxTexts.Count = 0 then
+    OnTextSelect(nil)
+  else
+  begin
+    if aPos >= lbxTexts.Count then
+      lbxTexts.ItemIndex := lbxTexts.Count - 1
+    else
+      lbxTexts.ItemIndex := aPos;
+  end;
 end;
 
 procedure TfmCTKEditorTextList.bMoveUpClick(Sender: TObject);
@@ -109,6 +182,8 @@ begin
 
   CurrentPage.Texts.Exchange(lbxTexts.ItemIndex, lbxTexts.ItemIndex - 1);
   lbxTexts.Items.Exchange(lbxTexts.ItemIndex, lbxTexts.ItemIndex - 1);
+
+  lbxTexts.ItemIndex := lbxTexts.ItemIndex - 1;
 end;
 
 procedure TfmCTKEditorTextList.cbxPageChange(Sender: TObject);
@@ -120,6 +195,9 @@ begin
     CurrentPage := nil
   else
     CurrentPage := cComictecaPage(cbxPage.Items.Objects[cbxPage.ItemIndex]);
+
+  if Assigned(OnPageSelect) then
+    OnPageSelect(CurrentPage);
 end;
 
 procedure TfmCTKEditorTextList.lbxTextsSelectionChange(Sender: TObject;
@@ -152,11 +230,17 @@ begin
   LoadTextList;
 end;
 
+procedure TfmCTKEditorTextList.SetOnPageSelect(AValue: TCTKPageObjProc);
+begin
+  if FOnPageSelect = AValue then Exit;
+  FOnPageSelect := AValue;
+end;
+
 procedure TfmCTKEditorTextList.DoLoadFrameData;
 var
   i: integer;
 begin
-  Enabled := assigned(Comic);
+  Enabled := Assigned(Comic);
 
   if not Enabled then
   begin
@@ -198,7 +282,12 @@ begin
   i := 0;
   while (i < CurrentPage.Texts.Count) do
   begin
-    lbxTexts.AddItem(IntToStr(i), CurrentPage.Texts[i]);
+    if CurrentPage.Texts[i].Rect.IsEmpty then
+      lbxTexts.AddItem(IntToStr(i), CurrentPage.Texts[i])
+    else
+      lbxTexts.AddItem(CurrentPage.Texts[i].Rect.ToString,
+        CurrentPage.Texts[i]);
+
     Inc(i);
   end;
 end;

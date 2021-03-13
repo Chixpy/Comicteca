@@ -27,6 +27,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
+  ComCtrls, ExtCtrls, SpinEx,
   // Comicteca Core units
   uCTKConst, uCTKRstStr,
   // Comicteca Core abstract clases
@@ -42,6 +43,7 @@ type
     bResetFrame: TButton;
     cbxFramePage: TComboBox;
     cbxFrameType: TComboBox;
+    chkEllipseFrame: TCheckBox;
     eLeft: TSpinEdit;
     eRight: TSpinEdit;
     eTop: TSpinEdit;
@@ -53,13 +55,17 @@ type
     lRight: TLabel;
     lTop: TLabel;
     lBottom: TLabel;
+    pEmpty1: TPanel;
+    pEmpty2: TPanel;
+    pEmpty3: TPanel;
+    pEmpty4: TPanel;
     procedure bResetFrameClick(Sender: TObject);
     procedure cbxFramePageChange(Sender: TObject);
     procedure cbxFrameTypeChange(Sender: TObject);
     procedure cbxFrameTypeEditingDone(Sender: TObject);
     procedure eBottomChange(Sender: TObject);
-    procedure eRightChange(Sender: TObject);
     procedure eLeftChange(Sender: TObject);
+    procedure eRightChange(Sender: TObject);
     procedure eTopChange(Sender: TObject);
   private
 
@@ -87,10 +93,30 @@ implementation
 
 procedure TfmCTKEditorFrameEdit.eTopChange(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+   if not Assigned(Frame) then
     Exit;
 
   Frame.Rect.Top := eTop.Value;
+  Frame.Rect.NormalizeRect;
+
+  // Changing Rect don't notify observers
+  Frame.FPONotifyObservers(Frame, ooChange, nil);
+end;
+
+procedure TfmCTKEditorFrameEdit.cbxFrameTypeEditingDone(Sender: TObject);
+begin
+  if not Assigned(Frame) then
+    Exit;
+
+  Frame.FrameType := tCTKFrameType(cbxFrameType.ItemIndex);
+end;
+
+procedure TfmCTKEditorFrameEdit.eBottomChange(Sender: TObject);
+begin
+    if not Assigned(Frame) then
+    Exit;
+
+  Frame.Rect.Bottom := eBottom.Value;
   Frame.Rect.NormalizeRect;
 
   // Changing Rect don't notify observers
@@ -111,30 +137,10 @@ end;
 
 procedure TfmCTKEditorFrameEdit.eRightChange(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+    if not Assigned(Frame) then
     Exit;
 
   Frame.Rect.Right := eRight.Value;
-  Frame.Rect.NormalizeRect;
-
-  // Changing Rect don't notify observers
-  Frame.FPONotifyObservers(Frame, ooChange, nil);
-end;
-
-procedure TfmCTKEditorFrameEdit.cbxFrameTypeEditingDone(Sender: TObject);
-begin
-  if not Assigned(Frame) then
-    Exit;
-
-  Frame.FrameType := tCTKFrameType(cbxFrameType.ItemIndex);
-end;
-
-procedure TfmCTKEditorFrameEdit.eBottomChange(Sender: TObject);
-begin
-  if not Assigned(Frame) then
-    Exit;
-
-  Frame.Rect.Bottom := eBottom.Value;
   Frame.Rect.NormalizeRect;
 
   // Changing Rect don't notify observers
@@ -148,7 +154,6 @@ begin
 
   Frame.Page := caComictecaPage(
     cbxFramePage.Items.Objects[cbxFramePage.ItemIndex]);
-
 end;
 
 procedure TfmCTKEditorFrameEdit.bResetFrameClick(Sender: TObject);

@@ -6,7 +6,13 @@ msgctxt "tfmctkeditorframeedit.bresetframe.caption"
 msgid "Reset Frame"
 msgstr ""
 
+#: tfmctkeditorframeedit.chkellipseframe.caption
+msgctxt "tfmctkeditorframeedit.chkellipseframe.caption"
+msgid "Ellipse"
+msgstr ""
+
 #: tfmctkeditorframeedit.gbxframeedit.caption
+msgctxt "tfmctkeditorframeedit.gbxframeedit.caption"
 msgid "Frame properties"
 msgstr ""
 
@@ -61,10 +67,6 @@ msgstr ""
 msgid "Frame List"
 msgstr ""
 
-#: tfmctkeditorframelist.lvframelist.columns[0].caption
-msgid "Frame"
-msgstr ""
-
 #: tfmctkeditorframevisor.borigzoom.caption
 msgctxt "tfmctkeditorframevisor.borigzoom.caption"
 msgid "1x"
@@ -112,11 +114,6 @@ msgstr ""
 msgid "Image File List"
 msgstr ""
 
-#: tfmctkeditorimglist.lvfilelist.columns[0].caption
-msgctxt "tfmctkeditorimglist.lvfilelist.columns[0].caption"
-msgid "Filename"
-msgstr ""
-
 #: tfmctkeditormain.hcmain.sections[0].text
 msgid "Volume"
 msgstr ""
@@ -144,9 +141,21 @@ msgctxt "tfmctkeditorpageedit.cgrpagecontent.caption"
 msgid "Content"
 msgstr ""
 
+#: tfmctkeditorpageedit.gbxfixperspective.caption
+msgid "Fix Perspective"
+msgstr ""
+
 #: tfmctkeditorpageedit.gbxpage.caption
 msgctxt "tfmctkeditorpageedit.gbxpage.caption"
 msgid "Page"
+msgstr ""
+
+#: tfmctkeditorpageedit.lbottomleft.caption
+msgid "Bottom Left"
+msgstr ""
+
+#: tfmctkeditorpageedit.lbottomright.caption
+msgid "Bottom Right"
 msgstr ""
 
 #: tfmctkeditorpageedit.lfilename.caption
@@ -160,6 +169,14 @@ msgstr ""
 
 #: tfmctkeditorpageedit.lsha1.caption
 msgid "SHA1"
+msgstr ""
+
+#: tfmctkeditorpageedit.ltopleft.caption
+msgid "Top Left"
+msgstr ""
+
+#: tfmctkeditorpageedit.ltopright.caption
+msgid "Top Right"
 msgstr ""
 
 #: tfmctkeditorpagevisor.borigzoom.caption
@@ -192,8 +209,14 @@ msgctxt "tfmctkeditortextedit.bresetframe.caption"
 msgid "Reset Frame"
 msgstr ""
 
-#: tfmctkeditortextedit.gbxtextedit.caption
-msgid "Text Frame Properties"
+#: tfmctkeditortextedit.chkellipseframe.caption
+msgctxt "tfmctkeditortextedit.chkellipseframe.caption"
+msgid "Ellipse"
+msgstr ""
+
+#: tfmctkeditortextedit.gbxframeedit.caption
+msgctxt "tfmctkeditortextedit.gbxframeedit.caption"
+msgid "Frame properties"
 msgstr ""
 
 #: tfmctkeditortextedit.lbottom.caption
@@ -223,6 +246,10 @@ msgstr ""
 
 #: tfmctkeditortextlist.baddtext.caption
 msgid "Add Text"
+msgstr ""
+
+#: tfmctkeditortextlist.baddtextcopy.caption
+msgid "Add Copy"
 msgstr ""
 
 #: tfmctkeditortextlist.bmovedown.caption

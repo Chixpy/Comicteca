@@ -236,7 +236,8 @@ begin
   if not FileExistsUTF8(aArchive) then
     Exit;
 
-  Folder := SetAsFolder(GetTempDir(False)) + 'Comicteca';
+  if Folder = '' then
+    Folder := SetAsFolder(GetTempDir(False)) + 'Comicteca';
 
   if w7zExtractFile(aArchive, '*', Folder, True, '') <> 0 then
   begin

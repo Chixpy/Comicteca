@@ -1,9 +1,10 @@
 {"version":1,"strings":[
-{"hash":181949539,"name":"tfmctkeditortextedit.gbxtextedit.caption","sourcebytes":[84,101,120,116,32,70,114,97,109,101,32,80,114,111,112,101,114,116,105,101,115],"value":"Text Frame Properties"},
+{"hash":174435348,"name":"tfmctkeditortextedit.lcontent.caption","sourcebytes":[67,111,110,116,101,110,116],"value":"Content"},
+{"hash":96079395,"name":"tfmctkeditortextedit.gbxframeedit.caption","sourcebytes":[70,114,97,109,101,32,112,114,111,112,101,114,116,105,101,115],"value":"Frame properties"},
 {"hash":338900,"name":"tfmctkeditortextedit.lleft.caption","sourcebytes":[76,101,102,116],"value":"Left"},
 {"hash":23392,"name":"tfmctkeditortextedit.ltop.caption","sourcebytes":[84,111,112],"value":"Top"},
-{"hash":5832180,"name":"tfmctkeditortextedit.lright.caption","sourcebytes":[82,105,103,104,116],"value":"Right"},
 {"hash":76987229,"name":"tfmctkeditortextedit.lbottom.caption","sourcebytes":[66,111,116,116,111,109],"value":"Bottom"},
+{"hash":5832180,"name":"tfmctkeditortextedit.lright.caption","sourcebytes":[82,105,103,104,116],"value":"Right"},
 {"hash":102060021,"name":"tfmctkeditortextedit.bresetframe.caption","sourcebytes":[82,101,115,101,116,32,70,114,97,109,101],"value":"Reset Frame"},
-{"hash":174435348,"name":"tfmctkeditortextedit.lcontent.caption","sourcebytes":[67,111,110,116,101,110,116],"value":"Content"}
+{"hash":204670933,"name":"tfmctkeditortextedit.chkellipseframe.caption","sourcebytes":[69,108,108,105,112,115,101],"value":"Ellipse"}
 ]}

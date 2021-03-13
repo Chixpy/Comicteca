@@ -39,18 +39,23 @@ type
   TfmCTKEditorTextEdit = class(TafmCTKEditorTextFrame)
     bResetFrame: TButton;
     cbxLangContent: TComboBox;
+    chkEllipseFrame: TCheckBox;
     eBottom: TSpinEdit;
     eLeft: TSpinEdit;
     eRight: TSpinEdit;
     eTop: TSpinEdit;
-    gbxTextEdit: TGroupBox;
+    gbxFrameEdit: TGroupBox;
     lBottom: TLabel;
+    lContent: TLabel;
     lLeft: TLabel;
     lRight: TLabel;
-    lContent: TLabel;
     lTop: TLabel;
     mContent: TMemo;
     pContent: TPanel;
+    pEmpty1: TPanel;
+    pEmpty2: TPanel;
+    pEmpty3: TPanel;
+    pEmpty4: TPanel;
     procedure bResetFrameClick(Sender: TObject);
     procedure eBottomChange(Sender: TObject);
     procedure eLeftChange(Sender: TObject);
@@ -97,7 +102,7 @@ end;
 
 procedure TfmCTKEditorTextEdit.mContentEditingDone(Sender: TObject);
 begin
-    if not Assigned(CTKText) then
+  if not Assigned(CTKText) then
     Exit;
 
   CTKText.Content.CTMSetSL(cbxLangContent.Text, mContent.Lines);
@@ -141,7 +146,7 @@ end;
 
 procedure TfmCTKEditorTextEdit.bResetFrameClick(Sender: TObject);
 begin
-    if not Assigned(CTKText) then
+  if not Assigned(CTKText) then
     Exit;
 
   CTKText.Rect := Default(TRect);
@@ -163,12 +168,12 @@ end;
 
 procedure TfmCTKEditorTextEdit.DoLoadTextFrame;
 begin
-  DoLoadFrameData
+  DoLoadFrameData;
 end;
 
 procedure TfmCTKEditorTextEdit.DoClearTextFrame;
 begin
-  DoClearFrameData
+  DoClearFrameData;
 end;
 
 procedure TfmCTKEditorTextEdit.DoLoadFrameData;
@@ -188,7 +193,7 @@ begin
   eBottom.Value := CTKText.Rect.Bottom;
   eRight.Value := CTKText.Rect.Right;
 
-    // Nil can't be assigned to TStringList...
+  // Nil can't be assigned to TStringList...
   StrLst := CTKText.Content.CTMGetSL(cbxLangContent.Text);
   if assigned(StrLst) then
     mContent.Lines.Assign(StrLst)

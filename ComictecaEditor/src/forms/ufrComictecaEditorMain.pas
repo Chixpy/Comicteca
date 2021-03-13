@@ -120,7 +120,9 @@ begin
     Exit;
   end;
 
-  Comic.Free;
+  FreeAndNil(FComic);
+
+  fmMain.Comic := nil;
 
   FComic := cComictecaVolume.Create(nil);
 
@@ -139,6 +141,8 @@ begin
   end;
 
   FreeAndNil(FComic);
+
+  fmMain.Comic := nil;
 
   FComic := cComictecaVolume.Create(nil);
 

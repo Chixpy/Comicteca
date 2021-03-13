@@ -31,7 +31,7 @@ uses
   // CHX frames
   ufCHXBGRAImgViewerEx,
   // Comicteca Core classes
-  ucComictecaFrame,
+  ucComictecaVolume, ucComictecaFrame, ucComictecaVolumeRenderer,
   // Comicteca Editor abstract frames
   uafCTKEditorFrameFrame;
 
@@ -54,19 +54,16 @@ type
   private
     FfmVisor: TfmCHXBGRAImgViewerEx;
     FFrameImage: TBGRABitmap;
-    FPageFile: string;
-    FPageImage: TBGRABitmap;
+    FRenderer: cComictecaVolumeRenderer;
     procedure SetFrameImage(AValue: TBGRABitmap);
-    procedure SetPageFile(AValue: string);
-    procedure SetPageImage(AValue: TBGRABitmap);
 
   protected
     property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
-
-    property PageFile: string read FPageFile write SetPageFile;
-    property PageImage: TBGRABitmap read FPageImage write SetPageImage;
-
     property FrameImage: TBGRABitmap read FFrameImage write SetFrameImage;
+
+    property Renderer: cComictecaVolumeRenderer read FRenderer;
+
+    procedure SetComic(AValue: cComictecaVolume); override;
 
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
@@ -118,35 +115,18 @@ begin
   fmVisor.Zoom := 100;
 end;
 
-procedure TfmCTKEditorFrameVisor.SetPageImage(AValue: TBGRABitmap);
-begin
-  if FPageImage = AValue then
-    Exit;
-  FPageImage := AValue;
-end;
-
-procedure TfmCTKEditorFrameVisor.SetPageFile(AValue: string);
-begin
-  if FPageFile = AValue then
-    Exit;
-  FPageFile := AValue;
-
-  FreeAndNil(FPageImage);
-
-  if not FileExists(PageFile) then
-    Exit;
-
-  FPageImage := TBGRABitmap.Create;
-  PageImage.LoadFromFile(PageFile);
-
-  DoLoadFrameFrame;
-end;
-
 procedure TfmCTKEditorFrameVisor.SetFrameImage(AValue: TBGRABitmap);
 begin
   if FFrameImage = AValue then
     Exit;
   FFrameImage := AValue;
+end;
+
+procedure TfmCTKEditorFrameVisor.SetComic(AValue: cComictecaVolume);
+begin
+  inherited SetComic(AValue);
+
+  Renderer.Comic := AValue;
 end;
 
 procedure TfmCTKEditorFrameVisor.DoLoadFrameData;
@@ -158,7 +138,10 @@ begin
   if not Enabled then
     Exit;
 
-  PageFile := Comic.Folder + Frame.Page.FileName;
+  Renderer.ShowFrameBorders := Frame.Rect.IsEmpty;
+  FFrameImage := Renderer.RenderFrame(Frame);
+
+  fmVisor.ActualImage := FrameImage;
 end;
 
 procedure TfmCTKEditorFrameVisor.DoClearFrameData;
@@ -169,39 +152,12 @@ end;
 
 procedure TfmCTKEditorFrameVisor.DoLoadFrameFrame;
 begin
-  DoClearFrameFrame;
-
-  Enabled := Assigned(Frame) and Assigned(Comic);
-
-  if not Enabled then
-    Exit;
-
-  if not Assigned(Frame.Page) then
-    Exit;
-
-  PageFile := Comic.Folder + Frame.Page.FileName;
-
-  if (not Assigned(PageImage)) then
-    Exit;
-
-  Frame.Rect.NormalizeRect;
-
-  if Frame.Rect.IsEmpty then
-  begin
-    fmVisor.ActualImage := PageImage;
-  end
-  else
-  begin
-    FreeAndNil(FFrameImage);
-    FFrameImage := PageImage.GetPart(Frame.Rect);
-    fmVisor.ActualImage := FrameImage;
-  end;
+  DoLoadFrameData;
 end;
 
 procedure TfmCTKEditorFrameVisor.DoClearFrameFrame;
 begin
-  fmVisor.ActualImage := nil;
-  FreeAndNil(FFrameImage);
+  DoClearFrameData;
 end;
 
 procedure TfmCTKEditorFrameVisor.DoImgMouseDrag(Sender: TObject;
@@ -251,12 +207,17 @@ begin
   OnClearFrameData := @DoClearFrameData;
 
   CreateFrames;
+
+  FRenderer := cComictecaVolumeRenderer.Create(nil);
+  Renderer.ShowFrameBorders := True;
+  Renderer.ShowTextBorders := True;
+  Renderer.ShowPerspectiveQuad := False;
 end;
 
 destructor TfmCTKEditorFrameVisor.Destroy;
 begin
   FreeAndNil(FFrameImage);
-  FreeAndNil(FPageImage);
+  FreeAndNil(FRenderer);
 
   inherited Destroy;
 end;

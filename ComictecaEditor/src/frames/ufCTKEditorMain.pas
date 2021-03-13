@@ -142,8 +142,11 @@ begin
       fmCenter.Parent := pCenter;
 
       FfmRight := TfmCTKEditorTextVisor.Create(pRight);
+      fmRight.Comic := Comic; // Fix to show first page
       fmRight.Align := alClient;
       fmRight.Parent := pRight;
+
+      TfmCTKEditorTextList(fmLeft).OnPageSelect := @TfmCTKEditorTextVisor(fmRight).ShowPage;
     end;
     4: // Metadata
     begin

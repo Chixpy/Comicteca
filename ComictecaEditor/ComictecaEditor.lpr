@@ -7,14 +7,15 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, uCHXConst, uCHXRscStr, uCHXFileUtils, ufrComictecaEditorMain,
-  uCTKEditorConfig, uafCTKEditorFrame, ufCTKEditorMain, ufCTKEditorImgList,
-  ufCTKEditorPageEdit, ufCTKEditorVolumeEdit, ufCTKEditorPageVisor, uCTKRstStr,
-  uCTKCommon, uaComictecaFrame, ufCTKEditorFrameEdit, ucComictecaTextMap,
-  ufCTKEditorFrameList, ucComictecaFrame, uafCTKEditorPageFrame,
-  uafCTKEditorFrameFrame, ufCTKEditorFrameVisor, ufCHXBGRAImgViewerEx,
-  uaComictecaText, ucComictecaTextList, ucComictecaText, ufCTKEditorTextList,
-  uafCTKEditorTextFrame, ufCTKEditorTextEdit, ufCTKEditorTextVisor, ucComictecaVolumeRenderizer;
+  Forms, lazcontrols, uCHXConst, uCHXRscStr, uCHXFileUtils,
+  ufrComictecaEditorMain, uCTKEditorConfig, uafCTKEditorFrame, ufCTKEditorMain,
+  ufCTKEditorImgList, ufCTKEditorPageEdit, ufCTKEditorVolumeEdit,
+  ufCTKEditorPageVisor, uCTKRstStr, uCTKCommon, uaComictecaFrame,
+  ufCTKEditorFrameEdit, ucComictecaTextMap, ufCTKEditorFrameList,
+  ucComictecaFrame, uafCTKEditorPageFrame, uafCTKEditorFrameFrame,
+  ufCTKEditorFrameVisor, ufCHXBGRAImgViewerEx, uaComictecaText,
+  ucComictecaTextList, ucComictecaText, ufCTKEditorTextList,
+  uafCTKEditorTextFrame, ufCTKEditorTextEdit, ufCTKEditorTextVisor;
 
 {$R *.res}
 

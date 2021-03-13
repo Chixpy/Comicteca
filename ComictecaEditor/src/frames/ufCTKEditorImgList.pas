@@ -45,14 +45,13 @@ type
     bRemoveFile: TButton;
     bSubir: TButton;
     gbxImageFileList: TGroupBox;
-    lvFileList: TListView;
+    lbxImageList: TListBox;
     pImgListButtons: TPanel;
     procedure BAddAllFilesClick(Sender: TObject);
     procedure bMoveDownClick(Sender: TObject);
     procedure bRemoveFileClick(Sender: TObject);
     procedure bSubirClick(Sender: TObject);
-    procedure lvFileListSelectItem(Sender: TObject; Item: TListItem;
-      Selected: boolean);
+    procedure lbxImageListSelectionChange(Sender: TObject; User: boolean);
 
   private
     FOnPageSelect: TCTKPageObjProc;
@@ -63,8 +62,7 @@ type
     procedure DoClearFrameData;
 
   public
-    property OnPageSelect: TCTKPageObjProc
-      read FOnPageSelect write SetOnPageSelect;
+    property OnPageSelect: TCTKPageObjProc read FOnPageSelect write SetOnPageSelect;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -141,24 +139,40 @@ begin
   if not assigned(Comic) then
     Exit;
 
-  if (lvFileList.ItemIndex < 0) or
-    (lvFileList.ItemIndex > (lvFileList.Items.Count - 2)) then
+  if (lbxImageList.ItemIndex < 0) or
+    (lbxImageList.ItemIndex > (lbxImageList.Items.Count - 2)) then
     Exit;
 
-  Comic.Pages.Exchange(lvFileList.ItemIndex, lvFileList.ItemIndex + 1);
-  lvFileList.Items.Exchange(lvFileList.ItemIndex, lvFileList.ItemIndex + 1);
+  Comic.Pages.Exchange(lbxImageList.ItemIndex, lbxImageList.ItemIndex + 1);
+  lbxImageList.Items.Exchange(lbxImageList.ItemIndex, lbxImageList.ItemIndex + 1);
+
+  lbxImageList.ItemIndex := lbxImageList.ItemIndex + 1;
 end;
 
 procedure TfmCTKEditorImgList.bRemoveFileClick(Sender: TObject);
+var
+  aPos: integer;
 begin
   if not assigned(Comic) then
     Exit;
 
-  if lvFileList.ItemIndex < 0 then
+  if lbxImageList.ItemIndex < 0 then
     Exit;
 
-  Comic.Pages.Delete(lvFileList.ItemIndex);
-  lvFileList.Items.Delete(lvFileList.ItemIndex);
+  aPos := lbxImageList.ItemIndex;
+
+  Comic.Pages.Delete(aPos);
+  lbxImageList.Items.Delete(aPos);
+
+  if lbxImageList.Count = 0 then
+    OnPageSelect(nil)
+  else
+  begin
+  if aPos >= lbxImageList.Count then
+       lbxImageList.ItemIndex := lbxImageList.Count - 1
+    else
+      lbxImageList.ItemIndex := aPos;
+  end;
 end;
 
 procedure TfmCTKEditorImgList.bSubirClick(Sender: TObject);
@@ -166,22 +180,27 @@ begin
     if not assigned(Comic) then
     Exit;
 
-  if lvFileList.ItemIndex < 1 then
+  if lbxImageList.ItemIndex < 1 then
     Exit;
 
-  Comic.Pages.Exchange(lvFileList.ItemIndex, lvFileList.ItemIndex - 1);
-  lvFileList.Items.Exchange(lvFileList.ItemIndex, lvFileList.ItemIndex - 1);
+  Comic.Pages.Exchange(lbxImageList.ItemIndex, lbxImageList.ItemIndex - 1);
+  lbxImageList.Items.Exchange(lbxImageList.ItemIndex, lbxImageList.ItemIndex - 1);
+
+  lbxImageList.ItemIndex := lbxImageList.ItemIndex - 1;
 end;
 
-procedure TfmCTKEditorImgList.lvFileListSelectItem(Sender: TObject;
-  Item: TListItem; Selected: boolean);
+procedure TfmCTKEditorImgList.lbxImageListSelectionChange(Sender: TObject;
+  User: boolean);
+var
+  aPage: cComictecaPage;
 begin
-  if not assigned(OnPageSelect) then
-    Exit;
-  if Selected then
-    OnPageSelect(cComictecaPage(Item.Data))
+  if lbxImageList.ItemIndex < 0 then
+    aPage := nil
   else
-    OnPageSelect(nil);
+    aPage := cComictecaPage(lbxImageList.Items.Objects[lbxImageList.ItemIndex]);
+
+  if Assigned(OnPageSelect) then
+    OnPageSelect(aPage);
 end;
 
 procedure TfmCTKEditorImgList.SetOnPageSelect(AValue: TCTKPageObjProc);
@@ -205,14 +224,14 @@ begin
   i := 0;
   while (i < Comic.Pages.Count) do
   begin
-    lvFileList.AddItem(Comic.Pages[i].FileName, Comic.Pages[i]);
+    lbxImageList.AddItem(Comic.Pages[i].FileName, Comic.Pages[i]);
     Inc(i);
   end;
 end;
 
 procedure TfmCTKEditorImgList.DoClearFrameData;
 begin
-  lvFileList.Clear;
+  lbxImageList.Clear;
 end;
 
 constructor TfmCTKEditorImgList.Create(TheOwner: TComponent);

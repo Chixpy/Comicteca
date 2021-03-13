@@ -31,7 +31,7 @@ uses
   // CHX frames
   ufCHXBGRAImgViewerEx,
   // Comicteca Core classes
-  ucComictecaPage,
+  ucComictecaVolume, ucComictecaPage, ucComictecaVolumeRenderer,
   // Comicteca Editor abstract frames
   uafCTKEditorPageFrame;
 
@@ -54,17 +54,20 @@ type
   private
     FfmVisor: TfmCHXBGRAImgViewerEx;
     FImage: TBGRABitmap;
+    FRenderer: cComictecaVolumeRenderer;
     procedure SetImage(AValue: TBGRABitmap);
 
   protected
-
     property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
     property Image: TBGRABitmap read FImage write SetImage;
+
+    procedure SetComic(AValue: cComictecaVolume); override;
 
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
 
   public
+    property Renderer: cComictecaVolumeRenderer read FRenderer;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -110,22 +113,23 @@ begin
   FImage := AValue;
 end;
 
+procedure TfmCTKEditorPageVisor.SetComic(AValue: cComictecaVolume);
+begin
+  inherited SetComic(AValue);
+
+  Renderer.Comic := AValue;
+end;
+
 procedure TfmCTKEditorPageVisor.DoLoadFrameData;
 begin
   ClearFrameData;
-
-  FreeAndNil(FImage);
 
   Enabled := Assigned(Page) and Assigned(Comic);
 
   if not Enabled then
     Exit;
 
-  if not FileExists(Comic.Folder + Page.FileName) then
-    Exit;
-
-  FImage := TBGRABitmap.Create;
-  Image.LoadFromFile(Comic.Folder + Page.FileName);
+  FImage := Renderer.RenderPage(Page);
 
   fmVisor.ActualImage := Image;
 end;
@@ -133,6 +137,7 @@ end;
 procedure TfmCTKEditorPageVisor.DoClearFrameData;
 begin
   fmVisor.ActualImage := nil;
+  FreeAndNil(FImage);
 end;
 
 constructor TfmCTKEditorPageVisor.Create(TheOwner: TComponent);
@@ -152,11 +157,17 @@ begin
   OnClearFrameData := @DoClearFrameData;
 
   CreateFrames;
+
+  FRenderer := cComictecaVolumeRenderer.Create(nil);
+  Renderer.ShowFrameBorders := True;
+  Renderer.ShowTextBorders := True;
+  Renderer.ShowPerspectiveQuad := True;
 end;
 
 destructor TfmCTKEditorPageVisor.Destroy;
 begin
   FreeAndNil(FImage);
+  FreeAndNil(FRenderer);
 
   inherited Destroy;
 end;
