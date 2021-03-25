@@ -6,11 +6,6 @@ msgctxt "tfmctkeditorframeedit.bresetframe.caption"
 msgid "Reset Frame"
 msgstr ""
 
-#: tfmctkeditorframeedit.chkellipseframe.caption
-msgctxt "tfmctkeditorframeedit.chkellipseframe.caption"
-msgid "Ellipse"
-msgstr ""
-
 #: tfmctkeditorframeedit.gbxframeedit.caption
 msgctxt "tfmctkeditorframeedit.gbxframeedit.caption"
 msgid "Frame properties"
@@ -43,6 +38,16 @@ msgstr ""
 #: tfmctkeditorframeedit.ltop.caption
 msgctxt "tfmctkeditorframeedit.ltop.caption"
 msgid "Top"
+msgstr ""
+
+#: tfmctkeditorframeedit.lvalx.caption
+msgctxt "tfmctkeditorframeedit.lvalx.caption"
+msgid "X"
+msgstr ""
+
+#: tfmctkeditorframeedit.lvaly.caption
+msgctxt "tfmctkeditorframeedit.lvaly.caption"
+msgid "Y"
 msgstr ""
 
 #: tfmctkeditorframelist.baddframe.caption
@@ -209,11 +214,6 @@ msgctxt "tfmctkeditortextedit.bresetframe.caption"
 msgid "Reset Frame"
 msgstr ""
 
-#: tfmctkeditortextedit.chkellipseframe.caption
-msgctxt "tfmctkeditortextedit.chkellipseframe.caption"
-msgid "Ellipse"
-msgstr ""
-
 #: tfmctkeditortextedit.gbxframeedit.caption
 msgctxt "tfmctkeditortextedit.gbxframeedit.caption"
 msgid "Frame properties"
@@ -242,6 +242,16 @@ msgstr ""
 #: tfmctkeditortextedit.ltop.caption
 msgctxt "tfmctkeditortextedit.ltop.caption"
 msgid "Top"
+msgstr ""
+
+#: tfmctkeditortextedit.lvalx.caption
+msgctxt "tfmctkeditortextedit.lvalx.caption"
+msgid "X"
+msgstr ""
+
+#: tfmctkeditortextedit.lvaly.caption
+msgctxt "tfmctkeditortextedit.lvaly.caption"
+msgid "Y"
 msgstr ""
 
 #: tfmctkeditortextlist.baddtext.caption
@@ -413,6 +423,19 @@ msgstr ""
 
 #: uchxrscstr.rsenotfilename
 msgid "%0:s: Not defined filename"
+msgstr ""
+
+#: uctkrststr.rsfsellipsekey
+msgctxt "uctkrststr.rsfsellipsekey"
+msgid "Ellipse"
+msgstr ""
+
+#: uctkrststr.rsfsrectkey
+msgid "Rectangle"
+msgstr ""
+
+#: uctkrststr.rsfsrndrectkey
+msgid "Round Rect"
 msgstr ""
 
 #: uctkrststr.rspcads

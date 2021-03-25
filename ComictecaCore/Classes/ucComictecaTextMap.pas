@@ -90,16 +90,16 @@ begin
     TextList.Free;
   end;
 
-  // Special RAW case
-  if Self.IndexOf(krsCTKXMLRAW) < 0 then
-  begin
-    aKey := krsCTKXMLRAW;
-    aText := TStringList.Create;
-    aText.SkipLastLineBreak := True;
-    aText.Text := Parent.TextContent;
-
-    Self.Add(aKey, aText);
-  end;
+  //// Special RAW case
+  //if Self.IndexOf(krsCTKXMLRAW) < 0 then
+  //begin
+  //  aKey := krsCTKXMLRAW;
+  //  aText := TStringList.Create;
+  //  aText.SkipLastLineBreak := True;
+  //  aText.Text := Parent.TextContent;
+  //
+  //  Self.Add(aKey, aText);
+  //end;
 end;
 
 procedure cComictecaTextMap.SaveToXML(aXMLDoc: TXMLDocument;

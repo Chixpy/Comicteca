@@ -43,11 +43,13 @@ type
     bResetFrame: TButton;
     cbxFramePage: TComboBox;
     cbxFrameType: TComboBox;
-    chkEllipseFrame: TCheckBox;
+    cbxFrameShape: TComboBox;
     eLeft: TSpinEdit;
     eRight: TSpinEdit;
     eTop: TSpinEdit;
     eBottom: TSpinEdit;
+    eValX: TSpinEdit;
+    eValY: TSpinEdit;
     gbxFrameEdit: TGroupBox;
     lFrameType: TLabel;
     lPage: TLabel;
@@ -55,18 +57,24 @@ type
     lRight: TLabel;
     lTop: TLabel;
     lBottom: TLabel;
+    lValX: TLabel;
+    lValY: TLabel;
     pEmpty1: TPanel;
     pEmpty2: TPanel;
     pEmpty3: TPanel;
     pEmpty4: TPanel;
+    pValX: TPanel;
+    pValY: TPanel;
     procedure bResetFrameClick(Sender: TObject);
     procedure cbxFramePageChange(Sender: TObject);
+    procedure cbxFrameShapeChange(Sender: TObject);
     procedure cbxFrameTypeChange(Sender: TObject);
-    procedure cbxFrameTypeEditingDone(Sender: TObject);
     procedure eBottomChange(Sender: TObject);
     procedure eLeftChange(Sender: TObject);
     procedure eRightChange(Sender: TObject);
     procedure eTopChange(Sender: TObject);
+    procedure eValXChange(Sender: TObject);
+    procedure eValYChange(Sender: TObject);
   private
 
 
@@ -93,117 +101,144 @@ implementation
 
 procedure TfmCTKEditorFrameEdit.eTopChange(Sender: TObject);
 begin
-   if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.Rect.Top := eTop.Value;
-  Frame.Rect.NormalizeRect;
+  CTKFrame.FrameRect.Top := eTop.Value;
+  CTKFrame.FrameRect.NormalizeRect;
 
   // Changing Rect don't notify observers
-  Frame.FPONotifyObservers(Frame, ooChange, nil);
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
 end;
 
-procedure TfmCTKEditorFrameEdit.cbxFrameTypeEditingDone(Sender: TObject);
+procedure TfmCTKEditorFrameEdit.eValXChange(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.FrameType := tCTKFrameType(cbxFrameType.ItemIndex);
+  CTKFrame.FramePoint.X := eValX.Value;
+
+  // Changing Rect don't notify observers
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
+end;
+
+procedure TfmCTKEditorFrameEdit.eValYChange(Sender: TObject);
+begin
+    if not Assigned(CTKFrame) then
+    Exit;
+
+  CTKFrame.FramePoint.Y := eValY.Value;
+
+  // Changing Rect don't notify observers
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
 end;
 
 procedure TfmCTKEditorFrameEdit.eBottomChange(Sender: TObject);
 begin
-    if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.Rect.Bottom := eBottom.Value;
-  Frame.Rect.NormalizeRect;
+  CTKFrame.FrameRect.Bottom := eBottom.Value;
+  CTKFrame.FrameRect.NormalizeRect;
 
   // Changing Rect don't notify observers
-  Frame.FPONotifyObservers(Frame, ooChange, nil);
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
 end;
 
 procedure TfmCTKEditorFrameEdit.eLeftChange(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.Rect.Left := eLeft.Value;
-  Frame.Rect.NormalizeRect;
+  CTKFrame.FrameRect.Left := eLeft.Value;
+  CTKFrame.FrameRect.NormalizeRect;
 
   // Changing Rect don't notify observers
-  Frame.FPONotifyObservers(Frame, ooChange, nil);
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
 end;
 
 procedure TfmCTKEditorFrameEdit.eRightChange(Sender: TObject);
 begin
-    if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.Rect.Right := eRight.Value;
-  Frame.Rect.NormalizeRect;
+  CTKFrame.FrameRect.Right := eRight.Value;
+  CTKFrame.FrameRect.NormalizeRect;
 
   // Changing Rect don't notify observers
-  Frame.FPONotifyObservers(Frame, ooChange, nil);
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
 end;
 
 procedure TfmCTKEditorFrameEdit.cbxFramePageChange(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.Page := caComictecaPage(
+  CTKFrame.Page := caComictecaPage(
     cbxFramePage.Items.Objects[cbxFramePage.ItemIndex]);
+end;
+
+procedure TfmCTKEditorFrameEdit.cbxFrameShapeChange(Sender: TObject);
+begin
+  if not Assigned(CTKFrame) then
+    Exit;
+
+  CTKFrame.FrameShape := tCTKFrameShape(cbxFrameShape.ItemIndex);
 end;
 
 procedure TfmCTKEditorFrameEdit.bResetFrameClick(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.Rect := Default(TRect);
+  CTKFrame.FrameRect := Default(TRect);
+  CTKFrame.FramePoint := Default(TPoint);
 
   // Changing Rect don't notify observers
-  Frame.FPONotifyObservers(Frame, ooChange, nil);
+  CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
 end;
 
 procedure TfmCTKEditorFrameEdit.cbxFrameTypeChange(Sender: TObject);
 begin
-  if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
     Exit;
 
-  Frame.FrameType := tCTKFrameType(cbxFrameType.ItemIndex);
+  CTKFrame.FrameType := tCTKFrameType(cbxFrameType.ItemIndex);
 end;
 
 procedure TfmCTKEditorFrameEdit.DoLoadFrameFrame;
 var
   i: integer;
 begin
-  Enabled := Assigned(Frame) and assigned(Comic);
+  Enabled := Assigned(CTKFrame) and assigned(Comic);
 
-  if not Assigned(Frame) then
+  if not Assigned(CTKFrame) then
   begin
     DoClearFrameFrame;
     Exit;
   end;
 
-  eLeft.Value := Frame.Rect.Left;
-  eTop.Value := Frame.Rect.Top;
-  eBottom.Value := Frame.Rect.Bottom;
-  eRight.Value := Frame.Rect.Right;
+  eLeft.Value := CTKFrame.FrameRect.Left;
+  eTop.Value := CTKFrame.FrameRect.Top;
+  eBottom.Value := CTKFrame.FrameRect.Bottom;
+  eRight.Value := CTKFrame.FrameRect.Right;
 
-  if not Assigned(Frame.Page) then
+  eValX.Value := CTKFrame.FramePoint.X;
+  eValY.Value := CTKFrame.FramePoint.Y;
+
+  if not Assigned(CTKFrame.Page) then
     cbxFramePageChange(cbxFramePage)
   else
   begin
-    i := cbxFramePage.Items.IndexOfObject(Frame.Page);
+    i := cbxFramePage.Items.IndexOfObject(CTKFrame.Page);
     if i >= 0 then
       cbxFramePage.ItemIndex := i
     else
       cbxFramePageChange(cbxFramePage);
   end;
 
-  cbxFrameType.ItemIndex := Ord(Frame.FrameType);
+  cbxFrameType.ItemIndex := Ord(CTKFrame.FrameType);
+  cbxFrameShape.ItemIndex := Ord(CTKFrame.FrameShape);
 end;
 
 procedure TfmCTKEditorFrameEdit.DoClearFrameFrame;
@@ -213,7 +248,11 @@ begin
   eBottom.Value := 0;
   eRight.Value := 0;
 
-  cbxFrameType.ItemIndex := Ord(CTKFTVignette);
+  eValX.Value := 0;
+  eValY.Value := 0;
+
+  cbxFrameType.ItemIndex := Ord(kCTKFrameDefType);
+  cbxFrameShape.ItemIndex := Ord(kCTKFrameDefShape);
 end;
 
 procedure TfmCTKEditorFrameEdit.DoLoadFrameData;
@@ -221,7 +260,7 @@ var
   i: integer;
 begin
   // Called only when Comic is set
-  Enabled := Assigned(Frame) and assigned(Comic);
+  Enabled := Assigned(CTKFrame) and assigned(Comic);
 
   if (not assigned(Comic)) then
   begin
@@ -255,6 +294,7 @@ begin
   OnClearFrameData := @DoClearFrameData;
 
   cbxFrameType.Items.AddStrings(ComictecaFrameTypeStr, True);
+  cbxFrameShape.Items.AddStrings(ComictecaFrameShapeStr, True);
 end;
 
 destructor TfmCTKEditorFrameEdit.Destroy;

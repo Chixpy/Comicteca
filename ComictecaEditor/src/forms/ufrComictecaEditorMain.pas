@@ -66,7 +66,8 @@ type
     procedure bSaveArchiveClick(Sender: TObject);
     procedure bSaveFolderClick(Sender: TObject);
     procedure eComicFolderAcceptDirectory(Sender: TObject; var Value: string);
-    procedure eCompressedFileAcceptFileName(Sender: TObject; var Value: String);
+    procedure eCompressedFileAcceptFileName(Sender: TObject;
+      var Value: string);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure tOpenFolderClick(Sender: TObject);
@@ -108,6 +109,7 @@ begin
 
   Comic.Free;
 
+  EditorConfig.SaveToFile('', False);
   FEditorConfig.Free;
 end;
 
@@ -128,12 +130,16 @@ begin
 
   Comic.LoadFromFolder(Value);
 
+  EditorConfig.LastFolder := Value;
+
   fmMain.Comic := Self.Comic;
 end;
 
 procedure TfrmComictecaEditorMain.eCompressedFileAcceptFileName(
-  Sender: TObject; var Value: String);
+  Sender: TObject; var Value: string);
 begin
+
+  // TODO: Maybe eComicFolder.Text must be changed to Value
   if not FileExistsUTF8(Value) then
   begin
     Value := '';
@@ -156,6 +162,7 @@ begin
   else
   begin
     eComicFolder.Text := SysPath(Comic.Folder);
+    EditorConfig.LastFolder := ExtractFileDir(Value);
   end;
 
   fmMain.Comic := Self.Comic;
@@ -235,8 +242,12 @@ begin
   if pagCompressedArchive.Enabled then
   begin
     pcComicFileType.ActivePage := pagCompressedArchive;
-    eCompressedFile.Filter := 'Comic Files|' + FileMaskFromCommaText(kw7zFileExts);
+    eCompressedFile.Filter :=
+      'Comic Files|' + FileMaskFromCommaText(kw7zFileExts);
   end;
+
+  eComicFolder.RootDir := SysPath(EditorConfig.LastFolder);
+  eCompressedFile.InitialDir := SysPath(EditorConfig.LastFolder);
 end;
 
 procedure TfrmComictecaEditorMain.tOpenFolderClick(Sender: TObject);

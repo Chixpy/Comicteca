@@ -71,7 +71,6 @@ type
     procedure eBottomRightXEditingDone(Sender: TObject);
     procedure eBottomRightYEditingDone(Sender: TObject);
     procedure eMultipageChange(Sender: TObject);
-    procedure eMultipageEditingDone(Sender: TObject);
     procedure eTopLeftXEditingDone(Sender: TObject);
     procedure eTopLeftYEditingDone(Sender: TObject);
     procedure eTopRightXEditingDone(Sender: TObject);
@@ -91,14 +90,6 @@ implementation
 {$R *.lfm}
 
 { TfmCTKEditorPageEdit }
-
-procedure TfmCTKEditorPageEdit.eMultipageEditingDone(Sender: TObject);
-begin
-  if not assigned(Page) then
-    Exit;
-
-  Page.MultiplePages := eMultipage.Value;
-end;
 
 procedure TfmCTKEditorPageEdit.eTopLeftXEditingDone(Sender: TObject);
 begin

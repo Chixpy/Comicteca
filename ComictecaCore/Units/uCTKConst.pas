@@ -45,11 +45,14 @@ const
   krsCTKXMLComicFile = 'CTKInfo.xml';
   krsCTKXMLComicRoot = 'CTKInfo';
 
-  // Common
+  // Common XML tags
   krsCTKXMLRAW = 'RAW';
-  krsCTKXMLOrderProp = 'Order';
-  krsCTKXMLRect = 'Rect';
 
+  // Common XML properties
+  krsCTKXMLPointProp = 'Point';
+  krsCTKXMLRectProp = 'Rect';
+  krsCTKXMLOrderProp = 'Order';
+  krsCTKXMLShapeProp = 'Shape';
 
   // Volume
   krsCTKXMLVolume = 'Volume';
@@ -66,7 +69,6 @@ const
   krsCTKXMLPageList = 'PageList';
   krsCTKXMLPage = 'Page';
 
-
   krsCTKXMLFileProp = 'File';
   krsCTKXMLSHA1Prop = 'SHA1';
   krsCTKXMLMultipageProp = 'Multipage';
@@ -79,16 +81,22 @@ const
 
   krsCTKXMLFrameType = 'FrameType';
 
-  krsFTVignetteKey = 'Vignette'; //< Viñeta
+
+  // Frame Types
+  krsFTVignetteKey = 'Vignette';
+  //< Viñeta
   krsFTSpineDustJacketKey = 'SpineDustJacket';
   //< Lomo de la sobrecubierta
   krsFTFrontDustJacketKey = 'FrontDustJacket';
   //< Frontal de la sobrecubierta
-  krsFTSpineCoverKey = 'SpineCover'; //< Lomo de la cubierta
-  krsFTFrontCoverKey = 'FrontCover'; //< Frontal de la cubierta (Portada)
+  krsFTSpineCoverKey = 'SpineCover';
+  //< Lomo de la cubierta
+  krsFTFrontCoverKey = 'FrontCover';
+  //< Frontal de la cubierta (Portada)
   krsFTEndPaperKey = 'EndPaper';
   //< Guarda (Páginas al inicio o final que unen la cubierta con el resto.)
-  krsFTFlyLeafKey = 'FlyLeaf'; //< Página de cortesía (en blanco)
+  krsFTFlyLeafKey = 'FlyLeaf';
+  //< Página de cortesía (en blanco)
   krsFTIndexKey = 'Index';
   krsFTBastardTitleKey = 'BastardTitle';
   //< Antetítulo (Págína con título, casi vacía)
@@ -97,10 +105,16 @@ const
   krsFTAuthorTextKey = 'AuthorText';
   krsFTAdsKey = 'Advertising';
   krsFTLicenseKey = 'License';
-  krsFTBackCoverKey = 'BackCover'; //< Trasera de la cubierta (Contraportada)
+  krsFTBackCoverKey = 'BackCover';
+  //< Trasera de la cubierta (Contraportada)
   krsFTBackDustJacketKey = 'BackDustJacket';
   //< Trasera de la sobrecubierta
   krsFTOtherKey = 'Other';
+
+  // Frame Shapes
+  krsFSRectKey = 'Rect';
+  krsFSRndRectKey = 'RndRect';
+  krsFSEllipseKey = 'Ellipse';
 
   // Texts
   krsCTKXMLText = 'Text';
@@ -115,6 +129,8 @@ type
     CTKFTBackCover, CTKFTBackDustJacket, CTKFTOther);
   tCTKPageContents = set of tCTKFrameType;
 
+  tCTKFrameShape = (CTKFSRect, CTKFSRndRect, CTKFSEllipse);
+
 const
   ComictecaFrameTypeKey: array [tCTKFrameType] of string =
     (krsFTVignetteKey, krsFTSpineDustJacketKey, krsFTFrontDustJacketKey,
@@ -122,6 +138,9 @@ const
     krsFTFlyLeafKey, krsFTIndexKey, krsFTBastardTitleKey, krsFTChapterTitleKey,
     krsFTEditorialInfoKey, krsFTAuthorTextKey, krsFTAdsKey, krsFTLicenseKey,
     krsFTBackCoverKey, krsFTBackDustJacketKey, krsFTOtherKey);
+
+  ComictecaFrameShapeKey: array [tCTKFrameShape] of string =
+    (krsFSRectKey, krsFSRndRectKey, krsFSEllipseKey);
 
 implementation
 

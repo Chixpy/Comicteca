@@ -14,7 +14,7 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
     Top = 352
     object actFileOpen: TFileOpen
       Category = 'File'
-      Caption = 'Open...'
+      Caption = 'Open File...'
       Dialog.Options = [ofNoChangeDir, ofFileMustExist, ofEnableSizing, ofViewDetail]
       Hint = 'Abrir'
       ShortCut = 16463
@@ -64,12 +64,21 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
       OnExecute = actToggleFullScreenExecute
       ShortCut = 122
     end
+    object actOpenFolder: TAction
+      Category = 'File'
+      Caption = 'Open Folder...'
+      OnExecute = actOpenFolderExecute
+      ShortCut = 16454
+    end
   end
   object pmMainMenu: TPopupMenu[1]
     Left = 168
     Top = 352
     object mimmFileOpen: TMenuItem
       Action = actFileOpen
+    end
+    object mimmOpenFolder: TMenuItem
+      Action = actOpenFolder
     end
     object mimmView: TMenuItem
       Caption = 'View'
@@ -103,5 +112,10 @@ inherited fComictecaVisorMain: TfComictecaVisorMain
     object MenuItem2: TMenuItem
       Action = actExit
     end
+  end
+  object SelectDirectoryDialog: TSelectDirectoryDialog[2]
+    Options = [ofNoChangeDir, ofPathMustExist, ofFileMustExist, ofEnableSizing, ofViewDetail]
+    Left = 296
+    Top = 352
   end
 end

@@ -28,8 +28,15 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
   ExtCtrls, LazFileUtils,
+  // CHX units.
   uCHXStrUtils,
+  // Comicteca Core units.
+  uCTKConst, uCTKRstStr,
+  // Comicteca Editor units.
   uCTKEditorConst,
+    // Comicteca Core abstract clases
+  uaComictecaText,
+  // Comicteca Editor abstract frames.
   uafCTKEditorTextFrame;
 
 type
@@ -38,29 +45,39 @@ type
 
   TfmCTKEditorTextEdit = class(TafmCTKEditorTextFrame)
     bResetFrame: TButton;
+    cbxTextShape: TComboBox;
     cbxLangContent: TComboBox;
-    chkEllipseFrame: TCheckBox;
     eBottom: TSpinEdit;
     eLeft: TSpinEdit;
     eRight: TSpinEdit;
     eTop: TSpinEdit;
+    eValX: TSpinEdit;
+    eValY: TSpinEdit;
     gbxFrameEdit: TGroupBox;
     lBottom: TLabel;
     lContent: TLabel;
     lLeft: TLabel;
     lRight: TLabel;
     lTop: TLabel;
+    lValX: TLabel;
+    lValY: TLabel;
     mContent: TMemo;
     pContent: TPanel;
     pEmpty1: TPanel;
     pEmpty2: TPanel;
     pEmpty3: TPanel;
     pEmpty4: TPanel;
+    pValX: TPanel;
+    pValY: TPanel;
     procedure bResetFrameClick(Sender: TObject);
+    procedure cbxLangContentEditingDone(Sender: TObject);
+    procedure cbxTextShapeChange(Sender: TObject);
     procedure eBottomChange(Sender: TObject);
     procedure eLeftChange(Sender: TObject);
     procedure eRightChange(Sender: TObject);
     procedure eTopChange(Sender: TObject);
+    procedure eValXChange(Sender: TObject);
+    procedure eValYChange(Sender: TObject);
     procedure mContentEditingDone(Sender: TObject);
 
   private
@@ -93,10 +110,32 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.Rect.Top := eTop.Value;
-  CTKText.Rect.NormalizeRect;
+  CTKText.TextRect.Top := eTop.Value;
+  CTKText.TextRect.NormalizeRect;
 
   // Changing Rect don't notify observers
+  CTKText.FPONotifyObservers(CTKText, ooChange, nil);
+end;
+
+procedure TfmCTKEditorTextEdit.eValXChange(Sender: TObject);
+begin
+  if not Assigned(CTKText) then
+    Exit;
+
+  CTKText.TextPoint.X := eValX.Value;
+
+  // Changing Point don't notify observers
+  CTKText.FPONotifyObservers(CTKText, ooChange, nil);
+end;
+
+procedure TfmCTKEditorTextEdit.eValYChange(Sender: TObject);
+begin
+  if not Assigned(CTKText) then
+    Exit;
+
+  CTKText.TextPoint.Y := eValY.Value;
+
+  // Changing Point don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
 end;
 
@@ -113,8 +152,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.Rect.Right := eRight.Value;
-  CTKText.Rect.NormalizeRect;
+  CTKText.TextRect.Right := eRight.Value;
+  CTKText.TextRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -125,8 +164,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.Rect.Left := eLeft.Value;
-  CTKText.Rect.NormalizeRect;
+  CTKText.TextRect.Left := eLeft.Value;
+  CTKText.TextRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -137,8 +176,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.Rect.Bottom := eBottom.Value;
-  CTKText.Rect.NormalizeRect;
+  CTKText.TextRect.Bottom := eBottom.Value;
+  CTKText.TextRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -149,10 +188,27 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.Rect := Default(TRect);
+  CTKText.TextRect := Default(TRect);
+  CTKText.TextPoint := Default(TPoint);
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
+end;
+
+procedure TfmCTKEditorTextEdit.cbxLangContentEditingDone(Sender: TObject);
+begin
+  if cbxLangContent.Items.IndexOf(cbxLangContent.Text) = -1 then
+     cbxLangContent.Items.Add(cbxLangContent.Text);
+
+  LoadFrameData;
+end;
+
+procedure TfmCTKEditorTextEdit.cbxTextShapeChange(Sender: TObject);
+begin
+    if not Assigned(CTKText) then
+    Exit;
+
+  CTKText.TextShape := tCTKFrameShape(cbxTextShape.ItemIndex);
 end;
 
 procedure TfmCTKEditorTextEdit.SetDataFolder(AValue: string);
@@ -188,10 +244,15 @@ begin
     Exit;
   end;
 
-  eLeft.Value := CTKText.Rect.Left;
-  eTop.Value := CTKText.Rect.Top;
-  eBottom.Value := CTKText.Rect.Bottom;
-  eRight.Value := CTKText.Rect.Right;
+  eLeft.Value := CTKText.TextRect.Left;
+  eTop.Value := CTKText.TextRect.Top;
+  eBottom.Value := CTKText.TextRect.Bottom;
+  eRight.Value := CTKText.TextRect.Right;
+
+  eValX.Value := CTKText.TextPoint.X;
+  eValY.Value := CTKText.TextPoint.Y;
+
+  cbxTextShape.ItemIndex := Ord(CTKText.TextShape);
 
   // Nil can't be assigned to TStringList...
   StrLst := CTKText.Content.CTMGetSL(cbxLangContent.Text);
@@ -208,7 +269,11 @@ begin
   eBottom.Value := 0;
   eRight.Value := 0;
 
-  cbxLangContent.Text := '';
+  eValX.Value := 0;
+  eValY.Value := 0;
+
+  cbxTextShape.ItemIndex := Ord(kCTKTextDefShape);
+
   mContent.Clear;
 end;
 
@@ -218,6 +283,8 @@ begin
 
   OnLoadFrameData := @DoLoadFrameData;
   OnClearFrameData := @DoClearFrameData;
+
+  cbxTextShape.Items.AddStrings(ComictecaFrameShapeStr, True);
 end;
 
 destructor TfmCTKEditorTextEdit.Destroy;

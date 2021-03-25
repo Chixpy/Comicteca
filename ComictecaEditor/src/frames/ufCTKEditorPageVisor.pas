@@ -162,6 +162,7 @@ begin
   Renderer.ShowFrameBorders := True;
   Renderer.ShowTextBorders := True;
   Renderer.ShowPerspectiveQuad := True;
+  Renderer.DebugRender := True;
 end;
 
 destructor TfmCTKEditorPageVisor.Destroy;

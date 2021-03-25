@@ -29,6 +29,7 @@ uses
     // Comicteca units
   uCTKConst;
 resourcestring
+  // Frame types.
   rsPCVignette = 'Vignette';
   rsPCSpineDustJacket = 'Spine Dust Jacket';
   rsPCFrontDustJacket = 'Front Dust Jacket';
@@ -47,14 +48,23 @@ resourcestring
   rsPCBackDustJacket  = 'Back Dust Jacket';
   rsPCOther = 'Other';
 
+  // Frame shapes.
+  rsFSRectKey = 'Rectangle';
+  rsFSRndRectKey = 'Round Rect';
+  rsFSEllipseKey = 'Ellipse';
+
 const
-  // Must be same order as ComictecaFrameTypeKey
+  // Must be same order as ComictecaFrameTypeKey.
   ComictecaFrameTypeStr: array [tCTKFrameType] of string =
     (rsPCVignette, rsPCSpineDustJacket, rsPCFrontDustJacket,
     rsPCSpineCover, rsPCFrontCover, rsPCEndPaper,
     rsPCFlyLeaf, rsPCIndex, rsPCBastardTitle, rsPCChapterTitle,
     rsPCEditorialInfo, rsPCAuthorText, rsPCAds, rsPCLicense,
     rsPCBackCover, rsPCBackDustJacket, rsPCOther);
+
+  // Must be same order as ComictecaFrameShapeKey.
+    ComictecaFrameShapeStr: array [tCTKFrameShape] of string =
+    (rsFSRectKey, rsFSRndRectKey, rsFSEllipseKey);
 
 implementation
 

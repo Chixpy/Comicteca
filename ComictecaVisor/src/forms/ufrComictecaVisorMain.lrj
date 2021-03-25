@@ -1,6 +1,6 @@
 {"version":1,"strings":[
 {"hash":11004306,"name":"tfcomictecavisormain.caption","sourcebytes":[67,111,109,105,99,116,101,99,97,32,86,105,115,111,114],"value":"Comicteca Visor"},
-{"hash":107745630,"name":"tfcomictecavisormain.actfileopen.caption","sourcebytes":[79,112,101,110,46,46,46],"value":"Open..."},
+{"hash":161792334,"name":"tfcomictecavisormain.actfileopen.caption","sourcebytes":[79,112,101,110,32,70,105,108,101,46,46,46],"value":"Open File..."},
 {"hash":4692226,"name":"tfcomictecavisormain.actfileopen.hint","sourcebytes":[65,98,114,105,114],"value":"Abrir"},
 {"hash":315140,"name":"tfcomictecavisormain.actexit.caption","sourcebytes":[69,120,105,116],"value":"Exit"},
 {"hash":5866242,"name":"tfcomictecavisormain.actexit.hint","sourcebytes":[83,97,108,105,114],"value":"Salir"},
@@ -10,6 +10,7 @@
 {"hash":338084,"name":"tfcomictecavisormain.actlast.caption","sourcebytes":[76,97,115,116],"value":"Last"},
 {"hash":79766643,"name":"tfcomictecavisormain.actflipr2l.caption","sourcebytes":[70,108,105,112,32,82,50,76,32,67,111,109,105,99,115],"value":"Flip R2L Comics"},
 {"hash":97995102,"name":"tfcomictecavisormain.acttogglefullscreen.caption","sourcebytes":[70,117,108,108,32,83,99,114,101,101,110],"value":"Full Screen"},
+{"hash":74193742,"name":"tfcomictecavisormain.actopenfolder.caption","sourcebytes":[79,112,101,110,32,70,111,108,100,101,114,46,46,46],"value":"Open Folder..."},
 {"hash":380871,"name":"tfcomictecavisormain.mimmview.caption","sourcebytes":[86,105,101,119],"value":"View"},
 {"hash":1247,"name":"tfcomictecavisormain.mimmgo.caption","sourcebytes":[71,111],"value":"Go"}
 ]}

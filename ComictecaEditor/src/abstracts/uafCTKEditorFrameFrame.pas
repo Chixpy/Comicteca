@@ -38,8 +38,8 @@ type
 
   TafmCTKEditorFrameFrame = class(TafmCTKEditorFrame, IFPObserver)
   private
-    FFrame: cComictecaFrame;
-    procedure SetFrame(AValue: cComictecaFrame);
+    FCTKFrame: cComictecaFrame;
+    procedure SetCTKFrame(AValue: cComictecaFrame);
 
   protected
     procedure DoLoadFrameFrame; virtual; abstract;
@@ -49,7 +49,7 @@ type
       Operation: TFPObservedOperation; Data: Pointer); virtual;
 
   public
-    property Frame: cComictecaFrame read FFrame write SetFrame;
+    property CTKFrame: cComictecaFrame read FCTKFrame write SetCTKFrame;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -61,21 +61,21 @@ implementation
 
 { TafmCTKEditorFrameFrame }
 
-procedure TafmCTKEditorFrameFrame.SetFrame(AValue: cComictecaFrame);
+procedure TafmCTKEditorFrameFrame.SetCTKFrame(AValue: cComictecaFrame);
 begin
-  if FFrame = AValue then
+  if FCTKFrame = AValue then
     Exit;
 
-  if Assigned(FFrame) then
+  if Assigned(FCTKFrame) then
   begin
-    FFrame.FPODetachObserver(Self);
+    FCTKFrame.FPODetachObserver(Self);
   end;
 
-  FFrame := AValue;
+  FCTKFrame := AValue;
 
-  if Assigned(FFrame) then
+  if Assigned(FCTKFrame) then
   begin
-    FFrame.FPOAttachObserver(Self);
+    FCTKFrame.FPOAttachObserver(Self);
   end;
 
   DoLoadFrameFrame;
@@ -84,13 +84,13 @@ end;
 procedure TafmCTKEditorFrameFrame.FPOObservedChanged(ASender: TObject;
   Operation: TFPObservedOperation; Data: Pointer);
 begin
-  if Frame = ASender then
+  if CTKFrame = ASender then
   begin
     case Operation of
       ooChange: DoLoadFrameFrame;
-      ooFree: Frame := nil;
+      ooFree: CTKFrame := nil;
       ooAddItem: ;
-      ooDeleteItem: Frame := nil;
+      ooDeleteItem: CTKFrame := nil;
       ooCustom: ;
     end;
   end;
@@ -103,8 +103,8 @@ end;
 
 destructor TafmCTKEditorFrameFrame.Destroy;
 begin
-  if Assigned(Frame) then
-    Frame.FPODetachObserver(Self);
+  if Assigned(CTKFrame) then
+    CTKFrame.FPODetachObserver(Self);
 
   inherited Destroy;
 end;

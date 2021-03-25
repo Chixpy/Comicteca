@@ -33,7 +33,8 @@ uses
   uCTKConst, uCTKCommon;
 
 const
-    kCTKFdefType = CTKFTVignette;
+  kCTKFrameDefType = CTKFTVignette;
+  kCTKFrameDefShape = CTKFSRect;
 
 type
 
@@ -41,11 +42,47 @@ type
 
   caComictecaFrame = class(TComponent)
   private
+    FCallObservers: boolean;
+    FFrameShape: tCTKFrameShape;
     FFrameType: tCTKFrameType;
+    FNoFlip: Boolean;
+    procedure SetCallObservers(AValue: boolean);
+    procedure SetFrameShape(AValue: tCTKFrameShape);
     procedure SetFrameType(AValue: tCTKFrameType);
+    procedure SetNoFlip(AValue: Boolean);
 
   public
-    Rect: TRect;
+    FrameRect: TRect;
+    {< Rect of text.
+
+      if Shape = CTKFSEllipse, external Rectangle where the ellipse is
+        inscribed.
+    }
+
+    FramePoint: TPoint;
+    {< Depends on Shape. Its values are relative to Frame.Rect
+
+      * FrameShape = CTKFSRect -> Not used. (Maybe for: center of the text?)
+
+      * FrameShape = CTKFSRndRect -> X and Y are the diameters of elliptical
+        corners.
+
+      * FrameShape = CTKFSEllipse -> Define a corner of a rectangle to cut the
+        ellipse (for example, cut by vignette edges). Positive values are for
+        left/top rectangle corner; negative for right/bottom corner. Examples:
+        * 2, 5 -> Top Left corner.
+        * -2, 5 -> Top Right corner.
+        * 2, -5 -> Bottom Left corner.
+        * -2, -5 -> Bottom Right corner.
+    }
+
+    property CallObservers: boolean read FCallObservers write SetCallObservers;
+    {< If True (default), the object call its observed on any change.
+
+      Change it to false at beginning of many changes will be done and want
+        to update observers only one time at the end, when must be set to True
+        again.
+    }
 
     procedure LoadFromXML(aXMLNode: TDOMElement); virtual;
     procedure SaveToXML(aXMLDoc: TXMLDocument; aXMLNode: TDOMElement); virtual;
@@ -55,6 +92,12 @@ type
 
   published
     property FrameType: tCTKFrameType read FFrameType write SetFrameType;
+    {< Content of the frame. }
+    property FrameShape: tCTKFrameShape read FFrameShape write SetFrameShape;
+    {< Shape of the frame. }
+
+    property NoFlip: Boolean read FNoFlip write SetNoFlip;
+    {< Don't flip frame (Right to left comics, manga). }
 
   end;
 
@@ -62,47 +105,98 @@ implementation
 
 procedure caComictecaFrame.SetFrameType(AValue: tCTKFrameType);
 begin
-  if FFrameType = AValue then Exit;
+  if FFrameType = AValue then
+    Exit;
   FFrameType := AValue;
 
-  FPONotifyObservers(Self, ooChange, nil);
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure caComictecaFrame.SetNoFlip(AValue: Boolean);
+begin
+  if FNoFlip = AValue then Exit;
+  FNoFlip := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure caComictecaFrame.SetCallObservers(AValue: boolean);
+begin
+  // if FCallObservers = AValue then Exit; <- Call if True anyway
+  FCallObservers := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure caComictecaFrame.SetFrameShape(AValue: tCTKFrameShape);
+begin
+  if FFrameShape = AValue then
+    Exit;
+  FFrameShape := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
 end;
 
 procedure caComictecaFrame.LoadFromXML(aXMLNode: TDOMElement);
 var
   aSrt: string;
 begin
-   if not Assigned(aXMLNode) then
+  if not Assigned(aXMLNode) then
     Exit;
 
-   Rect.FromString(aXMLNode[krsCTKXMLRect]);
+  CallObservers := False; // Don't notify Observer
 
-   aSrt := aXMLNode[krsCTKXMLFrameType];
-   if aSrt <> '' then
-     FrameType := Str2FrameType(aSrt)
-   else
-     FrameType := kCTKFdefType;
+  FrameRect.FromString(aXMLNode[krsCTKXMLRectProp]);
+
+  aSrt := aXMLNode[krsCTKXMLFrameType];
+  if aSrt <> '' then
+    FrameType := Str2FrameType(aSrt)
+  else
+    FrameType := kCTKFrameDefType;
+
+  aSrt := aXMLNode[krsCTKXMLShapeProp];
+  if aSrt <> '' then
+    FrameShape := Str2FrameShape(aSrt)
+  else
+    FrameShape := kCTKFrameDefShape;
+
+  FramePoint.FromString(aXMLNode[krsCTKXMLPointProp], ',');
+
+  CallObservers := True;
 end;
 
 procedure caComictecaFrame.SaveToXML(aXMLDoc: TXMLDocument;
   aXMLNode: TDOMElement);
 begin
-   if (not Assigned(aXMLNode)) or (not Assigned(aXMLDoc)) then
-     Exit;
+  if (not Assigned(aXMLNode)) or (not Assigned(aXMLDoc)) then
+    Exit;
 
-   aXMLNode[krsCTKXMLRect] := Rect.ToString;
+  aXMLNode[krsCTKXMLRectProp] := FrameRect.ToString;
 
-   if FrameType <> kCTKFdefType then
-     aXMLNode[krsCTKXMLFrameType] := ComictecaFrameTypeKey[FrameType]
+  if FrameType <> kCTKFrameDefType then
+    aXMLNode[krsCTKXMLFrameType] := ComictecaFrameTypeKey[FrameType];
+
+  if FrameShape <> kCTKFrameDefShape then
+    aXMLNode[krsCTKXMLShapeProp] := ComictecaFrameShapeKey[FrameShape];
+
+  if not FramePoint.IsZero then
+    aXMLNode[krsCTKXMLPointProp] := FramePoint.ToString(',');
 end;
 
 constructor caComictecaFrame.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
 
-  FrameType := kCTKFdefType;
-
-  FPONotifyObservers(Self, ooChange, nil);
+  CallObservers := False; // Don't notify Observers until created
+  FrameRect := Default(TRect);
+  FramePoint := Default(TPoint);
+  FrameType := kCTKFrameDefType;
+  FrameShape := kCTKFrameDefShape;
+  CallObservers := True;
 end;
 
 destructor caComictecaFrame.Destroy;

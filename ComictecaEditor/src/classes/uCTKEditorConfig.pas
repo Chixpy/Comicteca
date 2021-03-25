@@ -26,8 +26,12 @@ interface
 
 uses
   Classes, SysUtils, IniFiles,
-// CHX abstracts
-  uaCHXConfig;
+  // CHX units
+  uCHXStrUtils,
+  // CHX abstracts
+  uaCHXConfig,
+  // Comicteca Editor units
+  uCTKEditorConst;
 
 type
 
@@ -35,34 +39,43 @@ type
 
   cCTKEditorConfig = class(caCHXConfig)
   private
+    FLastFolder: string;
+    procedure SetLastFolder(AValue: string);
 
   public
-
     procedure LoadFromIni(aIniFile: TMemIniFile); override;
     procedure ResetDefaultConfig; override;
     procedure SaveToIni(aIniFile: TMemIniFile); override;
 
     constructor Create(aOwner: TComponent); override;
     destructor Destroy; override;
+
+  published
+    property LastFolder: string read FLastFolder write SetLastFolder;
   end;
 
 implementation
 
 { cCTKEditorConfig }
 
+procedure cCTKEditorConfig.SetLastFolder(AValue: string);
+begin
+  FLastFolder := SetAsFolder(AValue);
+end;
+
 procedure cCTKEditorConfig.LoadFromIni(aIniFile: TMemIniFile);
 begin
-
+  LastFolder := aIniFile.ReadString(kIniFilesKey, kIniLastFolderKey, '');
 end;
 
 procedure cCTKEditorConfig.ResetDefaultConfig;
 begin
-
+  LastFolder := '';
 end;
 
 procedure cCTKEditorConfig.SaveToIni(aIniFile: TMemIniFile);
 begin
-
+  aIniFile.WriteString(kIniFilesKey, kIniLastFolderKey, LastFolder);
 end;
 
 constructor cCTKEditorConfig.Create(aOwner: TComponent);

@@ -31,6 +31,7 @@ uses
   uCTKConst;
 
 function Str2FrameType(aString: string): tCTKFrameType;
+function Str2FrameShape(aString: string): tCTKFrameShape;
 
 function Str2FrameTypeSet(aString: string): tCTKPageContents;
 function StrLst2FrameTypeSet(aStringList: TStringList): tCTKPageContents;
@@ -77,6 +78,18 @@ begin
     Result := CTKFTBackDustJacket
   else if UTF8CompareText(aString, krsFTOtherKey) = 0 then
     Result := CTKFTOther;
+end;
+
+function Str2FrameShape(aString: string): tCTKFrameShape;
+begin
+  Result := CTKFSRect;
+
+  if UTF8CompareText(aString, krsFSRectKey) = 0 then
+    Result := CTKFSRect
+  else if UTF8CompareText(aString, krsFSRndRectKey) = 0 then
+    Result := CTKFSRndRect
+  else if UTF8CompareText(aString, krsFSEllipseKey) = 0 then
+    Result := CTKFSEllipse;
 end;
 
 function Str2FrameTypeSet(aString: string): tCTKPageContents;

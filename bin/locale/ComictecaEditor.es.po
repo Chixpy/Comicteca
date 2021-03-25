@@ -6,11 +6,6 @@ msgctxt "tfmctkeditorframeedit.bresetframe.caption"
 msgid "Reset Frame"
 msgstr "Reiniciar"
 
-#: tfmctkeditorframeedit.chkellipseframe.caption
-msgctxt "tfmctkeditorframeedit.chkellipseframe.caption"
-msgid "Ellipse"
-msgstr ""
-
 #: tfmctkeditorframeedit.gbxframeedit.caption
 msgctxt "tfmctkeditorframeedit.gbxframeedit.caption"
 msgid "Frame properties"
@@ -44,6 +39,16 @@ msgstr "Derecha"
 msgctxt "tfmctkeditorframeedit.ltop.caption"
 msgid "Top"
 msgstr "Arriba"
+
+#: tfmctkeditorframeedit.lvalx.caption
+msgctxt "tfmctkeditorframeedit.lvalx.caption"
+msgid "X"
+msgstr ""
+
+#: tfmctkeditorframeedit.lvaly.caption
+msgctxt "tfmctkeditorframeedit.lvaly.caption"
+msgid "Y"
+msgstr ""
 
 #: tfmctkeditorframelist.baddframe.caption
 msgid "Add Frame"
@@ -210,11 +215,6 @@ msgctxt "tfmctkeditortextedit.bresetframe.caption"
 msgid "Reset Frame"
 msgstr "Reiniciar"
 
-#: tfmctkeditortextedit.chkellipseframe.caption
-msgctxt "tfmctkeditortextedit.chkellipseframe.caption"
-msgid "Ellipse"
-msgstr ""
-
 #: tfmctkeditortextedit.gbxframeedit.caption
 #, fuzzy
 msgctxt "tfmctkeditortextedit.gbxframeedit.caption"
@@ -250,6 +250,16 @@ msgstr "Derecha"
 msgctxt "tfmctkeditortextedit.ltop.caption"
 msgid "Top"
 msgstr "Arriba"
+
+#: tfmctkeditortextedit.lvalx.caption
+msgctxt "tfmctkeditortextedit.lvalx.caption"
+msgid "X"
+msgstr ""
+
+#: tfmctkeditortextedit.lvaly.caption
+msgctxt "tfmctkeditortextedit.lvaly.caption"
+msgid "Y"
+msgstr ""
 
 #: tfmctkeditortextlist.baddtext.caption
 msgid "Add Text"
@@ -424,6 +434,19 @@ msgstr ""
 
 #: uchxrscstr.rsenotfilename
 msgid "%0:s: Not defined filename"
+msgstr ""
+
+#: uctkrststr.rsfsellipsekey
+msgctxt "uctkrststr.rsfsellipsekey"
+msgid "Ellipse"
+msgstr ""
+
+#: uctkrststr.rsfsrectkey
+msgid "Rectangle"
+msgstr ""
+
+#: uctkrststr.rsfsrndrectkey
+msgid "Round Rect"
 msgstr ""
 
 #: uctkrststr.rspcads

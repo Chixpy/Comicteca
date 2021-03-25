@@ -356,6 +356,8 @@ begin
     Exit;
 
   Archive := SysPath(Archive);
+  if FileExistsUTF8(Archive) then
+    DeleteFileUTF8(Archive);
   if SupportedExtCT(Archive, 'zip,cbz') then
   begin
     w7zCompressFolder(Archive, Folder, False, True, 'zip');
@@ -367,6 +369,8 @@ begin
   else
   begin
     Archive := ChangeFileExt(Archive, '.cbz');
+    if FileExistsUTF8(Archive) then
+      DeleteFileUTF8(Archive);
     w7zCompressFolder(Archive, Folder, False, True, 'zip');
   end;
 end;

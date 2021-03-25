@@ -155,9 +155,8 @@ begin
   if not Enabled then
     Exit;
 
-  Renderer.ShowTextBorders := CTKText.Rect.IsEmpty;
-  FTextImage := Renderer.RenderPageRect(cComictecaPage(CTKText.Page),
-    CTKText.Rect);
+  Renderer.ShowTextBorders := CTKText.TextRect.IsEmpty;
+  FTextImage := Renderer.RenderText(CTKText);
 
   fmVisor.ActualImage := FTextImage;
 end;
@@ -190,13 +189,13 @@ begin
     mbLeft:
     begin
 
-      if CTKText.Rect.IsEmpty then
-        CTKText.Rect := aRect
+      if CTKText.TextRect.IsEmpty then
+        CTKText.TextRect := aRect
       else
       begin
-        CurrRect := CTKText.Rect;
-        CTKText.Rect := aRect;
-        CTKText.Rect.Offset(CurrRect.TopLeft);
+        CurrRect := CTKText.TextRect;
+        CTKText.TextRect := aRect;
+        CTKText.TextRect.Offset(CurrRect.TopLeft);
       end;
 
       // Changing Rect don't notify observers
@@ -233,8 +232,9 @@ begin
 
   FRenderer := cComictecaVolumeRenderer.Create(nil);
   Renderer.ShowFrameBorders := True;
-  Renderer.ShowTextBorders := True;
+  Renderer.ShowTextBorders := False;
   Renderer.ShowPerspectiveQuad := False;
+  Renderer.DebugRender := True;
 end;
 
 destructor TfmCTKEditorTextVisor.Destroy;

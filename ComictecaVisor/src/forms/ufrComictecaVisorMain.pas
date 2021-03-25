@@ -53,6 +53,7 @@ type
   TfComictecaVisorMain = class(TfrmCHXForm)
     actFirst: TAction;
     actFlipR2L: TAction;
+    actOpenFolder: TAction;
     actToggleFullScreen: TAction;
     actLast: TAction;
     actNext: TAction;
@@ -62,6 +63,7 @@ type
     actExit: TFileExit;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
+    mimmOpenFolder: TMenuItem;
     mimmFullScreen: TMenuItem;
     mimmFlipR2L: TMenuItem;
     mimmView: TMenuItem;
@@ -72,11 +74,13 @@ type
     mimmGo: TMenuItem;
     mimmFileOpen: TMenuItem;
     pmMainMenu: TPopupMenu;
+    SelectDirectoryDialog: TSelectDirectoryDialog;
     procedure actFileOpenAccept(Sender: TObject);
     procedure actFirstExecute(Sender: TObject);
     procedure actFlipR2LExecute(Sender: TObject);
     procedure actLastExecute(Sender: TObject);
     procedure actNextExecute(Sender: TObject);
+    procedure actOpenFolderExecute(Sender: TObject);
     procedure actPreviousExecute(Sender: TObject);
     procedure actToggleFullScreenExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
@@ -146,6 +150,7 @@ end;
 
 procedure TfComictecaVisorMain.actFileOpenAccept(Sender: TObject);
 begin
+  Renderer.Comic := nil;
   FreeAndNil(FComic);
 
   FComic := cComictecaVolume.Create(nil);
@@ -186,6 +191,21 @@ end;
 procedure TfComictecaVisorMain.actNextExecute(Sender: TObject);
 begin
   CurrentPos := CurrentPos + 1;
+end;
+
+procedure TfComictecaVisorMain.actOpenFolderExecute(Sender: TObject);
+begin
+  if not SelectDirectoryDialog.Execute then Exit;
+
+  Renderer.Comic := nil;
+  FreeAndNil(FComic);
+
+  FComic := cComictecaVolume.Create(nil);
+  Comic.LoadFromFolder(SelectDirectoryDialog.FileName);
+
+  Renderer.Comic := Comic;
+
+  CurrentPos := 0;
 end;
 
 procedure TfComictecaVisorMain.actPreviousExecute(Sender: TObject);

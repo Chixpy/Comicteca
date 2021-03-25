@@ -77,7 +77,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="31">
+    <Units Count="34">
       <Unit0>
         <Filename Value="ComictecaVisor.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -217,6 +217,18 @@
         <Filename Value="..\ComictecaCore\Classes\ucComictecaVolumeRenderer.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit30>
+      <Unit31>
+        <Filename Value="..\..\CHX\Units\uCHX7zWrapper.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="..\..\CHX\Units\uCHXExecute.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="..\..\CHX\Units\uCHXFileUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit33>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

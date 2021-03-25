@@ -200,13 +200,13 @@ end;
 procedure TfmCTKEditorMain.DoSelectFrame(aCTKFrame: cComictecaFrame);
 begin
   if assigned(fmLeft) and (fmLeft is TafmCTKEditorFrameFrame) then
-    TafmCTKEditorFrameFrame(fmLeft).Frame := aCTKFrame;
+    TafmCTKEditorFrameFrame(fmLeft).CTKFrame := aCTKFrame;
 
   if assigned(fmCenter) and (fmCenter is TafmCTKEditorFrameFrame) then
-    TafmCTKEditorFrameFrame(fmCenter).Frame := aCTKFrame;
+    TafmCTKEditorFrameFrame(fmCenter).CTKFrame := aCTKFrame;
 
   if assigned(fmRight) and (fmRight is TafmCTKEditorFrameFrame) then
-    TafmCTKEditorFrameFrame(fmRight).Frame := aCTKFrame;
+    TafmCTKEditorFrameFrame(fmRight).CTKFrame := aCTKFrame;
 end;
 
 procedure TfmCTKEditorMain.DoSelectText(aCTKText: cComictecaText);

@@ -5,7 +5,8 @@
 {"hash":76987229,"name":"tfmctkeditorframeedit.lbottom.caption","sourcebytes":[66,111,116,116,111,109],"value":"Bottom"},
 {"hash":5832180,"name":"tfmctkeditorframeedit.lright.caption","sourcebytes":[82,105,103,104,116],"value":"Right"},
 {"hash":102060021,"name":"tfmctkeditorframeedit.bresetframe.caption","sourcebytes":[82,101,115,101,116,32,70,114,97,109,101],"value":"Reset Frame"},
-{"hash":204670933,"name":"tfmctkeditorframeedit.chkellipseframe.caption","sourcebytes":[69,108,108,105,112,115,101],"value":"Ellipse"},
+{"hash":88,"name":"tfmctkeditorframeedit.lvalx.caption","sourcebytes":[88],"value":"X"},
+{"hash":89,"name":"tfmctkeditorframeedit.lvaly.caption","sourcebytes":[89],"value":"Y"},
 {"hash":354261,"name":"tfmctkeditorframeedit.lpage.caption","sourcebytes":[80,97,103,101],"value":"Page"},
 {"hash":57768165,"name":"tfmctkeditorframeedit.lframetype.caption","sourcebytes":[70,114,97,109,101,32,84,121,112,101],"value":"Frame Type"}
 ]}

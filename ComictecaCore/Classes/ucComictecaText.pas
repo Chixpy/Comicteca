@@ -80,7 +80,8 @@ procedure cComictecaText.CopyFrom(aCTKText: cComictecaText);
 begin
   if not Assigned(aCTKText) then Exit;
 
-  Self.Rect := aCTKText.Rect;
+  Self.TextRect := aCTKText.TextRect;
+  Self.TextPoint := aCTKText.TextPoint;
   Self.Page := aCTKText.Page;
 end;
 
@@ -93,5 +94,11 @@ destructor cComictecaText.Destroy;
 begin
   inherited Destroy;
 end;
+
+initialization
+  RegisterClass(cComictecaText);
+
+finalization
+  UnRegisterClass(cComictecaText);
 
 end.

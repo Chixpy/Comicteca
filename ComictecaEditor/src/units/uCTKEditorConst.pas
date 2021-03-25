@@ -38,6 +38,10 @@ const
   kEditorsCBFile = 'Editors.txt';
   kLanguageCBFile = 'Languages.txt';
 
+  // Config INI sections
+  kIniFilesKey = 'Files';
+  kIniLastFolderKey = 'LastFolder';
+
 implementation
 
 end.

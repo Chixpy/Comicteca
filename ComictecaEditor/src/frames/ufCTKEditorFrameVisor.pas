@@ -133,13 +133,13 @@ procedure TfmCTKEditorFrameVisor.DoLoadFrameData;
 begin
   ClearFrameData;
 
-  Enabled := Assigned(Frame) and Assigned(Comic);
+  Enabled := Assigned(CTKFrame) and Assigned(Comic);
 
   if not Enabled then
     Exit;
 
-  Renderer.ShowFrameBorders := Frame.Rect.IsEmpty;
-  FFrameImage := Renderer.RenderFrame(Frame);
+  Renderer.ShowFrameBorders := CTKFrame.FrameRect.IsEmpty;
+  FFrameImage := Renderer.RenderFrame(CTKFrame);
 
   fmVisor.ActualImage := FrameImage;
 end;
@@ -169,17 +169,17 @@ begin
     mbLeft:
     begin
 
-      if Frame.Rect.IsEmpty then
-        Frame.Rect := aRect
+      if CTKFrame.FrameRect.IsEmpty then
+        CTKFrame.FrameRect := aRect
       else
       begin
-        CurrRect := Frame.Rect;
-        Frame.Rect := aRect;
-        Frame.Rect.Offset(CurrRect.TopLeft);
+        CurrRect := CTKFrame.FrameRect;
+        CTKFrame.FrameRect := aRect;
+        CTKFrame.FrameRect.Offset(CurrRect.TopLeft);
       end;
 
       // Changing Rect don't notify observers
-      Frame.FPONotifyObservers(Frame, ooChange, nil);
+      CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
     end;
     mbRight: ;
     mbMiddle: ;
@@ -212,6 +212,7 @@ begin
   Renderer.ShowFrameBorders := True;
   Renderer.ShowTextBorders := True;
   Renderer.ShowPerspectiveQuad := False;
+  Renderer.DebugRender := True;
 end;
 
 destructor TfmCTKEditorFrameVisor.Destroy;
