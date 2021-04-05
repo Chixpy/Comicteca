@@ -141,6 +141,10 @@ msgstr "Textos"
 msgid "Metadada"
 msgstr ""
 
+#: tfmctkeditorpageedit.bresetgeometry.caption
+msgid "Reset"
+msgstr ""
+
 #: tfmctkeditorpageedit.bsetbl.caption
 msgid "Set BL"
 msgstr ""

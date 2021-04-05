@@ -13,6 +13,7 @@
 {"hash":94135404,"name":"tfmctkeditorpageedit.bsetbl.caption","sourcebytes":[83,101,116,32,66,76],"value":"Set BL"},
 {"hash":198067876,"name":"tfmctkeditorpageedit.lbottomright.caption","sourcebytes":[66,111,116,116,111,109,32,82,105,103,104,116],"value":"Bottom Right"},
 {"hash":94135410,"name":"tfmctkeditorpageedit.bsetbr.caption","sourcebytes":[83,101,116,32,66,82],"value":"Set BR"},
+{"hash":5818820,"name":"tfmctkeditorpageedit.bresetgeometry.caption","sourcebytes":[82,101,115,101,116],"value":"Reset"},
 {"hash":188802990,"name":"tfmctkeditorpageedit.lcurrentpoint.caption","sourcebytes":[67,108,105,99,107,32,111,110,32,105,109,97,103,101,32,116,111,32,115,101,108,101,99,116,32,97,32,112,111,105,110,116,46],"value":"Click on image to select a point."},
 {"hash":485806,"name":"tfmctkeditorpageedit.chkcroptogeometry.caption","sourcebytes":[67,114,111,112,32,112,97,103,101,32,116,111,32,103,101,111,109,101,116,114,121,32,98,111,120,46],"value":"Crop page to geometry box."},
 {"hash":140056039,"name":"tfmctkeditorpageedit.chklineargeometry.caption","sourcebytes":[76,105,110,101,97,114,32,103,101,111,109,101,116,114,121,32,109,97,112,112,105,110,103],"value":"Linear geometry mapping"}

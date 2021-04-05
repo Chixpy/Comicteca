@@ -88,7 +88,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
     object cgrPageContent: TCheckGroup
       Left = 0
       Height = 24
-      Top = 343
+      Top = 353
       Width = 396
       Align = alTop
       AutoFill = True
@@ -109,18 +109,18 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
     end
     object gbxFixGeometry: TGroupBox
       Left = 0
-      Height = 219
+      Height = 229
       Top = 124
       Width = 396
       Align = alTop
       AutoSize = True
       Caption = 'Fix Geometry'
-      ClientHeight = 194
+      ClientHeight = 204
       ClientWidth = 392
       TabOrder = 4
       object pGeomQuadPoints: TPanel
         Left = 0
-        Height = 126
+        Height = 136
         Top = 20
         Width = 392
         Align = alClient
@@ -132,12 +132,12 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         ChildSizing.VerticalSpacing = 4
         ChildSizing.Layout = cclTopToBottomThenLeftToRight
         ChildSizing.ControlsPerLine = 4
-        ClientHeight = 126
+        ClientHeight = 136
         ClientWidth = 392
         TabOrder = 0
         object lTopLeft: TLabel
           Left = 4
-          Height = 20
+          Height = 30
           Top = 4
           Width = 66
           Caption = 'Top Left'
@@ -146,7 +146,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eTopLeftX: TSpinEdit
           Left = 4
           Height = 28
-          Top = 28
+          Top = 38
           Width = 66
           MaxValue = 8192
           OnChange = eTopLeftXChange
@@ -155,7 +155,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eTopLeftY: TSpinEdit
           Left = 4
           Height = 28
-          Top = 60
+          Top = 70
           Width = 66
           MaxValue = 8192
           OnChange = eTopLeftYChange
@@ -164,7 +164,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object bSetTL: TButton
           Left = 4
           Height = 30
-          Top = 92
+          Top = 102
           Width = 66
           Caption = 'Set TL'
           OnClick = bSetTLClick
@@ -172,7 +172,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         end
         object lTopRight: TLabel
           Left = 74
-          Height = 20
+          Height = 30
           Top = 4
           Width = 68
           Caption = 'Top Right'
@@ -181,7 +181,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eTopRightX: TSpinEdit
           Left = 74
           Height = 28
-          Top = 28
+          Top = 38
           Width = 68
           MaxValue = 8192
           OnChange = eTopRightXChange
@@ -190,7 +190,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eTopRightY: TSpinEdit
           Left = 74
           Height = 28
-          Top = 60
+          Top = 70
           Width = 68
           MaxValue = 8192
           OnChange = eTopRightYChange
@@ -199,7 +199,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object bSetTR: TButton
           Left = 74
           Height = 30
-          Top = 92
+          Top = 102
           Width = 68
           Caption = 'Set TR'
           OnClick = bSetTRClick
@@ -207,7 +207,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         end
         object lBottomLeft: TLabel
           Left = 146
-          Height = 20
+          Height = 30
           Top = 4
           Width = 79
           Caption = 'Bottom Left'
@@ -216,7 +216,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eBottomLeftX: TSpinEdit
           Left = 146
           Height = 28
-          Top = 28
+          Top = 38
           Width = 79
           MaxValue = 8192
           OnChange = eBottomLeftXChange
@@ -225,7 +225,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eBottomLeftY: TSpinEdit
           Left = 146
           Height = 28
-          Top = 60
+          Top = 70
           Width = 79
           MaxValue = 8192
           OnChange = eBottomLeftYChange
@@ -234,7 +234,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object bSetBL: TButton
           Left = 146
           Height = 30
-          Top = 92
+          Top = 102
           Width = 79
           Caption = 'Set BL'
           OnClick = bSetBLClick
@@ -242,7 +242,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         end
         object lBottomRight: TLabel
           Left = 229
-          Height = 20
+          Height = 30
           Top = 4
           Width = 89
           Caption = 'Bottom Right'
@@ -251,7 +251,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eBottomRightX: TSpinEdit
           Left = 229
           Height = 28
-          Top = 28
+          Top = 38
           Width = 89
           MaxValue = 8192
           OnChange = eBottomRightXChange
@@ -260,7 +260,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object eBottomRightY: TSpinEdit
           Left = 229
           Height = 28
-          Top = 60
+          Top = 70
           Width = 89
           MaxValue = 8192
           OnChange = eBottomRightYChange
@@ -269,11 +269,20 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         object bSetBR: TButton
           Left = 229
           Height = 30
-          Top = 92
+          Top = 102
           Width = 89
           Caption = 'Set BR'
           OnClick = bSetBRClick
           TabOrder = 11
+        end
+        object bResetGeometry: TButton
+          Left = 322
+          Height = 30
+          Top = 4
+          Width = 62
+          Caption = 'Reset'
+          OnClick = bResetGeometryClick
+          TabOrder = 12
         end
       end
       object lCurrentPoint: TLabel
@@ -288,7 +297,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
       object chkCropToGeometry: TCheckBox
         Left = 0
         Height = 24
-        Top = 146
+        Top = 156
         Width = 392
         Align = alBottom
         Caption = 'Crop page to geometry box.'
@@ -298,7 +307,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
       object chkLinearGeometry: TCheckBox
         Left = 0
         Height = 24
-        Top = 170
+        Top = 180
         Width = 392
         Align = alBottom
         Caption = 'Linear geometry mapping'

@@ -28,7 +28,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
   ExtCtrls,
-    // CHX units
+  // CHX units
   uCHXRecordHelpers,
   // CHX frame units
   ufCHXBGRAImgViewerEx,
@@ -46,6 +46,7 @@ type
   { TfmCTKEditorPageEdit }
 
   TfmCTKEditorPageEdit = class(TafmCTKEditorPageFrame)
+    bResetGeometry: TButton;
     bSetTL: TButton;
     bSetBL: TButton;
     bSetBR: TButton;
@@ -76,6 +77,7 @@ type
     lBottomRight: TLabel;
     pGeomQuadPoints: TPanel;
     pValues: TPanel;
+    procedure bResetGeometryClick(Sender: TObject);
     procedure bSetBLClick(Sender: TObject);
     procedure bSetBRClick(Sender: TObject);
     procedure bSetTLClick(Sender: TObject);
@@ -102,7 +104,8 @@ type
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
 
-    procedure DoImgMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure DoImgMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: integer);
 
   public
     CurrentPoint: TPoint;
@@ -146,9 +149,6 @@ begin
   eTopLeftX.Value := CurrentPoint.X;
   eTopLeftY.Value := CurrentPoint.Y;
   Page.GeomTL := CurrentPoint;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.bSetBLClick(Sender: TObject);
@@ -159,9 +159,25 @@ begin
   eBottomLeftX.Value := CurrentPoint.X;
   eBottomLeftY.Value := CurrentPoint.Y;
   Page.GeomBL := CurrentPoint;
+end;
 
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
+procedure TfmCTKEditorPageEdit.bResetGeometryClick(Sender: TObject);
+begin
+  // SpinButtons
+  eTopLeftX.Value := 0;
+  eTopLeftY.Value := 0;
+  eTopRightX.Value := 0;
+  eTopRightY.Value := 0;
+  eBottomLeftX.Value := 0;
+  eBottomLeftY.Value := 0;
+  eBottomRightX.Value := 0;
+  eBottomRightY.Value := 0;
+
+  // Page properties
+  Page.GeomTL := TPoint.Zero;
+  Page.GeomTR := TPoint.Zero;
+  Page.GeomBL := TPoint.Zero;
+  Page.GeomBR := TPoint.Zero;
 end;
 
 procedure TfmCTKEditorPageEdit.bSetBRClick(Sender: TObject);
@@ -172,9 +188,6 @@ begin
   eBottomRightX.Value := CurrentPoint.X;
   eBottomRightY.Value := CurrentPoint.Y;
   Page.GeomBR := CurrentPoint;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.bSetTRClick(Sender: TObject);
@@ -185,9 +198,6 @@ begin
   eTopRightX.Value := CurrentPoint.X;
   eTopRightY.Value := CurrentPoint.Y;
   Page.GeomTR := CurrentPoint;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.cgrPageContentItemClick(Sender: TObject;
@@ -210,62 +220,50 @@ end;
 
 procedure TfmCTKEditorPageEdit.chkCropToGeometryChange(Sender: TObject);
 begin
-       if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
-       Page.CropGeometry := chkCropToGeometry.Checked;
+  Page.CropGeometry := chkCropToGeometry.Checked;
 end;
 
 procedure TfmCTKEditorPageEdit.chkLinearGeometryChange(Sender: TObject);
 begin
-        if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
-       Page.LinearGeometry := chkLinearGeometry.Checked;
+  Page.LinearGeometry := chkLinearGeometry.Checked;
 end;
 
 procedure TfmCTKEditorPageEdit.eBottomLeftXChange(Sender: TObject);
 begin
-      if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomBL.X := eBottomLeftX.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eBottomLeftYChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomBL.Y := eBottomLeftY.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eBottomRightXChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomBR.X := eBottomRightX.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eBottomRightYChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomBR.Y := eBottomRightY.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eMultipageChange(Sender: TObject);
@@ -278,51 +276,40 @@ end;
 
 procedure TfmCTKEditorPageEdit.eTopLeftXChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomTL.X := eTopLeftX.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eTopLeftYChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomTL.Y := eTopLeftY.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eTopRightXChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomTR.X := eTopRightX.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.eTopRightYChange(Sender: TObject);
 begin
-    if not Assigned(Page) then
+  if not Assigned(Page) then
     Exit;
 
   Page.GeomTR.Y := eTopRightY.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.SetVisor(AValue: TfmCHXBGRAImgViewerEx);
 begin
-  if FVisor = AValue then Exit;
+  if FVisor = AValue then
+    Exit;
 
   if Assigned(FVisor) then
   begin
@@ -406,7 +393,7 @@ begin
 end;
 
 procedure TfmCTKEditorPageEdit.DoImgMouseUp(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+  Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
   CurrentPoint.X := X;
   CurrentPoint.Y := Y;
