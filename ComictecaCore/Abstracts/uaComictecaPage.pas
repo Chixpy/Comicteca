@@ -48,25 +48,38 @@ type
 
   caComictecaPage = class(TComponent)
   private
-    FCropPerspective: Boolean;
+    FCallObservers: boolean;
+    FCropGeometry: boolean;
 
     FFileName: string;
+    FLinearGeometry: Boolean;
     FMultiplePages: integer;
     FPageContent: tCTKPageContents;
     FSHA1: string;
-    procedure SetCropPerspective(AValue: Boolean);
+    procedure SetCallObservers(AValue: boolean);
+    procedure SetCropGeometry(AValue: boolean);
     procedure SetFileName(AValue: string);
+    procedure SetLinearGeometry(AValue: Boolean);
     procedure SetMultiplePages(const AValue: integer);
     procedure SetPageContent(AValue: tCTKPageContents);
     procedure SetSHA1(AValue: string);
 
   public
-    PersTL: TPoint;
-    PersTR: TPoint;
-    PersBL: TPoint;
-    PersBR: TPoint;
+    GeomTL: TPoint;
+    GeomTR: TPoint;
+    GeomBL: TPoint;
+    GeomBR: TPoint;
 
-    function HasPerspective: boolean;
+    property CallObservers: boolean read FCallObservers
+      write SetCallObservers;
+    {< If True (default), the object call its observed on any change.
+
+      Change it to false at beginning of many changes will be done and want
+        to update observers only one time at the end, when must be set to True
+        again.
+    }
+
+    function HasGeometry: boolean;
 
     function MatchSHA1(aSHA1: string): boolean;
 
@@ -87,7 +100,8 @@ type
     property PageContent: tCTKPageContents
       read FPageContent write SetPageContent;
 
-    property CropPerspective: Boolean read FCropPerspective write SetCropPerspective;
+    property CropGeometry: boolean read FCropGeometry write SetCropGeometry;
+    property LinearGeometry: Boolean read FLinearGeometry write SetLinearGeometry;
 
   end;
 
@@ -100,17 +114,45 @@ begin
   if FMultiplePages = AValue then
     Exit;
   FMultiplePages := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
 end;
 
 procedure caComictecaPage.SetFileName(AValue: string);
 begin
   FFileName := SetAsFile(AValue);
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
 end;
 
-procedure caComictecaPage.SetCropPerspective(AValue: Boolean);
+procedure caComictecaPage.SetLinearGeometry(AValue: Boolean);
 begin
-  if FCropPerspective = AValue then Exit;
-  FCropPerspective := AValue;
+  if FLinearGeometry = AValue then Exit;
+  FLinearGeometry := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure caComictecaPage.SetCropGeometry(AValue: boolean);
+begin
+  if FCropGeometry = AValue then
+    Exit;
+  FCropGeometry := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
+end;
+
+procedure caComictecaPage.SetCallObservers(AValue: boolean);
+begin
+  // if FCallObservers = AValue then Exit; <- Call if True anyway
+  FCallObservers := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
 end;
 
 procedure caComictecaPage.SetPageContent(AValue: tCTKPageContents);
@@ -118,6 +160,9 @@ begin
   if FPageContent = AValue then
     Exit;
   FPageContent := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
 end;
 
 procedure caComictecaPage.SetSHA1(AValue: string);
@@ -125,13 +170,16 @@ begin
   if FSHA1 = AValue then
     Exit;
   FSHA1 := AValue;
+
+  if CallObservers then
+    FPONotifyObservers(Self, ooChange, nil);
 end;
 
-function caComictecaPage.HasPerspective: boolean;
+function caComictecaPage.HasGeometry: boolean;
 begin
-  Result := (PersTL <> PersTR) and (PersTL <> PersBL) and
-    (PersTL <> PersBR) and (PersTR <> PersBL) and (PersTR <> PersBR) and
-    (PersBL <> PersBR);
+  Result := (GeomTL <> GeomTR) and (GeomTL <> GeomBL) and
+    (GeomTL <> GeomBR) and (GeomTR <> GeomBL) and (GeomTR <> GeomBR) and
+    (GeomBL <> GeomBR);
 end;
 
 function caComictecaPage.MatchSHA1(aSHA1: string): boolean;
@@ -147,7 +195,10 @@ begin
   if not Assigned(aXMLNode) then
     Exit;
 
+  CallObservers := False; // Don't notify Observer
+
   FileName := aXMLNode[krsCTKXMLFileProp];
+
   // TODO: Delete fallback
   if FileName = '' then
     FileName := aXMLNode.TextContent;
@@ -166,28 +217,42 @@ begin
   try
     aSL.Delimiter := ';';
     aSL.QuoteChar := '''';
-    aSL.DelimitedText := aXMLNode[krsCTKXMLPerspectiveProp];
-    if aSL.Count = 5 then
+    aSL.DelimitedText := aXMLNode[krsCTKXMLGeometryProp];
+    if aSL.Count >= 4 then
     begin
+      aResult := True;
+      aResult := aResult and GeomTL.FromString(aSL[0]);
+      aResult := aResult and GeomTR.FromString(aSL[1]);
+      aResult := aResult and GeomBR.FromString(aSL[2]);
+      aResult := aResult and GeomBL.FromString(aSL[3]);
+
+      if aSL.Count >= 5 then
+        CropGeometry := StrToBool(aSL[4])
+        else
+          CropGeometry := False;
+
+            if aSL.Count >= 6 then
+        LinearGeometry := StrToBool(aSL[5])
+        else
+          LinearGeometry := False;
+    end
+    else
       aResult := False;
-      aResult := aResult or PersTL.FromString(aSL[0]);
-      aResult := aResult or PersTR.FromString(aSL[1]);
-      aResult := aResult or PersBR.FromString(aSL[2]);
-      aResult := aResult or PersBL.FromString(aSL[3]);
 
-      CropPerspective := StrToBool(aSL[4]);
-
-      if not aResult then
-      begin
-        PersTL := TPoint.Zero;
-        PersTR := TPoint.Zero;
-        PersBR := TPoint.Zero;
-        PersBL := TPoint.Zero;
-      end;
+    if not aResult then
+    begin
+      GeomTL := TPoint.Zero;
+      GeomTR := TPoint.Zero;
+      GeomBR := TPoint.Zero;
+      GeomBL := TPoint.Zero;
+      CropGeometry := False;
+      LinearGeometry := False;
     end;
   finally
     aSL.Free;
   end;
+
+  CallObservers := True;
 end;
 
 procedure caComictecaPage.SaveToXML(aXMLDoc: TXMLDocument;
@@ -215,17 +280,18 @@ begin
     aXMLNode[krsCTKXMLContentProp] := FrameTypeSet2Str(PageContent);
 
   // Perspective quadriteral
-  if HasPerspective then
+  if HasGeometry then
   begin
     aSL := TStringList.Create;
     aSL.Delimiter := ';';
     aSL.QuoteChar := '''';
-    aSL.Add(PersTL.ToString);
-    aSL.Add(PersTR.ToString);
-    aSL.Add(PersBR.ToString);
-    aSL.Add(PersBL.ToString);
-    aSL.Add(BoolToStr(CropPerspective, True));
-    aXMLNode[krsCTKXMLPerspectiveProp] := aSL.DelimitedText;
+    aSL.Add(GeomTL.ToString);
+    aSL.Add(GeomTR.ToString);
+    aSL.Add(GeomBR.ToString);
+    aSL.Add(GeomBL.ToString);
+    aSL.Add(BoolToStr(CropGeometry, True));
+    aSL.Add(BoolToStr(LinearGeometry, True));
+    aXMLNode[krsCTKXMLGeometryProp] := aSL.DelimitedText;
     aSL.Free;
   end;
 end;
@@ -238,10 +304,13 @@ begin
   SHA1 := '';
   MultiplePages := kDefMultiplePages;
   PageContent := kDefPageContent;
-  PersTL:= TPoint.Zero;
-  PersTR:= TPoint.Zero;
-  PersBL:= TPoint.Zero;
-  PersBR:= TPoint.Zero;
+  GeomTL := TPoint.Zero;
+  GeomTR := TPoint.Zero;
+  GeomBL := TPoint.Zero;
+  GeomBR := TPoint.Zero;
+  CropGeometry := False;
+  LinearGeometry := False;
+  CallObservers := True;
 end;
 
 destructor caComictecaPage.Destroy;

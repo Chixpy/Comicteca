@@ -5,67 +5,96 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
   ClientWidth = 500
   object pImageVisor: TPanel[0]
     Left = 0
-    Height = 559
-    Top = 59
+    Height = 551
+    Top = 67
     Width = 500
     Align = alClient
     ParentFont = False
     TabOrder = 0
   end
-  object gbxZoom: TGroupBox[1]
+  object pButtons: TPanel[1]
     Left = 0
-    Height = 55
+    Height = 63
     Top = 0
     Width = 500
     Align = alTop
-    AutoSize = True
-    Caption = 'Zoom'
-    ChildSizing.Layout = cclTopToBottomThenLeftToRight
-    ClientHeight = 30
-    ClientWidth = 496
-    ParentFont = False
+    BevelOuter = bvNone
+    ClientHeight = 63
+    ClientWidth = 500
     TabOrder = 1
-    object bZoomIn: TButton
+    object gbxZoom: TGroupBox
       Left = 0
-      Height = 30
+      Height = 63
       Top = 0
-      Width = 45
-      Caption = 'x 2'
-      OnClick = bZoomInClick
+      Width = 234
+      Align = alLeft
+      AutoSize = True
+      Caption = 'Zoom'
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ClientHeight = 38
+      ClientWidth = 230
       ParentFont = False
       TabOrder = 0
+      object bZoomIn: TButton
+        Left = 0
+        Height = 30
+        Top = 0
+        Width = 45
+        Caption = 'x 2'
+        OnClick = bZoomInClick
+        ParentFont = False
+        TabOrder = 0
+      end
+      object bOrigZoom: TButton
+        Left = 45
+        Height = 30
+        Top = 0
+        Width = 41
+        Caption = '1x'
+        OnClick = bOrigZoomClick
+        ParentFont = False
+        TabOrder = 2
+      end
+      object bZoomOut: TButton
+        Left = 86
+        Height = 30
+        Top = 0
+        Width = 44
+        Caption = '/ 2'
+        OnClick = bZoomOutClick
+        ParentFont = False
+        TabOrder = 1
+      end
+      object tbxAutoZoom: TToggleBox
+        Left = 130
+        Height = 30
+        Top = 0
+        Width = 100
+        Caption = 'Auto Zoom'
+        Checked = True
+        OnChange = tbxAutoZoomChange
+        ParentFont = False
+        State = cbChecked
+        TabOrder = 3
+      end
     end
-    object bOrigZoom: TButton
-      Left = 45
-      Height = 30
-      Top = 0
-      Width = 41
-      Caption = '1x'
-      OnClick = bOrigZoomClick
-      ParentFont = False
-      TabOrder = 2
-    end
-    object bZoomOut: TButton
-      Left = 86
-      Height = 30
-      Top = 0
-      Width = 44
-      Caption = '/ 2'
-      OnClick = bZoomOutClick
-      ParentFont = False
+    object chkFixGeometry: TCheckBox
+      Left = 240
+      Height = 24
+      Top = 8
+      Width = 143
+      Caption = 'Preview geometry'
+      OnChange = chkFixGeometryChange
       TabOrder = 1
     end
-    object tbxAutoZoom: TToggleBox
-      Left = 130
-      Height = 30
-      Top = 0
-      Width = 100
-      Caption = 'Auto Zoom'
-      Checked = True
-      OnChange = tbxAutoZoomChange
-      ParentFont = False
-      State = cbChecked
-      TabOrder = 3
+    object bUpdate: TButton
+      Left = 240
+      Height = 31
+      Top = 32
+      Width = 94
+      Caption = 'Update'
+      OnClick = bUpdateClick
+      TabOrder = 2
     end
   end
 end

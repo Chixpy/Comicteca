@@ -113,6 +113,8 @@ begin
       FfmRight := TfmCTKEditorPageVisor.Create(pRight);
       fmRight.Align := alClient;
       fmRight.Parent := pRight;
+
+      TfmCTKEditorPageEdit(FfmCenter).Visor := TfmCTKEditorPageVisor(FfmRight).fmVisor;
     end;
     2: // Frames
     begin

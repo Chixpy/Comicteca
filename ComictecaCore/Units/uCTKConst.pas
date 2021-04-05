@@ -73,7 +73,7 @@ const
   krsCTKXMLSHA1Prop = 'SHA1';
   krsCTKXMLMultipageProp = 'Multipage';
   krsCTKXMLContentProp = 'Content';
-  krsCTKXMLPerspectiveProp = 'Perspective';
+  krsCTKXMLGeometryProp = 'Geometry';
 
   // Frames
   krsCTKXMLFrameList = 'FrameList';

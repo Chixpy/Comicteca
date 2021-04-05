@@ -162,7 +162,8 @@ begin
   else
   begin
     eComicFolder.Text := SysPath(Comic.Folder);
-    EditorConfig.LastFolder := ExtractFileDir(Value);
+    eCompressedFile.InitialDir := ExtractFileDir(Value);
+    EditorConfig.LastFolder := eCompressedFile.InitialDir;
   end;
 
   fmMain.Comic := Self.Comic;

@@ -141,13 +141,37 @@ msgstr ""
 msgid "Metadada"
 msgstr ""
 
+#: tfmctkeditorpageedit.bsetbl.caption
+msgid "Set BL"
+msgstr ""
+
+#: tfmctkeditorpageedit.bsetbr.caption
+msgid "Set BR"
+msgstr ""
+
+#: tfmctkeditorpageedit.bsettl.caption
+msgid "Set TL"
+msgstr ""
+
+#: tfmctkeditorpageedit.bsettr.caption
+msgid "Set TR"
+msgstr ""
+
 #: tfmctkeditorpageedit.cgrpagecontent.caption
 msgctxt "tfmctkeditorpageedit.cgrpagecontent.caption"
 msgid "Content"
 msgstr ""
 
-#: tfmctkeditorpageedit.gbxfixperspective.caption
-msgid "Fix Perspective"
+#: tfmctkeditorpageedit.chkcroptogeometry.caption
+msgid "Crop page to geometry box."
+msgstr ""
+
+#: tfmctkeditorpageedit.chklineargeometry.caption
+msgid "Linear geometry mapping"
+msgstr ""
+
+#: tfmctkeditorpageedit.gbxfixgeometry.caption
+msgid "Fix Geometry"
 msgstr ""
 
 #: tfmctkeditorpageedit.gbxpage.caption
@@ -161,6 +185,10 @@ msgstr ""
 
 #: tfmctkeditorpageedit.lbottomright.caption
 msgid "Bottom Right"
+msgstr ""
+
+#: tfmctkeditorpageedit.lcurrentpoint.caption
+msgid "Click on image to select a point."
 msgstr ""
 
 #: tfmctkeditorpageedit.lfilename.caption
@@ -189,6 +217,10 @@ msgctxt "tfmctkeditorpagevisor.borigzoom.caption"
 msgid "1x"
 msgstr ""
 
+#: tfmctkeditorpagevisor.bupdate.caption
+msgid "Update"
+msgstr ""
+
 #: tfmctkeditorpagevisor.bzoomin.caption
 msgctxt "tfmctkeditorpagevisor.bzoomin.caption"
 msgid "x 2"
@@ -197,6 +229,10 @@ msgstr ""
 #: tfmctkeditorpagevisor.bzoomout.caption
 msgctxt "tfmctkeditorpagevisor.bzoomout.caption"
 msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditorpagevisor.chkfixgeometry.caption
+msgid "Preview geometry"
 msgstr ""
 
 #: tfmctkeditorpagevisor.gbxzoom.caption

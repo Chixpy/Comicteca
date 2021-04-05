@@ -41,25 +41,29 @@ type
 
   TfmCTKEditorPageVisor = class(TafmCTKEditorPageFrame)
     bOrigZoom: TButton;
+    bUpdate: TButton;
     bZoomIn: TButton;
     bZoomOut: TButton;
+    chkFixGeometry: TCheckBox;
     gbxZoom: TGroupBox;
+    pButtons: TPanel;
     pImageVisor: TPanel;
     tbxAutoZoom: TToggleBox;
     procedure bOrigZoomClick(Sender: TObject);
+    procedure bUpdateClick(Sender: TObject);
     procedure bZoomInClick(Sender: TObject);
     procedure bZoomOutClick(Sender: TObject);
+    procedure chkFixGeometryChange(Sender: TObject);
     procedure tbxAutoZoomChange(Sender: TObject);
 
   private
     FfmVisor: TfmCHXBGRAImgViewerEx;
-    FImage: TBGRABitmap;
+    FPageImage: TBGRABitmap;
     FRenderer: cComictecaVolumeRenderer;
-    procedure SetImage(AValue: TBGRABitmap);
+    procedure SetPageImage(AValue: TBGRABitmap);
 
   protected
-    property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
-    property Image: TBGRABitmap read FImage write SetImage;
+    property PageImage: TBGRABitmap read FPageImage write SetPageImage;
 
     procedure SetComic(AValue: cComictecaVolume); override;
 
@@ -68,6 +72,7 @@ type
 
   public
     property Renderer: cComictecaVolumeRenderer read FRenderer;
+    property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -92,11 +97,26 @@ begin
   fmVisor.Zoom := 100;
 end;
 
+procedure TfmCTKEditorPageVisor.bUpdateClick(Sender: TObject);
+begin
+  Renderer.ResetPageCache;
+
+  LoadFrameData;
+end;
+
 procedure TfmCTKEditorPageVisor.bZoomOutClick(Sender: TObject);
 begin
   tbxAutoZoom.Checked := False;
 
   fmVisor.ZoomOut;
+end;
+
+procedure TfmCTKEditorPageVisor.chkFixGeometryChange(Sender: TObject);
+begin
+  Renderer.FixGeometry := chkFixGeometry.Checked;
+  Renderer.ShowGeometryQuad := not chkFixGeometry.Checked;
+
+  LoadFrameData;
 end;
 
 procedure TfmCTKEditorPageVisor.tbxAutoZoomChange(Sender: TObject);
@@ -106,11 +126,11 @@ begin
    if fmVisor.AutoZoomOnLoad then fmVisor.AutoZoom;
 end;
 
-procedure TfmCTKEditorPageVisor.SetImage(AValue: TBGRABitmap);
+procedure TfmCTKEditorPageVisor.SetPageImage(AValue: TBGRABitmap);
 begin
-  if FImage = AValue then
+  if FPageImage = AValue then
     Exit;
-  FImage := AValue;
+  FPageImage := AValue;
 end;
 
 procedure TfmCTKEditorPageVisor.SetComic(AValue: cComictecaVolume);
@@ -129,15 +149,15 @@ begin
   if not Enabled then
     Exit;
 
-  FImage := Renderer.RenderPage(Page);
+  FPageImage := Renderer.RenderPage(Page);
 
-  fmVisor.ActualImage := Image;
+  fmVisor.ActualImage := PageImage;
 end;
 
 procedure TfmCTKEditorPageVisor.DoClearFrameData;
 begin
   fmVisor.ActualImage := nil;
-  FreeAndNil(FImage);
+  FreeAndNil(FPageImage);
 end;
 
 constructor TfmCTKEditorPageVisor.Create(TheOwner: TComponent);
@@ -161,13 +181,14 @@ begin
   FRenderer := cComictecaVolumeRenderer.Create(nil);
   Renderer.ShowFrameBorders := True;
   Renderer.ShowTextBorders := True;
-  Renderer.ShowPerspectiveQuad := True;
+  Renderer.ShowGeometryQuad := True;
+  Renderer.FixGeometry := False;
   Renderer.DebugRender := True;
 end;
 
 destructor TfmCTKEditorPageVisor.Destroy;
 begin
-  FreeAndNil(FImage);
+  FreeAndNil(FPageImage);
   FreeAndNil(FRenderer);
 
   inherited Destroy;

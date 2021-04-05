@@ -39,34 +39,47 @@ type
   cComictecaVolumeRenderer = class(TComponent)
   private
     FComic: cComictecaVolume;
-    FFixPerpective: boolean;
+    FFixGeometry: boolean;
     FFlipL2R: boolean;
-    FIndexLastPage: integer;
+    FLastPageIndex: integer;
     FLastPage: TBGRABitmap;
     FDebugRender: boolean;
+    FLastRawImage: TBGRABitmap;
+    FLastRawImageFile: string;
     FShowFrameBorders: boolean;
-    FShowPerspectiveQuad: boolean;
+    FShowGeometryQuad: boolean;
     FShowTextBorders: boolean;
     procedure SetComic(AValue: cComictecaVolume);
-    procedure SetFixPerpective(AValue: boolean);
+    procedure SetFixGeometry(AValue: boolean);
     procedure SetFlipL2R(AValue: boolean);
     procedure SetDebugRender(AValue: boolean);
     procedure SetShowFrameBorders(AValue: boolean);
-    procedure SetShowPerspectiveQuad(AValue: boolean);
+    procedure SetShowGeometryQuad(AValue: boolean);
     procedure SetShowTextBorders(AValue: boolean);
 
   protected
-    procedure ResetCache;
 
   public
     FrameBorderColor: TBGRAPixel;
     FrameBorderFill: TBGRAPixel;
     TextBorderColor: TBGRAPixel;
     TextBorderFill: TBGRAPixel;
-    PersQuadColor: TBGRAPixel;
+    GeomQuadColor: TBGRAPixel;
 
+    property LastRawImage: TBGRABitmap read FLastRawImage;
+    {< Cache of last loaded image file, without any processing. }
+    property LastRawImageFile: string read FLastRawImageFile;
+    {< Last file loaded. }
     property LastPage: TBGRABitmap read FLastPage;
-    property IndexLastPage: integer read FIndexLastPage;
+    {< Cache of last showed page, processed or with debug. }
+    property LastPageIndex: integer read FLastPageIndex;
+    {< Index of last loaded page. }
+
+    procedure ResetFileCache;
+    procedure ResetPageCache;
+
+    function RenderFile(aFile: string): TBGRABitmap;
+    {< Renders a File, retrieving it from cache or storing it in cache.}
 
     function RenderPageByIdx(aIndex: integer): TBGRABitmap;
     function RenderFrameByIdx(aIndex: integer): TBGRABitmap;
@@ -84,10 +97,10 @@ type
 
     property FlipL2R: boolean read FFlipL2R write SetFlipL2R;
 
-    property FixPerpective: boolean read FFixPerpective write SetFixPerpective;
+    property FixGeometry: boolean read FFixGeometry write SetFixGeometry;
 
-    property ShowPerspectiveQuad: boolean
-      read FShowPerspectiveQuad write SetShowPerspectiveQuad;
+    property ShowGeometryQuad: boolean
+      read FShowGeometryQuad write SetShowGeometryQuad;
 
     property ShowFrameBorders: boolean
       read FShowFrameBorders write SetShowFrameBorders;
@@ -109,16 +122,16 @@ begin
     Exit;
   FComic := AValue;
 
-  ResetCache;
+  ResetPageCache;
 end;
 
-procedure cComictecaVolumeRenderer.SetFixPerpective(AValue: boolean);
+procedure cComictecaVolumeRenderer.SetFixGeometry(AValue: boolean);
 begin
-  if FFixPerpective = AValue then
+  if FFixGeometry = AValue then
     Exit;
-  FFixPerpective := AValue;
+  FFixGeometry := AValue;
 
-  ResetCache;
+  ResetPageCache;
 end;
 
 procedure cComictecaVolumeRenderer.SetFlipL2R(AValue: boolean);
@@ -130,7 +143,7 @@ begin
   if Assigned(Comic) then
   begin
     if Comic.Right2Left then
-      ResetCache;
+      ResetPageCache;
   end;
 end;
 
@@ -140,7 +153,7 @@ begin
     Exit;
   FDebugRender := AValue;
 
-  ResetCache;
+  ResetPageCache;
 end;
 
 procedure cComictecaVolumeRenderer.SetShowFrameBorders(AValue: boolean);
@@ -149,16 +162,16 @@ begin
     Exit;
   FShowFrameBorders := AValue;
 
-  ResetCache;
+  ResetPageCache;
 end;
 
-procedure cComictecaVolumeRenderer.SetShowPerspectiveQuad(AValue: boolean);
+procedure cComictecaVolumeRenderer.SetShowGeometryQuad(AValue: boolean);
 begin
-  if FShowPerspectiveQuad = AValue then
+  if FShowGeometryQuad = AValue then
     Exit;
-  FShowPerspectiveQuad := AValue;
+  FShowGeometryQuad := AValue;
 
-  ResetCache;
+  ResetPageCache;
 end;
 
 procedure cComictecaVolumeRenderer.SetShowTextBorders(AValue: boolean);
@@ -167,23 +180,66 @@ begin
     Exit;
   FShowTextBorders := AValue;
 
-  ResetCache;
+  ResetPageCache;
 end;
 
-procedure cComictecaVolumeRenderer.ResetCache;
+procedure cComictecaVolumeRenderer.ResetFileCache;
+begin
+  // Page cache must reset too
+  ResetPageCache;
+
+  FreeAndNil(FLastRawImage);
+  FLastRawImageFile := '';
+end;
+
+procedure cComictecaVolumeRenderer.ResetPageCache;
 begin
   FreeAndNil(FLastPage);
-  FIndexLastPage := -1;
+  FLastPageIndex := -1;
 end;
 
-function cComictecaVolumeRenderer.RenderPageByIdx(aIndex: integer):
-TBGRABitmap;
+function cComictecaVolumeRenderer.RenderFile(aFile: string): TBGRABitmap;
 begin
   Result := nil;
 
-  if (not assigned(Comic)) or (aIndex <= -1) or
+  if CompareFilenames(LastRawImageFile, aFile) = 0 then
+  begin
+    if Assigned(LastRawImage) then
+      Result := LastRawImage.Duplicate(True);
+    Exit;
+  end;
+
+  ResetFileCache;
+
+  if not FileExistsUTF8(aFile) then
+    Exit;
+
+  FLastRawImage := TBGRABitmap.Create;
+  LastRawImage.LoadFromFile(aFile);
+  Result := LastRawImage.Duplicate(True);
+
+  FLastRawImageFile := aFile;
+end;
+
+function cComictecaVolumeRenderer.RenderPageByIdx(aIndex: integer): TBGRABitmap;
+begin
+  Result := nil;
+
+  if (not assigned(Comic)) or (aIndex < -1) or
     (aIndex >= Comic.Pages.Count) then
     Exit;
+
+  if aIndex = -1 then
+  begin
+    ResetPageCache;
+    Exit;
+  end;
+
+  if LastPageIndex = aIndex then
+  begin
+    Result := LastPage.Duplicate(True);
+    Exit;
+  end;
 
   Result := RenderPage(Comic.Pages[aIndex]);
 end;
@@ -203,13 +259,12 @@ end;
 function cComictecaVolumeRenderer.RenderPage(
   aPage: cComictecaPage): TBGRABitmap;
 
-  procedure DoFixPerspective(var aImage: TBGRABitmap; aPage: cComictecaPage);
+  procedure DoFixGeometry(var aImage: TBGRABitmap; aPage: cComictecaPage);
 
     function GetLine(const a, b: TPoint): TLineDef;
     begin
       Result.origin := PointF(a);
       Result.dir := PointF(a - b);
-
 
       //if (a.X - b.X) = 0 then
       //  Result.dir := PointF(0, 1) // Vertical line
@@ -217,29 +272,28 @@ function cComictecaVolumeRenderer.RenderPage(
       //  Result.dir := PointF(1, (a.Y - b.Y) / (a.X - b.X));
     end;
 
-  var // procedure DoFixPerspective(aImage: TBGRABitmap; aPage: cComictecaPage);
+  var // procedure DoFixGeometry(aImage: TBGRABitmap; aPage: cComictecaPage);
     TopLine, BottomLine, LeftLine, RightLine: TLineDef;
     cTL, cTR, cBR, cBL: TPointF;
+    cWidth, cHeight: integer;
     correct: TBGRABitmap;
   begin
-    if not aPage.HasPerspective then
+    if not aPage.HasGeometry then
       Exit;
 
-    correct := TBGRABitmap.Create(aImage.Width, aImage.Height, bgra(0, 0, 0));
-
-    if not aPage.CropPerspective then
+    if not aPage.CropGeometry then
     begin
       // Lines
-      TopLine := GetLine(aPage.PersTL, aPage.PersTR);
+      TopLine := GetLine(aPage.GeomTL, aPage.GeomTR);
       TopLine.origin := PointF(aImage.Width shr 1, 0);
 
-      RightLine := GetLine(aPage.PersTR, aPage.PersBR);
+      RightLine := GetLine(aPage.GeomTR, aPage.GeomBR);
       RightLine.origin := PointF(aImage.Width, aImage.Height shr 1);
 
-      BottomLine := GetLine(aPage.PersBR, aPage.PersBL);
+      BottomLine := GetLine(aPage.GeomBR, aPage.GeomBL);
       BottomLine.origin := PointF(aImage.Width shr 1, aImage.Height);
 
-      LeftLine := GetLine(aPage.PersBL, aPage.PersTL);
+      LeftLine := GetLine(aPage.GeomBL, aPage.GeomTL);
       LeftLine.origin := PointF(0, aImage.Height shr 1);
 
       // Corners
@@ -247,26 +301,37 @@ function cComictecaVolumeRenderer.RenderPage(
       cTR := IntersectLine(TopLine, RightLine);
       cBR := IntersectLine(BottomLine, RightLine);
       cBL := IntersectLine(BottomLine, LeftLine);
+
+      // Corrected Image size
+      cWidth := aImage.Width;
+      cHeight := aImage.Height;
     end
     else
     begin
-      cTL := PointF(aPage.PersTL);
-      cTR := PointF(aPage.PersTR);
-      cBR := PointF(aPage.PersBR);
-      cBL := PointF(aPage.PersBL);
+      // Corners
+      cTL := PointF(aPage.GeomTL);
+      cTR := PointF(aPage.GeomTR);
+      cBR := PointF(aPage.GeomBR);
+      cBL := PointF(aPage.GeomBL);
+
+
+      // Corrected Image size
+      cWidth := Abs(Trunc((cTL.x - cTR.x) + (cBL.x - cBR.x))) shr 1;
+      cHeight := Abs(Trunc((cTL.y - cBL.y) + (cTR.y - cBR.y))) shr 1;
     end;
 
-    correct.FillQuadPerspectiveMappingAntialias(
-      PointF(0, 0), PointF(aImage.Width, 0),
-      PointF(aImage.Width, aImage.Height), PointF(0, aImage.Height),
-      aImage,
-      cTL, cTR, cBR, cBL);
+    correct := TBGRABitmap.Create(cWidth, cHeight, bgra(0, 0, 0));
 
-    //correct.FillQuadLinearMappingAntialias(
-    //PointF(0, 0), PointF(image.Width, 0),
-    //PointF(image.Width, image.Height), PointF(0, image.Height),
-    //  image,
-    //  cTL, cTR, cBR, cBL);
+    if aPage.LinearGeometry then
+      correct.FillQuadLinearMappingAntialias(
+        PointF(0, 0), PointF(cWidth, 0),
+        PointF(cWidth, cHeight), PointF(0, cHeight),
+        aImage, cTL, cTR, cBR, cBL)
+    else
+      correct.FillQuadPerspectiveMappingAntialias(
+        PointF(0, 0), PointF(cWidth, 0),
+        PointF(cWidth, cHeight), PointF(0, cHeight),
+        aImage, cTL, cTR, cBR, cBL);
 
     BGRAReplace(aImage, correct);
   end;
@@ -294,7 +359,6 @@ function cComictecaVolumeRenderer.RenderPage(
 
 var
   PageIndex, i: integer;
-  aFile: string;
   aFrame: cComictecaFrame;
   aText: cComictecaText;
 begin
@@ -309,85 +373,82 @@ begin
   if PageIndex = -1 then
     Exit;
 
-  if IndexLastPage = PageIndex then
+  if LastPageIndex = PageIndex then
   begin
     Result := LastPage.Duplicate(True);
     Exit;
   end;
 
   // Loading new page
-  FreeAndNil(FLastPage);
-  FIndexLastPage := -1;
+  ResetPageCache;
 
-  aFile := Comic.Folder + aPage.FileName;
-  if FileExistsUTF8(aFile) then
+  FLastPage := RenderFile(Comic.Folder + aPage.FileName);
+
+  if not Assigned(LastPage) then
+    Exit;
+
+  // Fixing perspective
+  if FixGeometry then
+    DoFixGeometry(FLastPage, aPage);
+
+  // Show perspective lines
+  if ShowGeometryQuad and aPage.HasGeometry then
   begin
-    FLastPage := TBGRABitmap.Create;
-    LastPage.LoadFromFile(aFile);
-
-    // Fixing perspective
-    if FixPerpective then
-      DoFixPerspective(FLastPage, aPage);
-
-    // Show perspective lines
-    if ShowPerspectiveQuad and aPage.HasPerspective then
-    begin
-      LastPage.DrawPolygon([aPage.PersTL, aPage.PersTR,
-        aPage.PersBR, aPage.PersBL], PersQuadColor);
-      // Diagonals
-      LastPage.DrawLine(aPage.PersTL.X, aPage.PersTL.Y,
-        aPage.PersBR.X, aPage.PersBR.Y, PersQuadColor, True);
-      LastPage.DrawLine(aPage.PersTR.X, aPage.PersTR.Y,
-        aPage.PersBL.X, aPage.PersBL.Y, PersQuadColor, True);
-    end;
-
-    // Draw frame borders
-    if ShowFrameBorders then
-    begin
-      i := 0;
-      while i < Comic.Frames.Count do
-      begin
-        aFrame := Comic.Frames[i];
-        if aFrame.Page = aPage then
-        begin
-          DrawBorders(aFrame.FrameShape, aFrame.FrameRect, aFrame.FramePoint,
-            FrameBorderColor, FrameBorderFill);
-        end;
-        Inc(i);
-      end;
-    end;
-
-    // Draw text borders
-    if ShowTextBorders then
-    begin
-      i := 0;
-      while i < aPage.Texts.Count do
-      begin
-        aText := aPage.Texts[i];
-        DrawBorders(aText.TextShape, aText.TextRect, aText.TextPoint,
-          TextBorderColor, TextBorderFill);
-        Inc(i);
-      end;
-    end;
-
-    // Flip page and keep texts orientation
-    if Comic.Right2Left and FlipL2R then
-    begin
-      i := 0;
-      while i < aPage.Texts.Count do
-      begin
-        aText := aPage.Texts[i];
-        LastPage.HorizontalFlip(aText.TextRect);
-        Inc(i);
-      end;
-
-      LastPage.HorizontalFlip;
-    end;
-
-    // ¡Tachán!
-    Result := LastPage.Duplicate(True);
-    FIndexLastPage := PageIndex;
+    LastPage.DrawPolygon([aPage.GeomTL, aPage.GeomTR,
+      aPage.GeomBR, aPage.GeomBL], GeomQuadColor);
+    // Diagonals
+    LastPage.DrawLine(aPage.GeomTL.X, aPage.GeomTL.Y,
+      aPage.GeomBR.X, aPage.GeomBR.Y, GeomQuadColor, True);
+    LastPage.DrawLine(aPage.GeomTR.X, aPage.GeomTR.Y,
+      aPage.GeomBL.X, aPage.GeomBL.Y, GeomQuadColor, True);
   end;
+
+  // Draw frame borders
+  if ShowFrameBorders then
+  begin
+    i := 0;
+    while i < Comic.Frames.Count do
+    begin
+      aFrame := Comic.Frames[i];
+      if aFrame.Page = aPage then
+      begin
+        DrawBorders(aFrame.FrameShape, aFrame.FrameRect, aFrame.FramePoint,
+          FrameBorderColor, FrameBorderFill);
+      end;
+      Inc(i);
+    end;
+  end;
+
+  // Draw text borders
+  if ShowTextBorders then
+  begin
+    i := 0;
+    while i < aPage.Texts.Count do
+    begin
+      aText := aPage.Texts[i];
+      DrawBorders(aText.TextShape, aText.TextRect, aText.TextPoint,
+        TextBorderColor, TextBorderFill);
+      Inc(i);
+    end;
+  end;
+
+  // Flip page and keep texts orientation
+  if Comic.Right2Left and FlipL2R then
+  begin
+    i := 0;
+    while i < aPage.Texts.Count do
+    begin
+      aText := aPage.Texts[i];
+      LastPage.HorizontalFlip(aText.TextRect);
+      Inc(i);
+    end;
+
+    LastPage.HorizontalFlip;
+  end;
+
+  // ¡Tachán!
+  Result := LastPage.Duplicate(True);
+  FLastPageIndex := PageIndex;
 end;
 
 function cComictecaVolumeRenderer.RenderPageRect(aPage: cComictecaPage;
@@ -444,12 +505,12 @@ begin
         aFrameImg.EllipseInRect(aRect, FrameBorderColor, dmLinearBlend);
 
         if aFrame.FramePoint.X >= 0 then
-        aRect.TopLeft.X := aFrame.FramePoint.X
+          aRect.TopLeft.X := aFrame.FramePoint.X
         else
           aRect.BottomRight.X := aRect.BottomRight.X + aFrame.FramePoint.X;
 
         if aFrame.FramePoint.Y >= 0 then
-        aRect.TopLeft.Y := aFrame.FramePoint.Y
+          aRect.TopLeft.Y := aFrame.FramePoint.Y
         else
           aRect.BottomRight.Y := aRect.BottomRight.Y + aFrame.FramePoint.Y;
 
@@ -473,7 +534,8 @@ begin
   Result := aFrameImg;
 end;
 
-function cComictecaVolumeRenderer.RenderText(aText: cComictecaText): TBGRABitmap;
+function cComictecaVolumeRenderer.RenderText(
+  aText: cComictecaText): TBGRABitmap;
 var
   aTextImg: TBGRABitmap;
   aRect: TRect;
@@ -497,12 +559,12 @@ begin
         aTextImg.EllipseInRect(aRect, TextBorderColor, dmLinearBlend);
 
         if aText.TextPoint.X >= 0 then
-        aRect.TopLeft.X := aText.TextPoint.X
+          aRect.TopLeft.X := aText.TextPoint.X
         else
           aRect.BottomRight.X := aRect.BottomRight.X + aText.TextPoint.X;
 
         if aText.TextPoint.Y >= 0 then
-        aRect.TopLeft.Y := aText.TextPoint.Y
+          aRect.TopLeft.Y := aText.TextPoint.Y
         else
           aRect.BottomRight.Y := aRect.BottomRight.Y + aText.TextPoint.Y;
 
@@ -530,11 +592,12 @@ constructor cComictecaVolumeRenderer.Create(aOwner: TComponent);
 begin
   inherited Create(aOwner);
 
-  FIndexLastPage := -1;
+  FLastPageIndex := -1;
   FLastPage := nil;
+  FLastRawImage := nil;
   FFlipL2R := False;
-  FFixPerpective := True;
-  FShowPerspectiveQuad := False;
+  FFixGeometry := True;
+  FShowGeometryQuad := False;
   FShowFrameBorders := False;
   FShowTextBorders := False;
   FDebugRender := False;
@@ -543,12 +606,13 @@ begin
   FrameBorderFill := BGRA(255, 0, 0, 128);
   TextBorderColor := BGRA(0, 0, 255);
   TextBorderFill := BGRA(0, 0, 255, 128);
-  PersQuadColor := BGRA(0, 255, 0);
+  GeomQuadColor := BGRA(0, 128, 0);
 end;
 
 destructor cComictecaVolumeRenderer.Destroy;
 begin
   FreeAndNil(FLastPage);
+  FreeAndNil(FLastRawImage);
 
   inherited Destroy;
 end;

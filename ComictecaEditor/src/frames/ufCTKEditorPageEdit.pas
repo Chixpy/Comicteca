@@ -28,6 +28,10 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
   ExtCtrls,
+    // CHX units
+  uCHXRecordHelpers,
+  // CHX frame units
+  ufCHXBGRAImgViewerEx,
   // Comicteca Core units
   uCTKConst, uCTKRstStr,
   // Comicteca Core abstract classes
@@ -42,7 +46,13 @@ type
   { TfmCTKEditorPageEdit }
 
   TfmCTKEditorPageEdit = class(TafmCTKEditorPageFrame)
+    bSetTL: TButton;
+    bSetBL: TButton;
+    bSetBR: TButton;
+    bSetTR: TButton;
     cgrPageContent: TCheckGroup;
+    chkCropToGeometry: TCheckBox;
+    chkLinearGeometry: TCheckBox;
     eFilename: TEdit;
     eMultipage: TSpinEdit;
     eSHA1: TEdit;
@@ -54,8 +64,9 @@ type
     eTopRightY: TSpinEdit;
     eBottomLeftY: TSpinEdit;
     eBottomRightY: TSpinEdit;
-    gbxFixPerspective: TGroupBox;
+    gbxFixGeometry: TGroupBox;
     gbxPage: TGroupBox;
+    lCurrentPoint: TLabel;
     lFilename: TLabel;
     lMultipage: TLabel;
     lSHA1: TLabel;
@@ -63,23 +74,41 @@ type
     lTopRight: TLabel;
     lBottomLeft: TLabel;
     lBottomRight: TLabel;
+    pGeomQuadPoints: TPanel;
     pValues: TPanel;
+    procedure bSetBLClick(Sender: TObject);
+    procedure bSetBRClick(Sender: TObject);
+    procedure bSetTLClick(Sender: TObject);
+    procedure bSetTRClick(Sender: TObject);
     procedure cgrPageContentClick(Sender: TObject);
     procedure cgrPageContentItemClick(Sender: TObject; Index: integer);
-    procedure eBottomLeftXEditingDone(Sender: TObject);
-    procedure eBottomLeftYEditingDone(Sender: TObject);
-    procedure eBottomRightXEditingDone(Sender: TObject);
-    procedure eBottomRightYEditingDone(Sender: TObject);
+    procedure chkCropToGeometryChange(Sender: TObject);
+    procedure chkLinearGeometryChange(Sender: TObject);
+    procedure eBottomLeftXChange(Sender: TObject);
+    procedure eBottomLeftYChange(Sender: TObject);
+    procedure eBottomRightXChange(Sender: TObject);
+    procedure eBottomRightYChange(Sender: TObject);
     procedure eMultipageChange(Sender: TObject);
-    procedure eTopLeftXEditingDone(Sender: TObject);
-    procedure eTopLeftYEditingDone(Sender: TObject);
-    procedure eTopRightXEditingDone(Sender: TObject);
-    procedure eTopRightYEditingDone(Sender: TObject);
+    procedure eTopLeftXChange(Sender: TObject);
+    procedure eTopLeftYChange(Sender: TObject);
+    procedure eTopRightXChange(Sender: TObject);
+    procedure eTopRightYChange(Sender: TObject);
+
+  private
+    FVisor: TfmCHXBGRAImgViewerEx;
+    procedure SetVisor(AValue: TfmCHXBGRAImgViewerEx);
+
   protected
     procedure DoLoadFrameData;
     procedure DoClearFrameData;
 
+    procedure DoImgMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+
   public
+    CurrentPoint: TPoint;
+
+    property Visor: TfmCHXBGRAImgViewerEx read FVisor write SetVisor;
+
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
 
@@ -90,50 +119,6 @@ implementation
 {$R *.lfm}
 
 { TfmCTKEditorPageEdit }
-
-procedure TfmCTKEditorPageEdit.eTopLeftXEditingDone(Sender: TObject);
-begin
-  if not Assigned(Page) then
-    Exit;
-
-  Page.PersTL.X := eTopLeftX.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
-end;
-
-procedure TfmCTKEditorPageEdit.eTopLeftYEditingDone(Sender: TObject);
-begin
-  if not Assigned(Page) then
-    Exit;
-
-  Page.PersTL.Y := eTopLeftY.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
-end;
-
-procedure TfmCTKEditorPageEdit.eTopRightXEditingDone(Sender: TObject);
-begin
-  if not Assigned(Page) then
-    Exit;
-
-  Page.PersTR.X := eTopRightX.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
-end;
-
-procedure TfmCTKEditorPageEdit.eTopRightYEditingDone(Sender: TObject);
-begin
-  if not Assigned(Page) then
-    Exit;
-
-  Page.PersTR.Y := eTopRightY.Value;
-
-  // Changing Rect don't notify observers
-  Page.FPONotifyObservers(Page, ooChange, nil);
-end;
 
 procedure TfmCTKEditorPageEdit.cgrPageContentClick(Sender: TObject);
 var
@@ -151,6 +136,58 @@ begin
   end;
 
   Page.PageContent := aProps;
+end;
+
+procedure TfmCTKEditorPageEdit.bSetTLClick(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  eTopLeftX.Value := CurrentPoint.X;
+  eTopLeftY.Value := CurrentPoint.Y;
+  Page.GeomTL := CurrentPoint;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.bSetBLClick(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  eBottomLeftX.Value := CurrentPoint.X;
+  eBottomLeftY.Value := CurrentPoint.Y;
+  Page.GeomBL := CurrentPoint;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.bSetBRClick(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  eBottomRightX.Value := CurrentPoint.X;
+  eBottomRightY.Value := CurrentPoint.Y;
+  Page.GeomBR := CurrentPoint;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.bSetTRClick(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  eTopRightX.Value := CurrentPoint.X;
+  eTopRightY.Value := CurrentPoint.Y;
+  Page.GeomTR := CurrentPoint;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
 procedure TfmCTKEditorPageEdit.cgrPageContentItemClick(Sender: TObject;
@@ -171,45 +208,61 @@ begin
   Page.PageContent := aProps;
 end;
 
-procedure TfmCTKEditorPageEdit.eBottomLeftXEditingDone(Sender: TObject);
+procedure TfmCTKEditorPageEdit.chkCropToGeometryChange(Sender: TObject);
 begin
-  if not Assigned(Page) then
+       if not Assigned(Page) then
     Exit;
 
-  Page.PersBL.X := eBottomLeftX.Value;
+       Page.CropGeometry := chkCropToGeometry.Checked;
+end;
+
+procedure TfmCTKEditorPageEdit.chkLinearGeometryChange(Sender: TObject);
+begin
+        if not Assigned(Page) then
+    Exit;
+
+       Page.LinearGeometry := chkLinearGeometry.Checked;
+end;
+
+procedure TfmCTKEditorPageEdit.eBottomLeftXChange(Sender: TObject);
+begin
+      if not Assigned(Page) then
+    Exit;
+
+  Page.GeomBL.X := eBottomLeftX.Value;
 
   // Changing Rect don't notify observers
   Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
-procedure TfmCTKEditorPageEdit.eBottomLeftYEditingDone(Sender: TObject);
+procedure TfmCTKEditorPageEdit.eBottomLeftYChange(Sender: TObject);
 begin
-  if not Assigned(Page) then
+    if not Assigned(Page) then
     Exit;
 
-  Page.PersBL.Y := eBottomLeftY.Value;
+  Page.GeomBL.Y := eBottomLeftY.Value;
 
   // Changing Rect don't notify observers
   Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
-procedure TfmCTKEditorPageEdit.eBottomRightXEditingDone(Sender: TObject);
+procedure TfmCTKEditorPageEdit.eBottomRightXChange(Sender: TObject);
 begin
-  if not Assigned(Page) then
+    if not Assigned(Page) then
     Exit;
 
-  Page.PersBR.X := eBottomRightX.Value;
+  Page.GeomBR.X := eBottomRightX.Value;
 
   // Changing Rect don't notify observers
   Page.FPONotifyObservers(Page, ooChange, nil);
 end;
 
-procedure TfmCTKEditorPageEdit.eBottomRightYEditingDone(Sender: TObject);
+procedure TfmCTKEditorPageEdit.eBottomRightYChange(Sender: TObject);
 begin
-  if not Assigned(Page) then
+    if not Assigned(Page) then
     Exit;
 
-  Page.PersBR.Y := eBottomRightY.Value;
+  Page.GeomBR.Y := eBottomRightY.Value;
 
   // Changing Rect don't notify observers
   Page.FPONotifyObservers(Page, ooChange, nil);
@@ -223,16 +276,80 @@ begin
   Page.MultiplePages := eMultipage.Value;
 end;
 
+procedure TfmCTKEditorPageEdit.eTopLeftXChange(Sender: TObject);
+begin
+    if not Assigned(Page) then
+    Exit;
+
+  Page.GeomTL.X := eTopLeftX.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eTopLeftYChange(Sender: TObject);
+begin
+    if not Assigned(Page) then
+    Exit;
+
+  Page.GeomTL.Y := eTopLeftY.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eTopRightXChange(Sender: TObject);
+begin
+    if not Assigned(Page) then
+    Exit;
+
+  Page.GeomTR.X := eTopRightX.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.eTopRightYChange(Sender: TObject);
+begin
+    if not Assigned(Page) then
+    Exit;
+
+  Page.GeomTR.Y := eTopRightY.Value;
+
+  // Changing Rect don't notify observers
+  Page.FPONotifyObservers(Page, ooChange, nil);
+end;
+
+procedure TfmCTKEditorPageEdit.SetVisor(AValue: TfmCHXBGRAImgViewerEx);
+begin
+  if FVisor = AValue then Exit;
+
+  if Assigned(FVisor) then
+  begin
+    FVisor.MouseActionMode := maiNone;
+    FVisor.OnImgMouseUp := nil;
+  end;
+
+  FVisor := AValue;
+
+  if Assigned(FVisor) then
+  begin
+    FVisor.MouseActionMode := maiMouseClick;
+    FVisor.OnImgMouseUp := @DoImgMouseUp;
+  end;
+end;
+
 procedure TfmCTKEditorPageEdit.DoLoadFrameData;
 var
   i: tCTKFrameType;
 begin
-  ClearFrameData;
-
   Enabled := assigned(Page) and assigned(Comic);
 
   if not Enabled then
+  begin
+    ClearFrameData;
     Exit;
+  end;
 
   eFilename.Text := Page.FileName;
 
@@ -242,6 +359,17 @@ begin
     Page.MultiplePages := 1;
 
   eMultipage.Value := Page.MultiplePages;
+
+  eTopLeftX.Value := Page.GeomTL.X;
+  eTopLeftY.Value := Page.GeomTL.Y;
+  eTopRightX.Value := Page.GeomTR.X;
+  eTopRightY.Value := Page.GeomTR.Y;
+  eBottomLeftX.Value := Page.GeomBL.X;
+  eBottomLeftY.Value := Page.GeomBL.Y;
+  eBottomRightX.Value := Page.GeomBR.X;
+  eBottomRightY.Value := Page.GeomBR.Y;
+
+  chkCropToGeometry.Checked := Page.CropGeometry;
 
   // Load property checkboxes
   for i := Low(tCTKPageContents) to High(tCTKPageContents) do
@@ -258,12 +386,32 @@ begin
 
   eMultipage.Value := 1;
 
+  eTopLeftX.Value := 0;
+  eTopLeftY.Value := 0;
+  eTopRightX.Value := 0;
+  eTopRightY.Value := 0;
+  eBottomLeftX.Value := 0;
+  eBottomLeftY.Value := 0;
+  eBottomRightX.Value := 0;
+  eBottomRightY.Value := 0;
+
+  chkCropToGeometry.Checked := False;
+
   i := 0;
   while i < cgrPageContent.Items.Count do
   begin
     cgrPageContent.Checked[i] := False;
     Inc(i);
   end;
+end;
+
+procedure TfmCTKEditorPageEdit.DoImgMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  CurrentPoint.X := X;
+  CurrentPoint.Y := Y;
+
+  lCurrentPoint.Caption := 'Point: ' + CurrentPoint.ToString(':');
 end;
 
 constructor TfmCTKEditorPageEdit.Create(TheOwner: TComponent);

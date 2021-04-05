@@ -233,7 +233,7 @@ begin
   FRenderer := cComictecaVolumeRenderer.Create(nil);
   Renderer.ShowFrameBorders := True;
   Renderer.ShowTextBorders := False;
-  Renderer.ShowPerspectiveQuad := False;
+  Renderer.ShowGeometryQuad := False;
   Renderer.DebugRender := True;
 end;
 

@@ -88,7 +88,7 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
     object cgrPageContent: TCheckGroup
       Left = 0
       Height = 24
-      Top = 225
+      Top = 343
       Width = 396
       Align = alTop
       AutoFill = True
@@ -107,122 +107,203 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
       OnItemClick = cgrPageContentItemClick
       TabOrder = 3
     end
-    object gbxFixPerspective: TGroupBox
+    object gbxFixGeometry: TGroupBox
       Left = 0
-      Height = 101
+      Height = 219
       Top = 124
       Width = 396
       Align = alTop
       AutoSize = True
-      Caption = 'Fix Perspective'
-      ChildSizing.Layout = cclTopToBottomThenLeftToRight
-      ChildSizing.ControlsPerLine = 3
-      ClientHeight = 76
+      Caption = 'Fix Geometry'
+      ClientHeight = 194
       ClientWidth = 392
       TabOrder = 4
-      object lTopLeft: TLabel
+      object pGeomQuadPoints: TPanel
+        Left = 0
+        Height = 126
+        Top = 20
+        Width = 392
+        Align = alClient
+        AutoSize = True
+        BevelOuter = bvNone
+        ChildSizing.LeftRightSpacing = 4
+        ChildSizing.TopBottomSpacing = 4
+        ChildSizing.HorizontalSpacing = 4
+        ChildSizing.VerticalSpacing = 4
+        ChildSizing.Layout = cclTopToBottomThenLeftToRight
+        ChildSizing.ControlsPerLine = 4
+        ClientHeight = 126
+        ClientWidth = 392
+        TabOrder = 0
+        object lTopLeft: TLabel
+          Left = 4
+          Height = 20
+          Top = 4
+          Width = 66
+          Caption = 'Top Left'
+          ParentColor = False
+        end
+        object eTopLeftX: TSpinEdit
+          Left = 4
+          Height = 28
+          Top = 28
+          Width = 66
+          MaxValue = 8192
+          OnChange = eTopLeftXChange
+          TabOrder = 0
+        end
+        object eTopLeftY: TSpinEdit
+          Left = 4
+          Height = 28
+          Top = 60
+          Width = 66
+          MaxValue = 8192
+          OnChange = eTopLeftYChange
+          TabOrder = 1
+        end
+        object bSetTL: TButton
+          Left = 4
+          Height = 30
+          Top = 92
+          Width = 66
+          Caption = 'Set TL'
+          OnClick = bSetTLClick
+          TabOrder = 8
+        end
+        object lTopRight: TLabel
+          Left = 74
+          Height = 20
+          Top = 4
+          Width = 68
+          Caption = 'Top Right'
+          ParentColor = False
+        end
+        object eTopRightX: TSpinEdit
+          Left = 74
+          Height = 28
+          Top = 28
+          Width = 68
+          MaxValue = 8192
+          OnChange = eTopRightXChange
+          TabOrder = 2
+        end
+        object eTopRightY: TSpinEdit
+          Left = 74
+          Height = 28
+          Top = 60
+          Width = 68
+          MaxValue = 8192
+          OnChange = eTopRightYChange
+          TabOrder = 3
+        end
+        object bSetTR: TButton
+          Left = 74
+          Height = 30
+          Top = 92
+          Width = 68
+          Caption = 'Set TR'
+          OnClick = bSetTRClick
+          TabOrder = 9
+        end
+        object lBottomLeft: TLabel
+          Left = 146
+          Height = 20
+          Top = 4
+          Width = 79
+          Caption = 'Bottom Left'
+          ParentColor = False
+        end
+        object eBottomLeftX: TSpinEdit
+          Left = 146
+          Height = 28
+          Top = 28
+          Width = 79
+          MaxValue = 8192
+          OnChange = eBottomLeftXChange
+          TabOrder = 4
+        end
+        object eBottomLeftY: TSpinEdit
+          Left = 146
+          Height = 28
+          Top = 60
+          Width = 79
+          MaxValue = 8192
+          OnChange = eBottomLeftYChange
+          TabOrder = 5
+        end
+        object bSetBL: TButton
+          Left = 146
+          Height = 30
+          Top = 92
+          Width = 79
+          Caption = 'Set BL'
+          OnClick = bSetBLClick
+          TabOrder = 10
+        end
+        object lBottomRight: TLabel
+          Left = 229
+          Height = 20
+          Top = 4
+          Width = 89
+          Caption = 'Bottom Right'
+          ParentColor = False
+        end
+        object eBottomRightX: TSpinEdit
+          Left = 229
+          Height = 28
+          Top = 28
+          Width = 89
+          MaxValue = 8192
+          OnChange = eBottomRightXChange
+          TabOrder = 6
+        end
+        object eBottomRightY: TSpinEdit
+          Left = 229
+          Height = 28
+          Top = 60
+          Width = 89
+          MaxValue = 8192
+          OnChange = eBottomRightYChange
+          TabOrder = 7
+        end
+        object bSetBR: TButton
+          Left = 229
+          Height = 30
+          Top = 92
+          Width = 89
+          Caption = 'Set BR'
+          OnClick = bSetBRClick
+          TabOrder = 11
+        end
+      end
+      object lCurrentPoint: TLabel
         Left = 0
         Height = 20
         Top = 0
-        Width = 63
-        Caption = 'Top Left'
+        Width = 392
+        Align = alTop
+        Caption = 'Click on image to select a point.'
         ParentColor = False
       end
-      object eTopLeftX: TSpinEdit
+      object chkCropToGeometry: TCheckBox
         Left = 0
-        Height = 28
-        Top = 20
-        Width = 63
-        MaxValue = 8192
-        OnEditingDone = eTopLeftXEditingDone
-        TabOrder = 0
-      end
-      object eTopLeftY: TSpinEdit
-        Left = 0
-        Height = 28
-        Top = 48
-        Width = 63
-        MaxValue = 8192
-        OnEditingDone = eTopLeftYEditingDone
+        Height = 24
+        Top = 146
+        Width = 392
+        Align = alBottom
+        Caption = 'Crop page to geometry box.'
+        OnChange = chkCropToGeometryChange
         TabOrder = 1
       end
-      object lTopRight: TLabel
-        Left = 63
-        Height = 20
-        Top = 0
-        Width = 64
-        Caption = 'Top Right'
-        ParentColor = False
-      end
-      object eTopRightX: TSpinEdit
-        Left = 63
-        Height = 28
-        Top = 20
-        Width = 64
-        MaxValue = 8192
-        OnEditingDone = eTopRightXEditingDone
+      object chkLinearGeometry: TCheckBox
+        Left = 0
+        Height = 24
+        Top = 170
+        Width = 392
+        Align = alBottom
+        Caption = 'Linear geometry mapping'
+        OnChange = chkLinearGeometryChange
         TabOrder = 2
-      end
-      object eTopRightY: TSpinEdit
-        Left = 63
-        Height = 28
-        Top = 48
-        Width = 64
-        MaxValue = 8192
-        OnEditingDone = eTopRightYEditingDone
-        TabOrder = 3
-      end
-      object lBottomLeft: TLabel
-        Left = 127
-        Height = 20
-        Top = 0
-        Width = 79
-        Caption = 'Bottom Left'
-        ParentColor = False
-      end
-      object eBottomLeftX: TSpinEdit
-        Left = 127
-        Height = 28
-        Top = 20
-        Width = 79
-        MaxValue = 8192
-        OnEditingDone = eBottomLeftXEditingDone
-        TabOrder = 4
-      end
-      object eBottomLeftY: TSpinEdit
-        Left = 127
-        Height = 28
-        Top = 48
-        Width = 79
-        MaxValue = 8192
-        OnEditingDone = eBottomLeftYEditingDone
-        TabOrder = 5
-      end
-      object lBottomRight: TLabel
-        Left = 206
-        Height = 20
-        Top = 0
-        Width = 89
-        Caption = 'Bottom Right'
-        ParentColor = False
-      end
-      object eBottomRightX: TSpinEdit
-        Left = 206
-        Height = 28
-        Top = 20
-        Width = 89
-        MaxValue = 8192
-        OnEditingDone = eBottomRightXEditingDone
-        TabOrder = 6
-      end
-      object eBottomRightY: TSpinEdit
-        Left = 206
-        Height = 28
-        Top = 48
-        Width = 89
-        MaxValue = 8192
-        OnEditingDone = eBottomRightYEditingDone
-        TabOrder = 7
       end
     end
   end
