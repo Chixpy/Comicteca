@@ -170,8 +170,13 @@ msgstr "Contenido"
 msgid "Crop page to geometry box."
 msgstr ""
 
-#: tfmctkeditorpageedit.chklineargeometry.caption
-msgid "Linear geometry mapping"
+#: tfmctkeditorpageedit.chknoflip.caption
+msgid "No flip page"
+msgstr ""
+
+#: tfmctkeditorpageedit.chkperspgeometry.caption
+msgctxt "tfmctkeditorpageedit.chkperspgeometry.caption"
+msgid "Perspective geometry mapping"
 msgstr ""
 
 #: tfmctkeditorpageedit.gbxfixgeometry.caption
@@ -192,7 +197,8 @@ msgid "Bottom Right"
 msgstr ""
 
 #: tfmctkeditorpageedit.lcurrentpoint.caption
-msgid "Click on image to select a point."
+msgctxt "tfmctkeditorpageedit.lcurrentpoint.caption"
+msgid " "
 msgstr ""
 
 #: tfmctkeditorpageedit.lfilename.caption
@@ -565,4 +571,13 @@ msgstr "Lomo de la sobrecubierta"
 #: uctkrststr.rspcvignette
 msgid "Vignette"
 msgstr "Viñeta"
+
+#: ufctkeditorpageedit.rsclickimage
+msgctxt "ufctkeditorpageedit.rsclickimage"
+msgid "Click on image to select a point."
+msgstr ""
+
+#: ufctkeditorpageedit.rscurrentpoint
+msgid "Current Point: %d : %d"
+msgstr ""
 

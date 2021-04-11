@@ -52,14 +52,16 @@ type
     FCropGeometry: boolean;
 
     FFileName: string;
-    FLinearGeometry: Boolean;
+    FNoFlip: Boolean;
+    FPerspGeometry: Boolean;
     FMultiplePages: integer;
     FPageContent: tCTKPageContents;
     FSHA1: string;
     procedure SetCallObservers(AValue: boolean);
     procedure SetCropGeometry(AValue: boolean);
     procedure SetFileName(AValue: string);
-    procedure SetLinearGeometry(AValue: Boolean);
+    procedure SetNoFlip(AValue: Boolean);
+    procedure SetPerspGeometry(AValue: Boolean);
     procedure SetMultiplePages(const AValue: integer);
     procedure SetPageContent(AValue: tCTKPageContents);
     procedure SetSHA1(AValue: string);
@@ -97,11 +99,14 @@ type
     property MultiplePages: integer read FMultiplePages write SetMultiplePages;
     {< Number of pages in scanned image. }
 
+    property NoFlip: Boolean read FNoFlip write SetNoFlip;
+    {< Don't flip page if comic if Left to Right. }
+
     property PageContent: tCTKPageContents
       read FPageContent write SetPageContent;
 
     property CropGeometry: boolean read FCropGeometry write SetCropGeometry;
-    property LinearGeometry: Boolean read FLinearGeometry write SetLinearGeometry;
+    property PerspGeometry: Boolean read FPerspGeometry write SetPerspGeometry;
 
   end;
 
@@ -127,10 +132,16 @@ begin
     FPONotifyObservers(Self, ooChange, nil);
 end;
 
-procedure caComictecaPage.SetLinearGeometry(AValue: Boolean);
+procedure caComictecaPage.SetNoFlip(AValue: Boolean);
 begin
-  if FLinearGeometry = AValue then Exit;
-  FLinearGeometry := AValue;
+  if FNoFlip = AValue then Exit;
+  FNoFlip := AValue;
+end;
+
+procedure caComictecaPage.SetPerspGeometry(AValue: Boolean);
+begin
+  if FPerspGeometry = AValue then Exit;
+  FPerspGeometry := AValue;
 
   if CallObservers then
     FPONotifyObservers(Self, ooChange, nil);
@@ -212,6 +223,8 @@ begin
   if PageContent = [] then
     PageContent := kDefPageContent;
 
+  NoFlip := StrToBoolDef(aXMLNode[krsCTKXMLNoFlip], False);
+
   // Perspective quadriteral
   aSL := TStringList.Create;
   try
@@ -232,9 +245,9 @@ begin
           CropGeometry := False;
 
             if aSL.Count >= 6 then
-        LinearGeometry := StrToBool(aSL[5])
+        PerspGeometry := StrToBool(aSL[5])
         else
-          LinearGeometry := False;
+          PerspGeometry := False;
     end
     else
       aResult := False;
@@ -246,7 +259,7 @@ begin
       GeomBR := TPoint.Zero;
       GeomBL := TPoint.Zero;
       CropGeometry := False;
-      LinearGeometry := False;
+      PerspGeometry := False;
     end;
   finally
     aSL.Free;
@@ -279,6 +292,10 @@ begin
   if PageContent <> kDefPageContent then
     aXMLNode[krsCTKXMLContentProp] := FrameTypeSet2Str(PageContent);
 
+  // NoFlip
+  if NoFlip then
+    aXMLNode[krsCTKXMLNoFlip] := BoolToStr(NoFlip, True);
+
   // Perspective quadriteral
   if HasGeometry then
   begin
@@ -290,7 +307,7 @@ begin
     aSL.Add(GeomBR.ToString);
     aSL.Add(GeomBL.ToString);
     aSL.Add(BoolToStr(CropGeometry, True));
-    aSL.Add(BoolToStr(LinearGeometry, True));
+    aSL.Add(BoolToStr(PerspGeometry, True));
     aXMLNode[krsCTKXMLGeometryProp] := aSL.DelimitedText;
     aSL.Free;
   end;
@@ -304,12 +321,13 @@ begin
   SHA1 := '';
   MultiplePages := kDefMultiplePages;
   PageContent := kDefPageContent;
+  NoFlip := False;
   GeomTL := TPoint.Zero;
   GeomTR := TPoint.Zero;
   GeomBL := TPoint.Zero;
   GeomBR := TPoint.Zero;
   CropGeometry := False;
-  LinearGeometry := False;
+  PerspGeometry := False;
   CallObservers := True;
 end;
 

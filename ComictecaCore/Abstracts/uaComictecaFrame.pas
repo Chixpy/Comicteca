@@ -45,11 +45,9 @@ type
     FCallObservers: boolean;
     FFrameShape: tCTKFrameShape;
     FFrameType: tCTKFrameType;
-    FNoFlip: Boolean;
     procedure SetCallObservers(AValue: boolean);
     procedure SetFrameShape(AValue: tCTKFrameShape);
     procedure SetFrameType(AValue: tCTKFrameType);
-    procedure SetNoFlip(AValue: Boolean);
 
   public
     FrameRect: TRect;
@@ -95,10 +93,6 @@ type
     {< Content of the frame. }
     property FrameShape: tCTKFrameShape read FFrameShape write SetFrameShape;
     {< Shape of the frame. }
-
-    property NoFlip: Boolean read FNoFlip write SetNoFlip;
-    {< Don't flip frame (Right to left comics, manga). }
-
   end;
 
 implementation
@@ -108,15 +102,6 @@ begin
   if FFrameType = AValue then
     Exit;
   FFrameType := AValue;
-
-  if CallObservers then
-    FPONotifyObservers(Self, ooChange, nil);
-end;
-
-procedure caComictecaFrame.SetNoFlip(AValue: Boolean);
-begin
-  if FNoFlip = AValue then Exit;
-  FNoFlip := AValue;
 
   if CallObservers then
     FPONotifyObservers(Self, ooChange, nil);

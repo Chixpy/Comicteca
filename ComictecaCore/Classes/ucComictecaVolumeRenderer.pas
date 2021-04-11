@@ -140,11 +140,21 @@ begin
     Exit;
   FFlipL2R := AValue;
 
-  if Assigned(Comic) then
-  begin
-    if Comic.Right2Left then
-      ResetPageCache;
-  end;
+  if not Assigned(Comic) then
+    Exit;
+
+  if not Comic.Right2Left then
+    Exit;
+
+
+  if LastPageIndex < 0 then
+    Exit;
+
+  if Comic.Pages[LastPageIndex].NoFlip then
+    Exit;
+
+  ResetPageCache;
+
 end;
 
 procedure cComictecaVolumeRenderer.SetDebugRender(AValue: boolean);
@@ -221,7 +231,8 @@ begin
   FLastRawImageFile := aFile;
 end;
 
-function cComictecaVolumeRenderer.RenderPageByIdx(aIndex: integer): TBGRABitmap;
+function cComictecaVolumeRenderer.RenderPageByIdx(aIndex: integer):
+TBGRABitmap;
 begin
   Result := nil;
 
@@ -244,8 +255,8 @@ begin
   Result := RenderPage(Comic.Pages[aIndex]);
 end;
 
-function cComictecaVolumeRenderer.RenderFrameByIdx(aIndex: integer):
-TBGRABitmap;
+function cComictecaVolumeRenderer.RenderFrameByIdx(aIndex:
+  integer): TBGRABitmap;
 begin
   Result := nil;
 
@@ -322,13 +333,13 @@ function cComictecaVolumeRenderer.RenderPage(
 
     correct := TBGRABitmap.Create(cWidth, cHeight, bgra(0, 0, 0));
 
-    if aPage.LinearGeometry then
-      correct.FillQuadLinearMappingAntialias(
+    if aPage.PerspGeometry then
+      correct.FillQuadPerspectiveMappingAntialias(
         PointF(0, 0), PointF(cWidth, 0),
         PointF(cWidth, cHeight), PointF(0, cHeight),
         aImage, cTL, cTR, cBR, cBL)
     else
-      correct.FillQuadPerspectiveMappingAntialias(
+      correct.FillQuadLinearMappingAntialias(
         PointF(0, 0), PointF(cWidth, 0),
         PointF(cWidth, cHeight), PointF(0, cHeight),
         aImage, cTL, cTR, cBR, cBL);
@@ -433,7 +444,7 @@ begin
   end;
 
   // Flip page and keep texts orientation
-  if Comic.Right2Left and FlipL2R then
+  if Comic.Right2Left and FlipL2R and (not aPage.NoFlip) then
   begin
     i := 0;
     while i < aPage.Texts.Count do
@@ -468,20 +479,23 @@ begin
 
   if not aRect.IsEmpty then // if empty then full page.
   begin
-    if Comic.Right2Left and FlipL2R then
+
+    // TODO: Replace HFlips with rect calculus?
+
+    if Comic.Right2Left and FlipL2R and (not aPage.NoFlip) then
       aPageImg.HorizontalFlip;
 
     BGRAReplace(aPageImg, aPageImg.GetPart(aRect));
 
-    if Comic.Right2Left and FlipL2R then
+    if Comic.Right2Left and FlipL2R and (not aPage.NoFlip) then
       aPageImg.HorizontalFlip;
   end;
 
   Result := aPageImg;
 end;
 
-function cComictecaVolumeRenderer.RenderFrame(aFrame: cComictecaFrame):
-TBGRABitmap;
+function cComictecaVolumeRenderer.RenderFrame(aFrame:
+  cComictecaFrame): TBGRABitmap;
 var
   aFrameImg, aMask: TBGRABitmap;
   aRect: TRect;

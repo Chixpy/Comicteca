@@ -2,6 +2,7 @@
 {"hash":354261,"name":"tfmctkeditorpageedit.gbxpage.caption","sourcebytes":[80,97,103,101],"value":"Page"},
 {"hash":2901221,"name":"tfmctkeditorpageedit.lfilename.caption","sourcebytes":[70,105,108,101,110,97,109,101],"value":"Filename"},
 {"hash":127165557,"name":"tfmctkeditorpageedit.lmultipage.caption","sourcebytes":[80,97,103,101,115,32,105,110,32,73,109,97,103,101],"value":"Pages in Image"},
+{"hash":91622117,"name":"tfmctkeditorpageedit.chknoflip.caption","sourcebytes":[78,111,32,102,108,105,112,32,112,97,103,101],"value":"No flip page"},
 {"hash":359489,"name":"tfmctkeditorpageedit.lsha1.caption","sourcebytes":[83,72,65,49],"value":"SHA1"},
 {"hash":174435348,"name":"tfmctkeditorpageedit.cgrpagecontent.caption","sourcebytes":[67,111,110,116,101,110,116],"value":"Content"},
 {"hash":9662329,"name":"tfmctkeditorpageedit.gbxfixgeometry.caption","sourcebytes":[70,105,120,32,71,101,111,109,101,116,114,121],"value":"Fix Geometry"},
@@ -14,7 +15,7 @@
 {"hash":198067876,"name":"tfmctkeditorpageedit.lbottomright.caption","sourcebytes":[66,111,116,116,111,109,32,82,105,103,104,116],"value":"Bottom Right"},
 {"hash":94135410,"name":"tfmctkeditorpageedit.bsetbr.caption","sourcebytes":[83,101,116,32,66,82],"value":"Set BR"},
 {"hash":5818820,"name":"tfmctkeditorpageedit.bresetgeometry.caption","sourcebytes":[82,101,115,101,116],"value":"Reset"},
-{"hash":188802990,"name":"tfmctkeditorpageedit.lcurrentpoint.caption","sourcebytes":[67,108,105,99,107,32,111,110,32,105,109,97,103,101,32,116,111,32,115,101,108,101,99,116,32,97,32,112,111,105,110,116,46],"value":"Click on image to select a point."},
+{"hash":32,"name":"tfmctkeditorpageedit.lcurrentpoint.caption","sourcebytes":[32],"value":" "},
 {"hash":485806,"name":"tfmctkeditorpageedit.chkcroptogeometry.caption","sourcebytes":[67,114,111,112,32,112,97,103,101,32,116,111,32,103,101,111,109,101,116,114,121,32,98,111,120,46],"value":"Crop page to geometry box."},
-{"hash":140056039,"name":"tfmctkeditorpageedit.chklineargeometry.caption","sourcebytes":[76,105,110,101,97,114,32,103,101,111,109,101,116,114,121,32,109,97,112,112,105,110,103],"value":"Linear geometry mapping"}
+{"hash":106228359,"name":"tfmctkeditorpageedit.chkperspgeometry.caption","sourcebytes":[80,101,114,115,112,101,99,116,105,118,101,32,103,101,111,109,101,116,114,121,32,109,97,112,112,105,110,103],"value":"Perspective geometry mapping"}
 ]}

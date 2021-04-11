@@ -41,6 +41,11 @@ uses
   // Comicteca Editor abstract frames
   uafCTKEditorPageFrame;
 
+resourcestring
+  rsClickImage = 'Click on image to select a point.';
+  rsCurrentPoint = 'Current Point: %d : %d';
+
+
 type
 
   { TfmCTKEditorPageEdit }
@@ -53,7 +58,8 @@ type
     bSetTR: TButton;
     cgrPageContent: TCheckGroup;
     chkCropToGeometry: TCheckBox;
-    chkLinearGeometry: TCheckBox;
+    chkNoFlip: TCheckBox;
+    chkPerspGeometry: TCheckBox;
     eFilename: TEdit;
     eMultipage: TSpinEdit;
     eSHA1: TEdit;
@@ -85,7 +91,8 @@ type
     procedure cgrPageContentClick(Sender: TObject);
     procedure cgrPageContentItemClick(Sender: TObject; Index: integer);
     procedure chkCropToGeometryChange(Sender: TObject);
-    procedure chkLinearGeometryChange(Sender: TObject);
+    procedure chkNoFlipChange(Sender: TObject);
+    procedure chkPerspGeometryChange(Sender: TObject);
     procedure eBottomLeftXChange(Sender: TObject);
     procedure eBottomLeftYChange(Sender: TObject);
     procedure eBottomRightXChange(Sender: TObject);
@@ -226,12 +233,20 @@ begin
   Page.CropGeometry := chkCropToGeometry.Checked;
 end;
 
-procedure TfmCTKEditorPageEdit.chkLinearGeometryChange(Sender: TObject);
+procedure TfmCTKEditorPageEdit.chkNoFlipChange(Sender: TObject);
 begin
   if not Assigned(Page) then
     Exit;
 
-  Page.LinearGeometry := chkLinearGeometry.Checked;
+  Page.NoFlip := chkNoFlip.Checked;
+end;
+
+procedure TfmCTKEditorPageEdit.chkPerspGeometryChange(Sender: TObject);
+begin
+  if not Assigned(Page) then
+    Exit;
+
+  Page.PerspGeometry := chkPerspGeometry.Checked;
 end;
 
 procedure TfmCTKEditorPageEdit.eBottomLeftXChange(Sender: TObject);
@@ -347,6 +362,8 @@ begin
 
   eMultipage.Value := Page.MultiplePages;
 
+  chkNoFlip.Checked := Page.NoFlip;
+
   eTopLeftX.Value := Page.GeomTL.X;
   eTopLeftY.Value := Page.GeomTL.Y;
   eTopRightX.Value := Page.GeomTR.X;
@@ -357,6 +374,7 @@ begin
   eBottomRightY.Value := Page.GeomBR.Y;
 
   chkCropToGeometry.Checked := Page.CropGeometry;
+  chkPerspGeometry.Checked := Page.PerspGeometry;
 
   // Load property checkboxes
   for i := Low(tCTKPageContents) to High(tCTKPageContents) do
@@ -373,6 +391,8 @@ begin
 
   eMultipage.Value := 1;
 
+  chkNoFlip.Checked := False;
+
   eTopLeftX.Value := 0;
   eTopLeftY.Value := 0;
   eTopRightX.Value := 0;
@@ -382,7 +402,10 @@ begin
   eBottomRightX.Value := 0;
   eBottomRightY.Value := 0;
 
+  lCurrentPoint.Caption := rsClickImage;
+
   chkCropToGeometry.Checked := False;
+  chkPerspGeometry.Checked := False;
 
   i := 0;
   while i < cgrPageContent.Items.Count do
@@ -398,7 +421,7 @@ begin
   CurrentPoint.X := X;
   CurrentPoint.Y := Y;
 
-  lCurrentPoint.Caption := 'Point: ' + CurrentPoint.ToString(':');
+  lCurrentPoint.Caption := CurrentPoint.ToFmtString(rsCurrentPoint);
 end;
 
 constructor TfmCTKEditorPageEdit.Create(TheOwner: TComponent);
@@ -409,6 +432,8 @@ begin
 
   OnLoadFrameData := @DoLoadFrameData;
   OnClearFrameData := @DoClearFrameData;
+
+  lCurrentPoint.Caption := rsClickImage;
 end;
 
 destructor TfmCTKEditorPageEdit.Destroy;

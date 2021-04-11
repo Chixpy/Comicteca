@@ -74,6 +74,7 @@ const
   krsCTKXMLMultipageProp = 'Multipage';
   krsCTKXMLContentProp = 'Content';
   krsCTKXMLGeometryProp = 'Geometry';
+  krsCTKXMLNoFlip = 'NoFlip';
 
   // Frames
   krsCTKXMLFrameList = 'FrameList';
