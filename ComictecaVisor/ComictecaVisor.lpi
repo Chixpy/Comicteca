@@ -38,7 +38,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="src\forms;..\..\CHX\Frames;..\..\CHX\Forms;..\ComictecaCore\Abstracts;..\ComictecaCore\Classes;..\ComictecaCore\Units;..\..\CHX\Units;..\..\CHX\Misc"/>
+            <OtherUnitFiles Value="src\forms;..\ComictecaCore\Abstracts;..\ComictecaCore\Classes;..\ComictecaCore\Units;..\CHXPas\Units;..\CHXPas\Misc;..\CHXPas\Forms;..\CHXPas\Frames"/>
             <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -90,143 +90,137 @@
         <ResourceBaseClass Value="Form"/>
       </Unit1>
       <Unit2>
-        <Filename Value="..\..\CHX\Frames\ufCHXBGRAImgViewerEx.pas"/>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaFrame.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmCHXBGRAImgViewerEx"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
       </Unit2>
       <Unit3>
-        <Filename Value="..\..\CHX\Forms\ufrCHXForm.pas"/>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaPage.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaSection.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaText.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaVolume.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaConfig.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaFrameList.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaPage.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaPageList.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaSection.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaText.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaTextList.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaTextMap.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVignette.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolume.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="..\ComictecaCore\Units\uCTKCommon.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="..\ComictecaCore\Units\uCTKConst.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="..\ComictecaCore\Units\uCTKRstStr.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolumeRenderer.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="..\CHXPas\Units\uCHX7zWrapper.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="..\CHXPas\Units\uCHXStrUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="..\CHXPas\Misc\uVersionSupport.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="..\CHXPas\Forms\ufrCHXForm.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCHXForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-      </Unit3>
-      <Unit4>
-        <Filename Value="..\..\CHX\Frames\ufCHXBGRAImgViewer.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmCHXBGRAImgViewer"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-      </Unit4>
-      <Unit5>
-        <Filename Value="..\..\CHX\Frames\ufCHXFrame.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmCHXFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-      </Unit5>
-      <Unit6>
-        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaFrame.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit6>
-      <Unit7>
-        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaPage.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit7>
-      <Unit8>
-        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaSection.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaText.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit9>
-      <Unit10>
-        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaVolume.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit10>
-      <Unit11>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaConfig.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaFrame.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaFrameList.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit13>
-      <Unit14>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaPage.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit14>
-      <Unit15>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaPageList.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit15>
-      <Unit16>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaSection.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit16>
-      <Unit17>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaText.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaTextList.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaTextMap.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit19>
-      <Unit20>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaVignette.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit20>
-      <Unit21>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolume.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit21>
-      <Unit22>
-        <Filename Value="..\ComictecaCore\Units\uCTKCommon.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit22>
-      <Unit23>
-        <Filename Value="..\ComictecaCore\Units\uCTKConst.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit23>
-      <Unit24>
-        <Filename Value="..\ComictecaCore\Units\uCTKRstStr.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="..\..\CHX\Units\uCHXImageUtils.pas"/>
-        <IsPartOfProject Value="True"/>
       </Unit25>
       <Unit26>
-        <Filename Value="..\..\CHX\Units\uCHXStrUtils.pas"/>
+        <Filename Value="..\CHXPas\Frames\ufCHXBGRAImgViewer.pas"/>
         <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
       </Unit26>
       <Unit27>
-        <Filename Value="..\..\CHX\Units\uCHXConst.pas"/>
+        <Filename Value="..\CHXPas\Frames\ufCHXBGRAImgViewerEx.pas"/>
         <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
       </Unit27>
       <Unit28>
-        <Filename Value="..\..\CHX\Units\uCHXRscStr.pas"/>
+        <Filename Value="..\CHXPas\Frames\ufCHXFrame.pas"/>
         <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
       </Unit28>
       <Unit29>
-        <Filename Value="..\..\CHX\Misc\uVersionSupport.pas"/>
+        <Filename Value="..\CHXPas\Units\uCHXConst.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit29>
       <Unit30>
-        <Filename Value="..\ComictecaCore\Classes\ucComictecaVolumeRenderer.pas"/>
+        <Filename Value="..\CHXPas\Units\uCHXRscStr.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit30>
       <Unit31>
-        <Filename Value="..\..\CHX\Units\uCHX7zWrapper.pas"/>
+        <Filename Value="..\CHXPas\Units\uCHXImageUtils.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit31>
       <Unit32>
-        <Filename Value="..\..\CHX\Units\uCHXExecute.pas"/>
+        <Filename Value="..\CHXPas\Units\uCHXFileUtils.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit32>
       <Unit33>
-        <Filename Value="..\..\CHX\Units\uCHXFileUtils.pas"/>
+        <Filename Value="..\CHXPas\Units\uCHXExecute.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit33>
     </Units>
@@ -239,7 +233,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="src\forms;..\..\CHX\Frames;..\..\CHX\Forms;..\ComictecaCore\Abstracts;..\ComictecaCore\Classes;..\ComictecaCore\Units;..\..\CHX\Units;..\..\CHX\Misc"/>
+      <OtherUnitFiles Value="src\forms;..\ComictecaCore\Abstracts;..\ComictecaCore\Classes;..\ComictecaCore\Units;..\CHXPas\Units;..\CHXPas\Misc;..\CHXPas\Forms;..\CHXPas\Frames"/>
       <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
