@@ -1,0 +1,3 @@
+[submodule "CHXPas"]
+	path = CHXPas
+	url = ../CHXPas.git
