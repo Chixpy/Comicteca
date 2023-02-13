@@ -107,8 +107,8 @@ begin
   while (i < Comic.Frames.Count) do
   begin
     aCaption := Comic.Frames[i].Page.FileName;
-    if not Comic.Frames[i].FrameRect.IsEmpty then
-      aCaption := aCaption + ' - ' + Comic.Frames[i].FrameRect.ToString;
+    if not Comic.Frames[i].ImgRect.IsEmpty then
+      aCaption := aCaption + ' - ' + Comic.Frames[i].ImgRect.ToString;
 
     lbxFrameList.AddItem(aCaption, Comic.Frames[i]);
     Inc(i);

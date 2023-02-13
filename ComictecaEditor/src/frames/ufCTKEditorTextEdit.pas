@@ -35,7 +35,7 @@ uses
   // Comicteca Editor units.
   uCTKEditorConst,
     // Comicteca Core abstract clases
-  uaComictecaText,
+  uaComictecaShapedImage, uaComictecaText,
   // Comicteca Editor abstract frames.
   uafCTKEditorTextFrame;
 
@@ -110,8 +110,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextRect.Top := eTop.Value;
-  CTKText.TextRect.NormalizeRect;
+  CTKText.ImgRect.Top := eTop.Value;
+  CTKText.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -122,7 +122,7 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextPoint.X := eValX.Value;
+  CTKText.ImgPoint.X := eValX.Value;
 
   // Changing Point don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -133,7 +133,7 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextPoint.Y := eValY.Value;
+  CTKText.ImgPoint.Y := eValY.Value;
 
   // Changing Point don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -152,8 +152,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextRect.Right := eRight.Value;
-  CTKText.TextRect.NormalizeRect;
+  CTKText.ImgRect.Right := eRight.Value;
+  CTKText.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -164,8 +164,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextRect.Left := eLeft.Value;
-  CTKText.TextRect.NormalizeRect;
+  CTKText.ImgRect.Left := eLeft.Value;
+  CTKText.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -176,8 +176,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextRect.Bottom := eBottom.Value;
-  CTKText.TextRect.NormalizeRect;
+  CTKText.ImgRect.Bottom := eBottom.Value;
+  CTKText.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -188,8 +188,8 @@ begin
   if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextRect := Default(TRect);
-  CTKText.TextPoint := Default(TPoint);
+  CTKText.ImgRect := Default(TRect);
+  CTKText.ImgPoint := Default(TPoint);
 
   // Changing Rect don't notify observers
   CTKText.FPONotifyObservers(CTKText, ooChange, nil);
@@ -208,7 +208,7 @@ begin
     if not Assigned(CTKText) then
     Exit;
 
-  CTKText.TextShape := tCTKFrameShape(cbxTextShape.ItemIndex);
+  CTKText.ImgShape := tCTKImageShape(cbxTextShape.ItemIndex);
 end;
 
 procedure TfmCTKEditorTextEdit.SetDataFolder(AValue: string);
@@ -244,15 +244,15 @@ begin
     Exit;
   end;
 
-  eLeft.Value := CTKText.TextRect.Left;
-  eTop.Value := CTKText.TextRect.Top;
-  eBottom.Value := CTKText.TextRect.Bottom;
-  eRight.Value := CTKText.TextRect.Right;
+  eLeft.Value := CTKText.ImgRect.Left;
+  eTop.Value := CTKText.ImgRect.Top;
+  eBottom.Value := CTKText.ImgRect.Bottom;
+  eRight.Value := CTKText.ImgRect.Right;
 
-  eValX.Value := CTKText.TextPoint.X;
-  eValY.Value := CTKText.TextPoint.Y;
+  eValX.Value := CTKText.ImgPoint.X;
+  eValY.Value := CTKText.ImgPoint.Y;
 
-  cbxTextShape.ItemIndex := Ord(CTKText.TextShape);
+  cbxTextShape.ItemIndex := Ord(CTKText.ImgShape);
 
   // Nil can't be assigned to TStringList...
   StrLst := CTKText.Content.CTMGetSL(cbxLangContent.Text);
@@ -272,7 +272,7 @@ begin
   eValX.Value := 0;
   eValY.Value := 0;
 
-  cbxTextShape.ItemIndex := Ord(kCTKTextDefShape);
+  cbxTextShape.ItemIndex := Ord(kCTKImgDefShape);
 
   mContent.Clear;
 end;

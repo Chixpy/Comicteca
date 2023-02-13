@@ -4,7 +4,7 @@ unit ucComictecaVolumeRenderer;
 
   This file is part of Comicteca Core.
 
-  Copyright (C) 2021 Chixpy
+  Copyright (C) 2023 Chixpy
 
   This source is free software; you can redistribute it and/or modify it under
   the terms of the GNU General Public License as published by the Free
@@ -29,6 +29,8 @@ uses
   Classes, SysUtils, FileUtil, LazFileUtils, BGRABitmapTypes, BGRABitmap,
   // Comicteca Core units.
   uCTKConst,
+  // Comicteca Core abstracts.
+  uaComictecaShapedImage,
   // Comicteca Core classes.
   ucComictecaVolume, ucComictecaPage, ucComictecaFrame, ucComictecaText;
 
@@ -58,6 +60,8 @@ type
     procedure SetShowTextBorders(AValue: boolean);
 
   protected
+    procedure IntRenderShape(aImg: TBGRABitmap; ImageShape: tCTKImageShape;
+      X, Y: integer; DebugColor: TBGRAPixel);
 
   public
     FrameBorderColor: TBGRAPixel;
@@ -154,7 +158,6 @@ begin
     Exit;
 
   ResetPageCache;
-
 end;
 
 procedure cComictecaVolumeRenderer.SetDebugRender(AValue: boolean);
@@ -191,6 +194,95 @@ begin
   FShowTextBorders := AValue;
 
   ResetPageCache;
+end;
+
+procedure cComictecaVolumeRenderer.IntRenderShape(aImg: TBGRABitmap;
+  ImageShape: tCTKImageShape; X, Y: integer; DebugColor: TBGRAPixel);
+var
+  aMask: TBGRABitmap;
+  aRect: TRect;
+begin
+  if not assigned(aImg) then
+    Exit;
+
+  if DebugRender then
+  begin
+    case ImageShape of
+      CTKFSRndRect: aImg.RoundRect(0, 0, aImg.Width,
+          aImg.Height, X, Y, DebugColor, dmDrawWithTransparency);
+      CTKFSEllipse:
+      begin
+        aRect := Rect(0, 0, aImg.Width, aImg.Height);
+        aImg.EllipseInRect(aRect, DebugColor, dmDrawWithTransparency);
+
+        if X >= 0 then
+          aRect.TopLeft.X := X
+        else
+          aRect.BottomRight.X := aRect.BottomRight.X + X;
+
+        if Y >= 0 then
+          aRect.TopLeft.Y := Y
+        else
+          aRect.BottomRight.Y := aRect.BottomRight.Y + Y;
+
+        aImg.Rectangle(aRect, DebugColor, dmDrawWithTransparency);
+      end;
+      else
+        ;
+    end;
+  end
+  else
+  begin
+    // Render Frame Shape
+    case ImageShape of
+      CTKFSRndRect:
+      begin
+        aMask := TBGRABitmap.Create(aImg.Width, aImg.Height,
+          BGRABlack);
+        aMask.FillRoundRect(0, 0, aImg.Width, aImg.Height,
+          X, Y, BGRAWhite);
+        aImg.ApplyMask(aMask);
+        aMask.Free;
+      end;
+
+      CTKFSEllipse:
+      begin
+        aMask := TBGRABitmap.Create(aImg.Width, aImg.Height,
+          BGRABlack);
+        aRect := Rect(0, 0, aImg.Width, aImg.Height);
+        aMask.FillEllipseInRect(aRect, BGRAWhite);
+
+        if X <> 0 then
+        begin
+          aRect := Rect(0, 0, aImg.Width, aImg.Height);
+
+          if X > 0 then
+            aRect.Right := X - 1
+          else
+            aRect.Left := aImg.Width + X;
+
+          aMask.FillRect(aRect, BGRABlack);
+        end;
+
+        if Y <> 0 then
+        begin
+          aRect := Rect(0, 0, aImg.Width, aImg.Height);
+
+          if Y > 0 then
+            aRect.Top := Y
+          else
+            aRect.Bottom := aImg.Height + X;
+
+          aMask.FillRect(aRect, BGRABlack);
+        end;
+
+        aImg.ApplyMask(aMask);
+        aMask.Free;
+      end;
+      else // CTKFSRect
+        ;
+    end;
+  end;
 end;
 
 procedure cComictecaVolumeRenderer.ResetFileCache;
@@ -347,7 +439,7 @@ function cComictecaVolumeRenderer.RenderPage(
     BGRAReplace(aImage, correct);
   end;
 
-  procedure DrawBorders(aShape: tCTKFrameShape; const aRect: TRect;
+  procedure DrawBorders(aShape: tCTKImageShape; const aRect: TRect;
   const aPoint: TPoint; const BorderColor, BorderFill: TBGRAPixel);
   begin
     case aShape of
@@ -368,10 +460,11 @@ function cComictecaVolumeRenderer.RenderPage(
     end;
   end;
 
-var
+var // cComictecaVolumeRenderer.RenderPage(aPage: cComictecaPage): TBGRABitmap;
   PageIndex, i: integer;
   aFrame: cComictecaFrame;
   aText: cComictecaText;
+  TempImg: TBGRABitmap;
 begin
   Result := nil;
 
@@ -423,7 +516,7 @@ begin
       aFrame := Comic.Frames[i];
       if aFrame.Page = aPage then
       begin
-        DrawBorders(aFrame.FrameShape, aFrame.FrameRect, aFrame.FramePoint,
+        DrawBorders(aFrame.ImgShape, aFrame.ImgRect, aFrame.ImgPoint,
           FrameBorderColor, FrameBorderFill);
       end;
       Inc(i);
@@ -437,7 +530,7 @@ begin
     while i < aPage.Texts.Count do
     begin
       aText := aPage.Texts[i];
-      DrawBorders(aText.TextShape, aText.TextRect, aText.TextPoint,
+      DrawBorders(aText.ImgShape, aText.ImgRect, aText.ImgPoint,
         TextBorderColor, TextBorderFill);
       Inc(i);
     end;
@@ -450,7 +543,19 @@ begin
     while i < aPage.Texts.Count do
     begin
       aText := aPage.Texts[i];
-      LastPage.HorizontalFlip(aText.TextRect);
+
+      if not aText.ImgRect.IsEmpty then
+      begin
+      TempImg := LastPage.GetPart(aText.ImgRect);
+      IntRenderShape(TempImg, aText.ImgShape, aText.ImgPoint.X,
+        aText.ImgPoint.Y, BGRA(255, 0, 255));
+      TempImg.HorizontalFlip;
+
+      LastPage.PutImage(aText.ImgRect.Left, aText.ImgRect.Top, TempImg,
+        dmDrawWithTransparency);
+
+      TempImg.Free;
+      end;
       Inc(i);
     end;
 
@@ -497,53 +602,17 @@ end;
 function cComictecaVolumeRenderer.RenderFrame(aFrame:
   cComictecaFrame): TBGRABitmap;
 var
-  aFrameImg, aMask: TBGRABitmap;
-  aRect: TRect;
+  aFrameImg: TBGRABitmap;
 begin
   Result := nil;
 
   if (not assigned(Comic)) or (not assigned(aFrame)) then
     Exit;
 
-  aFrameImg := RenderPageRect(cComictecaPage(aFrame.Page), aFrame.FrameRect);
+  aFrameImg := RenderPageRect(cComictecaPage(aFrame.Page), aFrame.ImgRect);
 
-  if DebugRender then
-  begin
-    case aFrame.FrameShape of
-      CTKFSRndRect: aFrameImg.RoundRect(0, 0, aFrameImg.Width,
-          aFrameImg.Height, aFrame.FramePoint.X, aFrame.FramePoint.Y,
-          FrameBorderColor, dmLinearBlend);
-      CTKFSEllipse:
-      begin
-        aRect := Rect(0, 0, aFrameImg.Width, aFrameImg.Height);
-        aFrameImg.EllipseInRect(aRect, FrameBorderColor, dmLinearBlend);
-
-        if aFrame.FramePoint.X >= 0 then
-          aRect.TopLeft.X := aFrame.FramePoint.X
-        else
-          aRect.BottomRight.X := aRect.BottomRight.X + aFrame.FramePoint.X;
-
-        if aFrame.FramePoint.Y >= 0 then
-          aRect.TopLeft.Y := aFrame.FramePoint.Y
-        else
-          aRect.BottomRight.Y := aRect.BottomRight.Y + aFrame.FramePoint.Y;
-
-        aFrameImg.Rectangle(aRect, FrameBorderColor, dmLinearBlend);
-      end;
-      else
-        ;
-    end;
-  end
-  else
-  begin
-    // Render Frame Shape
-    case aFrame.FrameShape of
-      CTKFSRndRect: ;
-      CTKFSEllipse: ;
-      else
-        ;
-    end;
-  end;
+  IntRenderShape(aFrameImg, aFrame.ImgShape, aFrame.ImgPoint.X,
+    aFrame.ImgPoint.Y, FrameBorderColor);
 
   Result := aFrameImg;
 end;
@@ -552,52 +621,16 @@ function cComictecaVolumeRenderer.RenderText(
   aText: cComictecaText): TBGRABitmap;
 var
   aTextImg: TBGRABitmap;
-  aRect: TRect;
 begin
   Result := nil;
 
   if (not assigned(Comic)) or (not assigned(aText)) then
     Exit;
 
-  aTextImg := RenderPageRect(cComictecaPage(aText.Page), aText.TextRect);
+  aTextImg := RenderPageRect(cComictecaPage(aText.Page), aText.ImgRect);
 
-  if DebugRender then
-  begin
-    case aText.TextShape of
-      CTKFSRndRect: aTextImg.RoundRect(0, 0, aTextImg.Width,
-          aTextImg.Height, aText.TextPoint.X, aText.TextPoint.Y,
-          TextBorderColor, dmLinearBlend);
-      CTKFSEllipse:
-      begin
-        aRect := Rect(0, 0, aTextImg.Width, aTextImg.Height);
-        aTextImg.EllipseInRect(aRect, TextBorderColor, dmLinearBlend);
-
-        if aText.TextPoint.X >= 0 then
-          aRect.TopLeft.X := aText.TextPoint.X
-        else
-          aRect.BottomRight.X := aRect.BottomRight.X + aText.TextPoint.X;
-
-        if aText.TextPoint.Y >= 0 then
-          aRect.TopLeft.Y := aText.TextPoint.Y
-        else
-          aRect.BottomRight.Y := aRect.BottomRight.Y + aText.TextPoint.Y;
-
-        aTextImg.Rectangle(aRect, TextBorderColor, dmLinearBlend);
-      end;
-      else
-        ;
-    end;
-  end
-  else
-  begin
-    // Render Text Shape
-    case aText.TextShape of
-      CTKFSRndRect: ;
-      CTKFSEllipse: ;
-      else
-        ;
-    end;
-  end;
+  IntRenderShape(aTextImg, aText.ImgShape, aText.ImgPoint.X,
+    aText.ImgPoint.Y, TextBorderColor);
 
   Result := aTextImg;
 end;

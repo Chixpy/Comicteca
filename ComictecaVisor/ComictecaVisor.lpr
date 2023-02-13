@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, ufrComictecaVisorMain, uCHXConst, uCHXRscStr, uCHXImageUtils,
-  uCHXFileUtils, uCHXExecute
+  uCHXFileUtils, uCHXExecute, uaComictecaShapedImage
   { you can add units after this };
 
 {$R *.res}

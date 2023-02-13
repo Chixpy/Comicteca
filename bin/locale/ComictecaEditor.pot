@@ -21,41 +21,41 @@ msgstr ""
 #: tfmctkeditorframeedit.bresetframe.caption
 msgctxt "tfmctkeditorframeedit.bresetframe.caption"
 msgid "Reset Frame"
-msgstr "Reiniciar"
+msgstr ""
 
 #: tfmctkeditorframeedit.gbxframeedit.caption
 msgctxt "tfmctkeditorframeedit.gbxframeedit.caption"
 msgid "Frame properties"
-msgstr "Propiedades del marco"
+msgstr ""
 
 #: tfmctkeditorframeedit.lbottom.caption
 msgctxt "tfmctkeditorframeedit.lbottom.caption"
 msgid "Bottom"
-msgstr "Abajo"
+msgstr ""
 
 #: tfmctkeditorframeedit.lframetype.caption
 msgid "Frame Type"
-msgstr "Tipo de frame"
+msgstr ""
 
 #: tfmctkeditorframeedit.lleft.caption
 msgctxt "tfmctkeditorframeedit.lleft.caption"
 msgid "Left"
-msgstr "Izquierda"
+msgstr ""
 
 #: tfmctkeditorframeedit.lpage.caption
 msgctxt "tfmctkeditorframeedit.lpage.caption"
 msgid "Page"
-msgstr "Página"
+msgstr ""
 
 #: tfmctkeditorframeedit.lright.caption
 msgctxt "tfmctkeditorframeedit.lright.caption"
 msgid "Right"
-msgstr "Derecha"
+msgstr ""
 
 #: tfmctkeditorframeedit.ltop.caption
 msgctxt "tfmctkeditorframeedit.ltop.caption"
 msgid "Top"
-msgstr "Arriba"
+msgstr ""
 
 #: tfmctkeditorframeedit.lvalx.caption
 msgctxt "tfmctkeditorframeedit.lvalx.caption"
@@ -69,21 +69,21 @@ msgstr ""
 
 #: tfmctkeditorframelist.baddframe.caption
 msgid "Add Frame"
-msgstr "Añadir marco"
+msgstr ""
 
 #: tfmctkeditorframelist.bmovedown.caption
 msgctxt "tfmctkeditorframelist.bmovedown.caption"
 msgid "Move Down"
-msgstr "Bajar"
+msgstr ""
 
 #: tfmctkeditorframelist.bremoveframe.caption
 msgid "Remove Frame"
-msgstr "Quitar marco"
+msgstr ""
 
 #: tfmctkeditorframelist.bsubir.caption
 msgctxt "tfmctkeditorframelist.bsubir.caption"
 msgid "Move Up"
-msgstr "Subir"
+msgstr ""
 
 #: tfmctkeditorframelist.gbxframelist.caption
 msgid "Frame List"
@@ -116,43 +116,42 @@ msgstr ""
 
 #: tfmctkeditorimglist.baddallfiles.caption
 msgid "Add all images"
-msgstr "Añadir todas las imágenes"
+msgstr ""
 
 #: tfmctkeditorimglist.bmovedown.caption
 msgctxt "tfmctkeditorimglist.bmovedown.caption"
 msgid "Move Down"
-msgstr "Bajar"
+msgstr ""
 
 #: tfmctkeditorimglist.bremovefile.caption
 msgid "Remove File"
-msgstr "Quitar fichero"
+msgstr ""
 
 #: tfmctkeditorimglist.bsubir.caption
 msgctxt "tfmctkeditorimglist.bsubir.caption"
 msgid "Move Up"
-msgstr "Subir"
+msgstr ""
 
 #: tfmctkeditorimglist.gbximagefilelist.caption
 msgid "Image File List"
-msgstr "Lista de ficheros de imagen"
+msgstr ""
 
 #: tfmctkeditormain.hcmain.sections[0].text
 msgid "Volume"
-msgstr "Tomo"
+msgstr ""
 
 #: tfmctkeditormain.hcmain.sections[1].text
 msgid "Pages"
-msgstr "Páginas"
+msgstr ""
 
 #: tfmctkeditormain.hcmain.sections[2].text
-msgctxt "tfmctkeditormain.hcmain.sections[2].text"
 msgid "Vignettes"
-msgstr "Marcos"
+msgstr ""
 
 #: tfmctkeditormain.hcmain.sections[3].text
 msgctxt "tfmctkeditormain.hcmain.sections[3].text"
 msgid "Texts"
-msgstr "Textos"
+msgstr ""
 
 #: tfmctkeditormain.hcmain.sections[4].text
 msgid "Metadada"
@@ -181,7 +180,7 @@ msgstr ""
 #: tfmctkeditorpageedit.cgrpagecontent.caption
 msgctxt "tfmctkeditorpageedit.cgrpagecontent.caption"
 msgid "Content"
-msgstr "Contenido"
+msgstr ""
 
 #: tfmctkeditorpageedit.chkcroptogeometry.caption
 msgid "Crop page to geometry box."
@@ -192,7 +191,6 @@ msgid "No flip page"
 msgstr ""
 
 #: tfmctkeditorpageedit.chkperspgeometry.caption
-msgctxt "tfmctkeditorpageedit.chkperspgeometry.caption"
 msgid "Perspective geometry mapping"
 msgstr ""
 
@@ -203,7 +201,7 @@ msgstr ""
 #: tfmctkeditorpageedit.gbxpage.caption
 msgctxt "tfmctkeditorpageedit.gbxpage.caption"
 msgid "Page"
-msgstr "Página"
+msgstr ""
 
 #: tfmctkeditorpageedit.lbottomleft.caption
 msgid "Bottom Left"
@@ -214,18 +212,16 @@ msgid "Bottom Right"
 msgstr ""
 
 #: tfmctkeditorpageedit.lcurrentpoint.caption
-msgctxt "tfmctkeditorpageedit.lcurrentpoint.caption"
 msgid " "
 msgstr ""
 
 #: tfmctkeditorpageedit.lfilename.caption
-msgctxt "tfmctkeditorpageedit.lfilename.caption"
 msgid "Filename"
-msgstr "Fichero"
+msgstr ""
 
 #: tfmctkeditorpageedit.lmultipage.caption
 msgid "Pages in Image"
-msgstr "Páginas en imagen"
+msgstr ""
 
 #: tfmctkeditorpageedit.lsha1.caption
 msgid "SHA1"
@@ -273,46 +269,39 @@ msgid "Auto Zoom"
 msgstr ""
 
 #: tfmctkeditortextedit.bresetframe.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.bresetframe.caption"
 msgid "Reset Frame"
-msgstr "Reiniciar"
+msgstr ""
 
 #: tfmctkeditortextedit.gbxframeedit.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.gbxframeedit.caption"
 msgid "Frame properties"
-msgstr "Propiedades del marco"
+msgstr ""
 
 #: tfmctkeditortextedit.lbottom.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.lbottom.caption"
 msgid "Bottom"
-msgstr "Abajo"
+msgstr ""
 
 #: tfmctkeditortextedit.lcontent.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.lcontent.caption"
 msgid "Content"
-msgstr "Contenido"
+msgstr ""
 
 #: tfmctkeditortextedit.lleft.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.lleft.caption"
 msgid "Left"
-msgstr "Izquierda"
+msgstr ""
 
 #: tfmctkeditortextedit.lright.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.lright.caption"
 msgid "Right"
-msgstr "Derecha"
+msgstr ""
 
 #: tfmctkeditortextedit.ltop.caption
-#, fuzzy
 msgctxt "tfmctkeditortextedit.ltop.caption"
 msgid "Top"
-msgstr "Arriba"
+msgstr ""
 
 #: tfmctkeditortextedit.lvalx.caption
 msgctxt "tfmctkeditortextedit.lvalx.caption"
@@ -333,32 +322,28 @@ msgid "Add Copy"
 msgstr ""
 
 #: tfmctkeditortextlist.bmovedown.caption
-#, fuzzy
 msgctxt "tfmctkeditortextlist.bmovedown.caption"
 msgid "Move Down"
-msgstr "Bajar"
+msgstr ""
 
 #: tfmctkeditortextlist.bmoveup.caption
-#, fuzzy
 msgctxt "tfmctkeditortextlist.bmoveup.caption"
 msgid "Move Up"
-msgstr "Subir"
+msgstr ""
 
 #: tfmctkeditortextlist.bremovetext.caption
 msgid "Remove Text"
 msgstr ""
 
 #: tfmctkeditortextlist.gbxpage.caption
-#, fuzzy
 msgctxt "tfmctkeditortextlist.gbxpage.caption"
 msgid "Page"
-msgstr "Página"
+msgstr ""
 
 #: tfmctkeditortextlist.gbxtexts.caption
-#, fuzzy
 msgctxt "tfmctkeditortextlist.gbxtexts.caption"
 msgid "Texts"
-msgstr "Textos"
+msgstr ""
 
 #: tfmctkeditortextvisor.borigzoom.caption
 msgctxt "tfmctkeditortextvisor.borigzoom.caption"
@@ -387,7 +372,7 @@ msgstr ""
 
 #: tfmctkeditorvolumeedit.chkright2left.caption
 msgid "Right to Left (Japanese)"
-msgstr "Derecha a izquierda (Manga)"
+msgstr ""
 
 #: tfmctkeditorvolumeedit.leditor.caption
 msgid "Editor"
@@ -399,7 +384,7 @@ msgstr ""
 
 #: tfmctkeditorvolumeedit.llanguage.caption
 msgid "Language"
-msgstr "Lenguaje"
+msgstr ""
 
 #: tfmctkeditorvolumeedit.lpublisher.caption
 msgid "Publisher"
@@ -415,11 +400,11 @@ msgstr ""
 
 #: tfmctkeditorvolumeedit.lsummary.caption
 msgid "Summary"
-msgstr "Sumario"
+msgstr ""
 
 #: tfmctkeditorvolumeedit.ltitle.caption
 msgid "Title"
-msgstr "Título"
+msgstr ""
 
 #: tfmctkeditorvolumeedit.ltitleorder.caption
 msgid "Title Order"
@@ -568,7 +553,6 @@ msgid "Renaming file"
 msgstr ""
 
 #: uctkrststr.rsfsellipsekey
-msgctxt "uctkrststr.rsfsellipsekey"
 msgid "Ellipse"
 msgstr ""
 
@@ -581,19 +565,16 @@ msgid "Round Rect"
 msgstr ""
 
 #: uctkrststr.rspcads
-msgctxt "uctkrststr.rspcads"
 msgid "Advertising"
-msgstr "Publicidad"
+msgstr ""
 
 #: uctkrststr.rspcauthortext
-msgctxt "uctkrststr.rspcauthortext"
 msgid "Author Text"
-msgstr "Texto del autor"
+msgstr ""
 
 #: uctkrststr.rspcbackcover
-msgctxt "uctkrststr.rspcbackcover"
 msgid "Back Cover"
-msgstr "Contraportada"
+msgstr ""
 
 #: uctkrststr.rspcbackdustjacket
 msgid "Back Dust Jacket"
@@ -601,36 +582,31 @@ msgstr ""
 
 #: uctkrststr.rspcbastardtitle
 msgid "Bastard Title"
-msgstr "Antetítulo"
+msgstr ""
 
 #: uctkrststr.rspcchaptertitle
-msgctxt "uctkrststr.rspcchaptertitle"
 msgid "Chapter Title"
-msgstr "Título del capítulo"
+msgstr ""
 
 #: uctkrststr.rspceditorialinfo
-msgctxt "uctkrststr.rspceditorialinfo"
 msgid "Editorial Info"
-msgstr "Información de la editorial"
+msgstr ""
 
 #: uctkrststr.rspcendpaper
 msgid "End Paper"
-msgstr "Guarda"
+msgstr ""
 
 #: uctkrststr.rspcflyleaf
-#, fuzzy
-msgctxt "uctkrststr.rspcflyleaf"
 msgid "Fly Leaf"
-msgstr "Página de cortesía"
+msgstr ""
 
 #: uctkrststr.rspcfrontcover
-msgctxt "uctkrststr.rspcfrontcover"
 msgid "Front Cover"
-msgstr "Frontal de la cubierta"
+msgstr ""
 
 #: uctkrststr.rspcfrontdustjacket
 msgid "Front Dust Jacket"
-msgstr "Frontal de la sobrecubierta"
+msgstr ""
 
 #: uctkrststr.rspcindex
 msgid "Index"
@@ -638,27 +614,25 @@ msgstr ""
 
 #: uctkrststr.rspclicense
 msgid "License"
-msgstr "Licencia"
+msgstr ""
 
 #: uctkrststr.rspcother
-msgctxt "uctkrststr.rspcother"
 msgid "Other"
-msgstr "Otros"
+msgstr ""
 
 #: uctkrststr.rspcspinecover
 msgid "Spine (Cover)"
-msgstr "Lomo de la cubierta"
+msgstr ""
 
 #: uctkrststr.rspcspinedustjacket
 msgid "Spine Dust Jacket"
-msgstr "Lomo de la sobrecubierta"
+msgstr ""
 
 #: uctkrststr.rspcvignette
 msgid "Vignette"
-msgstr "Viñeta"
+msgstr ""
 
 #: ufctkeditorpageedit.rsclickimage
-msgctxt "ufctkeditorpageedit.rsclickimage"
 msgid "Click on image to select a point."
 msgstr ""
 

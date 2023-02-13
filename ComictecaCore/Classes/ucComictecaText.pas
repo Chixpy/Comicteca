@@ -78,10 +78,12 @@ end;
 
 procedure cComictecaText.CopyFrom(aCTKText: cComictecaText);
 begin
+  // TODO: May be this must be virtual in caComictecaShapedImage and overrided
+  //   by its childs copying new properties...
   if not Assigned(aCTKText) then Exit;
 
-  Self.TextRect := aCTKText.TextRect;
-  Self.TextPoint := aCTKText.TextPoint;
+  Self.ImgRect := aCTKText.ImgRect;
+  Self.ImgPoint := aCTKText.ImgPoint;
   Self.Page := aCTKText.Page;
 end;
 

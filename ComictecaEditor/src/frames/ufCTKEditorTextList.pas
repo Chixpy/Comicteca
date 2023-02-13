@@ -134,12 +134,12 @@ procedure TfmCTKEditorTextList.bAddTextCopyClick(Sender: TObject);
     if (aPos < 1) or (aPos >= lbxTexts.Count) then
     begin
       aPos := CurrentPage.Texts.Add(aText);
-      lbxTexts.AddItem(aText.TextRect.ToString, aText);
+      lbxTexts.AddItem(aText.ImgRect.ToString, aText);
     end
     else
     begin
       CurrentPage.Texts.Insert(aPos, aText);
-      lbxTexts.Items.Insert(aPos, aText.TextRect.ToString);
+      lbxTexts.Items.Insert(aPos, aText.ImgRect.ToString);
       lbxTexts.Items.Objects[aPos] := aText;
     end;
 
@@ -282,10 +282,10 @@ begin
   i := 0;
   while (i < CurrentPage.Texts.Count) do
   begin
-    if CurrentPage.Texts[i].TextRect.IsEmpty then
+    if CurrentPage.Texts[i].ImgRect.IsEmpty then
       lbxTexts.AddItem(IntToStr(i), CurrentPage.Texts[i])
     else
-      lbxTexts.AddItem(CurrentPage.Texts[i].TextRect.ToString,
+      lbxTexts.AddItem(CurrentPage.Texts[i].ImgRect.ToString,
         CurrentPage.Texts[i]);
 
     Inc(i);

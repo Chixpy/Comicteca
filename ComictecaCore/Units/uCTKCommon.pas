@@ -31,7 +31,7 @@ uses
   uCTKConst;
 
 function Str2FrameType(aString: string): tCTKFrameType;
-function Str2FrameShape(aString: string): tCTKFrameShape;
+function Str2FrameShape(aString: string): tCTKImageShape;
 
 function Str2FrameTypeSet(aString: string): tCTKPageContents;
 function StrLst2FrameTypeSet(aStringList: TStringList): tCTKPageContents;
@@ -80,7 +80,7 @@ begin
     Result := CTKFTOther;
 end;
 
-function Str2FrameShape(aString: string): tCTKFrameShape;
+function Str2FrameShape(aString: string): tCTKImageShape;
 begin
   Result := CTKFSRect;
 

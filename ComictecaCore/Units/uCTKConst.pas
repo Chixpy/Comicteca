@@ -130,7 +130,7 @@ type
     CTKFTBackCover, CTKFTBackDustJacket, CTKFTOther);
   tCTKPageContents = set of tCTKFrameType;
 
-  tCTKFrameShape = (CTKFSRect, CTKFSRndRect, CTKFSEllipse);
+  tCTKImageShape = (CTKFSRect, CTKFSRndRect, CTKFSEllipse);
 
 const
   ComictecaFrameTypeKey: array [tCTKFrameType] of string =
@@ -140,7 +140,7 @@ const
     krsFTEditorialInfoKey, krsFTAuthorTextKey, krsFTAdsKey, krsFTLicenseKey,
     krsFTBackCoverKey, krsFTBackDustJacketKey, krsFTOtherKey);
 
-  ComictecaFrameShapeKey: array [tCTKFrameShape] of string =
+  ComictecaFrameShapeKey: array [tCTKImageShape] of string =
     (krsFSRectKey, krsFSRndRectKey, krsFSEllipseKey);
 
 implementation

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
+      <Flags>
+        <CompatibilityMode Value="True"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <AutoCreateForms Value="False"/>
       <Title Value="ComictecaVisor"/>
       <Scaled Value="True"/>
@@ -25,7 +27,7 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="1"/>
+      <BuildNr Value="3"/>
     </VersionInfo>
     <BuildModes Count="2">
       <Item1 Name="Debug" Default="True"/>
@@ -67,7 +69,6 @@
     </PublishOptions>
     <RunParams>
       <FormatVersion Value="2"/>
-      <Modes Count="0"/>
     </RunParams>
     <RequiredPackages Count="2">
       <Item1>
@@ -77,7 +78,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="34">
+    <Units Count="35">
       <Unit0>
         <Filename Value="ComictecaVisor.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -191,7 +192,9 @@
       <Unit26>
         <Filename Value="..\CHXPas\Frames\ufCHXBGRAImgViewer.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXBGRAImgViewer"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
       </Unit26>
       <Unit27>
         <Filename Value="..\CHXPas\Frames\ufCHXBGRAImgViewerEx.pas"/>
@@ -201,7 +204,9 @@
       <Unit28>
         <Filename Value="..\CHXPas\Frames\ufCHXFrame.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXFrame"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
       </Unit28>
       <Unit29>
         <Filename Value="..\CHXPas\Units\uCHXConst.pas"/>
@@ -223,6 +228,10 @@
         <Filename Value="..\CHXPas\Units\uCHXExecute.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit33>
+      <Unit34>
+        <Filename Value="..\ComictecaCore\Abstracts\uaComictecaShapedImage.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit34>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

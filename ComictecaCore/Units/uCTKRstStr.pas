@@ -63,7 +63,7 @@ const
     rsPCBackCover, rsPCBackDustJacket, rsPCOther);
 
   // Must be same order as ComictecaFrameShapeKey.
-    ComictecaFrameShapeStr: array [tCTKFrameShape] of string =
+    ComictecaFrameShapeStr: array [tCTKImageShape] of string =
     (rsFSRectKey, rsFSRndRectKey, rsFSEllipseKey);
 
 implementation

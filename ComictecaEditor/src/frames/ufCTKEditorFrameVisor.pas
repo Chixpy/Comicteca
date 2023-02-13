@@ -138,7 +138,8 @@ begin
   if not Enabled then
     Exit;
 
-  Renderer.ShowFrameBorders := CTKFrame.FrameRect.IsEmpty;
+  Renderer.ShowFrameBorders := CTKFrame.ImgRect.IsEmpty;
+  Renderer.ResetPageCache;
   FFrameImage := Renderer.RenderFrame(CTKFrame);
 
   fmVisor.ActualImage := FrameImage;
@@ -169,13 +170,13 @@ begin
     mbLeft:
     begin
 
-      if CTKFrame.FrameRect.IsEmpty then
-        CTKFrame.FrameRect := aRect
+      if CTKFrame.ImgRect.IsEmpty then
+        CTKFrame.ImgRect := aRect
       else
       begin
-        CurrRect := CTKFrame.FrameRect;
-        CTKFrame.FrameRect := aRect;
-        CTKFrame.FrameRect.Offset(CurrRect.TopLeft);
+        CurrRect := CTKFrame.ImgRect;
+        CTKFrame.ImgRect := aRect;
+        CTKFrame.ImgRect.Offset(CurrRect.TopLeft);
       end;
 
       // Changing Rect don't notify observers

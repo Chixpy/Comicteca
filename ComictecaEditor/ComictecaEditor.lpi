@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
         <SaveOnlyProjectUnits Value="True"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <AutoCreateForms Value="False"/>
       <Title Value="Comicteca Editor"/>
       <Scaled Value="True"/>
@@ -71,7 +71,6 @@
     </PublishOptions>
     <RunParams>
       <FormatVersion Value="2"/>
-      <Modes Count="0"/>
     </RunParams>
     <RequiredPackages Count="3">
       <Item1>
@@ -292,7 +291,9 @@
       <Unit39>
         <Filename Value="..\CHXPas\Forms\ufrCHXForm.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCHXForm"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
       </Unit39>
       <Unit40>
         <Filename Value="..\CHXPas\Units\uCHXFileUtils.pas"/>
@@ -305,7 +306,9 @@
       <Unit42>
         <Filename Value="..\CHXPas\Frames\ufCHXFrame.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXFrame"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
       </Unit42>
       <Unit43>
         <Filename Value="..\CHXPas\Units\uCHXImageUtils.pas"/>

@@ -327,9 +327,7 @@ end;
 
 procedure TfComictecaVisorMain.SetBaseFolder(AValue: string);
 begin
-  if FBaseFolder = AValue then
-    Exit;
-  FBaseFolder := AValue;
+  FBaseFolder := SetAsFolder(AValue);
 end;
 
 procedure TfComictecaVisorMain.SetImgViewer(AValue: TfmCHXBGRAImgViewerEx);

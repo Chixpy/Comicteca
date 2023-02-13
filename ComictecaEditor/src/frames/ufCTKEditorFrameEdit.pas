@@ -31,7 +31,7 @@ uses
   // Comicteca Core units
   uCTKConst, uCTKRstStr,
   // Comicteca Core abstract clases
-  uaComictecaPage, uaComictecaFrame,
+  uaComictecaShapedImage, uaComictecaPage, uaComictecaFrame,
   // Comicteca Core abstract frames
   uafCTKEditorFrameFrame;
 
@@ -104,8 +104,8 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FrameRect.Top := eTop.Value;
-  CTKFrame.FrameRect.NormalizeRect;
+  CTKFrame.ImgRect.Top := eTop.Value;
+  CTKFrame.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -116,7 +116,7 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FramePoint.X := eValX.Value;
+  CTKFrame.ImgPoint.X := eValX.Value;
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -127,7 +127,7 @@ begin
     if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FramePoint.Y := eValY.Value;
+  CTKFrame.ImgPoint.Y := eValY.Value;
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -138,8 +138,8 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FrameRect.Bottom := eBottom.Value;
-  CTKFrame.FrameRect.NormalizeRect;
+  CTKFrame.ImgRect.Bottom := eBottom.Value;
+  CTKFrame.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -150,8 +150,8 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FrameRect.Left := eLeft.Value;
-  CTKFrame.FrameRect.NormalizeRect;
+  CTKFrame.ImgRect.Left := eLeft.Value;
+  CTKFrame.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -162,8 +162,8 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FrameRect.Right := eRight.Value;
-  CTKFrame.FrameRect.NormalizeRect;
+  CTKFrame.ImgRect.Right := eRight.Value;
+  CTKFrame.ImgRect.NormalizeRect;
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -183,7 +183,7 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FrameShape := tCTKFrameShape(cbxFrameShape.ItemIndex);
+  CTKFrame.ImgShape := tCTKImageShape(cbxFrameShape.ItemIndex);
 end;
 
 procedure TfmCTKEditorFrameEdit.bResetFrameClick(Sender: TObject);
@@ -191,8 +191,8 @@ begin
   if not Assigned(CTKFrame) then
     Exit;
 
-  CTKFrame.FrameRect := Default(TRect);
-  CTKFrame.FramePoint := Default(TPoint);
+  CTKFrame.ImgRect := Default(TRect);
+  CTKFrame.ImgPoint := Default(TPoint);
 
   // Changing Rect don't notify observers
   CTKFrame.FPONotifyObservers(CTKFrame, ooChange, nil);
@@ -218,13 +218,13 @@ begin
     Exit;
   end;
 
-  eLeft.Value := CTKFrame.FrameRect.Left;
-  eTop.Value := CTKFrame.FrameRect.Top;
-  eBottom.Value := CTKFrame.FrameRect.Bottom;
-  eRight.Value := CTKFrame.FrameRect.Right;
+  eLeft.Value := CTKFrame.ImgRect.Left;
+  eTop.Value := CTKFrame.ImgRect.Top;
+  eBottom.Value := CTKFrame.ImgRect.Bottom;
+  eRight.Value := CTKFrame.ImgRect.Right;
 
-  eValX.Value := CTKFrame.FramePoint.X;
-  eValY.Value := CTKFrame.FramePoint.Y;
+  eValX.Value := CTKFrame.ImgPoint.X;
+  eValY.Value := CTKFrame.ImgPoint.Y;
 
   if not Assigned(CTKFrame.Page) then
     cbxFramePageChange(cbxFramePage)
@@ -238,7 +238,7 @@ begin
   end;
 
   cbxFrameType.ItemIndex := Ord(CTKFrame.FrameType);
-  cbxFrameShape.ItemIndex := Ord(CTKFrame.FrameShape);
+  cbxFrameShape.ItemIndex := Ord(CTKFrame.ImgShape);
 end;
 
 procedure TfmCTKEditorFrameEdit.DoClearFrameFrame;
@@ -252,7 +252,7 @@ begin
   eValY.Value := 0;
 
   cbxFrameType.ItemIndex := Ord(kCTKFrameDefType);
-  cbxFrameShape.ItemIndex := Ord(kCTKFrameDefShape);
+  cbxFrameShape.ItemIndex := Ord(kCTKImgDefShape);
 end;
 
 procedure TfmCTKEditorFrameEdit.DoLoadFrameData;
