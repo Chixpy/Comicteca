@@ -58,8 +58,8 @@ type
     procedure SetOnPageSelect(AValue: TCTKPageObjProc);
 
   protected
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
   public
     property OnPageSelect: TCTKPageObjProc read FOnPageSelect write SetOnPageSelect;
@@ -210,11 +210,13 @@ begin
   FOnPageSelect := AValue;
 end;
 
-procedure TfmCTKEditorImgList.DoLoadFrameData;
+procedure TfmCTKEditorImgList.LoadFrameData;
 var
   i: integer;
 begin
   ClearFrameData;
+
+  inherited LoadFrameData;
 
   Enabled := assigned(Comic);
 
@@ -229,17 +231,16 @@ begin
   end;
 end;
 
-procedure TfmCTKEditorImgList.DoClearFrameData;
+procedure TfmCTKEditorImgList.ClearFrameData;
 begin
+  inherited ClearFrameData;
+
   lbxImageList.Clear;
 end;
 
 constructor TfmCTKEditorImgList.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 end;
 
 destructor TfmCTKEditorImgList.Destroy;

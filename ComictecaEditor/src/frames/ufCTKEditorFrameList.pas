@@ -37,8 +37,8 @@ type
     procedure SetOnFrameSelect(AValue: TCTKFrameObjProc);
 
   protected
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
   public
     property OnFrameSelect: TCTKFrameObjProc
@@ -91,12 +91,14 @@ begin
   FOnFrameSelect := AValue;
 end;
 
-procedure TfmCTKEditorFrameList.DoLoadFrameData;
+procedure TfmCTKEditorFrameList.LoadFrameData;
 var
   i: integer;
   aCaption: string;
 begin
   ClearFrameData;
+
+  inherited;
 
   Enabled := Assigned(Comic);
 
@@ -115,17 +117,16 @@ begin
   end;
 end;
 
-procedure TfmCTKEditorFrameList.DoClearFrameData;
+procedure TfmCTKEditorFrameList.ClearFrameData;
 begin
+  inherited;
+
   lbxFrameList.Clear;
 end;
 
 constructor TfmCTKEditorFrameList.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 end;
 
 destructor TfmCTKEditorFrameList.Destroy;

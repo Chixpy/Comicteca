@@ -45,8 +45,8 @@ type
     procedure SetOnTextSelect(AValue: TCTKTextObjProc);
 
   protected
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
     procedure LoadTextList;
 
@@ -236,15 +236,17 @@ begin
   FOnPageSelect := AValue;
 end;
 
-procedure TfmCTKEditorTextList.DoLoadFrameData;
+procedure TfmCTKEditorTextList.LoadFrameData;
 var
   i: integer;
 begin
+  inherited;
+
   Enabled := Assigned(Comic);
 
   if not Enabled then
   begin
-    DoClearFrameData;
+    ClearFrameData;
     Exit;
   end;
 
@@ -262,8 +264,10 @@ begin
   end;
 end;
 
-procedure TfmCTKEditorTextList.DoClearFrameData;
+procedure TfmCTKEditorTextList.ClearFrameData;
 begin
+  inherited;
+
   cbxPage.Clear;
   lbxTexts.Clear;
 end;
@@ -295,9 +299,6 @@ end;
 constructor TfmCTKEditorTextList.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 end;
 
 destructor TfmCTKEditorTextList.Destroy;

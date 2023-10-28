@@ -108,8 +108,8 @@ type
     procedure SetVisor(AValue: TfmCHXBGRAImgViewerEx);
 
   protected
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
     procedure DoImgMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: integer);
@@ -341,10 +341,12 @@ begin
   end;
 end;
 
-procedure TfmCTKEditorPageEdit.DoLoadFrameData;
+procedure TfmCTKEditorPageEdit.LoadFrameData;
 var
   i: tCTKFrameType;
 begin
+  inherited;
+
   Enabled := assigned(Page) and assigned(Comic);
 
   if not Enabled then
@@ -381,10 +383,12 @@ begin
     cgrPageContent.Checked[Ord(i)] := i in Page.PageContent;
 end;
 
-procedure TfmCTKEditorPageEdit.DoClearFrameData;
+procedure TfmCTKEditorPageEdit.ClearFrameData;
 var
   i: integer;
 begin
+  inherited;
+
   eFilename.Clear;
 
   eSHA1.Clear;
@@ -429,9 +433,6 @@ begin
   inherited Create(TheOwner);
 
   cgrPageContent.Items.AddStrings(ComictecaFrameTypeStr);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 
   lCurrentPoint.Caption := rsClickImage;
 end;

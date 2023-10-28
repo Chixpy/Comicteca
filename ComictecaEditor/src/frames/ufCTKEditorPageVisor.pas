@@ -67,8 +67,8 @@ type
 
     procedure SetComic(AValue: cComictecaVolume); override;
 
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
   public
     property Renderer: cComictecaVolumeRenderer read FRenderer;
@@ -140,9 +140,11 @@ begin
   Renderer.Comic := AValue;
 end;
 
-procedure TfmCTKEditorPageVisor.DoLoadFrameData;
+procedure TfmCTKEditorPageVisor.LoadFrameData;
 begin
   ClearFrameData;
+
+  inherited;
 
   Enabled := Assigned(Page) and Assigned(Comic);
 
@@ -154,8 +156,10 @@ begin
   fmVisor.ActualImage := PageImage;
 end;
 
-procedure TfmCTKEditorPageVisor.DoClearFrameData;
+procedure TfmCTKEditorPageVisor.ClearFrameData;
 begin
+  inherited;
+
   fmVisor.ActualImage := nil;
   FreeAndNil(FPageImage);
 end;
@@ -172,9 +176,6 @@ constructor TfmCTKEditorPageVisor.Create(TheOwner: TComponent);
 
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 
   CreateFrames;
 

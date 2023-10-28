@@ -21,7 +21,7 @@ type
     procedure SetCTKText(AValue: cComictecaText);
 
   protected
-        procedure DoLoadTextFrame; virtual; abstract;
+    procedure DoLoadTextFrame; virtual; abstract;
     procedure DoClearTextFrame; virtual; abstract;
 
     procedure FPOObservedChanged(ASender: TObject;

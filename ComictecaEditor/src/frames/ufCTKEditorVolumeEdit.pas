@@ -65,8 +65,8 @@ type
     procedure LoadLists;
     procedure SaveLists;
 
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
   public
     property DataFolder: string read FDataFolder write SetDataFolder;
@@ -242,10 +242,12 @@ begin
   LoadFrameData;
 end;
 
-procedure TfmCTKEditorVolumeEdit.DoLoadFrameData;
+procedure TfmCTKEditorVolumeEdit.LoadFrameData;
 var
   StrLst: TStringList;
 begin
+  inherited;
+
   Enabled := Assigned(Comic);
 
   if not Enabled then
@@ -272,8 +274,10 @@ begin
     mSummary.Clear;
 end;
 
-procedure TfmCTKEditorVolumeEdit.DoClearFrameData;
+procedure TfmCTKEditorVolumeEdit.ClearFrameData;
 begin
+  inherited;
+
   cbxSerieTitle.Text := '';
   seSerieOrder.Value := -1;
   cbxLangTitle.Text := '';
@@ -291,9 +295,6 @@ end;
 constructor TfmCTKEditorVolumeEdit.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 end;
 
 destructor TfmCTKEditorVolumeEdit.Destroy;

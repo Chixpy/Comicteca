@@ -66,8 +66,6 @@ type
     procedure SetDataFolder(AValue: string);
 
   protected
-    procedure DoLoadFrameData;
-
     procedure DoSelectPage(aCTKPage: cComictecaPage);
     procedure DoSelectFrame(aCTKFrame: cComictecaFrame);
     procedure DoSelectText(aCTKText: cComictecaText);
@@ -80,6 +78,8 @@ type
     property fmRight: TafmCTKEditorFrame read FfmRight;
 
     property DataFolder: string read FDataFolder write SetDataFolder;
+
+    procedure LoadFrameData; override;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -180,8 +180,10 @@ begin
   FDataFolder := SetAsFolder(AValue);
 end;
 
-procedure TfmCTKEditorMain.DoLoadFrameData;
+procedure TfmCTKEditorMain.LoadFrameData;
 begin
+  inherited;
+
   UpdateFrames;
 
   Enabled := Assigned(Comic);
@@ -238,8 +240,6 @@ end;
 constructor TfmCTKEditorMain.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
 
   tbcMainFrameChange(tbcMainFrame);
 end;

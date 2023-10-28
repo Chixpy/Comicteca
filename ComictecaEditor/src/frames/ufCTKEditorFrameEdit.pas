@@ -82,8 +82,8 @@ type
     procedure DoLoadFrameFrame; override;
     procedure DoClearFrameFrame; override;
 
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
   public
     constructor Create(TheOwner: TComponent); override;
@@ -255,10 +255,12 @@ begin
   cbxFrameShape.ItemIndex := Ord(kCTKImgDefShape);
 end;
 
-procedure TfmCTKEditorFrameEdit.DoLoadFrameData;
+procedure TfmCTKEditorFrameEdit.LoadFrameData;
 var
   i: integer;
 begin
+  inherited;
+
   // Called only when Comic is set
   Enabled := Assigned(CTKFrame) and assigned(Comic);
 
@@ -280,8 +282,10 @@ begin
     cbxFramePage.ItemIndex := 0;
 end;
 
-procedure TfmCTKEditorFrameEdit.DoClearFrameData;
+procedure TfmCTKEditorFrameEdit.ClearFrameData;
 begin
+  inherited;
+
   cbxFramePage.ItemIndex := -1;
   cbxFramePage.Clear;
 end;
@@ -289,9 +293,6 @@ end;
 constructor TfmCTKEditorFrameEdit.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 
   cbxFrameType.Items.AddStrings(ComictecaFrameTypeStr, True);
   cbxFrameShape.Items.AddStrings(ComictecaFrameShapeStr, True);

@@ -88,15 +88,14 @@ type
     procedure DoLoadTextFrame; override;
     procedure DoClearTextFrame; override;
 
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
-
   public
     property DataFolder: string read FDataFolder write SetDataFolder;
 
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
+
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
-
   end;
 
 implementation
@@ -224,23 +223,25 @@ end;
 
 procedure TfmCTKEditorTextEdit.DoLoadTextFrame;
 begin
-  DoLoadFrameData;
+  LoadFrameData;
 end;
 
 procedure TfmCTKEditorTextEdit.DoClearTextFrame;
 begin
-  DoClearFrameData;
+  ClearFrameData;
 end;
 
-procedure TfmCTKEditorTextEdit.DoLoadFrameData;
+procedure TfmCTKEditorTextEdit.LoadFrameData;
 var
   StrLst: TStringList;
 begin
+  inherited;
+
   Enabled := Assigned(CTKText) and assigned(Comic);
 
   if not Assigned(CTKText) then
   begin
-    DoClearFrameData;
+    ClearFrameData;
     Exit;
   end;
 
@@ -262,8 +263,10 @@ begin
     mContent.Clear;
 end;
 
-procedure TfmCTKEditorTextEdit.DoClearFrameData;
+procedure TfmCTKEditorTextEdit.ClearFrameData;
 begin
+  inherited;
+
   eLeft.Value := 0;
   eTop.Value := 0;
   eBottom.Value := 0;
@@ -280,9 +283,6 @@ end;
 constructor TfmCTKEditorTextEdit.Create(TheOwner: TComponent);
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 
   cbxTextShape.Items.AddStrings(ComictecaFrameShapeStr, True);
 end;

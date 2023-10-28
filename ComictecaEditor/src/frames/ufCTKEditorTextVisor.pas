@@ -66,9 +66,6 @@ type
 
     procedure SetComic(AValue: cComictecaVolume); override;
 
-    procedure DoLoadFrameData;
-    procedure DoClearFrameData;
-
     procedure DoLoadTextFrame; override;
     procedure DoClearTextFrame; override;
 
@@ -77,6 +74,9 @@ type
 
   public
     procedure ShowPage(aPage: cComictecaPage);
+
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -146,9 +146,11 @@ begin
   fmVisor.ActualImage := FTextImage;
 end;
 
-procedure TfmCTKEditorTextVisor.DoLoadFrameData;
+procedure TfmCTKEditorTextVisor.LoadFrameData;
 begin
   ClearFrameData;
+
+  inherited;
 
   Enabled := Assigned(CTKText) and Assigned(Comic);
 
@@ -162,20 +164,22 @@ begin
   fmVisor.ActualImage := FTextImage;
 end;
 
-procedure TfmCTKEditorTextVisor.DoClearFrameData;
+procedure TfmCTKEditorTextVisor.ClearFrameData;
 begin
+  inherited;
+
   fmVisor.ActualImage := nil;
   FreeAndNil(FTextImage);
 end;
 
 procedure TfmCTKEditorTextVisor.DoLoadTextFrame;
 begin
-  DoLoadFrameData;
+  LoadFrameData;
 end;
 
 procedure TfmCTKEditorTextVisor.DoClearTextFrame;
 begin
-  DoClearFrameData;
+  ClearFrameData;
 end;
 
 procedure TfmCTKEditorTextVisor.DoImgMouseDrag(Sender: TObject;
@@ -225,9 +229,6 @@ constructor TfmCTKEditorTextVisor.Create(TheOwner: TComponent);
 
 begin
   inherited Create(TheOwner);
-
-  OnLoadFrameData := @DoLoadFrameData;
-  OnClearFrameData := @DoClearFrameData;
 
   CreateFrames;
 

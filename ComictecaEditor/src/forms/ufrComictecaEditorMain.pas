@@ -187,13 +187,22 @@ begin
 end;
 
 procedure TfrmComictecaEditorMain.bPreviewClick(Sender: TObject);
+var
+  StdOut, StdErr: string;
+  ExCo: integer;
 begin
   if not assigned(Comic) then Exit;
 
   // If archive this saves Temp folder anyways
   Comic.SaveToFolder;
 
-  ExecuteCMDArray(ExtractFileDir(ParamStr(0)),'ComictecaVisor.exe', Comic.Folder);
+  if not ExecuteCMDArray(ExtractFileDir(ParamStr(0)),
+    'ComictecaVisor.exe', Comic.Folder, StdOut, StdErr, ExCo, True) then
+  begin
+    ShowMessage('Error: ' + LineEnding + ExtractFilePath(ParamStr(0)) +
+      'ComictecaVisor.exe ' + LineEnding + Comic.Folder);
+    Exit;
+  end;
 end;
 
 procedure TfrmComictecaEditorMain.bSaveArchiveClick(Sender: TObject);
