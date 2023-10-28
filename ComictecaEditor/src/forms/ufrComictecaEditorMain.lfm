@@ -6,9 +6,9 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
   OnCreate = FormCreate
   object pEditorFrame: TPanel[0]
     Left = 4
-    Height = 677
+    Height = 509
     Top = 87
-    Width = 1016
+    Width = 792
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
@@ -17,7 +17,7 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
     Left = 4
     Height = 79
     Top = 4
-    Width = 1016
+    Width = 792
     Align = alTop
     AutoSize = True
     BevelOuter = bvNone
@@ -26,16 +26,16 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
     ChildSizing.HorizontalSpacing = 4
     ChildSizing.VerticalSpacing = 4
     ClientHeight = 79
-    ClientWidth = 1016
+    ClientWidth = 792
     TabOrder = 1
     object pcComicFileType: TPageControl
       Left = 4
       Height = 71
       Top = 4
-      Width = 1008
-      ActivePage = pagCompressedArchive
+      Width = 784
+      ActivePage = pagFolder
       Align = alClient
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       object pagFolder: TTabSheet
         Caption = 'Folder'
@@ -50,12 +50,12 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
         ChildSizing.Layout = cclTopToBottomThenLeftToRight
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 38
-        ClientWidth = 1000
+        ClientWidth = 776
         object eComicFolder: TDirectoryEdit
           Left = 4
           Height = 30
           Top = 4
-          Width = 759
+          Width = 437
           OnAcceptDirectory = eComicFolderAcceptDirectory
           DialogOptions = [ofNoChangeDir, ofEnableSizing, ofViewDetail]
           ShowHidden = False
@@ -66,7 +66,7 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
           TabOrder = 0
         end
         object tOpenFolder: TButton
-          Left = 767
+          Left = 445
           Height = 30
           Top = 4
           Width = 122
@@ -77,7 +77,7 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
           TabOrder = 2
         end
         object bSaveFolder: TButton
-          Left = 893
+          Left = 571
           Height = 30
           Top = 4
           Width = 103
@@ -87,6 +87,16 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
           Caption = 'Save Folder'
           OnClick = bSaveFolderClick
           TabOrder = 1
+        end
+        object bPreviewArchive1: TButton
+          Left = 678
+          Height = 30
+          Top = 4
+          Width = 94
+          Align = alRight
+          Caption = 'Preview'
+          OnClick = bPreviewClick
+          TabOrder = 3
         end
       end
       object pagCompressedArchive: TTabSheet
@@ -102,12 +112,12 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
         ChildSizing.Layout = cclTopToBottomThenLeftToRight
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 38
-        ClientWidth = 1000
+        ClientWidth = 776
         object eCompressedFile: TFileNameEdit
           Left = 4
           Height = 30
           Top = 4
-          Width = 752
+          Width = 430
           OnAcceptFileName = eCompressedFileAcceptFileName
           DialogTitle = 'Select a compressed archive'
           DialogOptions = [ofNoChangeDir, ofEnableSizing, ofViewDetail]
@@ -120,7 +130,7 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
           TabOrder = 0
         end
         object bOpenArchiveFolder: TButton
-          Left = 760
+          Left = 438
           Height = 30
           Top = 4
           Width = 122
@@ -131,7 +141,7 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
           TabOrder = 1
         end
         object bSaveArchive: TButton
-          Left = 886
+          Left = 564
           Height = 30
           Top = 4
           Width = 110
@@ -140,6 +150,16 @@ inherited frmComictecaEditorMain: TfrmComictecaEditorMain
           Caption = 'Save Archive'
           OnClick = bSaveArchiveClick
           TabOrder = 2
+        end
+        object bPreviewArchive: TButton
+          Left = 678
+          Height = 30
+          Top = 4
+          Width = 94
+          Align = alRight
+          Caption = 'Preview'
+          OnClick = bPreviewClick
+          TabOrder = 3
         end
       end
     end

@@ -3,7 +3,9 @@
 {"hash":81144514,"name":"tfrmcomictecaeditormain.pagfolder.caption","sourcebytes":[70,111,108,100,101,114],"value":"Folder"},
 {"hash":197609074,"name":"tfrmcomictecaeditormain.topenfolder.caption","sourcebytes":[69,120,112,108,111,114,101,32,70,111,108,100,101,114],"value":"Explore Folder"},
 {"hash":78489266,"name":"tfrmcomictecaeditormain.bsavefolder.caption","sourcebytes":[83,97,118,101,32,70,111,108,100,101,114],"value":"Save Folder"},
+{"hash":126668695,"name":"tfrmcomictecaeditormain.bpreviewarchive1.caption","sourcebytes":[80,114,101,118,105,101,119],"value":"Preview"},
 {"hash":143257733,"name":"tfrmcomictecaeditormain.pagcompressedarchive.caption","sourcebytes":[65,114,99,104,105,118,101],"value":"Archive"},
 {"hash":197609074,"name":"tfrmcomictecaeditormain.bopenarchivefolder.caption","sourcebytes":[69,120,112,108,111,114,101,32,70,111,108,100,101,114],"value":"Explore Folder"},
-{"hash":219232133,"name":"tfrmcomictecaeditormain.bsavearchive.caption","sourcebytes":[83,97,118,101,32,65,114,99,104,105,118,101],"value":"Save Archive"}
+{"hash":219232133,"name":"tfrmcomictecaeditormain.bsavearchive.caption","sourcebytes":[83,97,118,101,32,65,114,99,104,105,118,101],"value":"Save Archive"},
+{"hash":126668695,"name":"tfrmcomictecaeditormain.bpreviewarchive.caption","sourcebytes":[80,114,101,118,105,101,119],"value":"Preview"}
 ]}

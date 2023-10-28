@@ -199,7 +199,9 @@
       <Unit27>
         <Filename Value="..\CHXPas\Frames\ufCHXBGRAImgViewerEx.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmCHXBGRAImgViewerEx"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
       </Unit27>
       <Unit28>
         <Filename Value="..\CHXPas\Frames\ufCHXFrame.pas"/>

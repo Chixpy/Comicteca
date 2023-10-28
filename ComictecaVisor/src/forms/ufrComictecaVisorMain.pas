@@ -32,7 +32,7 @@ uses
   // Misc units
   uVersionSupport,
   // CHX units
-  uCHXStrUtils, uCHX7zWrapper,
+  uCHXRscStr, uCHXStrUtils, uCHX7zWrapper,
   // CHX forms
   ufrCHXForm,
   // CHX frames
@@ -107,6 +107,9 @@ type
     procedure LoadCurrFrame;
     procedure LoadCurrPage;
 
+    procedure LoadComicArchive(aFile: string);
+    procedure LoadComicFolder(aFolder: string);
+
     procedure ShowCurrentImage;
 
   public
@@ -150,15 +153,7 @@ end;
 
 procedure TfComictecaVisorMain.actFileOpenAccept(Sender: TObject);
 begin
-  Renderer.Comic := nil;
-  FreeAndNil(FComic);
-
-  FComic := cComictecaVolume.Create(nil);
-  Comic.LoadFromArchive(actFileOpen.Dialog.FileName);
-
-  Renderer.Comic := Comic;
-
-  CurrentPos := 0;
+  LoadComicArchive(actFileOpen.Dialog.FileName);
 end;
 
 procedure TfComictecaVisorMain.actFirstExecute(Sender: TObject);
@@ -197,15 +192,7 @@ procedure TfComictecaVisorMain.actOpenFolderExecute(Sender: TObject);
 begin
   if not SelectDirectoryDialog.Execute then Exit;
 
-  Renderer.Comic := nil;
-  FreeAndNil(FComic);
-
-  FComic := cComictecaVolume.Create(nil);
-  Comic.LoadFromFolder(SelectDirectoryDialog.FileName);
-
-  Renderer.Comic := Comic;
-
-  CurrentPos := 0;
+  LoadComicFolder(SelectDirectoryDialog.FileName);
 end;
 
 procedure TfComictecaVisorMain.actPreviousExecute(Sender: TObject);
@@ -268,7 +255,24 @@ begin
   Renderer.FlipL2R := actFlipR2L.Checked;
 
   // Parse command line
+  if ParamCount > 0 then
+  begin
+    // First parameter: File or folder to open
+    if ParamStr(1) <> '' then
+    begin
 
+      if FileExistsUTF8(ParamStr(1)) then
+      begin
+        LoadComicArchive(ParamStr(1));
+      end
+      else if DirectoryExistsUTF8(ParamStr(1)) then
+      begin
+        LoadComicFolder(ParamStr(1));
+      end
+      else
+        ShowMessageFmt(rsFileNotFound, [ParamStr(1)]);
+    end;
+  end;
 end;
 
 procedure TfComictecaVisorMain.SetComic(AValue: cComictecaVolume);
@@ -352,6 +356,36 @@ end;
 procedure TfComictecaVisorMain.LoadCurrPage;
 begin
   CurrentImage := Renderer.RenderPageByIdx(CurrentPos);
+end;
+
+procedure TfComictecaVisorMain.LoadComicArchive(aFile: string);
+begin
+  Renderer.Comic := nil;
+  FreeAndNil(FComic);
+
+  if not FileExistsUTF8(aFile) then Exit;
+
+  FComic := cComictecaVolume.Create(nil);
+  Comic.LoadFromArchive(aFile);
+
+  Renderer.Comic := Comic;
+
+  CurrentPos := 0;
+end;
+
+procedure TfComictecaVisorMain.LoadComicFolder(aFolder: string);
+begin
+  Renderer.Comic := nil;
+  FreeAndNil(FComic);
+
+  if not DirectoryExistsUTF8(aFolder) then Exit;
+
+  FComic := cComictecaVolume.Create(nil);
+  Comic.LoadFromFolder(aFolder);
+
+  Renderer.Comic := Comic;
+
+  CurrentPos := 0;
 end;
 
 procedure TfComictecaVisorMain.ShowCurrentImage;

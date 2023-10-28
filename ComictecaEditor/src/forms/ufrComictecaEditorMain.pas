@@ -29,10 +29,8 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, FileUtil,
   LazFileUtils, lclintf,
   LCLTranslator, ExtCtrls, StdCtrls, EditBtn, ComCtrls,
-  // Miscelaneous unit
-  uVersionSupport,
   // CHX units
-  uCHXStrUtils, uCHX7zWrapper,
+  uCHXStrUtils, uCHX7zWrapper, uCHXExecute, uCHXVerInfo,
   // CHX forms
   ufrCHXForm,
   // Comicteca Core units
@@ -52,6 +50,8 @@ type
 
   TfrmComictecaEditorMain = class(TfrmCHXForm)
     bOpenArchiveFolder: TButton;
+    bPreviewArchive: TButton;
+    bPreviewArchive1: TButton;
     bSaveArchive: TButton;
     bSaveFolder: TButton;
     eComicFolder: TDirectoryEdit;
@@ -63,6 +63,7 @@ type
     pEditorFrame: TPanel;
     tOpenFolder: TButton;
     procedure bOpenArchiveFolderClick(Sender: TObject);
+    procedure bPreviewClick(Sender: TObject);
     procedure bSaveArchiveClick(Sender: TObject);
     procedure bSaveFolderClick(Sender: TObject);
     procedure eComicFolderAcceptDirectory(Sender: TObject; var Value: string);
@@ -183,6 +184,16 @@ begin
     Exit;
 
   OpenDocument(Comic.Folder);
+end;
+
+procedure TfrmComictecaEditorMain.bPreviewClick(Sender: TObject);
+begin
+  if not assigned(Comic) then Exit;
+
+  // If archive this saves Temp folder anyways
+  Comic.SaveToFolder;
+
+  ExecuteCMDArray(ExtractFileDir(ParamStr(0)),'ComictecaVisor.exe', Comic.Folder);
 end;
 
 procedure TfrmComictecaEditorMain.bSaveArchiveClick(Sender: TObject);

@@ -419,6 +419,16 @@ msgctxt "tfrmcomictecaeditormain.bopenarchivefolder.caption"
 msgid "Explore Folder"
 msgstr ""
 
+#: tfrmcomictecaeditormain.bpreviewarchive.caption
+msgctxt "tfrmcomictecaeditormain.bpreviewarchive.caption"
+msgid "Preview"
+msgstr ""
+
+#: tfrmcomictecaeditormain.bpreviewarchive1.caption
+msgctxt "tfrmcomictecaeditormain.bpreviewarchive1.caption"
+msgid "Preview"
+msgstr ""
+
 #: tfrmcomictecaeditormain.bsavearchive.caption
 msgid "Save Archive"
 msgstr ""
