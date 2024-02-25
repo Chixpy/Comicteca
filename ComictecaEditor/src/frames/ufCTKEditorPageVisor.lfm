@@ -1,100 +1,155 @@
 inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
   Height = 618
-  Width = 500
+  Width = 715
   ClientHeight = 618
-  ClientWidth = 500
+  ClientWidth = 715
   object pImageVisor: TPanel[0]
     Left = 0
-    Height = 551
-    Top = 67
-    Width = 500
+    Height = 543
+    Top = 75
+    Width = 715
     Align = alClient
+    ParentBackground = False
+    ParentColor = False
     ParentFont = False
     TabOrder = 0
   end
-  object pButtons: TPanel[1]
+  object pTools: TPanel[1]
     Left = 0
-    Height = 63
+    Height = 71
     Top = 0
-    Width = 500
+    Width = 715
     Align = alTop
+    AutoSize = True
     BevelOuter = bvNone
-    ClientHeight = 63
-    ClientWidth = 500
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 8
+    ChildSizing.Layout = cclTopToBottomThenLeftToRight
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 71
+    ClientWidth = 715
     TabOrder = 1
     object gbxZoom: TGroupBox
-      Left = 0
+      Left = 4
       Height = 63
-      Top = 0
-      Width = 234
-      Align = alLeft
+      Top = 4
+      Width = 263
       AutoSize = True
       Caption = 'Zoom'
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 8
       ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 1
       ClientHeight = 38
-      ClientWidth = 230
+      ClientWidth = 259
       ParentFont = False
       TabOrder = 0
       object bZoomIn: TButton
-        Left = 0
+        Left = 4
         Height = 30
-        Top = 0
+        Top = 4
         Width = 45
         Caption = 'x 2'
-        OnClick = bZoomInClick
         ParentFont = False
         TabOrder = 0
+        OnClick = bZoomInClick
       end
       object bOrigZoom: TButton
-        Left = 45
+        Left = 57
         Height = 30
-        Top = 0
+        Top = 4
         Width = 41
         Caption = '1x'
-        OnClick = bOrigZoomClick
         ParentFont = False
         TabOrder = 2
+        OnClick = bOrigZoomClick
       end
       object bZoomOut: TButton
-        Left = 86
+        Left = 106
         Height = 30
-        Top = 0
+        Top = 4
         Width = 44
         Caption = '/ 2'
-        OnClick = bZoomOutClick
         ParentFont = False
         TabOrder = 1
+        OnClick = bZoomOutClick
       end
       object tbxAutoZoom: TToggleBox
-        Left = 130
+        Left = 158
         Height = 30
-        Top = 0
-        Width = 100
+        Top = 4
+        Width = 97
         Caption = 'Auto Zoom'
         Checked = True
-        OnChange = tbxAutoZoomChange
         ParentFont = False
         State = cbChecked
         TabOrder = 3
+        OnChange = tbxAutoZoomChange
       end
     end
-    object chkFixGeometry: TCheckBox
-      Left = 240
-      Height = 24
-      Top = 8
-      Width = 143
-      Caption = 'Preview geometry'
-      OnChange = chkFixGeometryChange
+    object gbxBackground: TGroupBox
+      Left = 275
+      Height = 63
+      Top = 4
+      Width = 137
+      Caption = 'Background'
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 8
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 38
+      ClientWidth = 133
       TabOrder = 1
+      object cbBackground: TColorBox
+        Left = 4
+        Height = 26
+        Top = 4
+        Width = 125
+        Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbPrettyNames]
+        ItemHeight = 20
+        OnSelect = cbBackgroundSelect
+        TabOrder = 0
+      end
     end
-    object bUpdate: TButton
-      Left = 240
-      Height = 31
-      Top = 32
-      Width = 94
-      Caption = 'Update'
-      OnClick = bUpdateClick
+    object gbxGeometry: TGroupBox
+      Left = 420
+      Height = 63
+      Top = 4
+      Width = 235
+      Caption = 'Geometry'
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 8
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 38
+      ClientWidth = 231
       TabOrder = 2
+      object chkFixGeometry: TCheckBox
+        Left = 4
+        Height = 30
+        Top = 4
+        Width = 140
+        Caption = 'Preview geometry'
+        TabOrder = 0
+        OnChange = chkFixGeometryChange
+      end
+      object bUpdate: TButton
+        Left = 152
+        Height = 30
+        Top = 4
+        Width = 75
+        Caption = 'Update'
+        TabOrder = 1
+        OnClick = bUpdateClick
+      end
     end
   end
 end

@@ -1,2 +1,6 @@
 ComictecaGUI/lib/
 lib/
+bin/Data/Editors.txt
+bin/Data/Languages.txt
+bin/Data/Publishers.txt
+bin/Data/Series.txt

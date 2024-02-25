@@ -104,6 +104,11 @@ msgctxt "tfmctkeditorframevisor.bzoomout.caption"
 msgid "/ 2"
 msgstr ""
 
+#: tfmctkeditorframevisor.gbxbackground.caption
+msgctxt "tfmctkeditorframevisor.gbxbackground.caption"
+msgid "Background"
+msgstr ""
+
 #: tfmctkeditorframevisor.gbxzoom.caption
 msgctxt "tfmctkeditorframevisor.gbxzoom.caption"
 msgid "Zoom"
@@ -266,6 +271,15 @@ msgstr ""
 msgid "Preview geometry"
 msgstr ""
 
+#: tfmctkeditorpagevisor.gbxbackground.caption
+msgctxt "tfmctkeditorpagevisor.gbxbackground.caption"
+msgid "Background"
+msgstr ""
+
+#: tfmctkeditorpagevisor.gbxgeometry.caption
+msgid "Geometry"
+msgstr ""
+
 #: tfmctkeditorpagevisor.gbxzoom.caption
 msgctxt "tfmctkeditorpagevisor.gbxzoom.caption"
 msgid "Zoom"
@@ -366,6 +380,11 @@ msgstr ""
 #: tfmctkeditortextvisor.bzoomout.caption
 msgctxt "tfmctkeditortextvisor.bzoomout.caption"
 msgid "/ 2"
+msgstr ""
+
+#: tfmctkeditortextvisor.gbxbackground.caption
+msgctxt "tfmctkeditortextvisor.gbxbackground.caption"
+msgid "Background"
 msgstr ""
 
 #: tfmctkeditortextvisor.gbxzoom.caption

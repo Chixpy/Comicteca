@@ -4,22 +4,7 @@ unit ufCTKEditorTextVisor;
 
   This file is part of Comicteca Core.
 
-  Copyright (C) 2021 Chixpy
-
-  This source is free software; you can redistribute it and/or modify it under
-  the terms of the GNU General Public License as published by the Free
-  Software Foundation; either version 3 of the License, or (at your option)
-  any later version.
-
-  This code is distributed in the hope that it will be useful, but WITHOUT ANY
-  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-  details.
-
-  A copy of the GNU General Public License is available on the World Wide Web
-  at <http://www.gnu.org/copyleft/gpl.html>. You can also obtain it by writing
-  to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
-  MA 02111-1307, USA.
+  Copyright (C) 2021-2024 Chixpy
 }
 {$mode objfpc}{$H+}
 
@@ -27,7 +12,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  BGRABitmapTypes, BGRABitmap,
+  ColorBox, BGRABitmapTypes, BGRABitmap,
   // CHX frames
   ufCHXBGRAImgViewerEx,
   // Comicteca Core classes
@@ -41,44 +26,47 @@ type
   { TfmCTKEditorTextVisor }
 
   TfmCTKEditorTextVisor = class(TafmCTKEditorTextFrame)
-    bOrigZoom: TButton;
-    bZoomIn: TButton;
-    bZoomOut: TButton;
-    gbxZoom: TGroupBox;
-    pImageVisor: TPanel;
-    tbxAutoZoom: TToggleBox;
-    procedure bOrigZoomClick(Sender: TObject);
-    procedure bZoomInClick(Sender: TObject);
-    procedure bZoomOutClick(Sender: TObject);
-    procedure tbxAutoZoomChange(Sender: TObject);
+    bOrigZoom : TButton;
+    bZoomIn : TButton;
+    bZoomOut : TButton;
+    cbBackground : TColorBox;
+    gbxBackground : TGroupBox;
+    gbxZoom : TGroupBox;
+    pImageVisor : TPanel;
+    pTools : TPanel;
+    tbxAutoZoom : TToggleBox;
+    procedure bOrigZoomClick(Sender : TObject);
+    procedure bZoomInClick(Sender : TObject);
+    procedure bZoomOutClick(Sender : TObject);
+    procedure cbBackgroundSelect(Sender : TObject);
+    procedure tbxAutoZoomChange(Sender : TObject);
 
   private
-    FfmVisor: TfmCHXBGRAImgViewerEx;
-    FRenderer: cComictecaVolumeRenderer;
-    FTextImage: TBGRABitmap;
-    procedure SetTextImage(AValue: TBGRABitmap);
+    FfmVisor : TfmCHXBGRAImgViewerEx;
+    FRenderer : cComictecaVolumeRenderer;
+    FTextImage : TBGRABitmap;
+    procedure SetTextImage(AValue : TBGRABitmap);
 
   protected
-    property fmVisor: TfmCHXBGRAImgViewerEx read FfmVisor;
-    property TextImage: TBGRABitmap read FTextImage write SetTextImage;
+    property fmVisor : TfmCHXBGRAImgViewerEx read FfmVisor;
+    property TextImage : TBGRABitmap read FTextImage write SetTextImage;
 
-    property Renderer: cComictecaVolumeRenderer read FRenderer;
+    property Renderer : cComictecaVolumeRenderer read FRenderer;
 
-    procedure SetComic(AValue: cComictecaVolume); override;
+    procedure SetComic(AValue : cComictecaVolume); override;
 
     procedure DoLoadTextFrame; override;
     procedure DoClearTextFrame; override;
 
-    procedure DoImgMouseDrag(Sender: TObject; Button: TMouseButton;
-      Shift: TShiftState; aRect: TRect);
-
+    procedure DoImgMouseDrag(Sender : TObject; Button : TMouseButton;
+      Shift : TShiftState; aRect : TRect);
   public
-    procedure ShowPage(aPage: cComictecaPage);
+    procedure ShowPage(aPage : cComictecaPage);
 
     procedure LoadFrameData; override;
     procedure ClearFrameData; override;
 
-    constructor Create(TheOwner: TComponent); override;
+    constructor Create(TheOwner : TComponent); override;
     destructor Destroy; override;
   end;
 
@@ -88,28 +76,33 @@ implementation
 
 { TfmCTKEditorTextVisor }
 
-procedure TfmCTKEditorTextVisor.bZoomInClick(Sender: TObject);
+procedure TfmCTKEditorTextVisor.bZoomInClick(Sender : TObject);
 begin
   tbxAutoZoom.Checked := False;
 
   fmVisor.ZoomIn;
 end;
 
-procedure TfmCTKEditorTextVisor.bOrigZoomClick(Sender: TObject);
+procedure TfmCTKEditorTextVisor.bOrigZoomClick(Sender : TObject);
 begin
   tbxAutoZoom.Checked := False;
 
   fmVisor.Zoom := 100;
 end;
 
-procedure TfmCTKEditorTextVisor.bZoomOutClick(Sender: TObject);
+procedure TfmCTKEditorTextVisor.bZoomOutClick(Sender : TObject);
 begin
   tbxAutoZoom.Checked := False;
 
   fmVisor.ZoomOut;
 end;
 
-procedure TfmCTKEditorTextVisor.tbxAutoZoomChange(Sender: TObject);
+procedure TfmCTKEditorTextVisor.cbBackgroundSelect(Sender : TObject);
+begin
+  fmVisor.sbxImage.Color := cbBackground.Selected;
+end;
+
+procedure TfmCTKEditorTextVisor.tbxAutoZoomChange(Sender : TObject);
 begin
   fmVisor.AutoZoomOnLoad := tbxAutoZoom.Checked;
 
@@ -117,21 +110,21 @@ begin
     fmVisor.AutoZoom;
 end;
 
-procedure TfmCTKEditorTextVisor.SetTextImage(AValue: TBGRABitmap);
+procedure TfmCTKEditorTextVisor.SetTextImage(AValue : TBGRABitmap);
 begin
   if FTextImage = AValue then
     Exit;
   FTextImage := AValue;
 end;
 
-procedure TfmCTKEditorTextVisor.SetComic(AValue: cComictecaVolume);
+procedure TfmCTKEditorTextVisor.SetComic(AValue : cComictecaVolume);
 begin
   inherited SetComic(AValue);
 
   Renderer.Comic := AValue;
 end;
 
-procedure TfmCTKEditorTextVisor.ShowPage(aPage: cComictecaPage);
+procedure TfmCTKEditorTextVisor.ShowPage(aPage : cComictecaPage);
 begin
   ClearFrameData;
 
@@ -182,17 +175,16 @@ begin
   ClearFrameData;
 end;
 
-procedure TfmCTKEditorTextVisor.DoImgMouseDrag(Sender: TObject;
-  Button: TMouseButton; Shift: TShiftState; aRect: TRect);
+procedure TfmCTKEditorTextVisor.DoImgMouseDrag(Sender : TObject;
+  Button : TMouseButton; Shift : TShiftState; aRect : TRect);
 var
-  CurrRect: TRect;
+  CurrRect : TRect;
 begin
   if not assigned(CTKText) then
     Exit;
 
   case Button of
-    mbLeft:
-    begin
+    mbLeft : begin
 
       if CTKText.ImgRect.IsEmpty then
         CTKText.ImgRect := aRect
@@ -206,21 +198,22 @@ begin
       // Changing Rect don't notify observers
       CTKText.FPONotifyObservers(CTKText, ooChange, nil);
     end;
-    mbRight: ;
-    mbMiddle: ;
-    mbExtra1: ;
-    mbExtra2: ;
+    mbRight : ;
+    mbMiddle : ;
+    mbExtra1 : ;
+    mbExtra2 : ;
     else
       ;
   end;
 end;
 
-constructor TfmCTKEditorTextVisor.Create(TheOwner: TComponent);
+constructor TfmCTKEditorTextVisor.Create(TheOwner : TComponent);
 
   procedure CreateFrames;
   begin
     FfmVisor := TfmCHXBGRAImgViewerEx.Create(pImageVisor);
     fmVisor.Align := alClient;
+    fmVisor.sbxImage.Color := cbBackground.Selected;
     fmVisor.AutoZoomOnLoad := True;
     fmVisor.MouseActionMode := maiMouseSelectRect;
     fmVisor.OnImgMouseDrag := @DoImgMouseDrag;
@@ -248,3 +241,19 @@ begin
 end;
 
 end.
+{
+  This source is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 3 of the License, or (at your option)
+  any later version.
+
+  This code is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  A copy of the GNU General Public License is available on the World Wide Web
+  at <http://www.gnu.org/copyleft/gpl.html>. You can also obtain it by writing
+  to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+  MA 02111-1307, USA.
+}

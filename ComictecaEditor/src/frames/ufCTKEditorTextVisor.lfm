@@ -1,61 +1,111 @@
 inherited fmCTKEditorTextVisor: TfmCTKEditorTextVisor
+  Width = 492
+  ClientWidth = 492
   object pImageVisor: TPanel[0]
     Left = 0
-    Height = 241
-    Top = 59
-    Width = 400
+    Height = 225
+    Top = 75
+    Width = 492
     Align = alClient
     TabOrder = 0
   end
-  object gbxZoom: TGroupBox[1]
+  object pTools: TPanel[1]
     Left = 0
-    Height = 55
+    Height = 71
     Top = 0
-    Width = 400
+    Width = 492
     Align = alTop
     AutoSize = True
-    Caption = 'Zoom'
+    BevelOuter = bvNone
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 8
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
-    ClientHeight = 30
-    ClientWidth = 396
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 71
+    ClientWidth = 492
     TabOrder = 1
-    object bZoomIn: TButton
-      Left = 0
-      Height = 30
-      Top = 0
-      Width = 45
-      Caption = 'x 2'
-      OnClick = bZoomInClick
+    object gbxZoom: TGroupBox
+      Left = 4
+      Height = 63
+      Top = 4
+      Width = 263
+      AutoSize = True
+      Caption = 'Zoom'
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 8
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 38
+      ClientWidth = 259
       TabOrder = 0
+      object bZoomIn: TButton
+        Left = 4
+        Height = 30
+        Top = 4
+        Width = 45
+        Caption = 'x 2'
+        TabOrder = 0
+        OnClick = bZoomInClick
+      end
+      object bOrigZoom: TButton
+        Left = 57
+        Height = 30
+        Top = 4
+        Width = 41
+        Caption = '1x'
+        TabOrder = 2
+        OnClick = bOrigZoomClick
+      end
+      object bZoomOut: TButton
+        Left = 106
+        Height = 30
+        Top = 4
+        Width = 44
+        Caption = '/ 2'
+        TabOrder = 1
+        OnClick = bZoomOutClick
+      end
+      object tbxAutoZoom: TToggleBox
+        Left = 158
+        Height = 30
+        Top = 4
+        Width = 97
+        Caption = 'Auto Zoom'
+        Checked = True
+        State = cbChecked
+        TabOrder = 3
+        OnChange = tbxAutoZoomChange
+      end
     end
-    object bOrigZoom: TButton
-      Left = 45
-      Height = 30
-      Top = 0
-      Width = 41
-      Caption = '1x'
-      OnClick = bOrigZoomClick
-      TabOrder = 2
-    end
-    object bZoomOut: TButton
-      Left = 86
-      Height = 30
-      Top = 0
-      Width = 44
-      Caption = '/ 2'
-      OnClick = bZoomOutClick
+    object gbxBackground: TGroupBox
+      Left = 275
+      Height = 63
+      Top = 4
+      Width = 137
+      Caption = 'Background'
+      ChildSizing.LeftRightSpacing = 4
+      ChildSizing.TopBottomSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 8
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 38
+      ClientWidth = 133
       TabOrder = 1
-    end
-    object tbxAutoZoom: TToggleBox
-      Left = 130
-      Height = 30
-      Top = 0
-      Width = 100
-      Caption = 'Auto Zoom'
-      Checked = True
-      OnChange = tbxAutoZoomChange
-      State = cbChecked
-      TabOrder = 3
+      object cbBackground: TColorBox
+        Left = 4
+        Height = 26
+        Top = 4
+        Width = 125
+        Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbPrettyNames]
+        ItemHeight = 20
+        OnSelect = cbBackgroundSelect
+        TabOrder = 0
+      end
     end
   end
 end
