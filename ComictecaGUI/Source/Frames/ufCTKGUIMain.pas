@@ -33,7 +33,7 @@ uses
   // Comicteca GUI frames
   ufCTKGUIFileEditor,
   // Comicteca Core classes
-  ucComicteca, ucComictecaVolume;
+  ucComictecaVolume;
 
 type
 
@@ -59,18 +59,16 @@ type
     procedure chkCompressedFileChange(Sender: TObject);
     procedure eComicFileAcceptFileName(Sender: TObject; var Value: String);
     procedure eComicFolderAcceptDirectory(Sender: TObject; var Value: String);
+
   private
-    FComicteca: cComicteca;
     FCurrentFile: cComictecaVolume;
     FfmFileEditor: TfmCTKGUIFileEditor;
-    procedure SetComicteca(const AValue: cComicteca);
     procedure SetCurrentFile(const AValue: cComictecaVolume);
 
   protected
     property fmFileEditor: TfmCTKGUIFileEditor read FfmFileEditor;
 
   public
-    property Comicteca: cComicteca read FComicteca write SetComicteca;
 
     property CurrentFile: cComictecaVolume read FCurrentFile write SetCurrentFile;
 
@@ -108,12 +106,6 @@ begin
   eComicFile.Enabled := chkCompressedFile.Checked;
 end;
 
-procedure TfmCTKGUIMain.SetComicteca(const AValue: cComicteca);
-begin
-  if FComicteca = AValue then
-    Exit;
-  FComicteca := AValue;
-end;
 
 procedure TfmCTKGUIMain.SetCurrentFile(const AValue: cComictecaVolume);
 begin
@@ -135,8 +127,6 @@ begin
 
   CreateFrames;
 
-  FComicteca := cComicteca.Create(nil);
-
   Enabled := True;
 
   slvImageFiles.Mask := GraphicFileMask(TGraphic);
@@ -144,8 +134,6 @@ end;
 
 destructor TfmCTKGUIMain.Destroy;
 begin
-  Comicteca.Free;
-
   inherited Destroy;
 end;
 

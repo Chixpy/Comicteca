@@ -76,8 +76,8 @@ inherited fmCTKGUIMain: TfmCTKGUIMain
         Width = 314
         Align = alTop
         Caption = 'Open from compressed archive'
-        OnChange = chkCompressedFileChange
         TabOrder = 0
+        OnChange = chkCompressedFileChange
       end
       object lCompresedFile: TLabel
         Left = 0

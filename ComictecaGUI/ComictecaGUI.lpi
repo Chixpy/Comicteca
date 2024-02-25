@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <General>
+      <Flags>
+        <CompatibilityMode Value="True"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <AutoCreateForms Value="False"/>
       <Title Value="ComictecaGUI"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
       <XPManifest>
-        <DpiAware Value="True"/>
+        <DpiAware Value="True/PM_V2"/>
+        <LongPathAware Value="True"/>
+        <AnsiUTF8 Value="True"/>
         <TextName Value="Chixpy.Comicteca.ComictecaGUI"/>
         <TextDesc Value="Comicteca organizer GUI"/>
       </XPManifest>
@@ -37,8 +41,8 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <OtherUnitFiles Value="Source\Forms;..\ComictecaCore\Classes;..\ComictecaCore\Abstracts;..\ComictecaCore;..\..\CHX\Forms;..\..\CHX\Misc;..\..\CHX\Units;..\..\CHX\Frames;Source\Units;Source\Classes;..\..\CHX\Abstract;Source\Frames"/>
-            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+            <OtherUnitFiles Value="Source\Forms;..\ComictecaCore\Classes;..\ComictecaCore\Abstracts;Source\Units;Source\Classes;Source\Frames;..\CHXPas\Units;..\ComictecaCore\Units;..\CHXPas\Forms;..\CHXPas\Frames;..\CHXPas\Abstract"/>
+            <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
@@ -66,7 +70,6 @@
     </PublishOptions>
     <RunParams>
       <FormatVersion Value="2"/>
-      <Modes Count="0"/>
     </RunParams>
     <RequiredPackages Count="2">
       <Item1>
@@ -76,7 +79,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="34">
+    <Units Count="33">
       <Unit0>
         <Filename Value="ComictecaGUI.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -98,146 +101,135 @@
         <IsPartOfProject Value="True"/>
       </Unit4>
       <Unit5>
-        <Filename Value="../../CHX/Forms/ufrCHXForm.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frmCHXForm"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Form"/>
-      </Unit5>
-      <Unit6>
         <Filename Value="Source/Forms/ufrCTKGUIMain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCTKGUIMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="Source/Units/uCTKGUIRscStr.pas"/>
+        <IsPartOfProject Value="True"/>
       </Unit6>
       <Unit7>
-        <Filename Value="../../CHX/Misc/uVersionSupport.pas"/>
+        <Filename Value="Source/Units/uCTKGUIConst.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit7>
       <Unit8>
-        <Filename Value="../../CHX/Units/uCHXStrUtils.pas"/>
+        <Filename Value="Source/Classes/ucCTKGUIConfig.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit8>
       <Unit9>
-        <Filename Value="../../CHX/Units/uCHXConst.pas"/>
+        <Filename Value="../ComictecaCore/Abstracts/uaComictecaVolume.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit9>
       <Unit10>
-        <Filename Value="../../CHX/Units/uCHXRscStr.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit10>
-      <Unit11>
-        <Filename Value="../../CHX/Units/uCHXImageUtils.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="../../CHX/Frames/ufCHXFrame.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmCHXFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-      </Unit12>
-      <Unit13>
-        <Filename Value="Source/Units/uCTKGUIRscStr.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit13>
-      <Unit14>
-        <Filename Value="Source/Units/uCTKGUIConst.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit14>
-      <Unit15>
-        <Filename Value="Source/Classes/ucCTKGUIConfig.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit15>
-      <Unit16>
-        <Filename Value="../../CHX/Abstract/uaCHXConfig.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit16>
-      <Unit17>
-        <Filename Value="../../CHX/Abstract/uaCHXStorable.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="../ComictecaCore/Abstracts/uaComictecaVolume.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit18>
-      <Unit19>
         <Filename Value="Source/Frames/ufCTKGUIMain.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="fmCTKGUIMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-      </Unit19>
-      <Unit20>
-        <Filename Value="../../CHX/Frames/ufCHXPropEditor.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmCHXPropEditor"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-      </Unit20>
-      <Unit21>
+      </Unit10>
+      <Unit11>
         <Filename Value="Source/Frames/ufCTKGUIFileEditor.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="fmCTKGUIFileEditor"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-      </Unit21>
-      <Unit22>
-        <Filename Value="../ComictecaCore/ucComicteca.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit22>
-      <Unit23>
+      </Unit11>
+      <Unit12>
         <Filename Value="../ComictecaCore/Classes/ucComictecaVolume.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit23>
-      <Unit24>
+      </Unit12>
+      <Unit13>
         <Filename Value="../ComictecaCore/Classes/ucComictecaVignette.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit24>
-      <Unit25>
+      </Unit13>
+      <Unit14>
         <Filename Value="../ComictecaCore/Classes/ucComictecaConfig.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit25>
-      <Unit26>
-        <Filename Value="../../CHX/Units/uCHX7zWrapper.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit26>
-      <Unit27>
-        <Filename Value="../../CHX/Units/uCHXExecute.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit27>
-      <Unit28>
-        <Filename Value="../../CHX/Units/uCHXFileUtils.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit28>
-      <Unit29>
-        <Filename Value="../ComictecaCore/Classes/ucComictecaVignetteList.pas"/>
-        <IsPartOfProject Value="True"/>
-      </Unit29>
-      <Unit30>
+      </Unit14>
+      <Unit15>
         <Filename Value="../ComictecaCore/Classes/ucComictecaPageList.pas"/>
         <IsPartOfProject Value="True"/>
-      </Unit30>
-      <Unit31>
+      </Unit15>
+      <Unit16>
         <Filename Value="Source/Frames/ufCTKGUIPageEditor.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="fmPageEditor"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-      </Unit31>
-      <Unit32>
-        <Filename Value="../../CHX/Frames/ufCHXAbout.pas"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="../CHXPas/Units/uCHXRecords.pas"/>
         <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="../CHXPas/Units/uCHXStrUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="../CHXPas/Units/uCHXConst.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="../CHXPas/Units/uCHXRscStr.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="../CHXPas/Units/uCHXImageUtils.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="../ComictecaCore/Units/uCTKCommon.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="../ComictecaCore/Units/uCTKConst.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="../ComictecaCore/Units/uCTKRstStr.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="../CHXPas/Forms/ufrCHXForm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCHXForm"/>
         <HasResources Value="True"/>
-      </Unit32>
-      <Unit33>
-        <Filename Value="../../CHX/Frames/ufCHXBGRAImgViewer.pas"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="../CHXPas/Frames/ufCHXFrame.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="fmCHXBGRAImgViewer"/>
+        <ComponentName Value="fmCHXFrame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
-      </Unit33>
+      </Unit26>
+      <Unit27>
+        <Filename Value="../ComictecaCore/Abstracts/uaComictecaText.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="../CHXPas/Units/uCHXVerInfo.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="../CHXPas/Abstract/uaCHXConfig.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="../CHXPas/Abstract/uaCHXStorable.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="../ComictecaCore/Abstracts/uaComictecaFrame.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="../ComictecaCore/Abstracts/uaComictecaShapedImage.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit32>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -248,8 +240,8 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="Source\Forms;..\ComictecaCore\Classes;..\ComictecaCore\Abstracts;..\ComictecaCore;..\..\CHX\Forms;..\..\CHX\Misc;..\..\CHX\Units;..\..\CHX\Frames;Source\Units;Source\Classes;..\..\CHX\Abstract;Source\Frames"/>
-      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      <OtherUnitFiles Value="Source\Forms;..\ComictecaCore\Classes;..\ComictecaCore\Abstracts;Source\Units;Source\Classes;Source\Frames;..\CHXPas\Units;..\ComictecaCore\Units;..\CHXPas\Forms;..\CHXPas\Frames;..\CHXPas\Abstract"/>
+      <UnitOutputDirectory Value="..\lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
@@ -264,6 +256,9 @@
         <StackChecks Value="True"/>
       </Checks>
       <VerifyObjMethodCallValidity Value="True"/>
+      <Optimizations>
+        <OptimizationLevel Value="0"/>
+      </Optimizations>
     </CodeGeneration>
     <Linking>
       <Debugging>

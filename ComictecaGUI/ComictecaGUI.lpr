@@ -8,12 +8,11 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, ucComictecaPage, uaComictecaPage, uaComictecaSection,
-  ucComictecaSection, uCHXConst, uCHXRscStr, uCHXImageUtils, uCHX7zWrapper,
-  uCHXExecute, uCHXFileUtils, uaCHXStorable, ufrCTKGUIMain, uCTKGUIRscStr,
-  uCTKGUIConst, ucCTKGUIConfig, uaComictecaVolume, ufCTKGUIMain,
-  ufCTKGUIFileEditor, ucComicteca, ucComictecaVolume, ucComictecaVignette,
-  ucComictecaConfig, ucComictecaVignetteList, ucComictecaPageList,
-  ufCTKGUIPageEditor, ufCHXBGRAImgViewer;
+  ucComictecaSection, ufrCTKGUIMain, uCTKGUIRscStr, uCTKGUIConst,
+  ucCTKGUIConfig, uaComictecaVolume, uaComictecaText, uaComictecaFrame,
+  uaComictecaShapedImage, ufCTKGUIMain, ufCTKGUIFileEditor, ucComictecaVolume,
+  ucComictecaVignette, ucComictecaConfig, ucComictecaPageList, uCHXStrUtils,
+  uCHXConst, uCHXRscStr, uCHXImageUtils, uaCHXStorable, ufCTKGUIPageEditor;
 
 {$R *.res}
 

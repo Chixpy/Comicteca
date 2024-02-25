@@ -24,9 +24,9 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
       Align = alTop
       AutoDropDown = True
       ItemHeight = 20
-      OnChange = cbxPageChange
       Style = csDropDownList
       TabOrder = 0
+      OnChange = cbxPageChange
     end
   end
   object gbxTexts: TGroupBox[1]
@@ -47,8 +47,8 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
       Align = alClient
       ExtendedSelect = False
       ItemHeight = 0
-      OnSelectionChange = lbxTextsSelectionChange
       TabOrder = 0
+      OnSelectionChange = lbxTextsSelectionChange
     end
     object pFrameListButtons: TPanel
       Left = 0
@@ -72,8 +72,8 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         Top = 4
         Width = 106
         Caption = 'Move Up'
-        OnClick = bMoveUpClick
         TabOrder = 0
+        OnClick = bMoveUpClick
       end
       object bMoveDown: TButton
         Left = 4
@@ -81,8 +81,8 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         Top = 38
         Width = 106
         Caption = 'Move Down'
-        OnClick = bMoveDownClick
         TabOrder = 3
+        OnClick = bMoveDownClick
       end
       object bAddText: TButton
         Left = 114
@@ -90,8 +90,8 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         Top = 4
         Width = 92
         Caption = 'Add Text'
-        OnClick = bAddTextClick
         TabOrder = 1
+        OnClick = bAddTextClick
       end
       object bAddTextCopy: TButton
         Left = 114
@@ -99,8 +99,8 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         Top = 38
         Width = 92
         Caption = 'Add Copy'
-        OnClick = bAddTextCopyClick
         TabOrder = 4
+        OnClick = bAddTextCopyClick
       end
       object bRemoveText: TButton
         Left = 210
@@ -108,8 +108,8 @@ inherited fmCTKEditorTextList: TfmCTKEditorTextList
         Top = 4
         Width = 112
         Caption = 'Remove Text'
-        OnClick = bRemoveTextClick
         TabOrder = 2
+        OnClick = bRemoveTextClick
       end
     end
   end

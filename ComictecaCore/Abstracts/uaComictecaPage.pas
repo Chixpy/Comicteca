@@ -5,22 +5,8 @@ unit uaComictecaPage;
   This file is part of Comicteca Core.
 
   Copyright (C) 2019-2021 Chixpy
-
-  This source is free software; you can redistribute it and/or modify it under
-  the terms of the GNU General Public License as published by the Free
-  Software Foundation; either version 3 of the License, or (at your option)
-  any later version.
-
-  This code is distributed in the hope that it will be useful, but WITHOUT ANY
-  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
-  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
-  details.
-
-  A copy of the GNU General Public License is available on the World Wide Web
-  at <http://www.gnu.org/copyleft/gpl.html>. You can also obtain it by writing
-  to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
-  MA 02111-1307, USA.
 }
+
 {$mode objfpc}{$H+}
 
 interface
@@ -28,7 +14,7 @@ interface
 uses
   Classes, SysUtils, LazUTF8, Laz2_DOM, laz2_XMLRead, Laz2_XMLWrite,
   // CHX units
-  uCHXStrUtils, uCHXRecordHelpers,
+  uCHXStrUtils, uCHXRecords,
   // Comicteca Core units
   uCTKConst, uCTKCommon;
 
@@ -234,10 +220,10 @@ begin
     if aSL.Count >= 4 then
     begin
       aResult := True;
-      aResult := aResult and GeomTL.FromString(aSL[0]);
-      aResult := aResult and GeomTR.FromString(aSL[1]);
-      aResult := aResult and GeomBR.FromString(aSL[2]);
-      aResult := aResult and GeomBL.FromString(aSL[3]);
+      aResult := aResult and GeomTL.FromString(aSL[0],',');
+      aResult := aResult and GeomTR.FromString(aSL[1],',');
+      aResult := aResult and GeomBR.FromString(aSL[2],',');
+      aResult := aResult and GeomBL.FromString(aSL[3],',');
 
       if aSL.Count >= 5 then
         CropGeometry := StrToBool(aSL[4])
@@ -302,10 +288,10 @@ begin
     aSL := TStringList.Create;
     aSL.Delimiter := ';';
     aSL.QuoteChar := '''';
-    aSL.Add(GeomTL.ToString);
-    aSL.Add(GeomTR.ToString);
-    aSL.Add(GeomBR.ToString);
-    aSL.Add(GeomBL.ToString);
+    aSL.Add(GeomTL.ToString(','));
+    aSL.Add(GeomTR.ToString(','));
+    aSL.Add(GeomBR.ToString(','));
+    aSL.Add(GeomBL.ToString(','));
     aSL.Add(BoolToStr(CropGeometry, True));
     aSL.Add(BoolToStr(PerspGeometry, True));
     aXMLNode[krsCTKXMLGeometryProp] := aSL.DelimitedText;
@@ -343,3 +329,19 @@ finalization
   UnRegisterClass(caComictecaPage);
 
 end.
+{
+  This source is free software; you can redistribute it and/or modify it under
+  the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 3 of the License, or (at your option)
+  any later version.
+
+  This code is distributed in the hope that it will be useful, but WITHOUT ANY
+  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+  details.
+
+  A copy of the GNU General Public License is available on the World Wide Web
+  at <http://www.gnu.org/copyleft/gpl.html>. You can also obtain it by writing
+  to the Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+  MA 02111-1307, USA.
+}

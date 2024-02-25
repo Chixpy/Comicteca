@@ -278,17 +278,17 @@ procedure TfmCTKEditorVolumeEdit.ClearFrameData;
 begin
   inherited;
 
-  cbxSerieTitle.Text := '';
+  cbxSerieTitle.Text := EmptyStr;
   seSerieOrder.Value := -1;
-  cbxLangTitle.Text := '';
-  eTitle.Text := '';
+  cbxLangTitle.Text := EmptyStr;
+  eTitle.Text := EmptyStr;
   seTitleOrder.Value := -1;
-  cbxPublisher.Text := '';
-  cbxEditor.Text := '';
-  cbxLanguage.Text := '';
-  eFanSuber.Text := '';
+  cbxPublisher.Text := EmptyStr;
+  cbxEditor.Text := EmptyStr;
+  cbxLanguage.Text := EmptyStr;
+  eFanSuber.Text := EmptyStr;
   chkRight2Left.Checked := False;
-  cbxLangSummary.Text := '';
+  cbxLangSummary.Text := EmptyStr;
   mSummary.Clear;
 end;
 

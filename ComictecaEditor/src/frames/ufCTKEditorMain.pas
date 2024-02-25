@@ -27,7 +27,6 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, ComCtrls,
-  StdCtrls,
   // CHx units
   uCHXStrUtils,
   // Comicteca Core classes

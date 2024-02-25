@@ -35,8 +35,8 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         Top = 4
         Width = 106
         Caption = 'Move Up'
-        OnClick = bSubirClick
         TabOrder = 0
+        OnClick = bSubirClick
       end
       object bAddFrame: TButton
         Left = 114
@@ -44,8 +44,8 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         Top = 4
         Width = 125
         Caption = 'Add Frame'
-        OnClick = bAddFrameClick
         TabOrder = 1
+        OnClick = bAddFrameClick
       end
       object bMoveDown: TButton
         Left = 4
@@ -53,8 +53,8 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         Top = 38
         Width = 106
         Caption = 'Move Down'
-        OnClick = bMoveDownClick
         TabOrder = 3
+        OnClick = bMoveDownClick
       end
       object bRemoveFrame: TButton
         Left = 114
@@ -62,8 +62,8 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
         Top = 38
         Width = 125
         Caption = 'Remove Frame'
-        OnClick = bRemoveFrameClick
         TabOrder = 2
+        OnClick = bRemoveFrameClick
       end
     end
     object lbxFrameList: TListBox
@@ -74,8 +74,8 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
       Align = alClient
       ExtendedSelect = False
       ItemHeight = 0
-      OnSelectionChange = lbxFrameListSelectionChange
       TabOrder = 1
+      OnSelectionChange = lbxFrameListSelectionChange
     end
   end
 end

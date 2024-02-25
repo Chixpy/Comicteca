@@ -127,10 +127,18 @@ msgstr "Bajar"
 msgid "Remove File"
 msgstr "Quitar fichero"
 
+#: tfmctkeditorimglist.bremovefile.hint
+msgid "Remove file from the list."
+msgstr ""
+
 #: tfmctkeditorimglist.bsubir.caption
 msgctxt "tfmctkeditorimglist.bsubir.caption"
 msgid "Move Up"
 msgstr "Subir"
+
+#: tfmctkeditorimglist.bupdatesha1.caption
+msgid "Update SHA1"
+msgstr ""
 
 #: tfmctkeditorimglist.gbximagefilelist.caption
 msgid "Image File List"
@@ -498,6 +506,16 @@ msgstr ""
 msgid "Error extracting CRC32: \"%0:s\""
 msgstr ""
 
+#: uchxrecords.rseinvalidtpointstr
+#, object-pascal-format
+msgid "\"%s\" is an invalid TPoint string."
+msgstr ""
+
+#: uchxrecords.rseinvalidtrectstr
+#, object-pascal-format
+msgid "\"%s\" is an invalid TRect string."
+msgstr ""
+
 #: uchxrscstr.rscorfirmdeletefile
 #, object-pascal-format
 msgid ""
@@ -568,7 +586,7 @@ msgstr ""
 
 #: uchxrscstr.rsfiledlgmaskfmt
 #, object-pascal-format
-msgid "Supported files|%0:s|All files|*.*"
+msgid "Supported files (%0:s)|%0:s|All files|*.*"
 msgstr ""
 
 #: uchxrscstr.rsfilenotfound
@@ -600,7 +618,7 @@ msgid "Save changes"
 msgstr ""
 
 #: uchxverinfo.chxversionnoinfo
-msgid "No build information available"
+msgid "No build information available."
 msgstr ""
 
 #: uctkrststr.rsfsellipsekey

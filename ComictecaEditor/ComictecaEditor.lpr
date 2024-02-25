@@ -14,7 +14,7 @@ uses
   ufCTKEditorFrameList, ucComictecaFrame, uafCTKEditorPageFrame,
   uafCTKEditorFrameFrame, ufCTKEditorFrameVisor, uaComictecaText,
   ucComictecaTextList, ucComictecaText, uCHXFileUtils, uCHXImageUtils,
-  uCHXConst, uCHXRscStr, uCHXRecordHelpers, uCHX7zWrapper, uCHXExecute,
+  uCHXConst, uCHXRscStr, uCHX7zWrapper, uCHXExecute, uCHXRecords,
   uaCHXStorable, ufCHXBGRAImgViewerEx, ufCHXBGRAImgViewer, ufCTKEditorTextList,
   uafCTKEditorTextFrame, ufCTKEditorTextEdit, ufCTKEditorTextVisor;
 

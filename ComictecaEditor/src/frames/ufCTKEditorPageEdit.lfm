@@ -73,8 +73,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         Top = 28
         Width = 221
         Caption = 'No flip page'
-        OnChange = chkNoFlipChange
         TabOrder = 1
+        OnChange = chkNoFlipChange
       end
     end
     object lSHA1: TLabel
@@ -176,8 +176,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
           Top = 102
           Width = 66
           Caption = 'Set TL'
-          OnClick = bSetTLClick
           TabOrder = 8
+          OnClick = bSetTLClick
         end
         object lTopRight: TLabel
           Left = 74
@@ -211,8 +211,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
           Top = 102
           Width = 68
           Caption = 'Set TR'
-          OnClick = bSetTRClick
           TabOrder = 9
+          OnClick = bSetTRClick
         end
         object lBottomLeft: TLabel
           Left = 146
@@ -246,8 +246,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
           Top = 102
           Width = 79
           Caption = 'Set BL'
-          OnClick = bSetBLClick
           TabOrder = 10
+          OnClick = bSetBLClick
         end
         object lBottomRight: TLabel
           Left = 229
@@ -281,8 +281,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
           Top = 102
           Width = 89
           Caption = 'Set BR'
-          OnClick = bSetBRClick
           TabOrder = 11
+          OnClick = bSetBRClick
         end
         object bResetGeometry: TButton
           Left = 322
@@ -290,8 +290,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
           Top = 4
           Width = 62
           Caption = 'Reset'
-          OnClick = bResetGeometryClick
           TabOrder = 12
+          OnClick = bResetGeometryClick
         end
       end
       object lCurrentPoint: TLabel
@@ -310,8 +310,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         Width = 392
         Align = alBottom
         Caption = 'Crop page to geometry box.'
-        OnChange = chkCropToGeometryChange
         TabOrder = 1
+        OnChange = chkCropToGeometryChange
       end
       object chkPerspGeometry: TCheckBox
         Left = 0
@@ -320,8 +320,8 @@ inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
         Width = 392
         Align = alBottom
         Caption = 'Perspective geometry mapping'
-        OnChange = chkPerspGeometryChange
         TabOrder = 2
+        OnChange = chkPerspGeometryChange
       end
     end
   end

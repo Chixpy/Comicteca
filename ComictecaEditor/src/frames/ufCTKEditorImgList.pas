@@ -44,6 +44,7 @@ type
     bMoveDown: TButton;
     bRemoveFile: TButton;
     bSubir: TButton;
+    bUpdateSHA1 : TButton;
     gbxImageFileList: TGroupBox;
     lbxImageList: TListBox;
     pImgListButtons: TPanel;
@@ -51,6 +52,7 @@ type
     procedure bMoveDownClick(Sender: TObject);
     procedure bRemoveFileClick(Sender: TObject);
     procedure bSubirClick(Sender: TObject);
+    procedure bUpdateSHA1Click(Sender : TObject);
     procedure lbxImageListSelectionChange(Sender: TObject; User: boolean);
 
   private
@@ -114,14 +116,14 @@ begin
     Inc(j);
   end;
 
-  // Adding new pages
+  // Adding only new pages
   i := 0;
   while i < aFileList.Count do
   begin
     aPage := cComictecaPage.Create(nil);
     aPage.FileName := aFileList[i];
 
-    // Searching SHA1
+    // Searching SHA1 of new pages
     if FileExistsUTF8(Comic.Folder + aPage.FileName) then
       aPage.SHA1 := SHA1FileStr(Comic.Folder + aPage.FileName);
 
@@ -187,6 +189,24 @@ begin
   lbxImageList.Items.Exchange(lbxImageList.ItemIndex, lbxImageList.ItemIndex - 1);
 
   lbxImageList.ItemIndex := lbxImageList.ItemIndex - 1;
+end;
+
+procedure TfmCTKEditorImgList.bUpdateSHA1Click(Sender : TObject);
+var
+  aPage : cComictecaPage;
+  i : LongInt;
+begin
+  // Updating SHA1 of all pages
+  i := 0;
+  while i < Comic.Pages.Count do
+  begin
+    aPage := Comic.Pages[i];
+
+    if FileExistsUTF8(Comic.Folder + aPage.FileName) then
+      aPage.SHA1 := SHA1FileStr(Comic.Folder + aPage.FileName);
+
+    Inc(i);
+  end;
 end;
 
 procedure TfmCTKEditorImgList.lbxImageListSelectionChange(Sender: TObject;

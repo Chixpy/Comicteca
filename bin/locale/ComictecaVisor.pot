@@ -118,6 +118,13 @@ msgstr ""
 msgid "\"%0:s\" already exists."
 msgstr ""
 
+#: uchxrscstr.rscuexcalreadyexistsask
+#, object-pascal-format
+msgid ""
+"\"%0:s\" already exists.\n"
+"Replace it?"
+msgstr ""
+
 #: uchxrscstr.rscuexccardrange
 #, object-pascal-format
 msgid "\"%0:d\" is not in cardinal range."
@@ -147,6 +154,13 @@ msgid ""
 "%0:s"
 msgstr ""
 
+#: uchxrscstr.rserrorloadingfile
+#, object-pascal-format
+msgid ""
+"Error loading:\n"
+"%0:s"
+msgstr ""
+
 #: uchxrscstr.rserrorrenamingfile
 #, object-pascal-format
 msgid ""
@@ -162,7 +176,7 @@ msgstr ""
 
 #: uchxrscstr.rsfiledlgmaskfmt
 #, object-pascal-format
-msgid "Supported files|%0:s|All files|*.*"
+msgid "Supported files (%0:s)|%0:s|All files|*.*"
 msgstr ""
 
 #: uchxrscstr.rsfilenotfound
@@ -183,6 +197,14 @@ msgstr ""
 
 #: uchxrscstr.rsrenamefilecaption
 msgid "Renaming file"
+msgstr ""
+
+#: uchxrscstr.rssavechanges
+msgid "Do you want to save current changes?"
+msgstr ""
+
+#: uchxrscstr.rssavechangescaption
+msgid "Save changes"
 msgstr ""
 
 #: uctkrststr.rsfsellipsekey

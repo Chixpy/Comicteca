@@ -27,10 +27,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, FileUtil, LazFileUtils,
   LCLTranslator,
-  // Misc units
-  uVersionSupport,
   // CHX units
-  uCHXStrUtils,
+  uCHXConst, uCHXStrUtils, uCHXVerInfo,
   // CHX forms
   ufrCHXForm,
   // Comiteca GUI units
@@ -112,7 +110,7 @@ begin
 
   // Loading GUI config
   FGUIConfig := cCTKGUIConfig.Create(self);
-  GUIConfig.DefaultFileName := SetAsAbsoluteFile(krsGuiIni, BaseFolder);
+  GUIConfig.DefaultFileName := SetAsAbsoluteFile(krsCTKGUIIni, BaseFolder);
   GUIConfig.LoadFromFile('');
 
   CreateFrames;

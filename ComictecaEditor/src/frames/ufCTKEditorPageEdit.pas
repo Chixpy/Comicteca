@@ -29,7 +29,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, Spin,
   ExtCtrls,
   // CHX units
-  uCHXRecordHelpers,
+  uCHXRecords,
   // CHX frame units
   ufCHXBGRAImgViewerEx,
   // Comicteca Core units

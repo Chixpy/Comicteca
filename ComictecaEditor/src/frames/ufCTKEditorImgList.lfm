@@ -26,7 +26,7 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
       ChildSizing.TopBottomSpacing = 4
       ChildSizing.HorizontalSpacing = 4
       ChildSizing.VerticalSpacing = 4
-      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
       ChildSizing.ControlsPerLine = 2
       ClientHeight = 73
       ClientWidth = 454
@@ -37,17 +37,8 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
         Top = 4
         Width = 106
         Caption = 'Move Up'
-        OnClick = bSubirClick
         TabOrder = 0
-      end
-      object BAddAllFiles: TButton
-        Left = 114
-        Height = 30
-        Top = 4
-        Width = 126
-        Caption = 'Add all images'
-        OnClick = BAddAllFilesClick
-        TabOrder = 1
+        OnClick = bSubirClick
       end
       object bMoveDown: TButton
         Left = 4
@@ -55,17 +46,36 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
         Top = 38
         Width = 106
         Caption = 'Move Down'
-        OnClick = bMoveDownClick
         TabOrder = 3
+        OnClick = bMoveDownClick
+      end
+      object BAddAllFiles: TButton
+        Left = 114
+        Height = 30
+        Top = 4
+        Width = 126
+        Caption = 'Add all images'
+        TabOrder = 1
+        OnClick = BAddAllFilesClick
       end
       object bRemoveFile: TButton
         Left = 114
         Height = 30
+        Hint = 'Remove file from the list.'
         Top = 38
         Width = 126
         Caption = 'Remove File'
-        OnClick = bRemoveFileClick
         TabOrder = 2
+        OnClick = bRemoveFileClick
+      end
+      object bUpdateSHA1: TButton
+        Left = 244
+        Height = 30
+        Top = 4
+        Width = 116
+        Caption = 'Update SHA1'
+        TabOrder = 4
+        OnClick = bUpdateSHA1Click
       end
     end
     object lbxImageList: TListBox
@@ -76,8 +86,8 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
       Align = alClient
       ExtendedSelect = False
       ItemHeight = 0
-      OnSelectionChange = lbxImageListSelectionChange
       TabOrder = 1
+      OnSelectionChange = lbxImageListSelectionChange
     end
   end
 end
