@@ -4,21 +4,21 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
   ClientHeight = 618
   ClientWidth = 715
   object pImageVisor: TPanel[0]
-    Left = 0
-    Height = 543
-    Top = 75
-    Width = 715
+    Left = 4
+    Height = 535
+    Top = 79
+    Width = 707
     Align = alClient
     ParentBackground = False
     ParentColor = False
     ParentFont = False
-    TabOrder = 0
+    TabOrder = 1
   end
   object pTools: TPanel[1]
-    Left = 0
+    Left = 4
     Height = 71
-    Top = 0
-    Width = 715
+    Top = 4
+    Width = 707
     Align = alTop
     AutoSize = True
     BevelOuter = bvNone
@@ -29,8 +29,8 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
     ChildSizing.Layout = cclTopToBottomThenLeftToRight
     ChildSizing.ControlsPerLine = 1
     ClientHeight = 71
-    ClientWidth = 715
-    TabOrder = 1
+    ClientWidth = 707
+    TabOrder = 0
     object gbxZoom: TGroupBox
       Left = 4
       Height = 63
@@ -65,7 +65,7 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
         Width = 41
         Caption = '1x'
         ParentFont = False
-        TabOrder = 2
+        TabOrder = 1
         OnClick = bOrigZoomClick
       end
       object bZoomOut: TButton
@@ -75,7 +75,7 @@ inherited fmCTKEditorPageVisor: TfmCTKEditorPageVisor
         Width = 44
         Caption = '/ 2'
         ParentFont = False
-        TabOrder = 1
+        TabOrder = 2
         OnClick = bZoomOutClick
       end
       object tbxAutoZoom: TToggleBox

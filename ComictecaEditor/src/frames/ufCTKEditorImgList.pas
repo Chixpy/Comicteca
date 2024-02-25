@@ -40,7 +40,7 @@ type
   { TfmCTKEditorImgList }
 
   TfmCTKEditorImgList = class(TafmCTKEditorFrame)
-    BAddAllFiles: TButton;
+    bAddAllFiles: TButton;
     bMoveDown: TButton;
     bRemoveFile: TButton;
     bSubir: TButton;
@@ -48,7 +48,7 @@ type
     gbxImageFileList: TGroupBox;
     lbxImageList: TListBox;
     pImgListButtons: TPanel;
-    procedure BAddAllFilesClick(Sender: TObject);
+    procedure bAddAllFilesClick(Sender: TObject);
     procedure bMoveDownClick(Sender: TObject);
     procedure bRemoveFileClick(Sender: TObject);
     procedure bSubirClick(Sender: TObject);
@@ -76,7 +76,7 @@ implementation
 
 { TfmCTKEditorImgList }
 
-procedure TfmCTKEditorImgList.BAddAllFilesClick(Sender: TObject);
+procedure TfmCTKEditorImgList.bAddAllFilesClick(Sender: TObject);
 var
   aFileList: TStringList;
   aPage: cComictecaPage;

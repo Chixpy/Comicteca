@@ -120,7 +120,7 @@ msgid "Auto Zoom"
 msgstr ""
 
 #: tfmctkeditorimglist.baddallfiles.caption
-msgid "Add all images"
+msgid "Add"
 msgstr ""
 
 #: tfmctkeditorimglist.bmovedown.caption
@@ -175,19 +175,23 @@ msgid "Reset"
 msgstr ""
 
 #: tfmctkeditorpageedit.bsetbl.caption
-msgid "Set BL"
+msgctxt "tfmctkeditorpageedit.bsetbl.caption"
+msgid "Set"
 msgstr ""
 
 #: tfmctkeditorpageedit.bsetbr.caption
-msgid "Set BR"
+msgctxt "tfmctkeditorpageedit.bsetbr.caption"
+msgid "Set"
 msgstr ""
 
 #: tfmctkeditorpageedit.bsettl.caption
-msgid "Set TL"
+msgctxt "tfmctkeditorpageedit.bsettl.caption"
+msgid "Set"
 msgstr ""
 
 #: tfmctkeditorpageedit.bsettr.caption
-msgid "Set TR"
+msgctxt "tfmctkeditorpageedit.bsettr.caption"
+msgid "Set"
 msgstr ""
 
 #: tfmctkeditorpageedit.cgrpagecontent.caption
@@ -217,11 +221,15 @@ msgid "Page"
 msgstr ""
 
 #: tfmctkeditorpageedit.lbottomleft.caption
-msgid "Bottom Left"
+msgid ""
+"Bottom\n"
+"Left"
 msgstr ""
 
 #: tfmctkeditorpageedit.lbottomright.caption
-msgid "Bottom Right"
+msgid ""
+"Bottom\n"
+"Right"
 msgstr ""
 
 #: tfmctkeditorpageedit.lcurrentpoint.caption
@@ -241,11 +249,15 @@ msgid "SHA1"
 msgstr ""
 
 #: tfmctkeditorpageedit.ltopleft.caption
-msgid "Top Left"
+msgid ""
+"Top\n"
+"Left"
 msgstr ""
 
 #: tfmctkeditorpageedit.ltopright.caption
-msgid "Top Right"
+msgid ""
+"Top\n"
+"Right"
 msgstr ""
 
 #: tfmctkeditorpagevisor.borigzoom.caption
@@ -405,10 +417,6 @@ msgstr ""
 msgid "Editor"
 msgstr ""
 
-#: tfmctkeditorvolumeedit.lfansub.caption
-msgid "FanSub Translator"
-msgstr ""
-
 #: tfmctkeditorvolumeedit.llanguage.caption
 msgid "Language"
 msgstr ""
@@ -421,10 +429,6 @@ msgstr ""
 msgid "Serie"
 msgstr ""
 
-#: tfmctkeditorvolumeedit.lserieorder.caption
-msgid "Serie Order"
-msgstr ""
-
 #: tfmctkeditorvolumeedit.lsummary.caption
 msgid "Summary"
 msgstr ""
@@ -435,6 +439,10 @@ msgstr ""
 
 #: tfmctkeditorvolumeedit.ltitleorder.caption
 msgid "Title Order"
+msgstr ""
+
+#: tfmctkeditorvolumeedit.lvolumeorder.caption
+msgid "Volume Order"
 msgstr ""
 
 #: tfrmchxform.caption

@@ -1,5 +1,9 @@
 inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
   Height = 456
+  ChildSizing.LeftRightSpacing = 0
+  ChildSizing.TopBottomSpacing = 0
+  ChildSizing.HorizontalSpacing = 0
+  ChildSizing.VerticalSpacing = 0
   ClientHeight = 456
   DesignLeft = 641
   DesignTop = 336
@@ -10,71 +14,73 @@ inherited fmCTKEditorFrameList: TfmCTKEditorFrameList
     Width = 400
     Align = alClient
     Caption = 'Frame List'
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 4
     ClientHeight = 431
     ClientWidth = 396
     TabOrder = 0
     object pFrameListButtons: TPanel
-      Left = 0
-      Height = 73
-      Top = 358
-      Width = 396
+      Left = 4
+      Height = 65
+      Top = 362
+      Width = 388
       Align = alBottom
       AutoSize = True
-      ChildSizing.LeftRightSpacing = 4
-      ChildSizing.TopBottomSpacing = 4
-      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
       ChildSizing.VerticalSpacing = 4
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 2
-      ClientHeight = 73
-      ClientWidth = 396
-      TabOrder = 0
-      object bSubir: TButton
-        Left = 4
-        Height = 30
-        Top = 4
-        Width = 106
-        Caption = 'Move Up'
-        TabOrder = 0
-        OnClick = bSubirClick
-      end
+      ClientHeight = 65
+      ClientWidth = 388
+      TabOrder = 1
       object bAddFrame: TButton
-        Left = 114
+        Left = 0
         Height = 30
-        Top = 4
+        Top = 0
         Width = 125
         Caption = 'Add Frame'
-        TabOrder = 1
+        TabOrder = 0
         OnClick = bAddFrameClick
       end
-      object bMoveDown: TButton
-        Left = 4
+      object bSubir: TButton
+        Left = 133
         Height = 30
-        Top = 38
+        Top = 0
         Width = 106
-        Caption = 'Move Down'
-        TabOrder = 3
-        OnClick = bMoveDownClick
+        Caption = 'Move Up'
+        TabOrder = 1
+        OnClick = bSubirClick
       end
       object bRemoveFrame: TButton
-        Left = 114
+        Left = 0
         Height = 30
-        Top = 38
+        Top = 34
         Width = 125
         Caption = 'Remove Frame'
         TabOrder = 2
         OnClick = bRemoveFrameClick
       end
+      object bMoveDown: TButton
+        Left = 133
+        Height = 30
+        Top = 34
+        Width = 106
+        Caption = 'Move Down'
+        TabOrder = 3
+        OnClick = bMoveDownClick
+      end
     end
     object lbxFrameList: TListBox
-      Left = 0
-      Height = 358
-      Top = 0
-      Width = 396
+      Left = 4
+      Height = 354
+      Top = 4
+      Width = 388
       Align = alClient
       ExtendedSelect = False
       ItemHeight = 0
-      TabOrder = 1
+      TabOrder = 0
       OnSelectionChange = lbxFrameListSelectionChange
     end
   end

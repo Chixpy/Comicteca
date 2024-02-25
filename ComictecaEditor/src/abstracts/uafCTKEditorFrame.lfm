@@ -1,2 +1,5 @@
 inherited afmCTKEditorFrame: TafmCTKEditorFrame
+  ChildSizing.LeftRightSpacing = 4
+  ChildSizing.TopBottomSpacing = 4
+  ChildSizing.HorizontalSpacing = 8
 end

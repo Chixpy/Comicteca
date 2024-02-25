@@ -1,0 +1,318 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Chixpy\n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: tfcomictecavisormain.actexit.caption
+msgid "Exit"
+msgstr "Salir"
+
+#: tfcomictecavisormain.actexit.hint
+msgid "Salir"
+msgstr "Salir"
+
+#: tfcomictecavisormain.actfileopen.caption
+msgid "Open File..."
+msgstr "Abrir fichero..."
+
+#: tfcomictecavisormain.actfileopen.hint
+msgid "Abrir"
+msgstr "Abrir"
+
+#: tfcomictecavisormain.actfirst.caption
+msgid "First"
+msgstr "Primero"
+
+#: tfcomictecavisormain.actflipr2l.caption
+msgid "Flip R2L Comics"
+msgstr "Invertir cómics horizontalmente"
+
+#: tfcomictecavisormain.actlast.caption
+msgid "Last"
+msgstr "Último"
+
+#: tfcomictecavisormain.actnext.caption
+msgid "Next"
+msgstr "Siguiente"
+
+#: tfcomictecavisormain.actopenfolder.caption
+msgid "Open Folder..."
+msgstr "Abrir capeta..."
+
+#: tfcomictecavisormain.actprevious.caption
+msgid "Previous"
+msgstr "Anterior"
+
+#: tfcomictecavisormain.acttogglefullscreen.caption
+msgid "Full Screen"
+msgstr "Pantalla completa"
+
+#: tfcomictecavisormain.caption
+msgid "Comicteca Visor"
+msgstr "Visor de Comicteca"
+
+#: tfcomictecavisormain.mimmgo.caption
+msgid "Go"
+msgstr "Ir a"
+
+#: tfcomictecavisormain.mimmview.caption
+msgid "View"
+msgstr "Ver"
+
+#: tfmchxbgraimgviewer.actautozoom.caption
+msgid "Auto Zoom"
+msgstr "Auto Zoom"
+
+#: tfmchxbgraimgviewer.actoriginalsize.caption
+msgid "Original Size"
+msgstr "Tamaño original"
+
+#: tfmchxbgraimgviewer.actzoomin.caption
+msgid "Zoom In"
+msgstr "Acercar zoom"
+
+#: tfmchxbgraimgviewer.actzoomout.caption
+msgid "Zoom Out"
+msgstr "Alejar zoom"
+
+#: tfrmchxform.caption
+msgid "frmCHXForm"
+msgstr "frmCHXForm"
+
+#: uchx7zwrapper.rsw7zerrorline
+#, object-pascal-format
+msgid "%0:s - %1:s: %2:s"
+msgstr "%0:s - %1:s: %2:s"
+
+#: uchx7zwrapper.rsw7zexeerror
+#, object-pascal-format
+msgid ""
+"7z.exe/7zG.exe error %1:d exit code.\n"
+"File: \"%0:s\""
+msgstr ""
+"Error de 7z.exe/7zG.exe con código de salida %1:d\n"
+"Archivo: \"%0:s\""
+
+#: uchx7zwrapper.rsw7zexewarning
+#, object-pascal-format
+msgid ""
+"7z.exe/7zG.exe warning %1:d exit code.\n"
+"File: \"%0:s\""
+msgstr ""
+"Advertencia de 7z.exe/7zG.exe con código de salida %1:d\n"
+"Archivo: \"%0:s\""
+
+#: uchx7zwrapper.rsw7zfilenotfound
+#, object-pascal-format
+msgid "\"%0:s\" file not found."
+msgstr "\"%0:s\" fichero no encontrado."
+
+#: uchx7zwrapper.rsw7znocrc32
+#, object-pascal-format
+msgid "Error extracting CRC32: \"%0:s\""
+msgstr "Error al extraer el CRC32: \"%0:s\""
+
+#: uchxrscstr.rscorfirmdeletefile
+#, object-pascal-format
+msgid ""
+"%0:s\n"
+"Do you want to delete this file?"
+msgstr ""
+"%0:s\n"
+"¿Quiere borrar este fichero?"
+
+#: uchxrscstr.rscuexcalreadyexists
+#, object-pascal-format
+msgid "\"%0:s\" already exists."
+msgstr "\"%0:s\" ya existe."
+
+#: uchxrscstr.rscuexcalreadyexistsask
+#, object-pascal-format
+msgid ""
+"\"%0:s\" already exists.\n"
+"Replace it?"
+msgstr ""
+"\"%0:s\" ya existe.\n"
+"¿Quiere reemplazarlo?"
+
+#: uchxrscstr.rscuexccardrange
+#, object-pascal-format
+msgid "\"%0:d\" is not in cardinal range."
+msgstr "\"%0:d\" fuera del rango de cardinal."
+
+#: uchxrscstr.rscuexcnilparameter
+#, object-pascal-format
+msgid "%0:s: %1:s parameter (%2:s) = nil"
+msgstr "%0:s: Parámetro %1:s (%2:s) = nil"
+
+#: uchxrscstr.rsenotfilename
+#, object-pascal-format
+msgid "%0:s: Not defined filename"
+msgstr "%0:s: Nombre de fichero no definido"
+
+#: uchxrscstr.rserrorcreatingfile
+#, object-pascal-format
+msgid ""
+"Error creating:\n"
+"%0:s"
+msgstr ""
+"Error creando:\n"
+"%0:s"
+
+#: uchxrscstr.rserrordeletingfile
+#, object-pascal-format
+msgid ""
+"Error deleting:\n"
+"%0:s"
+msgstr ""
+"Error borrando:\n"
+"%0:s"
+
+#: uchxrscstr.rserrorloadingfile
+#, object-pascal-format
+msgid ""
+"Error loading:\n"
+"%0:s"
+msgstr ""
+"Error cargando:\n"
+"%0:s"
+
+#: uchxrscstr.rserrorrenamingfile
+#, object-pascal-format
+msgid ""
+"Error renaming:\n"
+"%0:s\n"
+"to:\n"
+"%1:s"
+msgstr ""
+"Error renombrando:\n"
+"%0:s\n"
+"hacia:\n"
+"%1:s"
+
+#: uchxrscstr.rsfiledlgmaskdef
+msgid "All files|*.*"
+msgstr "Todos los ficheros|*.*"
+
+#: uchxrscstr.rsfiledlgmaskfmt
+#, object-pascal-format
+msgid "Supported files (%0:s)|%0:s|All files|*.*"
+msgstr "Ficheros soportados (%0:s)|%0:s|Todos los ficheros|*.*"
+
+#: uchxrscstr.rsfilenotfound
+#, object-pascal-format
+msgid ""
+"%0:s\n"
+"not found."
+msgstr ""
+"%0:s\n"
+"no encontrado."
+
+#: uchxrscstr.rsfmtitemcount
+#, object-pascal-format
+msgid "%0:d / %0:d"
+msgstr "%0:d / %0:d"
+
+#: uchxrscstr.rsrenamefile
+msgid "Rename this file:"
+msgstr "Renombrar este fichero:"
+
+#: uchxrscstr.rsrenamefilecaption
+msgid "Renaming file"
+msgstr "Renombrando fichero"
+
+#: uchxrscstr.rssavechanges
+msgid "Do you want to save current changes?"
+msgstr "¿Quiere guardar los cambios actuales?"
+
+#: uchxrscstr.rssavechangescaption
+msgid "Save changes"
+msgstr "Guardar cambios"
+
+#: uctkrststr.rsfsellipsekey
+msgid "Ellipse"
+msgstr "Elipse"
+
+#: uctkrststr.rsfsrectkey
+msgid "Rectangle"
+msgstr "Rectángulo"
+
+#: uctkrststr.rsfsrndrectkey
+msgid "Round Rect"
+msgstr "Rectángulo redondeado"
+
+#: uctkrststr.rspcads
+msgid "Advertising"
+msgstr "Publicidad"
+
+#: uctkrststr.rspcauthortext
+msgid "Author Text"
+msgstr "Texto del autor"
+
+#: uctkrststr.rspcbackcover
+msgid "Back Cover"
+msgstr "Contraportada"
+
+#: uctkrststr.rspcbackdustjacket
+msgid "Back Dust Jacket"
+msgstr "Contraportada de la sobrecubierta"
+
+#: uctkrststr.rspcbastardtitle
+msgid "Bastard Title"
+msgstr "Antetítulo"
+
+#: uctkrststr.rspcchaptertitle
+msgid "Chapter Title"
+msgstr "Título del capítulo"
+
+#: uctkrststr.rspceditorialinfo
+msgid "Editorial Info"
+msgstr "Información editorial"
+
+#: uctkrststr.rspcendpaper
+msgid "End Paper"
+msgstr ""
+
+#: uctkrststr.rspcflyleaf
+msgid "Fly Leaf"
+msgstr "Página de cortesía"
+
+#: uctkrststr.rspcfrontcover
+msgid "Front Cover"
+msgstr "Frontal de la cubierta"
+
+#: uctkrststr.rspcfrontdustjacket
+msgid "Front Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcindex
+msgid "Index"
+msgstr "Índice"
+
+#: uctkrststr.rspclicense
+msgid "License"
+msgstr "Licencia"
+
+#: uctkrststr.rspcother
+msgid "Other"
+msgstr "Otros"
+
+#: uctkrststr.rspcspinecover
+msgid "Spine (Cover)"
+msgstr "Lomo de la cubierta"
+
+#: uctkrststr.rspcspinedustjacket
+msgid "Spine Dust Jacket"
+msgstr ""
+
+#: uctkrststr.rspcvignette
+msgid "Vignette"
+msgstr "Viñeta"

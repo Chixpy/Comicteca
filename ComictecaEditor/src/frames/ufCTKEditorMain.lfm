@@ -1,6 +1,10 @@
 inherited fmCTKEditorMain: TfmCTKEditorMain
   Height = 700
   Width = 1000
+  ChildSizing.LeftRightSpacing = 0
+  ChildSizing.TopBottomSpacing = 0
+  ChildSizing.HorizontalSpacing = 0
+  ChildSizing.VerticalSpacing = 0
   ClientHeight = 700
   ClientWidth = 1000
   DesignLeft = 367
@@ -28,7 +32,7 @@ inherited fmCTKEditorMain: TfmCTKEditorMain
       Top = 28
       Width = 300
       Align = alLeft
-      TabOrder = 1
+      TabOrder = 0
     end
     object Splitter1: TSplitter
       Left = 302
@@ -37,15 +41,15 @@ inherited fmCTKEditorMain: TfmCTKEditorMain
       Width = 6
     end
     object pRight: TPanel
-      Left = 714
+      Left = 614
       Height = 670
       Top = 28
-      Width = 284
+      Width = 384
       Align = alClient
-      TabOrder = 3
+      TabOrder = 5
     end
     object Splitter2: TSplitter
-      Left = 708
+      Left = 608
       Height = 670
       Top = 28
       Width = 6
@@ -54,9 +58,9 @@ inherited fmCTKEditorMain: TfmCTKEditorMain
       Left = 308
       Height = 670
       Top = 28
-      Width = 400
+      Width = 300
       Align = alLeft
-      TabOrder = 5
+      TabOrder = 3
     end
   end
 end

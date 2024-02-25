@@ -82,6 +82,7 @@ type
     lBottomLeft: TLabel;
     lBottomRight: TLabel;
     pGeomQuadPoints: TPanel;
+    pReset : TPanel;
     pValues: TPanel;
     procedure bResetGeometryClick(Sender: TObject);
     procedure bSetBLClick(Sender: TObject);

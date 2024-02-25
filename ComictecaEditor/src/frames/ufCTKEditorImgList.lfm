@@ -1,6 +1,10 @@
 inherited fmCTKEditorImgList: TfmCTKEditorImgList
   Height = 590
   Width = 458
+  ChildSizing.LeftRightSpacing = 0
+  ChildSizing.TopBottomSpacing = 0
+  ChildSizing.HorizontalSpacing = 0
+  ChildSizing.VerticalSpacing = 0
   ClientHeight = 590
   ClientWidth = 458
   DesignLeft = 459
@@ -12,81 +16,83 @@ inherited fmCTKEditorImgList: TfmCTKEditorImgList
     Width = 458
     Align = alClient
     Caption = 'Image File List'
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 4
     ClientHeight = 565
     ClientWidth = 454
     TabOrder = 0
     object pImgListButtons: TPanel
-      Left = 0
-      Height = 73
-      Top = 492
-      Width = 454
+      Left = 4
+      Height = 65
+      Top = 496
+      Width = 446
       Align = alBottom
       AutoSize = True
-      ChildSizing.LeftRightSpacing = 4
-      ChildSizing.TopBottomSpacing = 4
-      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
       ChildSizing.VerticalSpacing = 4
       ChildSizing.Layout = cclTopToBottomThenLeftToRight
       ChildSizing.ControlsPerLine = 2
-      ClientHeight = 73
-      ClientWidth = 454
-      TabOrder = 0
-      object bSubir: TButton
-        Left = 4
+      ClientHeight = 65
+      ClientWidth = 446
+      TabOrder = 1
+      object bAddAllFiles: TButton
+        Left = 0
         Height = 30
-        Top = 4
+        Top = 0
+        Width = 107
+        Caption = 'Add'
+        TabOrder = 0
+        OnClick = bAddAllFilesClick
+      end
+      object bRemoveFile: TButton
+        Left = 0
+        Height = 30
+        Hint = 'Remove file from the list.'
+        Top = 34
+        Width = 107
+        Caption = 'Remove File'
+        TabOrder = 3
+        OnClick = bRemoveFileClick
+      end
+      object bSubir: TButton
+        Left = 115
+        Height = 30
+        Top = 0
         Width = 106
         Caption = 'Move Up'
-        TabOrder = 0
+        TabOrder = 1
         OnClick = bSubirClick
       end
       object bMoveDown: TButton
-        Left = 4
+        Left = 115
         Height = 30
-        Top = 38
+        Top = 34
         Width = 106
         Caption = 'Move Down'
-        TabOrder = 3
+        TabOrder = 4
         OnClick = bMoveDownClick
       end
-      object BAddAllFiles: TButton
-        Left = 114
-        Height = 30
-        Top = 4
-        Width = 126
-        Caption = 'Add all images'
-        TabOrder = 1
-        OnClick = BAddAllFilesClick
-      end
-      object bRemoveFile: TButton
-        Left = 114
-        Height = 30
-        Hint = 'Remove file from the list.'
-        Top = 38
-        Width = 126
-        Caption = 'Remove File'
-        TabOrder = 2
-        OnClick = bRemoveFileClick
-      end
       object bUpdateSHA1: TButton
-        Left = 244
+        Left = 229
         Height = 30
-        Top = 4
+        Top = 0
         Width = 116
         Caption = 'Update SHA1'
-        TabOrder = 4
+        TabOrder = 2
         OnClick = bUpdateSHA1Click
       end
     end
     object lbxImageList: TListBox
-      Left = 0
-      Height = 492
-      Top = 0
-      Width = 454
+      Left = 4
+      Height = 488
+      Top = 4
+      Width = 446
       Align = alClient
       ExtendedSelect = False
       ItemHeight = 0
-      TabOrder = 1
+      TabOrder = 0
       OnSelectionChange = lbxImageListSelectionChange
     end
   end

@@ -23,16 +23,15 @@ type
     cbxLangSummary: TComboBox;
     cbxSerieTitle: TComboBox;
     chkRight2Left: TCheckBox;
-    eFanSuber: TEdit;
     eTitle: TEdit;
     cbxEditor: TComboBox;
-    cbxLanguage: TComboBox;
-    lFanSub: TLabel;
+    cbxLangVolume: TComboBox;
     lSummary: TLabel;
     mSummary: TMemo;
-    pLanguaje: TPanel;
     pSummary: TPanel;
-    seSerieOrder: TSpinEdit;
+    pVolumeData : TPanel;
+    pTitleOrder : TPanel;
+    seVolumeOrder: TSpinEdit;
     cbxPublisher: TComboBox;
     seTitleOrder: TSpinEdit;
     lEditor: TLabel;
@@ -40,19 +39,18 @@ type
     lPublisher: TLabel;
     lSerie: TLabel;
     lTitle: TLabel;
-    lSerieOrder: TLabel;
+    lVolumeOrder: TLabel;
     lTitleOrder: TLabel;
     pTitle: TPanel;
     procedure chkRight2LeftEditingDone(Sender: TObject);
-    procedure eFanSuberEditingDone(Sender: TObject);
     procedure eTitleEditingDone(Sender: TObject);
     procedure cbxEditorEditingDone(Sender: TObject);
     procedure cbxPublisherEditingDone(Sender: TObject);
     procedure mSummaryEditingDone(Sender: TObject);
-    procedure seSerieOrderEditingDone(Sender: TObject);
+    procedure seVolumeOrderEditingDone(Sender: TObject);
     procedure cbxSerieTitleEditingDone(Sender: TObject);
     procedure seTitleOrderEditingDone(Sender: TObject);
-    procedure cbxLanguageEditingDone(Sender: TObject);
+    procedure cbxLangVolumeEditingDone(Sender: TObject);
 
     procedure UpdateLangCBX(Sender: TObject);
 
@@ -65,11 +63,11 @@ type
     procedure LoadLists;
     procedure SaveLists;
 
-    procedure LoadFrameData; override;
-    procedure ClearFrameData; override;
-
   public
     property DataFolder: string read FDataFolder write SetDataFolder;
+
+    procedure LoadFrameData; override;
+    procedure ClearFrameData; override;
 
     constructor Create(TheOwner: TComponent); override;
     destructor Destroy; override;
@@ -101,15 +99,6 @@ begin
   Comic.Right2Left := chkRight2Left.Checked;
 end;
 
-procedure TfmCTKEditorVolumeEdit.eFanSuberEditingDone(Sender: TObject);
-begin
-  if not Assigned(Comic) then
-    Exit;
-
-  Comic.FanSuber := eFanSuber.Text;
-end;
-
-
 procedure TfmCTKEditorVolumeEdit.eTitleEditingDone(Sender: TObject);
 begin
   if not Assigned(Comic) then
@@ -129,12 +118,12 @@ begin
     cbxEditor.Items.Add(cbxEditor.Text);
 end;
 
-procedure TfmCTKEditorVolumeEdit.cbxLanguageEditingDone(Sender: TObject);
+procedure TfmCTKEditorVolumeEdit.cbxLangVolumeEditingDone(Sender: TObject);
 begin
   if not Assigned(Comic) then
     Exit;
 
-  Comic.Language := cbxLanguage.Text;
+  Comic.Language := cbxLangVolume.Text;
 
   UpdateLangCBX(Sender);
 end;
@@ -158,12 +147,12 @@ begin
   Comic.Summary.CTMSetSL(cbxLangSummary.Text, mSummary.Lines);
 end;
 
-procedure TfmCTKEditorVolumeEdit.seSerieOrderEditingDone(Sender: TObject);
+procedure TfmCTKEditorVolumeEdit.seVolumeOrderEditingDone(Sender: TObject);
 begin
   if not Assigned(Comic) then
     Exit;
 
-  Comic.SerieOrder := seSerieOrder.Value;
+  Comic.SerieOrder := seVolumeOrder.Value;
 end;
 
 procedure TfmCTKEditorVolumeEdit.seTitleOrderEditingDone(Sender: TObject);
@@ -203,7 +192,7 @@ begin
       SLLanguages := TStringList.Create;
       SLLanguages.LoadFromFile(DataFolder + kLanguageCBFile);
 
-      cbxLanguage.Items.Assign(SLLanguages);
+      cbxLangVolume.Items.Assign(SLLanguages);
       cbxLangTitle.Items.Assign(SLLanguages);
       cbxLangSummary.Items.Assign(SLLanguages);
     finally
@@ -220,7 +209,7 @@ begin
   cbxSerieTitle.Items.SaveToFile(DataFolder + kSeriesCBFile);
   cbxPublisher.Items.SaveToFile(DataFolder + kPublishersCBFile);
   cbxEditor.Items.SaveToFile(DataFolder + kEditorsCBFile);
-  cbxLanguage.Items.SaveToFile(DataFolder + kLanguageCBFile);
+  cbxLangVolume.Items.SaveToFile(DataFolder + kLanguageCBFile);
 end;
 
 procedure TfmCTKEditorVolumeEdit.UpdateLangCBX(Sender: TObject);
@@ -234,7 +223,7 @@ begin
 
   if CBX.Items.IndexOf(CBX.Text) = -1 then
   begin
-    cbxLanguage.Items.Add(CBX.Text);
+    cbxLangVolume.Items.Add(CBX.Text);
     cbxLangTitle.Items.Add(CBX.Text);
     cbxLangSummary.Items.Add(CBX.Text);
   end;
@@ -257,13 +246,12 @@ begin
   end;
 
   cbxSerieTitle.Text := Comic.Serie;
-  seSerieOrder.Value := Comic.SerieOrder;
+  seVolumeOrder.Value := Comic.SerieOrder;
   eTitle.Text := Comic.Title.CTMGetStr(cbxLangTitle.Text);
   seTitleOrder.Value := Comic.TitleOrder;
   cbxPublisher.Text := Comic.Publisher;
   cbxEditor.Text := Comic.Editor;
-  cbxLanguage.Text := Comic.Language;
-  eFanSuber.Text := Comic.FanSuber;
+  cbxLangVolume.Text := Comic.Language;
   chkRight2Left.Checked := Comic.Right2Left;
 
   // Nil can't be assigned to TStringList...
@@ -279,14 +267,13 @@ begin
   inherited;
 
   cbxSerieTitle.Text := EmptyStr;
-  seSerieOrder.Value := -1;
+  seVolumeOrder.Value := -1;
   cbxLangTitle.Text := EmptyStr;
   eTitle.Text := EmptyStr;
   seTitleOrder.Value := -1;
   cbxPublisher.Text := EmptyStr;
   cbxEditor.Text := EmptyStr;
-  cbxLanguage.Text := EmptyStr;
-  eFanSuber.Text := EmptyStr;
+  cbxLangVolume.Text := EmptyStr;
   chkRight2Left.Checked := False;
   cbxLangSummary.Text := EmptyStr;
   mSummary.Clear;

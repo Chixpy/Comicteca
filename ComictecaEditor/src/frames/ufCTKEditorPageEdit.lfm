@@ -1,328 +1,379 @@
 inherited fmCTKEditorPageEdit: TfmCTKEditorPageEdit
-  Height = 446
-  ClientHeight = 446
+  Height = 566
+  Width = 344
+  ChildSizing.LeftRightSpacing = 0
+  ChildSizing.TopBottomSpacing = 0
+  ChildSizing.HorizontalSpacing = 0
+  ChildSizing.VerticalSpacing = 0
+  ClientHeight = 566
+  ClientWidth = 344
   DesignLeft = 683
   DesignTop = 358
   object gbxPage: TGroupBox[0]
     Left = 0
-    Height = 446
+    Height = 189
     Top = 0
-    Width = 400
-    Align = alClient
+    Width = 344
+    Align = alTop
+    AutoSize = True
     Caption = 'Page'
-    ClientHeight = 421
-    ClientWidth = 396
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 4
+    ClientHeight = 164
+    ClientWidth = 340
     TabOrder = 0
     object lFilename: TLabel
-      Left = 0
+      Left = 4
       Height = 20
-      Top = 0
-      Width = 396
+      Top = 4
+      Width = 332
       Align = alTop
       Caption = 'Filename'
       ParentColor = False
     end
     object eFilename: TEdit
-      Left = 0
+      Left = 4
       Height = 28
-      Top = 20
-      Width = 396
+      Top = 28
+      Width = 332
       Align = alTop
       ReadOnly = True
       TabOrder = 0
     end
     object pValues: TPanel
-      Left = 0
-      Height = 52
-      Top = 96
-      Width = 396
+      Left = 4
+      Height = 28
+      Top = 116
+      Width = 332
       Align = alTop
       AutoSize = True
       BevelOuter = bvNone
-      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
-      ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
-      ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
-      ChildSizing.ShrinkVertical = crsHomogenousSpaceResize
-      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 4
       ChildSizing.ControlsPerLine = 2
-      ClientHeight = 52
-      ClientWidth = 396
-      TabOrder = 1
+      ClientHeight = 28
+      ClientWidth = 332
+      TabOrder = 2
       object lMultipage: TLabel
-        Left = 0
+        Left = 232
         Height = 28
         Top = 0
-        Width = 221
+        Width = 100
+        Align = alRight
+        Alignment = taRightJustify
         Caption = 'Pages in Image'
+        Layout = tlCenter
         ParentColor = False
       end
       object eMultipage: TSpinEdit
-        Left = 221
+        Left = 160
         Height = 28
         Top = 0
-        Width = 175
+        Width = 64
+        Align = alRight
+        Alignment = taRightJustify
         MaxValue = 10000
         MinValue = 1
         OnChange = eMultipageChange
-        TabOrder = 0
+        TabOrder = 1
         Value = 1
       end
       object chkNoFlip: TCheckBox
         Left = 0
-        Height = 24
-        Top = 28
-        Width = 221
+        Height = 28
+        Top = 0
+        Width = 152
+        Align = alClient
         Caption = 'No flip page'
-        TabOrder = 1
+        TabOrder = 0
         OnChange = chkNoFlipChange
       end
     end
     object lSHA1: TLabel
-      Left = 0
+      Left = 4
       Height = 20
-      Top = 48
-      Width = 396
+      Top = 60
+      Width = 332
       Align = alTop
       Caption = 'SHA1'
       ParentColor = False
     end
     object eSHA1: TEdit
-      Left = 0
+      Left = 4
       Height = 28
-      Top = 68
-      Width = 396
+      Top = 84
+      Width = 332
       Align = alTop
-      TabOrder = 2
+      TabOrder = 1
     end
-    object cgrPageContent: TCheckGroup
-      Left = 0
-      Height = 24
-      Top = 377
-      Width = 396
+  end
+  object gbxFixGeometry: TGroupBox[1]
+    Left = 0
+    Height = 293
+    Top = 189
+    Width = 344
+    Align = alTop
+    AutoSize = True
+    Caption = 'Fix Geometry'
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 4
+    ClientHeight = 268
+    ClientWidth = 340
+    TabOrder = 1
+    object pGeomQuadPoints: TPanel
+      Left = 4
+      Height = 138
+      Top = 28
+      Width = 332
       Align = alTop
-      AutoFill = True
       AutoSize = True
-      Caption = 'Content'
-      ChildSizing.LeftRightSpacing = 6
-      ChildSizing.TopBottomSpacing = 6
+      BevelOuter = bvNone
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 4
       ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
-      ChildSizing.EnlargeVertical = crsHomogenousChildResize
-      ChildSizing.ShrinkHorizontal = crsScaleChilds
-      ChildSizing.ShrinkVertical = crsScaleChilds
-      ChildSizing.Layout = cclLeftToRightThenTopToBottom
-      ChildSizing.ControlsPerLine = 2
-      Columns = 2
-      OnClick = cgrPageContentClick
-      OnItemClick = cgrPageContentItemClick
-      TabOrder = 3
-    end
-    object gbxFixGeometry: TGroupBox
-      Left = 0
-      Height = 229
-      Top = 148
-      Width = 396
-      Align = alTop
-      AutoSize = True
-      Caption = 'Fix Geometry'
-      ClientHeight = 204
-      ClientWidth = 392
-      TabOrder = 4
-      object pGeomQuadPoints: TPanel
+      ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+      ChildSizing.Layout = cclTopToBottomThenLeftToRight
+      ChildSizing.ControlsPerLine = 4
+      ClientHeight = 138
+      ClientWidth = 332
+      TabOrder = 0
+      object lTopLeft: TLabel
         Left = 0
-        Height = 136
-        Top = 20
-        Width = 392
-        Align = alClient
-        AutoSize = True
-        BevelOuter = bvNone
-        ChildSizing.LeftRightSpacing = 4
-        ChildSizing.TopBottomSpacing = 4
-        ChildSizing.HorizontalSpacing = 4
-        ChildSizing.VerticalSpacing = 4
-        ChildSizing.Layout = cclTopToBottomThenLeftToRight
-        ChildSizing.ControlsPerLine = 4
-        ClientHeight = 136
-        ClientWidth = 392
-        TabOrder = 0
-        object lTopLeft: TLabel
-          Left = 4
-          Height = 30
-          Top = 4
-          Width = 66
-          Caption = 'Top Left'
-          ParentColor = False
-        end
-        object eTopLeftX: TSpinEdit
-          Left = 4
-          Height = 28
-          Top = 38
-          Width = 66
-          MaxValue = 8192
-          OnChange = eTopLeftXChange
-          TabOrder = 0
-        end
-        object eTopLeftY: TSpinEdit
-          Left = 4
-          Height = 28
-          Top = 70
-          Width = 66
-          MaxValue = 8192
-          OnChange = eTopLeftYChange
-          TabOrder = 1
-        end
-        object bSetTL: TButton
-          Left = 4
-          Height = 30
-          Top = 102
-          Width = 66
-          Caption = 'Set TL'
-          TabOrder = 8
-          OnClick = bSetTLClick
-        end
-        object lTopRight: TLabel
-          Left = 74
-          Height = 30
-          Top = 4
-          Width = 68
-          Caption = 'Top Right'
-          ParentColor = False
-        end
-        object eTopRightX: TSpinEdit
-          Left = 74
-          Height = 28
-          Top = 38
-          Width = 68
-          MaxValue = 8192
-          OnChange = eTopRightXChange
-          TabOrder = 2
-        end
-        object eTopRightY: TSpinEdit
-          Left = 74
-          Height = 28
-          Top = 70
-          Width = 68
-          MaxValue = 8192
-          OnChange = eTopRightYChange
-          TabOrder = 3
-        end
-        object bSetTR: TButton
-          Left = 74
-          Height = 30
-          Top = 102
-          Width = 68
-          Caption = 'Set TR'
-          TabOrder = 9
-          OnClick = bSetTRClick
-        end
-        object lBottomLeft: TLabel
-          Left = 146
-          Height = 30
-          Top = 4
-          Width = 79
-          Caption = 'Bottom Left'
-          ParentColor = False
-        end
-        object eBottomLeftX: TSpinEdit
-          Left = 146
-          Height = 28
-          Top = 38
-          Width = 79
-          MaxValue = 8192
-          OnChange = eBottomLeftXChange
-          TabOrder = 4
-        end
-        object eBottomLeftY: TSpinEdit
-          Left = 146
-          Height = 28
-          Top = 70
-          Width = 79
-          MaxValue = 8192
-          OnChange = eBottomLeftYChange
-          TabOrder = 5
-        end
-        object bSetBL: TButton
-          Left = 146
-          Height = 30
-          Top = 102
-          Width = 79
-          Caption = 'Set BL'
-          TabOrder = 10
-          OnClick = bSetBLClick
-        end
-        object lBottomRight: TLabel
-          Left = 229
-          Height = 30
-          Top = 4
-          Width = 89
-          Caption = 'Bottom Right'
-          ParentColor = False
-        end
-        object eBottomRightX: TSpinEdit
-          Left = 229
-          Height = 28
-          Top = 38
-          Width = 89
-          MaxValue = 8192
-          OnChange = eBottomRightXChange
-          TabOrder = 6
-        end
-        object eBottomRightY: TSpinEdit
-          Left = 229
-          Height = 28
-          Top = 70
-          Width = 89
-          MaxValue = 8192
-          OnChange = eBottomRightYChange
-          TabOrder = 7
-        end
-        object bSetBR: TButton
-          Left = 229
-          Height = 30
-          Top = 102
-          Width = 89
-          Caption = 'Set BR'
-          TabOrder = 11
-          OnClick = bSetBRClick
-        end
-        object bResetGeometry: TButton
-          Left = 322
-          Height = 30
-          Top = 4
-          Width = 62
-          Caption = 'Reset'
-          TabOrder = 12
-          OnClick = bResetGeometryClick
-        end
-      end
-      object lCurrentPoint: TLabel
-        Left = 0
-        Height = 20
+        Height = 40
         Top = 0
-        Width = 392
-        Align = alTop
-        Caption = ' '
+        Width = 77
+        Alignment = taCenter
+        Caption = 'Top'#13#10'Left'
         ParentColor = False
+        WordWrap = True
       end
-      object chkCropToGeometry: TCheckBox
+      object eTopLeftX: TSpinEdit
         Left = 0
-        Height = 24
-        Top = 156
-        Width = 392
-        Align = alBottom
-        Caption = 'Crop page to geometry box.'
+        Height = 28
+        Top = 44
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eTopLeftXChange
+        TabOrder = 0
+      end
+      object eTopLeftY: TSpinEdit
+        Left = 0
+        Height = 28
+        Top = 76
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eTopLeftYChange
         TabOrder = 1
-        OnChange = chkCropToGeometryChange
       end
-      object chkPerspGeometry: TCheckBox
+      object bSetTL: TButton
         Left = 0
-        Height = 24
-        Top = 180
-        Width = 392
-        Align = alBottom
-        Caption = 'Perspective geometry mapping'
+        Height = 30
+        Top = 108
+        Width = 77
+        Caption = 'Set'
         TabOrder = 2
-        OnChange = chkPerspGeometryChange
+        OnClick = bSetTLClick
+      end
+      object lTopRight: TLabel
+        Left = 85
+        Height = 40
+        Top = 0
+        Width = 77
+        Alignment = taCenter
+        Caption = 'Top'#13#10'Right'
+        ParentColor = False
+        WordWrap = True
+      end
+      object eTopRightX: TSpinEdit
+        Left = 85
+        Height = 28
+        Top = 44
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eTopRightXChange
+        TabOrder = 3
+      end
+      object eTopRightY: TSpinEdit
+        Left = 85
+        Height = 28
+        Top = 76
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eTopRightYChange
+        TabOrder = 4
+      end
+      object bSetTR: TButton
+        Left = 85
+        Height = 30
+        Top = 108
+        Width = 77
+        Caption = 'Set'
+        TabOrder = 5
+        OnClick = bSetTRClick
+      end
+      object lBottomLeft: TLabel
+        Left = 170
+        Height = 40
+        Top = 0
+        Width = 77
+        Alignment = taCenter
+        Caption = 'Bottom'#13#10'Left'
+        ParentColor = False
+        WordWrap = True
+      end
+      object eBottomLeftX: TSpinEdit
+        Left = 170
+        Height = 28
+        Top = 44
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eBottomLeftXChange
+        TabOrder = 6
+      end
+      object eBottomLeftY: TSpinEdit
+        Left = 170
+        Height = 28
+        Top = 76
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eBottomLeftYChange
+        TabOrder = 7
+      end
+      object bSetBL: TButton
+        Left = 170
+        Height = 30
+        Top = 108
+        Width = 77
+        Caption = 'Set'
+        TabOrder = 8
+        OnClick = bSetBLClick
+      end
+      object lBottomRight: TLabel
+        Left = 255
+        Height = 40
+        Top = 0
+        Width = 77
+        Alignment = taCenter
+        Caption = 'Bottom'#13#10'Right'
+        ParentColor = False
+        WordWrap = True
+      end
+      object eBottomRightX: TSpinEdit
+        Left = 255
+        Height = 28
+        Top = 44
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eBottomRightXChange
+        TabOrder = 9
+      end
+      object eBottomRightY: TSpinEdit
+        Left = 255
+        Height = 28
+        Top = 76
+        Width = 77
+        Alignment = taRightJustify
+        MaxValue = 8192
+        OnChange = eBottomRightYChange
+        TabOrder = 10
+      end
+      object bSetBR: TButton
+        Left = 255
+        Height = 30
+        Top = 108
+        Width = 77
+        Caption = 'Set'
+        TabOrder = 11
+        OnClick = bSetBRClick
       end
     end
+    object lCurrentPoint: TLabel
+      Left = 4
+      Height = 20
+      Top = 4
+      Width = 332
+      Align = alTop
+      Caption = ' '
+      ParentColor = False
+    end
+    object chkCropToGeometry: TCheckBox
+      Left = 4
+      Height = 24
+      Top = 212
+      Width = 332
+      Align = alBottom
+      Caption = 'Crop page to geometry box.'
+      TabOrder = 2
+      OnChange = chkCropToGeometryChange
+    end
+    object chkPerspGeometry: TCheckBox
+      Left = 4
+      Height = 24
+      Top = 240
+      Width = 332
+      Align = alBottom
+      Caption = 'Perspective geometry mapping'
+      TabOrder = 3
+      OnChange = chkPerspGeometryChange
+    end
+    object pReset: TPanel
+      Left = 4
+      Height = 38
+      Top = 170
+      Width = 332
+      Align = alClient
+      AutoSize = True
+      BevelOuter = bvNone
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 4
+      ClientHeight = 38
+      ClientWidth = 332
+      TabOrder = 1
+      object bResetGeometry: TButton
+        Left = 0
+        Height = 30
+        Top = 0
+        Width = 62
+        AutoSize = True
+        Caption = 'Reset'
+        TabOrder = 0
+        OnClick = bResetGeometryClick
+      end
+    end
+  end
+  object cgrPageContent: TCheckGroup[2]
+    Left = 0
+    Height = 84
+    Top = 482
+    Width = 344
+    Align = alClient
+    AutoFill = True
+    AutoSize = True
+    Caption = 'Content'
+    ChildSizing.LeftRightSpacing = 4
+    ChildSizing.TopBottomSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
+    ChildSizing.VerticalSpacing = 4
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 2
+    Columns = 2
+    OnClick = cgrPageContentClick
+    OnItemClick = cgrPageContentItemClick
+    TabOrder = 2
   end
 end

@@ -1,5 +1,7 @@
 inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
   Height = 355
+  ChildSizing.LeftRightSpacing = 0
+  ChildSizing.TopBottomSpacing = 0
   ClientHeight = 355
   DesignTop = 191
   object gbxFrameEdit: TGroupBox[0]
@@ -11,7 +13,7 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     Caption = 'Frame properties'
     ChildSizing.LeftRightSpacing = 4
     ChildSizing.TopBottomSpacing = 4
-    ChildSizing.HorizontalSpacing = 4
+    ChildSizing.HorizontalSpacing = 8
     ChildSizing.VerticalSpacing = 4
     ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
     ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
@@ -21,20 +23,20 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     ChildSizing.ControlsPerLine = 4
     ClientHeight = 134
     ClientWidth = 396
-    TabOrder = 0
+    TabOrder = 1
     object pEmpty1: TPanel
       Left = 4
       Height = 30
       Top = 4
-      Width = 79
+      Width = 76
       BevelOuter = bvNone
-      TabOrder = 4
+      TabOrder = 0
     end
     object lLeft: TLabel
       Left = 4
       Height = 28
       Top = 38
-      Width = 79
+      Width = 76
       Alignment = taCenter
       Caption = 'Left'
       Layout = tlCenter
@@ -44,130 +46,130 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
       Left = 4
       Height = 28
       Top = 70
-      Width = 79
+      Width = 76
       Alignment = taRightJustify
       MaxValue = 8096
       MinValue = -8096
       OnChange = eLeftChange
-      TabOrder = 8
+      TabOrder = 3
     end
     object pEmpty2: TPanel
       Left = 4
       Height = 28
       Top = 102
-      Width = 79
+      Width = 76
       BevelOuter = bvNone
-      TabOrder = 5
+      TabOrder = 6
     end
     object lTop: TLabel
-      Left = 87
+      Left = 88
       Height = 30
       Top = 4
-      Width = 79
+      Width = 76
       Alignment = taCenter
       Caption = 'Top'
       Layout = tlCenter
       ParentColor = False
     end
     object eTop: TSpinEdit
-      Left = 87
+      Left = 88
       Height = 28
       Top = 38
-      Width = 79
+      Width = 76
       Alignment = taRightJustify
       Increment = -1
       MaxValue = 8096
       MinValue = -8096
       OnChange = eTopChange
-      TabOrder = 0
+      TabOrder = 2
     end
     object lBottom: TLabel
-      Left = 87
+      Left = 88
       Height = 28
       Top = 70
-      Width = 79
+      Width = 76
       Alignment = taCenter
       Caption = 'Bottom'
       Layout = tlCenter
       ParentColor = False
     end
     object eBottom: TSpinEdit
-      Left = 87
+      Left = 88
       Height = 28
       Top = 102
-      Width = 79
+      Width = 76
       Alignment = taRightJustify
       Increment = -1
       MaxValue = 8096
       MinValue = -8096
       OnChange = eBottomChange
-      TabOrder = 2
+      TabOrder = 5
     end
     object pEmpty3: TPanel
-      Left = 170
+      Left = 172
       Height = 30
       Top = 4
-      Width = 79
+      Width = 76
       BevelOuter = bvNone
-      TabOrder = 6
+      TabOrder = 1
     end
     object lRight: TLabel
-      Left = 170
+      Left = 172
       Height = 28
       Top = 38
-      Width = 79
+      Width = 76
       Alignment = taCenter
       Caption = 'Right'
       Layout = tlCenter
       ParentColor = False
     end
     object eRight: TSpinEdit
-      Left = 170
+      Left = 172
       Height = 28
       Top = 70
-      Width = 79
+      Width = 76
       Alignment = taRightJustify
       MaxValue = 8096
       MinValue = -8096
       OnChange = eRightChange
-      TabOrder = 1
+      TabOrder = 4
     end
     object pEmpty4: TPanel
-      Left = 170
+      Left = 172
       Height = 28
       Top = 102
-      Width = 79
+      Width = 76
       BevelOuter = bvNone
       TabOrder = 7
     end
     object bResetFrame: TButton
-      Left = 253
+      Left = 256
       Height = 30
       Top = 4
-      Width = 139
+      Width = 136
       Caption = 'Reset Frame'
+      TabOrder = 8
       OnClick = bResetFrameClick
-      TabOrder = 3
     end
     object cbxFrameShape: TComboBox
-      Left = 253
+      Left = 256
       Height = 28
       Top = 38
-      Width = 139
+      Width = 136
       ItemHeight = 20
-      OnChange = cbxFrameShapeChange
       Style = csDropDownList
       TabOrder = 9
+      OnChange = cbxFrameShapeChange
     end
     object pValX: TPanel
-      Left = 253
+      Left = 256
       Height = 28
       Top = 70
-      Width = 139
+      Width = 136
       AutoSize = True
       BevelOuter = bvNone
-      ChildSizing.LeftRightSpacing = 4
-      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 4
       ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
       ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
       ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
@@ -175,10 +177,10 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 2
       ClientHeight = 28
-      ClientWidth = 139
+      ClientWidth = 136
       TabOrder = 10
       object lValX: TLabel
-        Left = 4
+        Left = 0
         Height = 28
         Top = 0
         Width = 37
@@ -191,7 +193,7 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
         Left = 45
         Height = 28
         Top = 0
-        Width = 90
+        Width = 91
         Alignment = taRightJustify
         MaxValue = 8096
         MinValue = -8096
@@ -200,14 +202,14 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
       end
     end
     object pValY: TPanel
-      Left = 253
+      Left = 256
       Height = 28
       Top = 102
-      Width = 139
+      Width = 136
       AutoSize = True
       BevelOuter = bvNone
-      ChildSizing.LeftRightSpacing = 4
-      ChildSizing.HorizontalSpacing = 4
+      ChildSizing.HorizontalSpacing = 8
+      ChildSizing.VerticalSpacing = 4
       ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
       ChildSizing.EnlargeVertical = crsHomogenousSpaceResize
       ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
@@ -215,20 +217,20 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
       ChildSizing.ControlsPerLine = 2
       ClientHeight = 28
-      ClientWidth = 139
+      ClientWidth = 136
       TabOrder = 11
       object lValY: TLabel
-        Left = 4
+        Left = 0
         Height = 28
         Top = 0
-        Width = 36
+        Width = 37
         Alignment = taCenter
         Caption = 'Y'
         Layout = tlCenter
         ParentColor = False
       end
       object eValY: TSpinEdit
-        Left = 44
+        Left = 45
         Height = 28
         Top = 0
         Width = 91
@@ -248,9 +250,9 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     Width = 400
     Align = alTop
     ItemHeight = 20
-    OnChange = cbxFramePageChange
     Style = csDropDownList
-    TabOrder = 1
+    TabOrder = 0
+    OnChange = cbxFramePageChange
   end
   object lPage: TLabel[2]
     Left = 0
@@ -277,8 +279,8 @@ inherited fmCTKEditorFrameEdit: TfmCTKEditorFrameEdit
     Width = 400
     Align = alTop
     ItemHeight = 20
-    OnChange = cbxFrameTypeChange
     Style = csDropDownList
     TabOrder = 2
+    OnChange = cbxFrameTypeChange
   end
 end
